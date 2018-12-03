@@ -1,0 +1,39 @@
+.doc-body{
+  padding-top: 10rem;
+  &__alert-section{
+    &--moreBtn{
+      float:right;
+    }
+  }
+  &__patient-section{
+    &--title{
+      float: left;
+    }
+    &--addbtn{
+      float: right;
+    }
+    &--moreBtn{
+      float: right;
+    }
+  }
+  &__new-patient-section{
+    display: none;
+    &--form-row{
+      margin-top: 0.5rem;
+    }
+  }
+  &__detail-section{
+    &--title{
+      float: left;
+    }
+    &--editBtn{
+      float: right;
+    }
+    &--form-row{
+      margin-top: 0.5rem;
+    }
+    &--change-record{
+      display: none;
+    }
+  }
+}
