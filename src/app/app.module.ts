@@ -9,6 +9,8 @@ import { PatientViewComponent } from './patient-view/patient-view.component';
 import { RoutingServiceModule } from './routing-service/routing-service.module';
 import { MessageListComponent } from './doc-view/message-list/message-list.component';
 import { PatientListComponent } from './doc-view/patient-list/patient-list.component';
+import { ParameterListComponent } from './patient-view/parameter-list/parameter-list.component';
+import { AlertListComponent } from './patient-view/alert-list/alert-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { PatientListComponent } from './doc-view/patient-list/patient-list.compo
     HomeViewComponent,
     PatientViewComponent,
     MessageListComponent,
-    PatientListComponent
+    PatientListComponent,
+    ParameterListComponent,
+    AlertListComponent
   ],
   imports: [
     BrowserModule,

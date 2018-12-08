@@ -1,0 +1,19 @@
+.patient-body{
+  padding-top: 9rem;
+  &__alert-section{
+    &--moreBtn{
+      float:right;
+    }
+  }
+  &__patient-section{
+    &--title{
+      float: left;
+    }
+    &--addbtn{
+      float: right;
+    }
+    &--moreBtn{
+      float: right;
+    }
+  }
+}

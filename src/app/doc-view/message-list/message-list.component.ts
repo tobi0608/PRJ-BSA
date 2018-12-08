@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MESSAGES} from '../../mock-messages';
+import {MESSAGES} from '../../mock-files/mock-messages';
 
 @Component({
   selector: 'app-message-list',

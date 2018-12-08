@@ -1,3 +1,67 @@
-<p>
-  patient-view works!
-</p>
+<div class="patient-body">
+  <br>
+  <div class="jumbotron shadow p-3 bg-white rounded">
+    <h1>Hallo {{name}}!</h1>
+    <p class="lead">Sie haben {{number_new_alerts}} neue Nachrichten</p>
+  </div>
+  <div class="jumbotron shadow p-3 bg-white rounded">
+    <h1>Blutdruck eintragen</h1>
+    <p class="lead">Platzhalter</p>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="jumbotron shadow p-3 bg-white rounded patient-body__alert-section">
+        <h1 routerLink="/patient/alerts">Nachrichten</h1>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Datum</th>
+            <th scope="col">Typ</th>
+            <th scope="col">Nachricht</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let message of messages">
+            <td></td>
+            <td>{{message.date}}</td>
+            <td>{{message.type}}</td>
+            <td>{{message.text}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <hr class="m-4">
+        <button type="button" class="patient-body__alert-section--moreBtn" routerLink="/patient/alerts"
+        >Alle anzeigen</button><br>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="jumbotron shadow p-3 bg-white rounded patient-body__patient-section">
+        <h1 class="doc-body__patient-section--title" routerLink="/patient/parameter">Werte</h1>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">Datum</th>
+            <th scope="col">Zeit</th>
+            <th scope="col">Systole</th>
+            <th scope="col">Diastole</th>
+            <th scope="col">Herzrate</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of dates">
+            <td>{{data.date}}</td>
+            <td>{{data.time}}</td>
+            <td>{{data.systole}}</td>
+            <td>{{data.diastole}}</td>
+            <td>{{data.heartbeat}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <hr class="m-4">
+        <button type="button" class="patient-body__patient-section--moreBtn" id="DatesMoreBtn"
+                routerLink="/patient/parameter">Alle anzeigen</button><br>
+      </div>
+    </div>
+  </div>
+</div>

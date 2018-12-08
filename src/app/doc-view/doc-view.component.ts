@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import { Patient } from '../patients';
-import { PATIENTS } from '../mock-patients';
-import { MESSAGES} from '../mock-messages';
-import { USERS } from '../mock-user';
+import { Patient } from '../mock-files/patients';
+import { PATIENTS } from '../mock-files/mock-patients';
+import { MESSAGES} from '../mock-files/mock-messages';
+import { USERS } from '../mock-files/mock-user';
 
 @Component({
   selector: 'app-doc-view',
@@ -15,7 +15,7 @@ export class DocViewComponent implements OnInit {
   patients = PATIENTS;
   selectedPatient: Patient;
   messages = MESSAGES;
-  number_new_alerts = MESSAGES.length - USERS[0].last_seen_alerts;
+  number_new_alerts = MESSAGES.length - USERS[1].last_seen_alerts;
 
   constructor() {}
 

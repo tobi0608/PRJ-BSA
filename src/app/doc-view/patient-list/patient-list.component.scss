@@ -2,10 +2,9 @@
   padding-top: 10.3rem;
   &__general-section{
     &--title{
+      float: left;
     }
-    &--counter{
-  }
-    &--addbtn{
+    &--addBtn{
       float: right;
     }
   }
@@ -14,19 +13,32 @@
     &--form-row{
       margin-top: 0.5rem;
     }
-  }
-  &__detail-section{
-    &--title{
-      float: left;
-    }
-    &--editBtn{
+    &--backBtn{
       float: right;
     }
-    &--form-row{
+    &--saveBtn{
+      float: left;
+    }
+  }
+  &__detail-section {
+    &--title {
+      float: left;
+    }
+    &--offChangeBtn {
+      float: right;
+      display: none;
+    }
+    &--onChangeBtn {
+      float: right;
+    }
+    &--form-row {
       margin-top: 0.5rem;
     }
-    &--change-record{
-      display: none;
+    &--backBtn {
+      float: right;
+    }
+    &--saveBtn{
+      float: left;
     }
   }
 }
