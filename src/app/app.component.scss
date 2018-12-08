@@ -5,18 +5,23 @@
   &__title{
     color: #FFFFFF;
     font-size: 6rem;
+    margin-left: 1rem;
   }
   &__logo{
     margin-top: 1rem;
     margin-bottom: 1rem;
+    margin-right: 2rem;
     height: 7rem;
     float: right;
   }
   &__LogIn-form{
-
-  }
-  &__LogOut-form{
     width: 80%;
     margin-bottom: 0.5rem;
+    float: left;
+    margin-left: 1rem;
+  }
+  &__navigation4doc{
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
   }
 }
