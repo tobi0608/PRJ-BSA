@@ -1,0 +1,32 @@
+.patientlist-view{
+  padding-top: 10.3rem;
+  &__general-section{
+    &--title{
+    }
+    &--counter{
+  }
+    &--addbtn{
+      float: right;
+    }
+  }
+  &__new-patient-section{
+    display: none;
+    &--form-row{
+      margin-top: 0.5rem;
+    }
+  }
+  &__detail-section{
+    &--title{
+      float: left;
+    }
+    &--editBtn{
+      float: right;
+    }
+    &--form-row{
+      margin-top: 0.5rem;
+    }
+    &--change-record{
+      display: none;
+    }
+  }
+}

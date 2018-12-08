@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MESSAGES} from '../../mock-messages';
 
 @Component({
   selector: 'app-message-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent implements OnInit {
+  messages = MESSAGES;
+  messageCount = MESSAGES.length;
 
   constructor() { }
 

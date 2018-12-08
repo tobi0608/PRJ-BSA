@@ -1,3 +1,179 @@
-<p>
-  patient-list works!
-</p>
+<div class="patientlist-view">
+  <div class="jumbotron shadow p-3 bg-white rounded patientlist-view__general-section">
+    <h1 class="patientlist-view__general-section--title">Patientenübersicht</h1>
+    <!--<input type="text" ng-model="query"/>
+    <ul>
+      <li *ng-repeat="let patient of patients | filter:query">
+        {{patient.last_name}}
+      </li>
+    </ul>-->
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">SV-Nummer</th>
+        <th scope="col">Nachname</th>
+        <th scope="col">Vorname</th>
+        <th scope="col">Alter</th>
+        <th scope="col">Letzter Besuch</th>
+        <th scope="col">Registriert seit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let patient of patients"
+          [class.selected]="patient === selectedPatient"
+          (click)="onSelect(patient)">
+        <td>{{patient.sv}}</td>
+        <td>{{patient.last_name}}</td>
+        <td>{{patient.first_name}}</td>
+        <td>{{patient.age}}</td>
+        <td>{{patient.last_visit}}</td>
+        <td>{{patient.registered}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="jumbotron shadow p-3 bg-white rounded patientlist-view__new-patient-section"
+     id="patientlist-view__new-patient-section"
+     #newPatientSection>
+  <h2>Patienten anlegen</h2>
+  <form>
+    <div class="form-row">
+      <div class="col-2">
+        <label>SV-Nummer:</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-2">
+        <label>Alter:</label>
+        <input type="number" class="form-control">
+      </div>
+      <div class="col-2">
+        <label>Geschlecht:</label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-row patientlist-view__new-patient-section--form-row">
+      <div class="col-4">
+        <label>Letzter Besuch:</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="col-2">
+        <label>Registriert seit:</label>
+        <input type="date" class="form-control">
+      </div>
+    </div>
+    <div class="form-row patientlist-view__new-patient-section--form-row">
+      <div class="col-2">
+        <label>Medikation:</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-2">
+        <label>Einnahme Intervall:</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-3">
+        <label >Bereits probierte Medikammente:</label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="patientlist-view__new-patient-section--form-row">
+      <input type="submit" id="savePatient" value="Patient speichern">
+    </div>
+  </form>
+</div>
+
+
+<div class="jumbotron shadow p-3 bg-white rounded patientlist-view__detail-section" *ngIf="selectedPatient">
+  <h2 class="doc-body__detail-section--title">{{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}} Details:</h2>
+  <button type="button" class="patientlist-view__detail-section--editBtn" (click)="onChangeBtn()">Patientenakt bearbeiten</button><br>
+  <hr class="m-4">
+  <div id="default-record" #defaultRecord>
+    <div class="row">
+      <div class="col-2">
+        <span>SV-Nummer:</span>
+        <p>{{selectedPatient.sv}}</p>
+      </div>
+      <div class="col-2">
+        <span>Alter: </span>
+        <p>{{selectedPatient.age}}</p>
+      </div>
+      <div class="col-2">
+        <span>Geschlecht:</span>
+        <p>{{selectedPatient.gender}}</p>
+      </div>
+    </div>
+    <div class="row patientlist-view__detail-section--form-row">
+      <div class="col-2">
+        <span>Letzter Besuch:</span>
+        <p>{{selectedPatient.last_visit}}</p>
+      </div>
+      <div class="col-2">
+        <span>Registriert seit:</span>
+        <p>{{selectedPatient.registered}}</p>
+      </div>
+    </div>
+    <div class="row patientlist-view__detail-section--form-row">
+      <div class="col-2">
+        <span>Medikation:</span>
+        <p>{{selectedPatient.current_medication}}</p>
+      </div>
+      <div class="col-2">
+        <span>Einnahme Intervall:</span>
+        <p>{{selectedPatient.medication_interval}}</p>
+      </div>
+      <div class="col-3">
+        <span>Bereits probierte Medikammente:</span>
+        <p>{{selectedPatient.used_medication}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="patientlist-view__detail-section--change-record" id="change-record" #changeRecord>
+    <form>
+      <div class="form-row">
+        <div class="col-2">
+          <label>SV-Nummer:</label>
+          <p>{{selectedPatient.sv}}</p>
+        </div>
+        <div class="col-2">
+          <label>Alter: </label>
+          <p>{{selectedPatient.age}}</p>
+        </div>
+        <div class="col-2">
+          <label>Geschlecht:</label>
+          <p>{{selectedPatient.gender}}</p>
+        </div>
+      </div>
+      <div class="form-row patientlist-view__detail-section--form-row">
+        <div class="col-4">
+          <label>Letzter Besuch:</label>
+          <input name="last_visit" type="date" class="form-control"
+                 [(ngModel)]="selectedPatient.last_visit">
+        </div>
+        <div class="col-2">
+          <label>Registriert seit:</label>
+          <p>{{selectedPatient.registered}}</p>
+        </div>
+      </div>
+      <div class="form-row patientlist-view__detail-section--form-row">
+        <div class="col-2">
+          <label>Medikation:</label>
+          <input name="current_medication" type="text" class="form-control"
+                 [(ngModel)]="selectedPatient.current_medication">
+        </div>
+        <div class="col-2">
+          <label>Einnahme Intervall:</label>
+          <input name="medication_interval" type="text" class="form-control"
+                 [(ngModel)]="selectedPatient.medication_interval">
+        </div>
+        <div class="col-3">
+          <label >Bereits probierte Medikammente:</label>
+          <input name="used_medication" type="text" class="form-control"
+                 [(ngModel)]="selectedPatient.used_medication">
+        </div>
+      </div>
+      <div class="patientlist-view__detail-section--form-row">
+        <input type="submit" id="Save_Patient" value="Patient speichern">
+      </div>
+    </form>
+  </div>
+</div>
