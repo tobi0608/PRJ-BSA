@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild, ViewChildren} from '@angular/core';
 import {PATIENTS} from '../../mock-files/mock-patients';
 import {Patient} from '../../mock-files/patients';
-import {count} from 'rxjs/operators';
 
 @Component({
   selector: 'app-patient-list',

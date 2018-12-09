@@ -1,3 +1,21 @@
-<p>
-  home-view works!
-</p>
+<div class="container-fluid">
+<div class="home-view">
+  <div class="jumbotron shadow p-3 bg-white rounded home-view__LogIn-form">
+    <h1>Anmelden</h1>
+  <form class="form-inline">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="username">S<span class="sr-only">ozial</span>
+          V<span class="sr-only">ersicherungs</span>-Nummer:</label>
+      </div>
+      <input required minlength="10" type="number" id="username" #sv>
+      <div class="input-group-prepend">
+        <label class="input-group-text"  for="user-password">Passwort:</label>
+      </div>
+      <input type="password" id="user-password" #password>
+      <input type="submit" value="Log In" (click)="onLogIn()">
+    </div>
+  </form>
+</div>
+</div>
+</div>

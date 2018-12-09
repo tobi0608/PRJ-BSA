@@ -1,5 +1,10 @@
 .doc-body{
   padding-top: 9rem;
+  &__navigation4doc{
+    position: fixed;
+    background-color: #B2101D;
+    width: 100%
+  }
   &__alert-section{
     &--moreBtn{
       float:right;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DATES} from '../../mock-files/mock-vital-parameter';
 
 @Component({
   selector: 'app-parameter-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parameter-list.component.scss']
 })
 export class ParameterListComponent implements OnInit {
+  dates = DATES;
 
   constructor() { }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MESSAGES} from '../../mock-files/mock-messages';
 
 @Component({
   selector: 'app-alert-list',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertListComponent implements OnInit {
 
+  messages = MESSAGES;
   constructor() { }
 
   ngOnInit() {

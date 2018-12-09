@@ -1,3 +1,47 @@
-<p>
-  parameter-list works!
-</p>
+<div class="container-fluid">
+<div class="parameterlist-view">
+  <div class="jumbotron shadow p-3 bg-white rounded parameterlist-view--adding-section">
+    <h1>Vitalparameter hinzufügen</h1>
+    <form>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="systole">Systole:</label>
+        </div>
+        <input required min="50" max="300" type="number" id="systole">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="diastole">Diastole:</label>
+        </div>
+        <input required min="50" max="300" type="number" id="diastole">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="heartrate">Herzrate:</label>
+        </div>
+        <input required min="40" max="200" type="number" id="heartrate">
+        <input type="submit" value="Absenden">
+      </div>
+    </form>
+  </div>
+  <div class="jumbotron shadow p-3 bg-white rounded parameterlist-view--general-section">
+  <h1 class="parameterlist-view--general-section--title">Vitalparameter</h1>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Datum</th>
+      <th scope="col">Zeit</th>
+      <th scope="col">Systole</th>
+      <th scope="col">Diastole</th>
+      <th scope="col">Herzrate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of dates">
+      <td>{{data.date}}</td>
+      <td>{{data.time}}</td>
+      <td>{{data.systole}}</td>
+      <td>{{data.diastole}}</td>
+      <td>{{data.heartbeat}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>

@@ -1,5 +1,23 @@
 <div class="doc-body">
-    <br>
+<div class="doc-body__navigation4doc" #navigation4patient>
+    <nav>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a routerLink="/doctor/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/doctor/messages">Nachrichten</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/doctor/patients">Patientenübersicht</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/home">Abmelden</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+    <div class="container-fluid"><br><br>
     <div class="jumbotron shadow p-3 bg-white rounded">
         <h1>Willkommen Dr. {{name}}</h1>
         <p class="lead">Sie haben {{number_new_alerts}} neue Nachrichten</p>
@@ -19,7 +37,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let message of messages">
+                    <tr *ngFor="let message of messages| slice:0:5;">
                         <td></td>
                         <td>{{message.last_name}}</td>
                         <td>{{message.first_name}}</td>
@@ -47,7 +65,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let patient of patients"
+                    <tr *ngFor="let patient of patients| slice:0:5;"
                         [class.selected]="patient === selectedPatient"
                         (click)="onSelect(patient)">
                         <td>{{patient.sv}}</td>
@@ -64,4 +82,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

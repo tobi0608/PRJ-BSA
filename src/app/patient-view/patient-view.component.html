@@ -1,12 +1,47 @@
 <div class="patient-body">
-  <br>
-  <div class="jumbotron shadow p-3 bg-white rounded">
+<div class="patient-body__navigation4patient" #navigation4patient>
+  <nav>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a routerLink="/patient/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/patient/alerts">Nachrichten</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/patient/parameter">Blutdruckwerte</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/home">Abmelden</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+  <div class="container-fluid">
+  <br><br>
+  <div class="jumbotron shadow p-3 bg-white rounded patient-body__welcome-section">
     <h1>Hallo {{name}}!</h1>
     <p class="lead">Sie haben {{number_new_alerts}} neue Nachrichten</p>
   </div>
   <div class="jumbotron shadow p-3 bg-white rounded">
     <h1>Blutdruck eintragen</h1>
-    <p class="lead">Platzhalter</p>
+    <form>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="systole">Systole:</label>
+        </div>
+        <input required min="50" max="300" type="number" id="systole">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="diastole">Diastole:</label>
+        </div>
+        <input required min="50" max="300" type="number" id="diastole">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="heartrate">Herzrate:</label>
+        </div>
+        <input required min="40" max="200" type="number" id="heartrate">
+        <input type="submit" value="Absenden">
+      </div>
+    </form>
   </div>
   <div class="row">
     <div class="col-6">
@@ -22,7 +57,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let message of messages">
+          <tr *ngFor="let message of messages| slice:0:5;">
             <td></td>
             <td>{{message.date}}</td>
             <td>{{message.type}}</td>
@@ -37,7 +72,7 @@
     </div>
     <div class="col-6">
       <div class="jumbotron shadow p-3 bg-white rounded patient-body__patient-section">
-        <h1 class="doc-body__patient-section--title" routerLink="/patient/parameter">Werte</h1>
+        <h1 class="doc-body__patient-section--title" routerLink="/patient/parameter">Vitalparameter</h1>
         <table class="table table-hover">
           <thead>
           <tr>
@@ -49,7 +84,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let data of dates">
+          <tr *ngFor="let data of dates | slice:0:5;">
             <td>{{data.date}}</td>
             <td>{{data.time}}</td>
             <td>{{data.systole}}</td>
@@ -64,4 +99,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

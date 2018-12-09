@@ -10,7 +10,7 @@ import {ParameterListComponent} from '../patient-view/parameter-list/parameter-l
 import {AlertListComponent} from '../patient-view/alert-list/alert-list.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'patient/dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeViewComponent },
     { path: 'doctor/dashboard', component: DocViewComponent },
     { path: 'doctor/messages', component: MessageListComponent },
