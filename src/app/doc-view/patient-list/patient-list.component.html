@@ -1,169 +1,207 @@
 <div class="patientlist-view">
-<div class="patientlist-view__navigation4doc" #navigation4patient>
-  <nav>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a routerLink="/doctor/dashboard">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/doctor/messages">Nachrichten</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/doctor/patients">Patientenübersicht</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/home">Abmelden</a>
-      </li>
-    </ul>
-  </nav>
-</div>
-<div class="container-fluid"><br><br>
-  <div class="jumbotron shadow p-3 bg-white rounded patientlist-view__general-section" #generalSection>
-    <h1 class="patientlist-view__general-section--title">Patientenübersicht</h1>
-    <input type="button" class="patientlist-view__general-section--addBtn" (click)="onAddBtn()"
-    value="Patient hinzufügen">
-    <!--<input type="text" ng-model="query"/>
-    <ul>
-      <li *ng-repeat="let patient of patients | filter:query">
-        {{patient.last_name}}
-      </li>
-    </ul>-->
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col">SV-Nummer</th>
-        <th scope="col">Nachname</th>
-        <th scope="col">Vorname</th>
-        <th scope="col">Alter</th>
-        <th scope="col">Letzter Besuch</th>
-        <th scope="col">Registriert seit</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let patient of patients"
-          [class.selected]="patient === selectedPatient"
-          (click)="onSelect(patient)">
-        <td>{{patient.sv}}</td>
-        <td>{{patient.last_name}}</td>
-        <td>{{patient.first_name}}</td>
-        <td>{{patient.age}}</td>
-        <td>{{patient.last_visit}}</td>
-        <td>{{patient.registered}}</td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="patientlist-view__navigation4doc" #navigation4patient>
+    <nav>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a routerLink="/doctor/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/doctor/messages">Nachrichten</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/doctor/patients">Patientenübersicht</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/home">Abmelden</a>
+        </li>
+      </ul>
+    </nav>
   </div>
-</div>
-<div class="jumbotron shadow p-3 bg-white rounded patientlist-view__new-patient-section"
-     id="patientlist-view__new-patient-section"
-     #newPatientSection>
-  <h2>Patienten anlegen</h2>
-  <form>
-    <div class="form-row">
-      <div class="col-2">
-        <label>SV-Nummer:</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="col-2">
-        <label>Alter:</label>
-        <input type="number" class="form-control">
-      </div>
-      <div class="col-2">
-        <label>Geschlecht:</label>
-        <input type="text" class="form-control">
-      </div>
+  <div class="container-fluid"><br><br>
+    <div class="jumbotron shadow p-3 bg-white rounded patientlist-view__general-section" #generalSection>
+      <h1 class="patientlist-view__general-section--title">Patientenübersicht</h1>
+      <input type="button" class="patientlist-view__general-section--addBtn" (click)="onAddBtn()"
+             value="Patient hinzufügen">
+      <!--<input type="text" ng-model="query"/>
+      <ul>
+        <li *ng-repeat="let patient of patients | filter:query">
+          {{patient.last_name}}
+        </li>
+      </ul>-->
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">SV-Nummer</th>
+          <th scope="col">Nachname</th>
+          <th scope="col">Vorname</th>
+          <th scope="col">Alter</th>
+          <th scope="col">Letzter Besuch</th>
+          <th scope="col">Registriert seit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients"
+            [class.selected]="patient === selectedPatient"
+            (click)="onSelect(patient)">
+          <td>{{patient.sv}}</td>
+          <td>{{patient.last_name}}</td>
+          <td>{{patient.first_name}}</td>
+          <td>{{patient.age}}</td>
+          <td>{{patient.last_visit}}</td>
+          <td>{{patient.registered}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="form-row patientlist-view__new-patient-section--form-row">
-      <div class="col-4">
-        <label>Letzter Besuch:</label>
-        <input type="date" class="form-control">
-      </div>
-      <div class="col-2">
-        <label>Registriert seit:</label>
-        <input type="date" class="form-control">
-      </div>
-    </div>
-    <div class="form-row patientlist-view__new-patient-section--form-row">
-      <div class="col-2">
-        <label>Medikation:</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="col-2">
-        <label>Einnahme Intervall:</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="col-3">
-        <label >Bereits probierte Medikammente:</label>
-        <input type="text" class="form-control">
-      </div>
-    </div>
-    <div class="patientlist-view__new-patient-section--form-row">
-      <input type="submit" id="savePatient" value="Patient speichern" class="patientlist-view__new-patient-section--saveBtn">
-    </div>
-  </form>
-  <input type="button" class="patientlist-view__new-patient-section--backBtn" (click)="onBackBtn()" value="Zurück"><br>
-</div>
 
-
-<div class="jumbotron shadow p-3 bg-white rounded patientlist-view__detail-section" *ngIf="selectedPatient" #detailSection>
-  <h2 class="patientlist-view__detail-section--title">{{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}} Details:</h2>
-  <input type="button" class="patientlist-view__detail-section--onChangeBtn" #changeOn (click)="onChangeBtn()"
-         value="Patientenakt bearbeiten"><br>
-  <input type="button" class="patientlist-view__detail-section--offChangeBtn"  #changeOff (click)="offChangeBtn()"
-         value="Patientenakt bearbeiten"><br>
-  <hr class="m-4">
-  <div class="patientlist-view__detail-section--change-record" id="change-record">
+  <div class="jumbotron shadow p-3 bg-white rounded patientlist-view__new-patient-section"
+       id="patientlist-view__new-patient-section"
+       #newPatientSection>
+    <h2>Patienten anlegen</h2>
     <form>
       <div class="form-row">
         <div class="col-2">
           <label>SV-Nummer:</label>
-          <input name="sv" type="text" class="form-control" disabled="true"
-                 [(ngModel)]="selectedPatient.sv">
+          <input type="number" class="form-control" #sv>
         </div>
         <div class="col-2">
-          <label>Alter: </label>
-          <input name="age" type="number" class="form-control" disabled="true" #changeAge
-                 [(ngModel)]="selectedPatient.age" >
+          <label>Vorname:</label>
+          <input type="text" class="form-control" #firstName>
         </div>
         <div class="col-2">
+          <label>Nachname:</label>
+          <input type="text" class="form-control" #lastName>
+        </div>
+        <div class="col-1">
+          <label>Alter:</label>
+          <input type="number" class="form-control" #age>
+        </div>
+        <div class="col-1">
           <label>Geschlecht:</label>
-          <input name="gender" type="text" class="form-control" disabled="true"
-                 [(ngModel)]="selectedPatient.gender">
+          <input type="text" class="form-control" #gender>
         </div>
       </div>
-      <div class="form-row patientlist-view__detail-section--form-row">
+      <div class="form-row patientlist-view__new-patient-section--form-row">
         <div class="col-4">
           <label>Letzter Besuch:</label>
-          <input name="last_visit" type="text" class="form-control" disabled="true" #changeLastVisit
-                 [(ngModel)]="selectedPatient.last_visit">
+          <input type="date" class="form-control" #lastVisit>
         </div>
-        <div class="col-2">
+        <div class="col-4">
           <label>Registriert seit:</label>
-          <input name="registered" type="text" class="form-control" disabled="true"
-                 [(ngModel)]="selectedPatient.registered">
+          <input type="date" class="form-control" #registered>
         </div>
       </div>
-      <div class="form-row patientlist-view__detail-section--form-row">
-        <div class="col-2">
+      <div class="form-row patientlist-view__new-patient-section--form-row">
+        <div class="col-3">
           <label>Medikation:</label>
-          <input name="current_medication" type="text" class="form-control" disabled="true" #changeCurrentMedication
-                 [(ngModel)]="selectedPatient.current_medication">
+          <input type="text" class="form-control" #currentMedication>
         </div>
         <div class="col-2">
           <label>Einnahme Intervall:</label>
-          <input name="medication_interval" type="text" class="form-control" disabled="true" #changeMedicationInterval
-                 [(ngModel)]="selectedPatient.medication_interval">
+          <input type="text" class="form-control" #medicationInterval>
         </div>
         <div class="col-3">
           <label >Bereits probierte Medikammente:</label>
-          <input name="used_medication" type="text" class="form-control" disabled="true" #changeUsedMedication
-                 [(ngModel)]="selectedPatient.used_medication">
+          <input type="text" class="form-control" #usedMedication>
         </div>
       </div>
-      <div class="patientlist-view__detail-section--form-row"><br>
-        <input type="submit" id="Save_Patient" value="Patient speichern" class="patientlist-view__new-patient-section--saveBtn">
+      <div class="patientlist-view__new-patient-section--form-row">
+        <input type="submit" id="savePatient" value="Patienten hinzufügen" class="patientlist-view__new-patient-section--saveBtn"
+               (click)="onAddPatientBtn()">
       </div>
     </form>
     <input type="button" class="patientlist-view__new-patient-section--backBtn" (click)="onBackBtn()" value="Zurück"><br>
   </div>
-</div></div>
+
+
+  <div *ngIf="selectedPatient" #detailSection>
+
+    <div class="jumbotron shadow p-3 bg-white rounded patientlist-view__detail-section">
+      <h2 class="patientlist-view__detail-section--title">{{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}} Details:</h2>
+      <input type="button" class="patientlist-view__detail-section--onChangeBtn" #changeOn (click)="onChangeBtn()"
+             value="Patientenakt bearbeiten"><br>
+      <input type="button" class="patientlist-view__detail-section--offChangeBtn"  #changeOff (click)="offChangeBtn()"
+             value="Patientenakt bearbeiten"><br>
+      <hr class="m-4">
+      <div class="patientlist-view__detail-section--change-record" id="change-record">
+        <form>
+          <div class="form-row">
+            <div class="col-2">
+              <label>SV-Nummer:</label>
+              <input name="sv" type="text" class="form-control" disabled="true"
+                     [(ngModel)]="selectedPatient.sv">
+            </div>
+            <div class="col-2">
+              <label>Alter: </label>
+              <input name="age" type="number" class="form-control" disabled="true" #changeAge
+                     [(ngModel)]="selectedPatient.age" >
+            </div>
+            <div class="col-2">
+              <label>Geschlecht:</label>
+              <input name="gender" type="text" class="form-control" disabled="true"
+                     [(ngModel)]="selectedPatient.gender">
+            </div>
+          </div>
+          <div class="form-row patientlist-view__detail-section--form-row">
+            <div class="col-4">
+              <label>Letzter Besuch:</label>
+              <input name="last_visit" type="text" class="form-control" disabled="true" #changeLastVisit
+                     [(ngModel)]="selectedPatient.last_visit">
+            </div>
+            <div class="col-2">
+              <label>Registriert seit:</label>
+              <input name="registered" type="text" class="form-control" disabled="true"
+                     [(ngModel)]="selectedPatient.registered">
+            </div>
+          </div>
+          <div class="form-row patientlist-view__detail-section--form-row">
+            <div class="col-2">
+              <label>Medikation:</label>
+              <input name="current_medication" type="text" class="form-control" disabled="true" #changeCurrentMedication
+                     [(ngModel)]="selectedPatient.current_medication">
+            </div>
+            <div class="col-2">
+              <label>Einnahme Intervall:</label>
+              <input name="medication_interval" type="text" class="form-control" disabled="true" #changeMedicationInterval
+                     [(ngModel)]="selectedPatient.medication_interval">
+            </div>
+            <div class="col-3">
+              <label >Bereits probierte Medikammente:</label>
+              <input name="used_medication" type="text" class="form-control" disabled="true" #changeUsedMedication
+                     [(ngModel)]="selectedPatient.used_medication">
+            </div>
+          </div>
+          <div class="patientlist-view__detail-section--form-row"><br>
+            <input type="submit" id="Save_Patient" value="Patient speichern" class="patientlist-view__detail-section--saveBtn"
+                   (click)="offChangeBtn()" #saveBtn>
+          </div>
+        </form>
+        <input type="button" class="patientlist-view__new-patient-section--backBtn" (click)="onBackBtn()" value="Zurück"><br>
+      </div>
+    </div>
+    <div class="jumbotron shadow p-3 bg-white rounded parameterlist-view__general-section">
+        <h1 class="parameterlist-view--general-section--title">Vitalparameter</h1>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">Datum</th>
+            <th scope="col">Zeit</th>
+            <th scope="col">Systole</th>
+            <th scope="col">Diastole</th>
+            <th scope="col">Herzrate</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of dates">
+            <td>{{data.date}}</td>
+            <td>{{data.time}}</td>
+            <td>{{data.systole}}</td>
+            <td>{{data.diastole}}</td>
+            <td>{{data.heartbeat}}</td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+  </div>
+</div>
