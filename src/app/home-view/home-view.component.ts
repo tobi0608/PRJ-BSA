@@ -20,16 +20,20 @@ export class HomeViewComponent implements OnInit {
         const site = this.router;
         const sv = this.sv.nativeElement.value;
         const password = this.password.nativeElement.value;
-        let navigationPatient = this.password.nativeElement.style.display;
         USERS.forEach(function (value) {
             if (value.sv == sv) {
                 if (value.password == password) {
-                    if (value.type == 'patient'){
-                        console.log('test');
-                    }
                     console.log(value.type + '/dashboard');
                     site.navigate([value.type + '/dashboard']);
-                }}
+                    return true;
+                } /*else {
+                    alert('Falsches Passwort!');
+                    return true;
+                }*/
+            } /*else {
+                alert('Falsche Sozialversicherungsnummer!');
+                return true;
+            }*/
         });
 
     }

@@ -1,5 +1,10 @@
 .messagelist-view{
-  padding-top: 10.3rem;
+  padding-top: 9rem;
+  &__navigation4doc{
+    position: fixed;
+    background-color: #B2101D;
+    width: 100%;
+  }
   &__general-section{
     &--title{
     }

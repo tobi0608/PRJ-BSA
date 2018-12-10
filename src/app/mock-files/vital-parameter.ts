@@ -5,5 +5,4 @@ export class VitalParameter {
     heartbeat: number;
     date: string;
     time: string;
-    count: number;
 }

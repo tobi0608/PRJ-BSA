@@ -1,5 +1,10 @@
 .alertlist-view {
-  padding-top: 10rem;
+  padding-top: 9rem;
+  &__navigation4patient{
+    position: fixed;
+    background-color: #B2101D;
+    width: 100%;
+  }
   &--general-section {
 
   }

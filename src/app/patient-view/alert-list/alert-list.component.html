@@ -1,6 +1,24 @@
-<div class="container-fluid">
 <div class="alertlist-view">
-<div class="jumbotron shadow p-3 bg-white rounded alertlist-view--received-section">
+<div class="alertlist-view__navigation4patient" #navigation4patient>
+  <nav>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a routerLink="/patient/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/patient/alerts">Nachrichten</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/patient/parameter">Blutdruckwerte</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/home">Abmelden</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="container-fluid"><br><br>
+<div class="jumbotron shadow p-3 bg-white rounded alertlist-view__received-section">
   <h1 routerLink="/patient/alerts">Empfangene Nachrichten</h1>
   <table class="table table-hover">
     <thead>
