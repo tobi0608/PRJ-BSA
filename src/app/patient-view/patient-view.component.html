@@ -1,103 +1,117 @@
-<div class="patient-body">
-<div class="patient-body__navigation4patient" #navigation4patient>
-  <nav>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a routerLink="/patient/dashboard">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/patient/alerts">Nachrichten</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/patient/parameter">Blutdruckwerte</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/home">Abmelden</a>
-      </li>
-    </ul>
+<div class="patient">
+  <nav class="patient__navbar" #navigation4patient>
+    <a routerLink="/patient/dashboard" class="patient__navbar--nav-item">Dashboard</a>
+    <a routerLink="/patient/alerts" class="patient__navbar--nav-item">Termine</a>
+    <a routerLink="/patient/parameter" class="patient__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="" class="patient__navbar--nav-item">Herausforderungen</a>
+    <a routerLink="" class="patient__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/home" class="patient__navbar--nav-item">Abmelden</a>
   </nav>
-</div>
+  <div class="patient__navbar--skew"></div>
+
   <div class="container-fluid">
-  <br><br>
-  <div class="jumbotron shadow p-3 bg-white rounded patient-body__welcome-section">
-    <h1>Hallo {{name}}!</h1>
-    <p class="lead">Sie haben {{number_new_alerts}} neue Nachrichten</p>
-  </div>
-  <div class="jumbotron shadow p-3 bg-white rounded">
-    <h1>Blutdruck eintragen</h1>
-    <form>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="systole">Systole:</label>
+    <div class="patient__welcome-section jumbotron shadow p-3 rounded">
+      <div class="row">
+        <div class="col-6">
+          <h1>Hallo {{name}}!</h1>
+          <p>Sie haben <a class="patient__welcome-section--alertcount" routerLink="/patient/alerts">{{number_new_alerts}} neue Nachrichten</a></p>
         </div>
-        <input required min="50" max="300" type="number" id="systole" #systole>
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="diastole">Diastole:</label>
-        </div>
-        <input required min="50" max="300" type="number" id="diastole" #diastole>
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="heartRate">Herzrate:</label>
-        </div>
-        <input required min="40" max="200" type="number" id="heartRate" #heartRate>
-        <input type="submit" value="Absenden" (click)="onSend()">
+        <div class="col-6">
+      <div class="patient__welcome-section--card">
+        <img src="/assets/heart_red.png" class="patient__welcome-section--heart">
+        <div class="patient__welcome-section--number"><p>5</p></div>
+        <img src="/assets/man.png" alt="avatar" class="patient__welcome-section--avatar">
       </div>
-    </form>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <div class="jumbotron shadow p-3 bg-white rounded patient-body__alert-section">
-        <h1 routerLink="/patient/alerts">Nachrichten</h1>
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Datum</th>
-            <th scope="col">Typ</th>
-            <th scope="col">Nachricht</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let message of messages| slice:0:5;">
-            <td></td>
-            <td>{{message.date}}</td>
-            <td>{{message.type}}</td>
-            <td>{{message.text}}</td>
-          </tr>
-          </tbody>
-        </table>
-        <hr class="m-4">
-        <button type="button" class="patient-body__alert-section--moreBtn" routerLink="/patient/alerts"
-        >Alle anzeigen</button><br>
+        </div>
       </div>
     </div>
-    <div class="col-6">
-      <div class="jumbotron shadow p-3 bg-white rounded patient-body__patient-section">
-        <h1 class="doc-body__patient-section--title" routerLink="/patient/parameter">Vitalparameter</h1>
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th scope="col">Datum</th>
-            <th scope="col">Zeit</th>
-            <th scope="col">Systole</th>
-            <th scope="col">Diastole</th>
-            <th scope="col">Herzrate</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let data of dates | slice:0:5;">
-            <td>{{data.date}}</td>
-            <td>{{data.time}}</td>
-            <td>{{data.systole}}</td>
-            <td>{{data.diastole}}</td>
-            <td>{{data.heartbeat}}</td>
-          </tr>
-          </tbody>
-        </table>
-        <hr class="m-4">
-        <button type="button" class="patient-body__patient-section--moreBtn" id="DatesMoreBtn"
-                routerLink="/patient/parameter">Alle anzeigen</button><br>
+    <div class="patient__sendValues-section jumbotron shadow p-3 rounded">
+      <h1>Blutdruck eintragen</h1>
+      <form>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="systole">Systole:</label>
+          </div>
+          <input required min="50" max="300" type="number" id="systole" #systole>
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="diastole">Diastole:</label>
+          </div>
+          <input required min="50" max="300" type="number" id="diastole" #diastole>
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="heartRate">Herzrate:</label>
+          </div>
+          <input required min="40" max="200" type="number" id="heartRate" #heartRate>
+          <input type="submit" value="Absenden" (click)="onSend()">
+        </div>
+      </form>
+    </div>
+
+    <div class="shadow p-3 bg-white patient__body">
+      <div class="patient__body--achievement">
+        <h1>Herausforderungen</h1>
+        <p>Ihnen fehlen noch 3 Tage für den nächsten Erfolg!</p>
+      </div>
+      <div class="patient__body--bloodPressure-chart">
+        <h1>Ihre Blutdruckwerte</h1>
       </div>
     </div>
+    <!--
+
+    <div class="row">
+      <div class="col-6">
+        <div class="jumbotron shadow p-3 bg-white rounded patient-body__alert-section">
+          <h1 routerLink="/patient/alerts">Nachrichten</h1>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Datum</th>
+              <th scope="col">Typ</th>
+              <th scope="col">Nachricht</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let message of messages| slice:0:5;">
+              <td></td>
+              <td>{{message.date}}</td>
+              <td>{{message.type}}</td>
+              <td>{{message.text}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <hr class="m-4">
+          <button type="button" class="patient-body__alert-section--moreBtn" routerLink="/patient/alerts"
+          >Alle anzeigen</button><br>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="jumbotron shadow p-3 bg-white rounded patient-body__patient-section">
+          <h1 class="doc-body__patient-section--title" routerLink="/patient/parameter">Vitalparameter</h1>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">Datum</th>
+              <th scope="col">Zeit</th>
+              <th scope="col">Systole</th>
+              <th scope="col">Diastole</th>
+              <th scope="col">Herzrate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let data of dates | slice:0:5;">
+              <td>{{data.date}}</td>
+              <td>{{data.time}}</td>
+              <td>{{data.systole}}</td>
+              <td>{{data.diastole}}</td>
+              <td>{{data.heartbeat}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <hr class="m-4">
+          <button type="button" class="patient-body__patient-section--moreBtn" id="DatesMoreBtn"
+                  routerLink="/patient/parameter">Alle anzeigen</button><br>
+        </div>
+      </div>
+    </div>-->
   </div>
-</div>
 </div>

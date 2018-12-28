@@ -1,4 +1,4 @@
-import { Message} from './messages';
+import { Message } from './messages';
 
 export const MESSAGES: Message[] = [
     {sv: 5678041295, first_name: 'Maria', last_name: 'Musterfrau', type: 'Terminvereinbarung', text: 'Terminvereinbarung 10.01.2019 - 12Uhr',

@@ -4,6 +4,7 @@ import { MESSAGES } from '../mock-files/mock-messages';
 import { DATES } from '../mock-files/mock-vital-parameter';
 import { VitalParameter } from '../mock-files/vital-parameter';
 
+
 @Component({
   selector: 'app-patient-view',
   templateUrl: './patient-view.component.html',
@@ -17,7 +18,6 @@ export class PatientViewComponent implements OnInit {
   @ViewChild('heartRate') heartRate;
 
   messages = MESSAGES;
-  dates = DATES;
 
   constructor() { }
 
@@ -38,6 +38,6 @@ export class PatientViewComponent implements OnInit {
         date: date,
         time: time
       };
-    DATES.push(tmp);
+    DATES.unshift(tmp);
   }
 }
