@@ -14,13 +14,12 @@
       <div class="row">
         <div class="col-6">
           <h1>Hallo {{name}}!</h1>
-          <p>Sie haben <a class="patient__welcome-section--alertcount" routerLink="/patient/alerts">{{number_new_alerts}} neue Nachrichten</a></p>
+          <p>Sie haben <a class="patient__welcome-section--alertCount" routerLink="/patient/alerts">{{number_new_alerts}} neue Nachrichten</a></p>
         </div>
         <div class="col-6">
       <div class="patient__welcome-section--card">
-        <img src="/assets/heart_red.png" class="patient__welcome-section--heart">
-        <div class="patient__welcome-section--number"><p>5</p></div>
-        <img src="/assets/man.png" alt="avatar" class="patient__welcome-section--avatar">
+        <div class="patient__welcome-section--dayCount"><p>5</p></div>
+        <img src="/assets/card-man.png" alt="avatar" class="patient__welcome-section--avatar">
       </div>
         </div>
       </div>
@@ -53,6 +52,7 @@
       </div>
       <div class="patient__body--bloodPressure-chart">
         <h1>Ihre Blutdruckwerte</h1>
+        <div [chart]="chart"></div>
       </div>
     </div>
     <!--

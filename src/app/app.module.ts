@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ChartModule } from 'angular-highcharts';
 
 import { AppComponent } from './app.component';
 import { DocViewComponent } from './doc-view/doc-view.component';
@@ -26,7 +27,8 @@ import { AlertListComponent } from './patient-view/alert-list/alert-list.compone
   imports: [
     BrowserModule,
     FormsModule,
-    RoutingServiceModule
+    RoutingServiceModule,
+    ChartModule // add ChartModule to your imports
   ],
   providers: [],
   bootstrap: [AppComponent]

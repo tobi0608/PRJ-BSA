@@ -3,6 +3,7 @@ import { USERS } from '../mock-files/mock-user';
 import { MESSAGES } from '../mock-files/mock-messages';
 import { DATES } from '../mock-files/mock-vital-parameter';
 import { VitalParameter } from '../mock-files/vital-parameter';
+import { Chart } from 'angular-highcharts';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { VitalParameter } from '../mock-files/vital-parameter';
   templateUrl: './patient-view.component.html',
   styleUrls: ['./patient-view.component.scss']
 })
+
 export class PatientViewComponent implements OnInit {
   name = USERS[0].name;
   number_new_alerts = MESSAGES.length - USERS[0].last_seen_alerts;
@@ -19,10 +21,32 @@ export class PatientViewComponent implements OnInit {
 
   messages = MESSAGES;
 
+    chart = new Chart({
+        chart: {
+            scrollablePlotArea: {
+                minWidth: 700
+            }
+        },
+        title: {
+            text: 'Linechart'
+        },
+        credits: {
+            enabled: false
+        },
+        series: [
+            {
+                name: 'Line 1',
+                data: [1, 2, 3]
+            }
+        ]
+    });
+
   constructor() { }
 
   ngOnInit() {
   }
+
+
   onSend(): void {
     const sv = 3198060896;
     const systole = this.systole.nativeElement.value;

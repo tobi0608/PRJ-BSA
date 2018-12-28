@@ -32,6 +32,7 @@
   }
 
   &__welcome-section{
+    z-index: 7;
     background-color: #B2101D;
     margin-top: 2rem;
     float: right;
@@ -39,31 +40,27 @@
     position:relative;
     color: #FFFFFF;
     &--card{
-      right: 3.22rem;
-      top: 10rem;
-      width: 12rem;
-      height: 7.95rem;
-      border: 0.05rem solid white;
+      position: relative;
+      text-align: center;
+      color: white;
+      height: 8rem;
     }
-    &--alertcount{
+    &--alertCount{
       color: #FFE26F;
     }
-    &--number{
+    &--dayCount{
+      color: white;
       position: absolute;
-      width: 6rem;
-    }
-    &--heart{
-      width: 6rem;
+      top: 35%;
+      left: 29.5%;
     }
     &--avatar{
-      border-radius: 50%;
-      height: 8rem;
-      position: absolute;
-      right: 3.22rem;
+      height: 100%;
     }
   }
 
   &__sendValues-section{
+    z-index: 7;
     position: absolute;
     background-color: #B2101D;
     width: 42rem;
