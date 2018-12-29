@@ -29,6 +29,10 @@
     &--achievement{
       padding-top: 2.5rem;
     }
+    &--bloodPressure-chart{
+        width: 70%;
+        display: block;
+    }
   }
 
   &__welcome-section{
@@ -69,15 +73,4 @@
     right: 0.9375rem;
   }
 
-  &__patient-section{
-    &--title{
-      float: left;
-    }
-    &--addbtn{
-      float: right;
-    }
-    &--moreBtn{
-      float: right;
-    }
-  }
 }

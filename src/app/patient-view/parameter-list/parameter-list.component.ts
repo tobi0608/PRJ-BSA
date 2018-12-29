@@ -23,16 +23,14 @@ export class ParameterListComponent implements OnInit {
         const systole = this.systole.nativeElement.value;
         const diastole = this.diastole.nativeElement.value;
         const heartRate = this.heartRate.nativeElement.value;
-        const time = '12:00';
-        const date = '10.12.2018';
+        const timedate = Date.now();
         const tmp: VitalParameter = {
             sv: sv,
             systole: systole,
             diastole: diastole,
             heartbeat: heartRate,
-            date: date,
-            time: time
+            timestamp: timedate
         };
-        DATES.push(tmp);
+        DATES.unshift(tmp);
     }
 }

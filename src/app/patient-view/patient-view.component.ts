@@ -3,7 +3,16 @@ import { USERS } from '../mock-files/mock-user';
 import { MESSAGES } from '../mock-files/mock-messages';
 import { DATES } from '../mock-files/mock-vital-parameter';
 import { VitalParameter } from '../mock-files/vital-parameter';
-import { Chart } from 'angular-highcharts';
+import * as Highcharts from 'highcharts';
+
+const systoleValues = [];
+const diastoleValues = [];
+const heartRateValues = [];
+DATES.forEach(function (value) {
+    systoleValues.unshift([value.timestamp * 1000 , value.systole]);
+    diastoleValues.unshift([value.timestamp * 1000 , value.diastole]);
+    heartRateValues.unshift([value.timestamp * 1000 , value.heartbeat]);
+});
 
 
 @Component({
@@ -21,46 +30,91 @@ export class PatientViewComponent implements OnInit {
 
   messages = MESSAGES;
 
-    chart = new Chart({
+    Highcharts = Highcharts;
+    chartOptions = {
         chart: {
-            scrollablePlotArea: {
-                minWidth: 700
-            }
+            type: 'area'
         },
         title: {
-            text: 'Linechart'
+            text: null
         },
-        credits: {
-            enabled: false
-        },
-        series: [
+        series: [{
+                data: systoleValues,
+                name: 'Systole (mmHg)',
+                color: '#0406FF',
+                fillColor: '#41ACFF',
+                zIndex: 1,
+            zones: [
+                {
+                    value: 69,
+                    color: '#FF0000',
+                    fillColor: '#FF0000'
+                },
+                {
+                    value: 141,
+                },
+                {
+                    value: 300,
+                    color: '#FF0000',
+                    fillColor: '#FF0000',
+                }]
+            },
             {
-                name: 'Line 1',
-                data: [1, 2, 3]
+                data: diastoleValues,
+                name: 'Diastole (mmHg)',
+                color: '#0406FF',
+                zIndex: 2,
+                fillOpacity: 1,
+                fillColor: '#FFFFFF',
+            },
+            {
+                data: heartRateValues,
+                name: 'Herzrate (Pro S)',
+                color: '#FF0015',
+                zIndex: 3,
+                fillOpacity: 0
             }
-        ]
-    });
+        ],
+        tooltip: {
+            shared: true,
+            crosshairs: true
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                hour: '%H:%M',
+                day: '%e. %b',
+                week: '%e. %b',
+                month: '%b \'%y',
+                year: '%Y'
+            }
+        },
+        yAxis: [{
+           max: 250,
+           min: 60,
+            title: {
+                text: null
+            }
+        }]
+    };
 
-  constructor() { }
+    constructor() { }
 
   ngOnInit() {
   }
 
-
   onSend(): void {
-    const sv = 3198060896;
-    const systole = this.systole.nativeElement.value;
-    const diastole = this.diastole.nativeElement.value;
-    const heartRate = this.heartRate.nativeElement.value;
-    const time = '12:00';
-    const date = '10.12.2018';
-    const tmp: VitalParameter = {
+        const timestamp = Date.now();
+        const sv = 3198060896;
+        const systole = this.systole.nativeElement.value;
+        const diastole = this.diastole.nativeElement.value;
+        const heartRate = this.heartRate.nativeElement.value;
+        const tmp: VitalParameter = {
         sv: sv,
         systole: systole,
         diastole: diastole,
         heartbeat: heartRate,
-        date: date,
-        time: time
+        timestamp: timestamp
       };
     DATES.unshift(tmp);
   }

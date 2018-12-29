@@ -34,7 +34,7 @@
             <label class="input-group-text" for="heartRate">Herzrate:</label>
           </div>
           <input required min="40" max="200" type="number" id="heartRate" #heartRate>
-          <input type="submit" value="Absenden" (click)="onSend()">
+          <input type="submit" value="Absenden" (click)="onSend()">{{timedate | date:'short'}}
         </div>
       </form>
     </div>
@@ -44,7 +44,6 @@
         <thead>
         <tr>
           <th scope="col">Datum</th>
-          <th scope="col">Zeit</th>
           <th scope="col">Systole</th>
           <th scope="col">Diastole</th>
           <th scope="col">Herzrate</th>
@@ -52,8 +51,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let data of dates">
-          <td>{{data.date}}</td>
-          <td>{{data.time}}</td>
+          <td>{{data.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
           <td>{{data.systole}}</td>
           <td>{{data.diastole}}</td>
           <td>{{data.heartbeat}}</td>
