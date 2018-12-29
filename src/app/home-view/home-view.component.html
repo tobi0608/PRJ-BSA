@@ -1,21 +1,81 @@
 <div class="container-fluid">
-<div class="home-view">
-  <div class="jumbotron shadow p-3 bg-white rounded home-view__LogIn-form">
-    <h1>Anmelden</h1>
-  <form class="form-inline">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="username">S<span class="sr-only">ozial</span>
-          V<span class="sr-only">ersicherungs</span>-Nummer:</label>
-      </div>
-      <input required minlength="10" type="number" id="username" #sv>
-      <div class="input-group-prepend">
-        <label class="input-group-text"  for="user-password">Passwort:</label>
-      </div>
-      <input type="password" id="user-password" #password>
-      <input type="submit" value="Log In" (click)="onLogIn()">
+  <div class="home-view">
+    <div class="jumbotron shadow p-3 bg-white rounded home-view__LogIn-form">
+      <h1>Anmelden</h1>
+      <form class="form-inline">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="username">S<span class="sr-only">ozial</span>
+              V<span class="sr-only">ersicherungs</span>-Nummer:</label>
+          </div>
+          <input type="number" id="username" pattern='[0-9]{10}' required #sv>
+          <div class="input-group-prepend">
+            <label class="input-group-text"  for="user-password">Passwort:</label>
+          </div>
+          <input type="password" id="user-password" required #password>
+          <input type="submit" value="Log In" (click)="onLogIn()" class="btn btn-danger">
+        </div>
+      </form>
+      <a routerLink="/home">Passwort vergessen?</a>
     </div>
-  </form>
-</div>
-</div>
+    <div class="jumbotron shadow p-3 bg-white rounded home-view__newUser-form">
+      <h1>Registrieren</h1>
+      <form>
+        <div class="form-row">
+          <div class="col-2">
+            <label>Vorname:</label>
+            <input name="firstName" type="text" class="form-control" required>
+          </div>
+          <div class="col-2">
+            <label>Nachname: </label>
+            <input name="lastName" type="text" class="form-control" required>
+          </div>
+          <div class="col-2">
+            <fieldset>
+              <legend>Art des Kontos:</legend>
+              <div class="form-check form-check-inline">
+                <input type="radio" id="typeDoctor" name="type" value="doctor"
+                       class="form-check-input">
+                <label class="form-check-label" for="typeDoctor"> Doktor</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" id="typePatient" name="type" value="patient"
+                       class="form-check-input" checked="checked">
+                <label class="form-check-label" for="typePatient"> Patient</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-2">
+            <label>SV-Nummer:</label>
+            <input name="sv" type="text" class="form-control" pattern='[0-9]{10}' required>
+          </div>
+          <div class="col-2">
+            <label>Alter: </label>
+            <input name="age" type="number" class="form-control" min="14" max="110" required>
+          </div>
+          <div class="col-2">
+            <fieldset>
+              <legend>Geschlecht:</legend>
+              <div class="form-check form-check-inline">
+                <input type="radio" id="genderMale" name="gender" value="m"
+                       class="form-check-input">
+                <label class="form-check-label" for="genderMale"> Männlich</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" id="genderFemale" name="gender" value="w"
+                       class="form-check-input" checked="checked">
+                <label class="form-check-label" for="genderFemale"> Weiblich</label>
+              </div>
+            </fieldset>
+          </div>
+        </div><br>
+        <input type="submit" value="Registrieren" class="btn btn-danger">
+      </form>
+    </div>
+    <div class="jumbotron shadow p-3 bg-white rounded home-view__description">
+      <h1>Was ist RivaRocciPass?</h1>
+    </div>
+  </div>
 </div>

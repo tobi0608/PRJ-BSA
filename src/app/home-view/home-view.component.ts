@@ -23,7 +23,7 @@ export class HomeViewComponent implements OnInit {
         USERS.forEach(function (value) {
             if (value.sv == sv) {
                 if (value.password == password) {
-                    console.log(value.type + '/dashboard');
+                    document.cookie = value.sv.toString();
                     site.navigate([value.type + '/dashboard']);
                     return true;
                 } /*else {
