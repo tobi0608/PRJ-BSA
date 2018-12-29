@@ -1,12 +1,57 @@
-.alertlist-view {
+.messagePatient {
   padding-top: 9rem;
-  &__navigation4patient{
+  font-size: 1.35rem;
+  &__navbar{
     position: fixed;
-    background-color: #B2101D;
-    width: 100%;
     z-index: 9;
+    height: 2.5rem;
+    background-color: #B2101D;
+    &--nav-item{
+      font-size: 1.5rem;
+      color: white;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+    &--skew{
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-right: 2.5rem solid transparent;
+      display: block;
+      margin-left: 52.895625rem;
+      position: fixed;
+      z-index: 9;
+    }
   }
-  &--general-section {
+  &__navbarSecond{
+    margin-top: 2.2rem;
+    position: fixed;
+    z-index: 9;
+    height: 2.5rem;
+    background-color: #B2101D;
+    &--nav-item{
+      font-size: 1.5rem;
+      color: white;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+    &--skew{
+      margin-top: 2.2rem;
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-right: 2.5rem solid transparent;
+      display: block;
+      margin-left: 32.9394375rem;
+      position: fixed;
+      z-index: 9;
+    }
+  }
 
+  &__body{
+    width: 80rem;
+    &--receivedAlerts{
+      padding-top: 4rem;
+    }
   }
 }

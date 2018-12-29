@@ -17,7 +17,7 @@ const routes: Routes = [
     { path: 'doctor/patients', component: PatientListComponent },
     { path: 'patient/dashboard', component: PatientViewComponent },
     { path: 'patient/parameter', component: ParameterListComponent },
-    { path: 'patient/alerts', component: AlertListComponent }
+    { path: 'patient/appointment', component: AlertListComponent }
 
 ];
 

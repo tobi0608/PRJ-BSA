@@ -1,64 +1,52 @@
-<div class="alertlist-view">
-<div class="alertlist-view__navigation4patient" #navigation4patient>
-  <nav>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a routerLink="/patient/dashboard">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/patient/alerts">Nachrichten</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/patient/parameter">Blutdruckwerte</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/home">Abmelden</a>
-      </li>
-    </ul>
+<div class="messagePatient">
+  <nav class="messagePatient__navbar">
+    <a routerLink="/patient/dashboard" class="messagePatient__navbar--nav-item">Dashboard</a>
+    <a routerLink="/patient/appointment" class="messagePatient__navbar--nav-item">Termine</a>
+    <a routerLink="/patient/parameter" class="messagePatient__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="" class="messagePatient__navbar--nav-item">Herausforderungen</a>
+    <a routerLink="" class="messagePatient__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/home" class="messagePatient__navbar--nav-item">Abmelden</a>
   </nav>
-</div>
-<div class="container-fluid"><br><br>
-<div class="jumbotron shadow p-3 bg-white rounded alertlist-view__received-section">
-  <h1 routerLink="/patient/alerts">Empfangene Nachrichten</h1>
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Datum</th>
-      <th scope="col">Typ</th>
-      <th scope="col">Nachricht</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let message of messages">
-      <td></td>
-      <td>{{message.date}}</td>
-      <td>{{message.type}}</td>
-      <td>{{message.text}}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-  <div class="jumbotron shadow p-3 bg-white rounded alertlist-view--send-section">
-    <h1 routerLink="/patient/alerts">Gesendete Nachrichten</h1>
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Datum</th>
-        <th scope="col">Typ</th>
-        <th scope="col">Nachricht</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let message of messages">
-        <td></td>
-        <td>{{message.date}}</td>
-        <td>{{message.type}}</td>
-        <td>{{message.text}}</td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="messagePatient__navbar--skew"></div>
+  <nav class="messagePatient__navbarSecond">
+    <a routerLink="patient/appointment/" class="messagePatient__navbarSecond--nav-item">Terminvereinbarung</a>
+    <a routerLink="patient/appointment/alerts" class="messagePatient__navbarSecond--nav-item">Benachrichtigungen vom Arzt</a>
+  </nav>
+  <div class="messagePatient__navbarSecond--skew"></div>
+
+
+  <div class="container-fluid">
+    <div class="shadow p-3 bg-white messagePatient__body">
+      <div class="messagePatient__body--receivedAlerts">
+        <h2 routerLink="/patient/alerts">Benachrichtigungen vom Arzt</h2>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Datum</th>
+            <th scope="col">Typ</th>
+            <th scope="col">Nachricht</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let message of messages">
+            <td></td>
+            <td>{{message.date}}</td>
+            <td>{{message.type}}</td>
+            <td>{{message.text}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="messagePatient__body--appointment">
+        <h2>Terminvereinbarung</h2>
+        <form>
+          <input type="date" required>
+          <input type="time" min="8:00" max="16:00" step="00:30" required>
+          <input type="text" required>
+          <input type="submit">
+        </form>
+      </div>
+    </div>
   </div>
-</div>
 </div>
