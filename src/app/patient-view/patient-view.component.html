@@ -31,15 +31,15 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="systole">Systole:</label>
           </div>
-          <input required min="50" max="300" type="number" id="systole" #systole>
+          <input min="50" max="300" type="number" id="systole" required #systole>
           <div class="input-group-prepend">
             <label class="input-group-text" for="diastole">Diastole:</label>
           </div>
-          <input required min="50" max="300" type="number" id="diastole" #diastole>
+          <input min="50" max="300" type="number" id="diastole" required #diastole>
           <div class="input-group-prepend">
             <label class="input-group-text" for="heartRate">Herzrate:</label>
           </div>
-          <input required min="40" max="200" type="number" id="heartRate" #heartRate>
+          <input min="40" max="200" type="number" id="heartRate" required #heartRate>
           <input type="submit" value="Absenden" (click)="onSend()">
         </div>
       </form>
