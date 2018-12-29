@@ -8,6 +8,10 @@ import {HomeViewComponent} from '../home-view/home-view.component';
 import {PatientViewComponent} from '../patient-view/patient-view.component';
 import {ParameterListComponent} from '../patient-view/parameter-list/parameter-list.component';
 import {AlertListComponent} from '../patient-view/alert-list/alert-list.component';
+import {AppointmentComponent} from '../patient-view/alert-list/appointment/appointment.component';
+import {ParameterChartComponent} from '../patient-view/parameter-list/parameter-chart/parameter-chart.component';
+import {PatientSettingsComponent} from '../patient-view/patient-settings/patient-settings.component';
+import {AchievementComponent} from '../patient-view/achievement/achievement.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,8 +20,12 @@ const routes: Routes = [
     { path: 'doctor/messages', component: MessageListComponent },
     { path: 'doctor/patients', component: PatientListComponent },
     { path: 'patient/dashboard', component: PatientViewComponent },
-    { path: 'patient/parameter', component: ParameterListComponent },
-    { path: 'patient/appointment', component: AlertListComponent }
+    { path: 'patient/parameter-chart', component: ParameterChartComponent },
+    { path: 'patient/parameter-chart/list', component: ParameterListComponent },
+    { path: 'patient/appointment', component: AppointmentComponent },
+    { path: 'patient/appointment/alert', component: AlertListComponent },
+    { path: 'patient/settings', component: PatientSettingsComponent },
+    { path: 'patient/achievement', component: AchievementComponent }
 
 ];
 

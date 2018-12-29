@@ -12,6 +12,10 @@ import { MessageListComponent } from './doc-view/message-list/message-list.compo
 import { PatientListComponent } from './doc-view/patient-list/patient-list.component';
 import { ParameterListComponent } from './patient-view/parameter-list/parameter-list.component';
 import { AlertListComponent } from './patient-view/alert-list/alert-list.component';
+import { AppointmentComponent } from './patient-view/alert-list/appointment/appointment.component';
+import { ParameterChartComponent } from './patient-view/parameter-list/parameter-chart/parameter-chart.component';
+import { PatientSettingsComponent } from './patient-view/patient-settings/patient-settings.component';
+import { AchievementComponent } from './patient-view/achievement/achievement.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { AlertListComponent } from './patient-view/alert-list/alert-list.compone
     MessageListComponent,
     PatientListComponent,
     ParameterListComponent,
-    AlertListComponent
+    AlertListComponent,
+    AppointmentComponent,
+    ParameterChartComponent,
+    PatientSettingsComponent,
+    AchievementComponent
   ],
   imports: [
     BrowserModule,
