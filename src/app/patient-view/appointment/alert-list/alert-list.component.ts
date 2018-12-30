@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {USERS} from '../../mock-files/mock-user';
+import {MESSAGES} from '../../../mock-files/mock-messages';
+import {USERS} from '../../../mock-files/mock-user';
 
 @Component({
-  selector: 'app-patient-settings',
-  templateUrl: './patient-settings.component.html',
-  styleUrls: ['./patient-settings.component.scss']
+  selector: 'app-alert-list',
+  templateUrl: './alert-list.component.html',
+  styleUrls: ['./alert-list.component.scss']
 })
-export class PatientSettingsComponent implements OnInit {
+export class AlertListComponent implements OnInit {
 
+  messages = MESSAGES;
   constructor() { }
 
   ngOnInit() {

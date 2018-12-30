@@ -1,0 +1,37 @@
+<div class="appointmentPatient" id="loginSite">
+  <nav class="appointmentPatient__navbar">
+    <a routerLink="/patient/dashboard" class="appointmentPatient__navbar--nav-item">Dashboard</a>
+    <a routerLink="/patient/appointment" class="appointmentPatient__navbar--nav-item">Termine</a>
+    <a routerLink="/patient/parameter-chart" class="appointmentPatient__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/achievement" class="appointmentPatient__navbar--nav-item">Herausforderungen</a>
+    <a routerLink="/patient/settings" class="appointmentPatient__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/home" class="appointmentPatient__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  </nav>
+  <div class="appointmentPatient__navbar--skew"></div>
+  <nav class="appointmentPatient__navbarSecond">
+    <a routerLink="/patient/appointment/" class="appointmentPatient__navbarSecond--nav-item">Terminvereinbarung</a>
+    <a routerLink="/patient/appointment/alert" class="appointmentPatient__navbarSecond--nav-item">Benachrichtigungen vom Arzt</a>
+  </nav>
+  <div class="appointmentPatient__navbarSecond--skew"></div>
+
+  <div class="container-fluid">
+    <div class="shadow p-3 bg-white appointmentPatient__body">
+      <div class="appointmentPatient__body--appointment">
+        <h2>Terminvereinbarung</h2>
+        <form>
+          <input type="date" required>
+          <input type="time" min="8:00" max="16:00" step="00:30" required>
+          <input type="text" required>
+          <input type="submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="noAccess" #noAccessSite id="noAccess">
+  <div class="jumbotron shadow p-3 bg-white rounded">
+    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
+    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
+  </div>
+</div>

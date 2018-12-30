@@ -20,22 +20,20 @@ export class HomeViewComponent implements OnInit {
         const site = this.router;
         const sv = this.sv.nativeElement.value;
         const password = this.password.nativeElement.value;
-        USERS.forEach(function (value) {
+        USERS.find(function (value) {
             if (value.sv == sv) {
                 if (value.password == password) {
                     document.cookie = value.sv.toString();
                     site.navigate([value.type + '/dashboard']);
                     return true;
-                } /*else {
+                } else {
                     alert('Falsches Passwort!');
                     return true;
-                }*/
-            } /*else {
+                }
+            } else {
                 alert('Falsche Sozialversicherungsnummer!');
-                return true;
-            }*/
+            }
         });
-
     }
 
 }

@@ -1,3 +1,25 @@
-<p>
-  achievement works!
-</p>
+<div class="achievement" id="loginSite">
+  <nav class="achievement__navbar">
+    <a routerLink="/patient/dashboard" class="achievement__navbar--nav-item">Dashboard</a>
+    <a routerLink="/patient/appointment" class="achievement__navbar--nav-item">Termine</a>
+    <a routerLink="/patient/parameter-chart" class="achievement__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/achievement" class="achievement__navbar--nav-item">Herausforderungen</a>
+    <a routerLink="/patient/settings" class="achievement__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/home" class="achievement__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  </nav>
+  <div class="achievement__navbar--skew"></div>
+
+  <div class="container-fluid">
+    <div class="shadow p-3 bg-white achievement__body">
+      <div class="achievement__body--list">
+        <p>achievement works!</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="noAccess" #noAccessSite id="noAccess">
+  <div class="jumbotron shadow p-3 bg-white rounded">
+    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
+    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
+  </div>
+</div>

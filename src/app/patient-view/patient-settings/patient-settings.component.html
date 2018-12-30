@@ -1,3 +1,25 @@
-<p>
-  patient-settings works!
-</p>
+<div class="settings" id="loginSite">
+  <nav class="settings__navbar">
+    <a routerLink="/patient/dashboard" class="settings__navbar--nav-item">Dashboard</a>
+    <a routerLink="/patient/appointment" class="settings__navbar--nav-item">Termine</a>
+    <a routerLink="/patient/parameter-chart" class="settings__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/achievement" class="settings__navbar--nav-item">Herausforderungen</a>
+    <a routerLink="/patient/settings" class="settings__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/home" class="settings__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  </nav>
+  <div class="settings__navbar--skew"></div>
+
+  <div class="container-fluid">
+    <div class="shadow p-3 bg-white settings__body">
+      <div class="settings__body--list">
+        <p>patient-settings works!</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="noAccess" #noAccessSite id="noAccess">
+  <div class="jumbotron shadow p-3 bg-white rounded">
+    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
+    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
+  </div>
+</div>

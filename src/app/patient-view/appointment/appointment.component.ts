@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {USERS} from '../../mock-files/mock-user';
 
 @Component({
-  selector: 'app-patient-settings',
-  templateUrl: './patient-settings.component.html',
-  styleUrls: ['./patient-settings.component.scss']
+  selector: 'app-appointment',
+  templateUrl: './appointment.component.html',
+  styleUrls: ['./appointment.component.scss']
 })
-export class PatientSettingsComponent implements OnInit {
+export class AppointmentComponent implements OnInit {
 
   constructor() { }
 

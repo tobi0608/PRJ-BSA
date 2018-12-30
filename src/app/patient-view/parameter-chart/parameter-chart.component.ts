@@ -1,9 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { USERS } from '../mock-files/mock-user';
-import { MESSAGES } from '../mock-files/mock-messages';
-import { DATES } from '../mock-files/mock-vital-parameter';
-import { VitalParameter } from '../mock-files/vital-parameter';
 import * as Highcharts from 'highcharts';
+import {DATES} from '../../mock-files/mock-vital-parameter';
+import {VitalParameter} from '../../mock-files/vital-parameter';
+import {USERS} from '../../mock-files/mock-user';
 
 const systoleValues = [];
 const diastoleValues = [];
@@ -14,24 +13,18 @@ DATES.forEach(function (value) {
     heartRateValues.push([value.timestamp * 1000 , value.heartbeat]);
 });
 
-
 @Component({
-  selector: 'app-patient-view',
-  templateUrl: './patient-view.component.html',
-  styleUrls: ['./patient-view.component.scss']
+  selector: 'app-parameter-chart',
+  templateUrl: './parameter-chart.component.html',
+  styleUrls: ['./parameter-chart.component.scss']
 })
+export class ParameterChartComponent implements OnInit {
+    @ViewChild('systole') systole;
+    @ViewChild('diastole') diastole;
+    @ViewChild('heartRate') heartRate;
 
-export class PatientViewComponent implements OnInit {
-  name = USERS[0].name;
-  number_new_alerts = MESSAGES.length - USERS[0].last_seen_alerts;
-  @ViewChild('systole') systole;
-  @ViewChild('diastole') diastole;
-  @ViewChild('heartRate') heartRate;
-
-  messages = MESSAGES;
-
-  Highcharts = Highcharts;
-  chartOptions = {
+    Highcharts = Highcharts;
+    chartOptions = {
         chart: {
             type: 'area'
         },
@@ -39,11 +32,11 @@ export class PatientViewComponent implements OnInit {
             text: null
         },
         series: [{
-                data: systoleValues,
-                name: 'Systole (mmHg)',
-                color: '#0406FF',
-                fillColor: '#41ACFF',
-                zIndex: 1,
+            data: systoleValues,
+            name: 'Systole (mmHg)',
+            color: '#0406FF',
+            fillColor: '#41ACFF',
+            zIndex: 1,
             zones: [
                 {
                     value: 69,
@@ -58,7 +51,7 @@ export class PatientViewComponent implements OnInit {
                     color: '#FF0000',
                     fillColor: '#FF0000',
                 }]
-            },
+        },
             {
                 data: diastoleValues,
                 name: 'Diastole (mmHg)',
@@ -90,17 +83,16 @@ export class PatientViewComponent implements OnInit {
             }
         },
         yAxis: [{
-           max: 250,
-           min: 60,
+            max: 250,
+            min: 60,
             title: {
                 text: null
             }
         }]
     };
+    constructor() { }
 
-  constructor() { }
-
-  ngOnInit() {
+    ngOnInit() {
         USERS.find(function (tmp) {
             if (tmp.sv.toString() === document.cookie){
                 console.log('ok Access', document.cookie);
@@ -111,25 +103,25 @@ export class PatientViewComponent implements OnInit {
                 document.getElementById('noAccess').style.display = 'block';
             }
         });
-  }
+    }
 
-  onSend(): void {
+    onSend(): void {
         const timestamp = Date.now();
         const sv = 3198060896;
         const systole = this.systole.nativeElement.value;
         const diastole = this.diastole.nativeElement.value;
         const heartRate = this.heartRate.nativeElement.value;
         const tmp: VitalParameter = {
-        sv: sv,
-        systole: systole,
-        diastole: diastole,
-        heartbeat: heartRate,
-        timestamp: timestamp
-      };
-    DATES.unshift(tmp);
-  }
+            sv: sv,
+            systole: systole,
+            diastole: diastole,
+            heartbeat: heartRate,
+            timestamp: timestamp
+        };
+        DATES.unshift(tmp);
+    }
 
-  onOff(): void {
+    onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);
     }

@@ -1,4 +1,4 @@
-.messagePatient {
+.parameterList {
   padding-top: 9rem;
   font-size: 1.35rem;
   &__navbar{
@@ -42,7 +42,7 @@
       border-top: 2.5rem solid #B2101D;
       border-right: 2.5rem solid transparent;
       display: block;
-      margin-left: 32.9394375rem;
+      margin-left: 18.8225rem;
       position: fixed;
       z-index: 9;
     }
@@ -50,8 +50,18 @@
 
   &__body{
     width: 80rem;
-    &--receivedAlerts{
+    &--sendValues{
       padding-top: 4rem;
     }
+    &--valueList{
+      padding-top: 2rem;
+    }
   }
+}
+.noAccess{
+  display: none;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  height: 100%;
+  padding-top: 10%;
 }

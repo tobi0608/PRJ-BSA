@@ -10,10 +10,10 @@ import { PatientViewComponent } from './patient-view/patient-view.component';
 import { RoutingServiceModule } from './routing-service/routing-service.module';
 import { MessageListComponent } from './doc-view/message-list/message-list.component';
 import { PatientListComponent } from './doc-view/patient-list/patient-list.component';
-import { ParameterListComponent } from './patient-view/parameter-list/parameter-list.component';
-import { AlertListComponent } from './patient-view/alert-list/alert-list.component';
-import { AppointmentComponent } from './patient-view/alert-list/appointment/appointment.component';
-import { ParameterChartComponent } from './patient-view/parameter-list/parameter-chart/parameter-chart.component';
+import { ParameterListComponent } from './patient-view/parameter-chart/parameter-list/parameter-list.component';
+import { AlertListComponent } from './patient-view/appointment/alert-list/alert-list.component';
+import { AppointmentComponent } from './patient-view/appointment/appointment.component';
+import { ParameterChartComponent } from './patient-view/parameter-chart/parameter-chart.component';
 import { PatientSettingsComponent } from './patient-view/patient-settings/patient-settings.component';
 import { AchievementComponent } from './patient-view/achievement/achievement.component';
 
