@@ -9,9 +9,9 @@ const systoleValues = [];
 const diastoleValues = [];
 const heartRateValues = [];
 DATES.forEach(function (value) {
-    systoleValues.push([value.timestamp * 1000 , value.systole]);
-    diastoleValues.push([value.timestamp * 1000 , value.diastole]);
-    heartRateValues.push([value.timestamp * 1000 , value.heartbeat]);
+    systoleValues.push([value.timestamp + 3600000, value.systole]);
+    diastoleValues.push([value.timestamp + 3600000, value.diastole]);
+    heartRateValues.push([value.timestamp + 3600000, value.heartbeat]);
 });
 
 
