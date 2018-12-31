@@ -41,6 +41,7 @@
         <table class="table table-hover">
           <thead>
           <tr>
+            <th scope="col"></th>
             <th scope="col">Datum</th>
             <th scope="col">Systole</th>
             <th scope="col">Diastole</th>
@@ -49,6 +50,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let data of dates">
+            <td><fa name="{{data.i10}}" class="parameterList__body--heart"></fa></td>
             <td>{{data.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
             <td>{{data.systole}}</td>
             <td>{{data.diastole}}</td>

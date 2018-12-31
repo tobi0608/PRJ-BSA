@@ -4,4 +4,5 @@ export class VitalParameter {
     diastole: number;
     heartbeat: number;
     timestamp: number;
+    i10: string;
 }

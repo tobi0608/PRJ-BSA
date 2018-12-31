@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { DocViewComponent } from './doc-view/doc-view.component';
@@ -36,7 +37,8 @@ import { AchievementComponent } from './patient-view/achievement/achievement.com
     BrowserModule,
     FormsModule,
     RoutingServiceModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+      AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

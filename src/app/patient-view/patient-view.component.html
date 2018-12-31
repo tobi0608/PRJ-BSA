@@ -17,9 +17,12 @@
           <p>Sie haben <a class="patient__welcome-section--alertCount" routerLink="/patient/alerts">{{number_new_alerts}} neue Nachrichten</a></p>
         </div>
         <div class="col-6">
-      <div class="patient__welcome-section--card">
-        <img src="/assets/card-man.png" alt="avatar" class="patient__welcome-section--avatar">
-      </div>
+          <div class="patient__welcome-section--card">
+            <img src="/assets/card-man.png" alt="avatar" class="patient__welcome-section--avatar">
+          </div>
+          <div class="patient__welcome-section--dayCount">
+            <fa name="{{stat}}"></fa>
+          </div>
         </div>
       </div>
     </div>

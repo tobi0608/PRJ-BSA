@@ -12,7 +12,7 @@ export class AchievementComponent implements OnInit {
 
   ngOnInit() {
       USERS.find(function (tmp) {
-          if (tmp.sv.toString() === document.cookie){
+          if (tmp.sv.toString() === document.cookie) {
               console.log('ok Access', document.cookie);
               return true;
           } else {

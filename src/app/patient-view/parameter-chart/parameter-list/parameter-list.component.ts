@@ -26,7 +26,7 @@ export class ParameterListComponent implements OnInit {
 
   ngOnInit() {
       USERS.find(function (tmp) {
-          if (tmp.sv.toString() === document.cookie){
+          if (tmp.sv.toString() === document.cookie) {
               console.log('ok Access', document.cookie);
               return true;
           } else {
@@ -42,13 +42,18 @@ export class ParameterListComponent implements OnInit {
         const systole = parseInt(this.systole.nativeElement.value, 10);
         const diastole = parseInt(this.diastole.nativeElement.value, 10);
         const heartRate = parseInt(this.heartRate.nativeElement.value, 10);
-        const timedate = Date.now();
+        const timeDate = Date.now();
+        let iTen = ' ';
+        if (systole > 140) {
+            iTen = 'heart';
+        }
         const tmp: VitalParameter = {
             sv: sv,
             systole: systole,
             diastole: diastole,
             heartbeat: heartRate,
-            timestamp: timedate
+            timestamp: timeDate,
+            i10: iTen
         };
       if (systole && diastole && heartRate !== null) {
           DATES.unshift(tmp);
