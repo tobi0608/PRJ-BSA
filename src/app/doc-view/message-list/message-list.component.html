@@ -1,52 +1,24 @@
-<div class="messagelist-view">
-<div class="messagelist-view__navigation4doc" #navigation4patient>
-  <nav>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a routerLink="/doctor/dashboard">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/doctor/messages">Nachrichten</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/doctor/patients">Patientenübersicht</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/home">Abmelden</a>
-      </li>
-    </ul>
+<div class="messageDoctor" id="loginSite">
+  <nav class="messageDoctor__navbar">
+    <a routerLink="/doctor/dashboard" class="messageDoctor__navbar--nav-item">Dashboard</a>
+    <a routerLink="/doctor/messages" class="messageDoctor__navbar--nav-item">Terminanfragen</a>
+    <a routerLink="/doctor/alerts" class="messageDoctor__navbar--nav-item">Blutdruckprobleme</a>
+    <a routerLink="/doctor/patients" class="messageDoctor__navbar--nav-item">Patientenübersicht</a>
+    <a routerLink="/doctor/settings" class="messageDoctor__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/home" class="messageDoctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-</div>
-<div class="container-fluid"><br><br>
-  <div class="jumbotron shadow p-3 mb-5 bg-white rounded messagelist-view--general-section">
-    <h1 class="messagelist-view__general-section--title" >Nachrichten</h1>
-    <span class="messagelist-view__general-section--counter">Anzahl an Nachrichten: {{messageCount}}</span>
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">SV-Nummer</th>
-        <th scope="col">Nachname</th>
-        <th scope="col">Vorname</th>
-        <th scope="col">Datum</th>
-        <th scope="col">Zeit</th>
-        <th scope="col">Typ</th>
-        <th scope="col">Nachricht</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let message of messages">
-        <td></td>
-        <td>{{message.sv}}</td>
-        <td>{{message.last_name}}</td>
-        <td>{{message.first_name}}</td>
-        <td>{{message.date}}</td>
-        <td>{{message.time}}</td>
-        <td>{{message.type}}</td>
-        <td>{{message.text}}</td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="messageDoctor__navbar--skew"></div>
+  <div class="container-fluid">
+    <div class="shadow p-3 bg-white messageDoctor__body">
+      <div class="messageDoctor__body--messageList">
+        <h2>Terminanfragen</h2>
+      </div>
+    </div>
   </div>
 </div>
+<div class="noAccess" id="noAccess">
+  <div class="jumbotron shadow p-3 bg-white rounded">
+    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
+    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
+  </div>
 </div>

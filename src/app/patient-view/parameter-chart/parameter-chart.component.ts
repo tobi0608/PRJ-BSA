@@ -7,10 +7,11 @@ import {USERS} from '../../mock-files/mock-user';
 let systoleValues = [];
 let diastoleValues = [];
 let heartRateValues = [];
+let user = document.cookie.split(',');
 
 export function initValues() {
     DATES.forEach(function (value) {
-        if (value.sv.toString() === document.cookie) {
+        if (value.sv.toString() === user[0]) {
             systoleValues.unshift([value.timestamp + 3600000, value.systole]);
             diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
             heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
@@ -100,12 +101,12 @@ export class ParameterChartComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        user = document.cookie.split(',');
+
         USERS.find(function (tmp) {
-            if (tmp.sv.toString() === document.cookie) {
-                console.log('ok Access', document.cookie);
+            if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
                 return true;
             } else {
-                console.log('no access', document.cookie);
                 document.getElementById('loginSite').style.display = 'none';
                 document.getElementById('noAccess').style.display = 'block';
             }
@@ -122,8 +123,9 @@ export class ParameterChartComponent implements OnInit {
     }
 
     onSend(): void {
+        user = document.cookie.split(',');
         const timestamp = Date.now();
-        const sv = parseInt(document.cookie, 10);
+        const sv = parseInt(user[0], 10);
         const systole = parseInt(this.systole.nativeElement.value, 10);
         const diastole = parseInt(this.diastole.nativeElement.value, 10);
         const heartRate = parseInt(this.heartRate.nativeElement.value, 10);

@@ -2,13 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MESSAGES} from '../../../mock-files/mock-messages';
 import {USERS} from '../../../mock-files/mock-user';
 
-const alerts = [ ];
-
-MESSAGES.forEach(function (value) {
-    if (value.sv.toString() === document.cookie && value.sv_doc.toString() === '2167050980' && value.from === 'Doc') {
-        alerts.push(value);
-    }
-});
+let alerts = [];
 
 @Component({
   selector: 'app-alert-list',
@@ -20,16 +14,23 @@ export class AlertListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+      const user = document.cookie.split(',');
+
       USERS.find(function (tmp) {
-          if (tmp.sv.toString() === document.cookie) {
-              console.log('ok Access', document.cookie);
+          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
               return true;
           } else {
-              console.log('no access', document.cookie);
               document.getElementById('loginSite').style.display = 'none';
               document.getElementById('noAccess').style.display = 'block';
           }
       });
+      alerts = [];
+      MESSAGES.forEach(function (value) {
+          if (value.sv.toString() === user[0] && value.sv_doc.toString() === user[4] && value.from === 'Doc') {
+              alerts.push(value);
+          }
+      });
+      this.messages = alerts;
   }
     onSeen(message): void {
         message.seen = ' ';

@@ -16,26 +16,27 @@ export class AppointmentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+      const user = document.cookie.split(',');
+
       USERS.find(function (tmp) {
-          if (tmp.sv.toString() === document.cookie) {
-              console.log('ok Access', document.cookie);
+          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
               return true;
           } else {
-              console.log('no access', document.cookie);
               document.getElementById('loginSite').style.display = 'none';
               document.getElementById('noAccess').style.display = 'block';
           }
       });
   }
     onSend(): void {
+        const user = document.cookie.split(',');
         const date = this.date.nativeElement.value;
         const time = this.time.nativeElement.value;
         const type = this.type.nativeElement.value;
         const tmp: Message = {
-            sv: parseInt(document.cookie, 10),
-            sv_doc: parseInt(document.cookie, 10),
-            first_name: 'test',
-            last_name: 'test',
+            sv: parseInt(user[0], 10),
+            sv_doc: parseInt(user[4], 10),
+            first_name: user[2],
+            last_name: user[3],
             type: 'Termin',
             text: date + ' - ' + time + ': ' + type,
             timestamp: Date.now(),

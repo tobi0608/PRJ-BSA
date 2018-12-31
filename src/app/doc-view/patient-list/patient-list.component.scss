@@ -1,51 +1,41 @@
-.patientlist-view{
+.patientList {
   padding-top: 9rem;
-  &__navigation4doc{
+  font-size: 1.35rem;
+  &__navbar {
     position: fixed;
-    background-color: #B2101D;
-    width: 100%;
     z-index: 9;
-  }
-  &__general-section{
-    &--title{
-      float: left;
+    height: 2.5rem;
+    background-color: #B2101D;
+    &--nav-item {
+      font-size: 1.5rem;
+      color: white;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
     }
-    &--addBtn{
-      float: right;
-    }
-  }
-  &__new-patient-section{
-    display: none;
-    &--form-row{
-      margin-top: 0.5rem;
-    }
-    &--backBtn{
-      float: right;
-    }
-    &--saveBtn{
-      float: left;
+    &--skew {
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-right: 2.5rem solid transparent;
+      display: block;
+      margin-left: 59.93rem;
+      position: fixed;
+      z-index: 9;
     }
   }
-  &__detail-section {
-    &--title {
-      float: left;
-    }
-    &--offChangeBtn {
-      float: right;
-      display: none;
-    }
-    &--onChangeBtn {
-      float: right;
-    }
-    &--form-row {
-      margin-top: 0.5rem;
-    }
-    &--backBtn {
-      float: right;
-    }
-    &--saveBtn{
-      float: left;
-      display: none;
+  &__body {
+    width: 80rem;
+    font-size: 1.5rem;
+    &--list {
+      padding-top: 2.5rem;
     }
   }
+}
+
+.noAccess{
+  display: none;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  height: 100%;
+  padding-top: 10%;
 }

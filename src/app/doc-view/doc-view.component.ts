@@ -11,18 +11,12 @@ import { USERS } from '../mock-files/mock-user';
 })
 
 export class DocViewComponent implements OnInit {
-  name = USERS[1].name;
-  patients = PATIENTS;
+  name = USERS[1].last_name;
   selectedPatient: Patient;
   messages = MESSAGES;
-  number_new_alerts = MESSAGES.length;
 
   constructor() {}
 
   ngOnInit() {}
-
-  onSelect(patient: Patient): void {
-    this.selectedPatient = patient;
-  }
 }
 

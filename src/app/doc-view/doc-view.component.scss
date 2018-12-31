@@ -1,25 +1,75 @@
-.doc-body{
+.doctor {
   padding-top: 9rem;
-  &__navigation4doc{
+  font-size: 1.35rem;
+  &__navbar {
     position: fixed;
-    background-color: #B2101D;
-    width: 100%;
     z-index: 9;
-  }
-  &__alert-section{
-    &--moreBtn{
-      float:right;
+    height: 2.5rem;
+    background-color: #B2101D;
+    &--nav-item {
+      font-size: 1.5rem;
+      color: white;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+    &--skew {
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-right: 2.5rem solid transparent;
+      display: block;
+      margin-left: 59.93rem;
+      position: fixed;
+      z-index: 9;
     }
   }
-  &__patient-section{
-    &--title{
-      float: left;
+
+  &__welcome-section{
+    z-index: 7;
+    background-color: #B2101D;
+    margin-top: 2rem;
+    float: right;
+    width: 42rem;
+    position:relative;
+    color: #FFFFFF;
+    &--card{
+      position: relative;
+      text-align: center;
+      color: white;
+      height: 8rem;
     }
-    &--addbtn{
-      float: right;
+    &--alertCount{
+      color: #FFE26F;
     }
-    &--moreBtn{
-      float: right;
+    &--dayCount{
+      color: white;
+      position: absolute;
+      top: 35%;
+      left: 29.5%;
+    }
+    &--avatar{
+      height: 100%;
     }
   }
+  &__body {
+    width: 80rem;
+    font-size: 1.5rem;
+    &--alerts {
+      padding-top: 2.5rem;
+    }
+    &--appointment {
+      padding-top: 2.5rem;
+    }
+    &--newPatients {
+      padding-top: 2.5rem;
+    }
+  }
+}
+
+.noAccess{
+  display: none;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  height: 100%;
+  padding-top: 10%;
 }

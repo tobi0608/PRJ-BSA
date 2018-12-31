@@ -11,12 +11,12 @@ export class PatientSettingsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+      const user = document.cookie.split(',');
+
       USERS.find(function (tmp) {
-          if (tmp.sv.toString() === document.cookie){
-              console.log('ok Access', document.cookie);
+          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
               return true;
           } else {
-              console.log('no access', document.cookie);
               document.getElementById('loginSite').style.display = 'none';
               document.getElementById('noAccess').style.display = 'block';
           }

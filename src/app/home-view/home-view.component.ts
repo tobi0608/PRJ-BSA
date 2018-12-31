@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { USERS } from '../mock-files/mock-user';
+import {USERS} from '../mock-files/mock-user';
 import {Router} from '@angular/router';
 
 @Component({
@@ -20,10 +20,14 @@ export class HomeViewComponent implements OnInit {
         const site = this.router;
         const sv = this.sv.nativeElement.value;
         const password = this.password.nativeElement.value;
+        let count = 0;
         USERS.find(function (value) {
-            if (value.sv == sv) {
-                if (value.password == password) {
-                    document.cookie = value.sv.toString();
+            count++;
+            if (value.sv.toString() === sv.toString()) {
+                if (value.password === password) {
+                    document.cookie = value.sv.toString() + ',' + value.type + ',' + value.first_name +
+                        ',' + value.last_name + ',' + value.doctor_sv.toString();
+                    console.log(document.cookie);
                     site.navigate([value.type + '/dashboard']);
                     return true;
                 } else {
@@ -31,7 +35,10 @@ export class HomeViewComponent implements OnInit {
                     return true;
                 }
             } else {
-                alert('Falsche Sozialversicherungsnummer!');
+                if (count === USERS.length) {
+                    alert('Falsche Sozialversicherungsnummer!');
+                    return true;
+                }
             }
         });
     }

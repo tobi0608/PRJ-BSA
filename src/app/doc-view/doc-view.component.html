@@ -1,86 +1,49 @@
-<div class="doc-body">
-<div class="doc-body__navigation4doc">
-    <nav>
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a routerLink="/doctor/dashboard">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="/doctor/messages">Nachrichten</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="/doctor/patients">Patientenübersicht</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="/home">Abmelden</a>
-            </li>
-        </ul>
+<div class="doctor" id="loginSite">
+    <nav class="doctor__navbar">
+        <a routerLink="/doctor/dashboard" class="doctor__navbar--nav-item">Dashboard</a>
+        <a routerLink="/doctor/messages" class="doctor__navbar--nav-item">Terminanfragen</a>
+        <a routerLink="/doctor/alerts" class="doctor__navbar--nav-item">Blutdruckprobleme</a>
+        <a routerLink="/doctor/patients" class="doctor__navbar--nav-item">Patientenübersicht</a>
+        <a routerLink="/doctor/settings" class="doctor__navbar--nav-item">Einstellungen</a>
+        <a routerLink="/home" class="doctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
     </nav>
+    <div class="doctor__navbar--skew"></div>
+    <div class="container-fluid">
+        <div class="doctor__welcome-section jumbotron shadow p-3 rounded">
+            <div class="row">
+                <div class="col-6">
+                    <h1>Willkommen Dr. {{name}}</h1>
+                    <p>Sie haben <a class="doctor__welcome-section--messageCount" routerLink="/patient/appointment/alert"
+                                    ></a></p>
+                    <p>und <a class="doctor__welcome-section--alertCount" routerLink="/patient/appointment/alert"
+                                    ></a></p>
+                </div>
+                <div class="col-6">
+                    <div class="doctor__welcome-section--card">
+                        <img src="/assets/card-doctor.png" alt="avatar" class="doctor__welcome-section--avatar">
+                    </div>
+                    <div class="doctor__welcome-section--dayCount">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shadow p-3 bg-white doctor__body">
+            <div class="doctor__body--alerts">
+                <h2>Alerts</h2>
+            </div>
+            <div class="doctor__body--appointment">
+                <h2>Termine</h2>
+            </div>
+            <div class="doctor__body--newPatients">
+                <h2>Die 5 neuesten Patienten</h2>
+            </div>
+        </div>
+    </div>
 </div>
-    <div class="container-fluid"><br><br>
+<div class="noAccess" id="noAccess">
     <div class="jumbotron shadow p-3 bg-white rounded">
-        <h1>Willkommen Dr. {{name}}</h1>
-        <p class="lead" id="alertCounter"></p>
+        <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
+        <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="jumbotron shadow p-3 bg-white rounded doc-body__alert-section">
-                <h1 routerLink="/doctor/messages">Nachrichten</h1>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Nachname</th>
-                        <th scope="col">Vorname</th>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Typ</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let message of messages| slice:0:5;">
-                        <td></td>
-                        <td>{{message.last_name}}</td>
-                        <td>{{message.first_name}}</td>
-                        <td>{{message.date}}</td>
-                        <td>{{message.type}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <hr class="m-4">
-                <button type="button" class="doc-body__alert-section--moreBtn" routerLink="/doctor/messages"
-                >Alle anzeigen</button><br>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="jumbotron shadow p-3 bg-white rounded doc-body__patient-section">
-                <h1 class="doc-body__patient-section--title" routerLink="/doctor/patients">Patienten</h1>
-                <button type="button" class="doc-body__patient-section--addbtn" id="addBtn">Neuen Patienten anlegen</button>
-                <table class="table table-hover">
-                    <thead>
-                    <tr><th scope="col">SV-Nummer</th>
-                        <th scope="col">Nachname</th>
-                        <th scope="col">Vorname</th>
-                        <th scope="col">Letzter Besuch</th>
-                        <th scope="col">Registriert seit</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let patient of patients| slice:0:5;"
-                        [class.selected]="patient === selectedPatient"
-                        (click)="onSelect(patient)">
-                        <td>{{patient.sv}}</td>
-                        <td>{{patient.last_name}}</td>
-                        <td>{{patient.first_name}}</td>
-                        <td>{{patient.last_visit}}</td>
-                        <td>{{patient.registered}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <hr class="m-4">
-                <button type="button" class="doc-body__patient-section--moreBtn" id="PatientMoreBtn"
-                        routerLink="/doctor/patients">Alle anzeigen</button><br>
-            </div>
-        </div>
-    </div>
-</div>
 </div>

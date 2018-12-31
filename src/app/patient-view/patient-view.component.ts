@@ -5,13 +5,13 @@ import { DATES } from '../mock-files/mock-vital-parameter';
 import { VitalParameter } from '../mock-files/vital-parameter';
 import * as Highcharts from 'highcharts';
 
-const systoleValues = [];
-const diastoleValues = [];
-const heartRateValues = [];
-let face;
+let systoleValues = [];
+let diastoleValues = [];
+let heartRateValues = [];
 
+let user = document.cookie.split(',');
 DATES.find(function (value) {
-    if (value.sv.toString() === document.cookie) {
+    if (value.sv.toString() === user[0]) {
         if (value.timestamp < Date.now() - 345600001) { // letzten 3 Tage
             if (systoleValues.length === 0) {
                 console.log('no values the last 3 days');
@@ -26,33 +26,21 @@ DATES.find(function (value) {
     }
 });
 
-if (DATES[0].systole <= 140 && DATES[1].systole <= 140 && DATES[2].systole <= 140) {
-    face = 'check-circle';
-} else if (DATES[0].systole <= 140 && DATES[1].systole <= 140) {
-    face = 'exclamation-circle';
-} else if (DATES[1].systole <= 140 && DATES[2].systole <= 140) {
-    face = 'exclamation-circle';
-} else if (DATES[0].systole <= 140 && DATES[2].systole <= 140) {
-    face = 'exclamation-circle';
-} else {
-    face = 'times-circle';
-}
-
 @Component({
-  selector: 'app-patient-view',
-  templateUrl: './patient-view.component.html',
-  styleUrls: ['./patient-view.component.scss']
+    selector: 'app-patient-view',
+    templateUrl: './patient-view.component.html',
+    styleUrls: ['./patient-view.component.scss']
 })
 
 export class PatientViewComponent implements OnInit {
-  name = USERS[0].name;
-  stat = face;
-  @ViewChild('systole') systole;
-  @ViewChild('diastole') diastole;
-  @ViewChild('heartRate') heartRate;
+    name;
+    stat;
+    @ViewChild('systole') systole;
+    @ViewChild('diastole') diastole;
+    @ViewChild('heartRate') heartRate;
 
-  Highcharts = Highcharts;
-  chartOptions = {
+    Highcharts = Highcharts;
+    chartOptions = {
         chart: {
             type: 'area'
         },
@@ -60,11 +48,11 @@ export class PatientViewComponent implements OnInit {
             text: null
         },
         series: [{
-                data: systoleValues,
-                name: 'Systole (mmHg)',
-                color: '#0406FF',
-                fillColor: '#41ACFF',
-                zIndex: 1,
+            data: systoleValues,
+            name: 'Systole (mmHg)',
+            color: '#0406FF',
+            fillColor: '#41ACFF',
+            zIndex: 1,
             zones: [
                 {
                     value: 69,
@@ -79,7 +67,7 @@ export class PatientViewComponent implements OnInit {
                     color: '#FF0000',
                     fillColor: '#FF0000',
                 }]
-            },
+        },
             {
                 data: diastoleValues,
                 name: 'Diastole (mmHg)',
@@ -111,46 +99,70 @@ export class PatientViewComponent implements OnInit {
             }
         },
         yAxis: [{
-           max: 250,
-           min: 60,
+            max: 250,
+            min: 60,
             title: {
                 text: null
             }
         }]
     };
 
-  constructor() {}
+    constructor() {}
 
-  ngOnInit() {
+    ngOnInit() {
+        user = document.cookie.split(',');
+        console.log(user);
+
         USERS.find(function (tmp) {
-            if (tmp.sv.toString() === document.cookie) {
-                console.log('ok Access', document.cookie);
+            if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
                 return true;
             } else {
-                console.log('no access', document.cookie);
                 document.getElementById('loginSite').style.display = 'none';
                 document.getElementById('noAccess').style.display = 'block';
             }
         });
-      let countMessage = 0;
-      MESSAGES.forEach(function (value) {
-          if (value.sv.toString() === document.cookie && value.sv_doc.toString() === '2167050980' && value.from === 'Doc'
-              && value.seen === 'bell') {
-              countMessage++;
-          }
-          if (countMessage === 1 ) {
-              document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachricht';
-          } else if (countMessage > 1 ) {
-              document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachrichten';
-          } else {
-              document.getElementById('alertCounter').innerText = 'keine neue Nachricht';
-          }
-      });
-  }
+        let countMessage = 0;
+        MESSAGES.forEach(function (value) {
+            if (value.sv.toString() === document.cookie && value.sv_doc.toString() === user[4] && value.from === 'Doc'
+                && value.seen === 'bell') {
+                countMessage++;
+            }
+            if (countMessage === 1 ) {
+                document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachricht';
+            } else if (countMessage > 1 ) {
+                document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachrichten';
+            } else {
+                document.getElementById('alertCounter').innerText = 'keine neue Nachricht';
+            }
+        });
 
-  onSend(): void {
+        systoleValues = [];
+        diastoleValues = [];
+        heartRateValues = [];
+        DATES.forEach(function (value) {
+            systoleValues.unshift([value.timestamp + 3600000, value.systole]);
+            diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
+            heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+        });
+
+        if (DATES[0].systole <= 140 && DATES[1].systole <= 140 && DATES[2].systole <= 140) {
+            this.stat = 'check-circle';
+        } else if (DATES[0].systole <= 140 && DATES[1].systole <= 140) {
+            this.stat = 'exclamation-circle';
+        } else if (DATES[1].systole <= 140 && DATES[2].systole <= 140) {
+            this.stat = 'exclamation-circle';
+        } else if (DATES[0].systole <= 140 && DATES[2].systole <= 140) {
+            this.stat = 'exclamation-circle';
+        } else {
+            this.stat = 'times-circle';
+        }
+
+        this.name = user[2];
+    }
+
+    onSend(): void {
         const timestamp = Date.now();
-        const sv = parseInt(document.cookie, 10);
+        const sv = parseInt(user[0], 10);
         const systole = parseInt(this.systole.nativeElement.value, 10);
         const diastole = parseInt(this.diastole.nativeElement.value, 10);
         const heartRate = parseInt(this.heartRate.nativeElement.value, 10);
@@ -159,19 +171,19 @@ export class PatientViewComponent implements OnInit {
             iTen = 'heart';
         }
         const tmp: VitalParameter = {
-        sv: sv,
-        systole: systole,
-        diastole: diastole,
-        heartbeat: heartRate,
-        timestamp: timestamp,
-        i10: iTen
-      };
+            sv: sv,
+            systole: systole,
+            diastole: diastole,
+            heartbeat: heartRate,
+            timestamp: timestamp,
+            i10: iTen
+        };
         if (systole && diastole && heartRate !== null) {
             DATES.unshift(tmp);
         }
-  }
+    }
 
-  onOff(): void {
+    onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);
     }
