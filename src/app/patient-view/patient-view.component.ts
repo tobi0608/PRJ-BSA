@@ -8,12 +8,20 @@ import * as Highcharts from 'highcharts';
 const systoleValues = [];
 const diastoleValues = [];
 const heartRateValues = [];
-DATES.forEach(function (value) {
-    systoleValues.push([value.timestamp + 3600000, value.systole]);
-    diastoleValues.push([value.timestamp + 3600000, value.diastole]);
-    heartRateValues.push([value.timestamp + 3600000, value.heartbeat]);
-});
 
+
+DATES.find(function (value) {
+    if (value.timestamp < Date.now() - 345600001) { // letzten 3 Tage
+        if (systoleValues.length === 0) {
+            console.log('no values the last 3 days');
+            document.getElementById('noValues').style.display = 'block';
+        }
+        return true;
+    } else {
+        systoleValues.unshift([value.timestamp + 3600000, value.systole]);
+        diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
+        heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+    }});
 
 @Component({
   selector: 'app-patient-view',
@@ -111,14 +119,26 @@ export class PatientViewComponent implements OnInit {
                 document.getElementById('noAccess').style.display = 'block';
             }
         });
+
+        if (DATES[0].systole < 140 && DATES[1].systole < 140 && DATES[2].systole < 140) {
+            console.log('case 1', DATES[0].systole, DATES[1].systole, DATES[2].systole);
+        } else if (DATES[0].systole < 140 && DATES[1].systole < 140) {
+          console.log('case 2', DATES[0].systole, DATES[1].systole, DATES[2].systole);
+      } else if (DATES[1].systole < 140 && DATES[2].systole < 140) {
+          console.log('case 2', DATES[0].systole, DATES[1].systole, DATES[2].systole);
+      } else if (DATES[0].systole < 140 && DATES[2].systole < 140) {
+          console.log('case 2', DATES[0].systole, DATES[1].systole, DATES[2].systole);
+      } else {
+            console.log('case 3', DATES[0].systole, DATES[1].systole, DATES[2].systole);
+        }
   }
 
-  onSend(): void {
+    onSend(): void {
         const timestamp = Date.now();
-        const sv = 3198060896;
-        const systole = this.systole.nativeElement.value;
-        const diastole = this.diastole.nativeElement.value;
-        const heartRate = this.heartRate.nativeElement.value;
+        const sv = parseInt(document.cookie, 10);
+        const systole = parseInt(this.systole.nativeElement.value, 10);
+        const diastole = parseInt(this.diastole.nativeElement.value, 10);
+        const heartRate = parseInt(this.heartRate.nativeElement.value, 10);
         const tmp: VitalParameter = {
         sv: sv,
         systole: systole,
@@ -126,7 +146,9 @@ export class PatientViewComponent implements OnInit {
         heartbeat: heartRate,
         timestamp: timestamp
       };
-    DATES.unshift(tmp);
+        if (systole && diastole && heartRate !== null) {
+            DATES.unshift(tmp);
+        }
   }
 
   onOff(): void {

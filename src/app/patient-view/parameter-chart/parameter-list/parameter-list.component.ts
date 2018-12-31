@@ -3,13 +3,21 @@ import {DATES} from '../../../mock-files/mock-vital-parameter';
 import {VitalParameter} from '../../../mock-files/vital-parameter';
 import {USERS} from '../../../mock-files/mock-user';
 
+const values = [];
+
+DATES.forEach(function (value) {
+    if (value.sv.toString() === document.cookie) {
+        values.push(value);
+    }
+});
+
 @Component({
   selector: 'app-parameter-list',
   templateUrl: './parameter-list.component.html',
   styleUrls: ['./parameter-list.component.scss']
 })
 export class ParameterListComponent implements OnInit {
-  dates = DATES;
+  dates = values;
   @ViewChild('systole') systole;
   @ViewChild('diastole') diastole;
   @ViewChild('heartRate') heartRate;
@@ -30,10 +38,10 @@ export class ParameterListComponent implements OnInit {
   }
 
   onSend(): void {
-        const sv = 3198060896;
-        const systole = this.systole.nativeElement.value;
-        const diastole = this.diastole.nativeElement.value;
-        const heartRate = this.heartRate.nativeElement.value;
+        const sv = parseInt(document.cookie, 10);
+        const systole = parseInt(this.systole.nativeElement.value, 10);
+        const diastole = parseInt(this.diastole.nativeElement.value, 10);
+        const heartRate = parseInt(this.heartRate.nativeElement.value, 10);
         const timedate = Date.now();
         const tmp: VitalParameter = {
             sv: sv,
@@ -42,7 +50,9 @@ export class ParameterListComponent implements OnInit {
             heartbeat: heartRate,
             timestamp: timedate
         };
-        DATES.unshift(tmp);
+      if (systole && diastole && heartRate !== null) {
+          DATES.unshift(tmp);
+      }
     }
     onOff(): void {
         document.cookie = 'null; path=/';

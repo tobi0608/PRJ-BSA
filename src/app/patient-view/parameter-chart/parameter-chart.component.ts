@@ -4,15 +4,20 @@ import {DATES} from '../../mock-files/mock-vital-parameter';
 import {VitalParameter} from '../../mock-files/vital-parameter';
 import {USERS} from '../../mock-files/mock-user';
 
-const systoleValues = [];
-const diastoleValues = [];
-const heartRateValues = [];
-DATES.forEach(function (value) {
-    systoleValues.push([value.timestamp + 3600000, value.systole]);
-    diastoleValues.push([value.timestamp + 3600000, value.diastole]);
-    heartRateValues.push([value.timestamp + 3600000, value.heartbeat]);
-});
+let systoleValues = [];
+let diastoleValues = [];
+let heartRateValues = [];
 
+export function initValues() {
+    DATES.forEach(function (value) {
+        if (value.sv.toString() === document.cookie) {
+            systoleValues.unshift([value.timestamp + 3600000, value.systole]);
+            diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
+            heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+        }
+    });
+}
+initValues();
 
 @Component({
   selector: 'app-parameter-chart',
@@ -23,7 +28,6 @@ export class ParameterChartComponent implements OnInit {
     @ViewChild('systole') systole;
     @ViewChild('diastole') diastole;
     @ViewChild('heartRate') heartRate;
-
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
@@ -52,7 +56,7 @@ export class ParameterChartComponent implements OnInit {
                     color: '#FF0000',
                     fillColor: '#FF0000',
                 }]
-        },
+            },
             {
                 data: diastoleValues,
                 name: 'Diastole (mmHg)',
@@ -66,8 +70,8 @@ export class ParameterChartComponent implements OnInit {
                 name: 'Herzrate (Pro S)',
                 color: '#FF0015',
                 zIndex: 3,
-                fillOpacity: 0
-            }
+                fillOpacity: 0,
+            },
         ],
         tooltip: {
             shared: true,
@@ -85,12 +89,13 @@ export class ParameterChartComponent implements OnInit {
         },
         yAxis: [{
             max: 250,
-            min: 60,
+            min: 40,
             title: {
                 text: null
             }
         }]
     };
+
     constructor() { }
 
     ngOnInit() {
@@ -104,14 +109,23 @@ export class ParameterChartComponent implements OnInit {
                 document.getElementById('noAccess').style.display = 'block';
             }
         });
+
+        systoleValues = [];
+        diastoleValues = [];
+        heartRateValues = [];
+        DATES.forEach(function (value) {
+            systoleValues.unshift([value.timestamp + 3600000, value.systole]);
+            diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
+            heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+        });
     }
 
     onSend(): void {
         const timestamp = Date.now();
-        const sv = 3198060896;
-        const systole = this.systole.nativeElement.value;
-        const diastole = this.diastole.nativeElement.value;
-        const heartRate = this.heartRate.nativeElement.value;
+        const sv = parseInt(document.cookie, 10);
+        const systole = parseInt(this.systole.nativeElement.value, 10);
+        const diastole = parseInt(this.diastole.nativeElement.value, 10);
+        const heartRate = parseInt(this.heartRate.nativeElement.value, 10);
         const tmp: VitalParameter = {
             sv: sv,
             systole: systole,
@@ -119,7 +133,9 @@ export class ParameterChartComponent implements OnInit {
             heartbeat: heartRate,
             timestamp: timestamp
         };
-        DATES.unshift(tmp);
+        if (systole && diastole && heartRate !== null) {
+            DATES.unshift(tmp);
+        }
     }
 
     onOff(): void {

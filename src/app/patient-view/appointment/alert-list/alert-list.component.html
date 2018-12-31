@@ -23,15 +23,13 @@
           <tr>
             <th scope="col"></th>
             <th scope="col">Datum</th>
-            <th scope="col">Typ</th>
             <th scope="col">Nachricht</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let message of messages">
             <td></td>
-            <td>{{message.date}}</td>
-            <td>{{message.type}}</td>
+            <td>{{message.timestamp | date:'dd.MM.yyyy - HH:mm'}}
             <td>{{message.text}}</td>
           </tr>
           </tbody>

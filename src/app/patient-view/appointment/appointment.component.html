@@ -13,16 +13,30 @@
     <a routerLink="/patient/appointment/alert" class="appointmentPatient__navbarSecond--nav-item">Benachrichtigungen vom Arzt</a>
   </nav>
   <div class="appointmentPatient__navbarSecond--skew"></div>
-
   <div class="container-fluid">
     <div class="shadow p-3 bg-white appointmentPatient__body">
       <div class="appointmentPatient__body--appointment">
         <h2>Terminvereinbarung</h2>
-        <form>
-          <input type="date" required>
-          <input type="time" min="8:00" max="16:00" step="00:30" required>
-          <input type="text" required>
-          <input type="submit">
+        <form ngNativeValidate>
+          <div class="form-group">
+              <label for="date">Datum: </label>
+              <input type="date" id="date" class="form-control" required #date>
+          </div>
+          <div class="form-group">
+              <label for="time">Uhrzeit: </label>
+              <input type="time" min="8:00" max="16:00" step="00:30" id="time" class="form-control" required #time>
+          </div>
+          <div class="form-group">
+              <label for="type">Grund des Termins: </label>
+              <select required id="type" class="form-control" #type>
+                <option value="Neueinstellung">Neueinstellung der Medikamente</option>
+                <option value="Kontrolltermin">Kontrolltermin für den Blutdruck</option>
+                <option value="Gesundheitscheck">Gesundheitscheck</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <input type="submit" value="Absenden" class="form-control btn btn-danger" (click)="onSend()">
+          </div>
         </form>
       </div>
     </div>

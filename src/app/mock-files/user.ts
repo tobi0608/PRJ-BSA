@@ -4,4 +4,5 @@ export class User {
     name: string;
     last_seen_alerts: number;
     type: string;
+    doctor_sv: string;
 }

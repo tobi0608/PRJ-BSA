@@ -18,16 +18,16 @@
     <div class="shadow p-3 bg-white ParameterChart__body">
       <div class="ParameterChart__body--sendValues">
         <h2>Blutdruck eintragen</h2>
-        <form>
+        <form ngNativeValidate>
           <div class="input-group">
             <div class="input-group-prepend">
               <label class="input-group-text" for="systole">Systole:</label>
             </div>
-            <input min="50" max="300" type="number" id="systole" required #systole>
+            <input min="90" max="300" type="number" id="systole" required #systole>
             <div class="input-group-prepend">
               <label class="input-group-text" for="diastole">Diastole:</label>
             </div>
-            <input min="50" max="300" type="number" id="diastole" required #diastole>
+            <input min="50" max="130" type="number" id="diastole" required #diastole>
             <div class="input-group-prepend">
               <label class="input-group-text" for="heartRate">Herzrate:</label>
             </div>

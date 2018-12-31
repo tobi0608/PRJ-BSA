@@ -29,9 +29,24 @@
     &--achievement{
       padding-top: 2.5rem;
     }
-    &--bloodPressure-chart{
-        width: 70%;
+    &--chartSection{
+      padding-top: 2.5rem;
+      width: 70%;
+      position: relative;
+    }
+    &--chart{
         display: block;
+    }
+    &--noValues{
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #FFFFFF;
+      background-color: #B2101D;
+      padding: 1rem;
+      opacity: 70%;
     }
   }
 
