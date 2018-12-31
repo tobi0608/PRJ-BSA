@@ -17,7 +17,7 @@ export class AppointmentComponent implements OnInit {
 
   ngOnInit() {
       USERS.find(function (tmp) {
-          if (tmp.sv.toString() === document.cookie){
+          if (tmp.sv.toString() === document.cookie) {
               console.log('ok Access', document.cookie);
               return true;
           } else {
@@ -39,8 +39,9 @@ export class AppointmentComponent implements OnInit {
             type: 'Termin',
             text: date + ' - ' + time + ': ' + type,
             timestamp: Date.now(),
-            from: 'Pat'
-        }
+            from: 'Pat',
+            seen: 'bell'
+        };
         if (date && time && type !== null) {
             MESSAGES.unshift(tmp);
         }

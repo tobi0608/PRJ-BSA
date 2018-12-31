@@ -15,7 +15,7 @@ export class DocViewComponent implements OnInit {
   patients = PATIENTS;
   selectedPatient: Patient;
   messages = MESSAGES;
-  number_new_alerts = MESSAGES.length - USERS[1].last_seen_alerts;
+  number_new_alerts = MESSAGES.length;
 
   constructor() {}
 

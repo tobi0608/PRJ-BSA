@@ -1,17 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {MESSAGES} from '../../../mock-files/mock-messages';
 import {USERS} from '../../../mock-files/mock-user';
-import {DATES} from '../../../mock-files/mock-vital-parameter';
 
-const alerts = [];
+const alerts = [ ];
 
 MESSAGES.forEach(function (value) {
-    if (value.sv.toString() === document.cookie) {
-        if (value.sv_doc.toString() === '2167050980') {
-            if (value.from === 'Doc') {
-                alerts.push(value);
-            }
-        }
+    if (value.sv.toString() === document.cookie && value.sv_doc.toString() === '2167050980' && value.from === 'Doc') {
+        alerts.push(value);
     }
 });
 
@@ -36,6 +31,9 @@ export class AlertListComponent implements OnInit {
           }
       });
   }
+    onSeen(message): void {
+        message.seen = ' ';
+    }
     onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);

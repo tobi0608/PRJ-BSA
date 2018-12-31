@@ -1,5 +1,5 @@
 <div class="doc-body">
-<div class="doc-body__navigation4doc" #navigation4patient>
+<div class="doc-body__navigation4doc">
     <nav>
         <ul class="nav nav-pills">
             <li class="nav-item">
@@ -20,7 +20,7 @@
     <div class="container-fluid"><br><br>
     <div class="jumbotron shadow p-3 bg-white rounded">
         <h1>Willkommen Dr. {{name}}</h1>
-        <p class="lead">Sie haben {{number_new_alerts}} neue Nachrichten</p>
+        <p class="lead" id="alertCounter"></p>
     </div>
     <div class="row">
         <div class="col-6">

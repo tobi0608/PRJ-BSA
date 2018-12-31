@@ -11,17 +11,20 @@ const heartRateValues = [];
 let face;
 
 DATES.find(function (value) {
-    if (value.timestamp < Date.now() - 345600001) { // letzten 3 Tage
-        if (systoleValues.length === 0) {
-            console.log('no values the last 3 days');
-            document.getElementById('noValues').style.display = 'block';
+    if (value.sv.toString() === document.cookie) {
+        if (value.timestamp < Date.now() - 345600001) { // letzten 3 Tage
+            if (systoleValues.length === 0) {
+                console.log('no values the last 3 days');
+                document.getElementById('noValues').style.display = 'block';
+            }
+            return true;
+        } else {
+            systoleValues.unshift([value.timestamp + 3600000, value.systole]);
+            diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
+            heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
         }
-        return true;
-    } else {
-        systoleValues.unshift([value.timestamp + 3600000, value.systole]);
-        diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
-        heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
-    }});
+    }
+});
 
 if (DATES[0].systole <= 140 && DATES[1].systole <= 140 && DATES[2].systole <= 140) {
     face = 'check-circle';
@@ -44,12 +47,9 @@ if (DATES[0].systole <= 140 && DATES[1].systole <= 140 && DATES[2].systole <= 14
 export class PatientViewComponent implements OnInit {
   name = USERS[0].name;
   stat = face;
-  number_new_alerts = MESSAGES.length - USERS[0].last_seen_alerts;
   @ViewChild('systole') systole;
   @ViewChild('diastole') diastole;
   @ViewChild('heartRate') heartRate;
-
-  messages = MESSAGES;
 
   Highcharts = Highcharts;
   chartOptions = {
@@ -119,7 +119,7 @@ export class PatientViewComponent implements OnInit {
         }]
     };
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
         USERS.find(function (tmp) {
@@ -132,9 +132,23 @@ export class PatientViewComponent implements OnInit {
                 document.getElementById('noAccess').style.display = 'block';
             }
         });
+      let countMessage = 0;
+      MESSAGES.forEach(function (value) {
+          if (value.sv.toString() === document.cookie && value.sv_doc.toString() === '2167050980' && value.from === 'Doc'
+              && value.seen === 'bell') {
+              countMessage++;
+          }
+          if (countMessage === 1 ) {
+              document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachricht';
+          } else if (countMessage > 1 ) {
+              document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachrichten';
+          } else {
+              document.getElementById('alertCounter').innerText = 'keine neue Nachricht';
+          }
+      });
   }
 
-    onSend(): void {
+  onSend(): void {
         const timestamp = Date.now();
         const sv = parseInt(document.cookie, 10);
         const systole = parseInt(this.systole.nativeElement.value, 10);

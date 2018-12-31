@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ViewChildren} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {PATIENTS} from '../../mock-files/mock-patients';
 import {Patient} from '../../mock-files/patients';
 import {DATES} from '../../mock-files/mock-vital-parameter';
@@ -88,7 +88,7 @@ export class PatientListComponent implements OnInit {
         this.newPatientSection.nativeElement.style.display = 'none';
         this.detailSection.nativeElement.style.display = 'none';
     }
-    onChangeBtn(): void{
+    onChangeBtn(): void {
         this.changeOff.nativeElement.style.display = 'block';
         this.changeOn.nativeElement.style.display = 'none';
         this.saveBtn.nativeElement.style.display = 'block';
@@ -98,7 +98,7 @@ export class PatientListComponent implements OnInit {
         this.changeMedicationInterval.nativeElement.disabled = false;
         this.changeUsedMedication.nativeElement.disabled = false;
     }
-    offChangeBtn(): void{
+    offChangeBtn(): void {
         this.changeOff.nativeElement.style.display = 'none';
         this.changeOn.nativeElement.style.display = 'block';
         this.saveBtn.nativeElement.style.display = 'none';
