@@ -26,7 +26,7 @@ export class AlertListComponent implements OnInit {
       });
       alerts = [];
       MESSAGES.forEach(function (value) {
-          if (value.sv.toString() === user[0] && value.sv_doc.toString() === user[4] && value.from === 'Doc') {
+          if (value.svTo.toString() === user[0] && value.svFrom.toString() === user[4]) {
               alerts.push(value);
           }
       });

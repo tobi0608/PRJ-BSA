@@ -108,4 +108,9 @@ export class PatientListComponent implements OnInit {
         this.changeMedicationInterval.nativeElement.disabled = true;
         this.changeUsedMedication.nativeElement.disabled = true;
     }
+
+    onOff(): void {
+        document.cookie = 'null; path=/';
+        console.log(document.cookie);
+    }
 }

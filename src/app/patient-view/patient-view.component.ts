@@ -123,7 +123,7 @@ export class PatientViewComponent implements OnInit {
         });
         let countMessage = 0;
         MESSAGES.forEach(function (value) {
-            if (value.sv.toString() === document.cookie && value.sv_doc.toString() === user[4] && value.from === 'Doc'
+            if (value.svTo.toString() === user[0] && value.svFrom.toString() === user[4]
                 && value.seen === 'bell') {
                 countMessage++;
             }

@@ -33,14 +33,13 @@ export class AppointmentComponent implements OnInit {
         const time = this.time.nativeElement.value;
         const type = this.type.nativeElement.value;
         const tmp: Message = {
-            sv: parseInt(user[0], 10),
-            sv_doc: parseInt(user[4], 10),
+            svFrom: parseInt(user[0], 10),
+            svTo: parseInt(user[4], 10),
             first_name: user[2],
             last_name: user[3],
             type: 'Termin',
             text: date + ' - ' + time + ': ' + type,
             timestamp: Date.now(),
-            from: 'Pat',
             seen: 'bell'
         };
         if (date && time && type !== null) {

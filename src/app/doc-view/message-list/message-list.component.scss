@@ -29,6 +29,13 @@
     &--messageList {
       padding-top: 2.5rem;
     }
+    &--check{
+      color: green;
+    }
+    &--times{
+      color: red;
+      margin-left: 1rem;
+    }
   }
 }
 

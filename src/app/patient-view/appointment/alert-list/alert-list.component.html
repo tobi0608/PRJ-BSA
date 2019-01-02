@@ -30,7 +30,7 @@
           <tr *ngFor="let message of messages"
               (click)="onSeen(message)">
             <td><fa name="{{message.seen}}"></fa></td>
-            <td>{{message.timestamp | date:'dd.MM.yyyy - HH:mm'}}
+            <td>{{message.timestamp | date:'dd.MM.yyyy'}}
             <td>{{message.text}}</td>
           </tr>
           </tbody>

@@ -43,7 +43,7 @@
         <tr *ngFor="let patient of patients"
             [class.selected]="patient === selectedPatient"
             (click)="onSelect(patient)">
-          <td>{{patient.sv}}</td>
+          <td>{{patient.svFrom}}</td>
           <td>{{patient.last_name}}</td>
           <td>{{patient.first_name}}</td>
           <td>{{patient.age}}</td>
@@ -62,7 +62,7 @@
       <div class="form-row">
         <div class="col-2">
           <label>SV-Nummer:</label>
-          <input type="number" class="form-control" #sv>
+          <input type="number" class="form-control" #svFrom>
         </div>
         <div class="col-2">
           <label>Vorname:</label>
@@ -128,8 +128,8 @@
           <div class="form-row">
             <div class="col-2">
               <label>SV-Nummer:</label>
-              <input name="sv" type="text" class="form-control" disabled="true"
-                     [(ngModel)]="selectedPatient.sv">
+              <input name="svFrom" type="text" class="form-control" disabled="true"
+                     [(ngModel)]="selectedPatient.svFrom">
             </div>
             <div class="col-2">
               <label>Alter: </label>

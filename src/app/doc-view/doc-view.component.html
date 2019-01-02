@@ -29,14 +29,32 @@
         </div>
 
         <div class="shadow p-3 bg-white doctor__body">
-            <div class="doctor__body--alerts">
-                <h2>Alerts</h2>
-            </div>
-            <div class="doctor__body--appointment">
-                <h2>Termine</h2>
-            </div>
             <div class="doctor__body--newPatients">
-                <h2>Die 5 neuesten Patienten</h2>
+                <h2>Die letzten 5 neu verknüpften Patienten</h2>
+                <table class="table table-hover doctor__body--table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Registriert am:</th>
+                        <th scope="col">Nachname</th>
+                        <th scope="col">Vorname</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.registered | date:'dd.MM.yyyy'}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.first_name}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="doctor__body--chartSection">
+                <h2>Patientenzuwachs der letzten Woche:</h2>
+                <highcharts-chart
+                        [Highcharts]="patientChart"
+                        [options]="patientChartOptions"
+                        class="doctor__body--chart"
+                ></highcharts-chart>
             </div>
         </div>
     </div>

@@ -11,5 +11,8 @@ export class DoctorSettingsComponent implements OnInit {
 
   ngOnInit() {
   }
-
+    onOff(): void {
+        document.cookie = 'null; path=/';
+        console.log(document.cookie);
+    }
 }

@@ -5,4 +5,5 @@ export class User {
     last_name: string;
     type: string;
     doctor_sv: string;
+    registered: number;
 }

@@ -54,14 +54,11 @@
   &__body {
     width: 80rem;
     font-size: 1.5rem;
-    &--alerts {
-      padding-top: 2.5rem;
-    }
-    &--appointment {
-      padding-top: 2.5rem;
-    }
     &--newPatients {
       padding-top: 2.5rem;
+    }
+    &--table{
+      width: 70%;
     }
   }
 }
