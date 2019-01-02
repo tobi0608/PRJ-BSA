@@ -1,0 +1,77 @@
+<div class="record" id="loginSite">
+  <nav class="record__navbar">
+    <a routerLink="/doctor/dashboard" class="record__navbar--nav-item">Dashboard</a>
+    <a routerLink="/doctor/messages" class="record__navbar--nav-item">Terminanfragen</a>
+    <a routerLink="/doctor/alerts" class="record__navbar--nav-item">Blutdruckprobleme</a>
+    <a routerLink="/doctor/patients" class="record__navbar--nav-item">Patientenübersicht</a>
+    <a routerLink="/doctor/settings" class="record__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/home" class="record__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  </nav>
+  <nav class="record__navbarSecond">
+    <a routerLink="/doctor/patients" class="record__navbarSecond--nav-item">Patientenübersicht</a>
+    <a routerLink="/doctor/patients/record/:sv" class="record__navbarSecond--nav-item">Patienten-Akt</a>
+  </nav>
+  <div class="record__navbar--skew"></div>
+  <div class="record__navbarSecond--skew"></div>
+
+  <div class="container-fluid">
+    <div class="shadow p-3 bg-white record__body">
+      <div class="record__body--noSelectedPatient" id="noSelectedPatient">
+        <h2>Leider ist kein Patient ausgewählt</h2>
+        <p>Um einen Patienten auszuwählen bitte <a routerLink="/doctor/patients">hier</a> klicken</p>
+      </div>
+
+      <div  class="record__body--selectedPatient" id="selectedPatient">
+        <h2></h2> <!--{{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}}:-->
+        <input type="button" value="Patientenakt bearbeiten">
+        <hr class="m-4">
+        <form>
+          <div class="form-row">
+            <div class="col-2">
+              <label>SV-Nummer:</label>
+              <input name="svFrom" type="text" class="form-control" disabled="true">
+            </div>
+            <div class="col-2">
+              <label>Alter: </label>
+              <input name="age" type="number" class="form-control" disabled="true">
+            </div>
+            <div class="col-2">
+              <label>Geschlecht:</label>
+              <input name="gender" type="text" class="form-control" disabled="true">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-4">
+              <label>Letzter Besuch:</label>
+              <input name="last_visit" type="text" class="form-control" disabled="true">
+            </div>
+            <div class="col-2">
+              <label>Registriert seit:</label>
+              <input name="registered" type="text" class="form-control" disabled="true">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-2">
+              <label>Medikation:</label>
+              <input name="current_medication" type="text" class="form-control" disabled="true">
+            </div>
+            <div class="col-2">
+              <label>Einnahme Intervall:</label>
+              <input name="medication_interval" type="text" class="form-control" disabled="true">
+            </div>
+            <div class="col-3">
+              <label >Bereits probierte Medikammente:</label>
+              <input name="used_medication" type="text" class="form-control" disabled="true">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="noAccess" id="noAccess">
+  <div class="jumbotron shadow p-3 bg-white rounded">
+    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
+    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
+  </div>
+</div>
