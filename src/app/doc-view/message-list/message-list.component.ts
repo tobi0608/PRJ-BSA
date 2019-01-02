@@ -43,8 +43,9 @@ export class MessageListComponent implements OnInit {
   }
 
   onAccept(message): void {
-      message.seen = ' ';
       user = document.cookie.split(',');
+      if (message.seen === 'bell') {
+          message.seen = ' ';
       const tmp: Message = {
           svFrom: parseInt(user[0], 10),
           svTo: parseInt(message.svFrom, 10),
@@ -56,24 +57,27 @@ export class MessageListComponent implements OnInit {
           seen: 'bell'
       };
       MESSAGES.unshift(tmp);
+      }
   }
-    onDenied(message): void {
-        message.seen = ' ';
+  onDenied(message): void {
         user = document.cookie.split(',');
-        const tmp: Message = {
-            svFrom: parseInt(user[0], 10),
-            svTo: parseInt(message.svFrom, 10),
-            first_name: user[2],
-            last_name: user[3],
-            type: 'Termin',
-            text: 'Ihr Termin wurde abgelehnt!',
-            timestamp: Date.now(),
-            seen: 'bell'
-        };
-        MESSAGES.unshift(tmp);
-    }
-    onOff(): void {
+        if (message.seen === 'bell') {
+            message.seen = ' ';
+            const tmp: Message = {
+                svFrom: parseInt(user[0], 10),
+                svTo: parseInt(message.svFrom, 10),
+                first_name: user[2],
+                last_name: user[3],
+                type: 'Termin',
+                text: 'Ihr Termin wurde abgelehnt!',
+                timestamp: Date.now(),
+                seen: 'bell'
+            };
+            MESSAGES.unshift(tmp);
+        }
+  }
+  onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);
-    }
+  }
 }

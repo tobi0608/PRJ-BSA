@@ -7,11 +7,42 @@
     <a routerLink="/doctor/settings" class="patientList__navbar--nav-item">Einstellungen</a>
     <a routerLink="/home" class="patientList__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
+  <nav class="patientList__navbarSecond">
+    <a routerLink="/doctor/patients" class="patientList__navbarSecond--nav-item">Patientenübersicht</a>
+    <a routerLink="/doctor/patients/record/:sv" class="patientList__navbarSecond--nav-item">Patienten-Akt</a>
+  </nav>
+  <div class="patientList__navbarSecond--skew"></div>
   <div class="patientList__navbar--skew"></div>
+
   <div class="container-fluid">
     <div class="shadow p-3 bg-white patientList__body">
       <div class="patientList__body--list">
-        <h2>Patientenübersicht</h2>
+        <h2 class="patientList__body--title">Patientenübersicht</h2>
+        <input type="button" class="btn btn-danger patientList__body--addBtn"
+               value="Neuen Patienten anlegen" (click)="onAddPatient()">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">SV-Nummer</th>
+            <th scope="col">Nachname</th>
+            <th scope="col">Vorname</th>
+            <th scope="col">Alter</th>
+            <th scope="col">Letzter Besuch</th>
+            <th scope="col">Registriert seit</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let patient of patients"
+              (click)="onSelect(patient)">
+            <td>{{patient.sv}}</td>
+            <td>{{patient.last_name}}</td>
+            <td>{{patient.first_name}}</td>
+            <td>{{patient.age}}</td>
+            <td>{{patient.last_visit}}</td>
+            <td>{{patient.registered}}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -22,37 +53,10 @@
     <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
   </div>
 </div>
-  <!--<div class="container-fluid"><br><br>
-    <div class="jumbotron shadow p-3 bg-white rounded patientlist-view__general-section" #generalSection>
-      <h1 class="patientlist-view__general-section--title">Patientenübersicht</h1>
-      <input type="button" class="patientlist-view__general-section--addBtn" (click)="onAddBtn()"
-             value="Patient hinzufügen">
+  <!--
+<div *ngIf="selectedPatient" #detailSection>
 
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th scope="col">SV-Nummer</th>
-          <th scope="col">Nachname</th>
-          <th scope="col">Vorname</th>
-          <th scope="col">Alter</th>
-          <th scope="col">Letzter Besuch</th>
-          <th scope="col">Registriert seit</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let patient of patients"
-            [class.selected]="patient === selectedPatient"
-            (click)="onSelect(patient)">
-          <td>{{patient.svFrom}}</td>
-          <td>{{patient.last_name}}</td>
-          <td>{{patient.first_name}}</td>
-          <td>{{patient.age}}</td>
-          <td>{{patient.last_visit}}</td>
-          <td>{{patient.registered}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+
 
   <div class="jumbotron shadow p-3 bg-white rounded patientlist-view__new-patient-section"
        id="patientlist-view__new-patient-section"

@@ -19,6 +19,7 @@ import { PatientSettingsComponent } from './patient-view/patient-settings/patien
 import { AchievementComponent } from './patient-view/achievement/achievement.component';
 import { DocAlertListComponent } from './doc-view/doc-alert-list/doc-alert-list.component';
 import { DoctorSettingsComponent } from './doc-view/doctor-settings/doctor-settings.component';
+import { PatientRecordComponent } from './doc-view/patient-list/patient-record/patient-record.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DoctorSettingsComponent } from './doc-view/doctor-settings/doctor-setti
     PatientSettingsComponent,
     AchievementComponent,
     DocAlertListComponent,
-    DoctorSettingsComponent
+    DoctorSettingsComponent,
+    PatientRecordComponent
   ],
   imports: [
     BrowserModule,

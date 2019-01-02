@@ -9,4 +9,5 @@ export class Patient {
     current_medication: string;
     medication_interval: string;
     used_medication: string;
+    assignedDoc: number;
 }

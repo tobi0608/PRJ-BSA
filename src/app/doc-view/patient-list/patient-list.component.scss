@@ -23,11 +23,54 @@
       z-index: 9;
     }
   }
+  &__navbarSecond{
+    margin-top: 2.2rem;
+    position: fixed;
+    z-index: 9;
+    height: 2.5rem;
+    background-color: #B2101D;
+    &--nav-item{
+      font-size: 1.5rem;
+      color: white;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+    &--skew{
+      margin-top: 2.2rem;
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-right: 2.5rem solid transparent;
+      display: block;
+      margin-left: 22.036875rem;
+      position: fixed;
+      z-index: 9;
+    }
+  }
+
+  &__addPatient{
+    z-index: 7;
+    background-color: #B2101D;
+    margin-top: 2rem;
+    float: right;
+    width: 42rem;
+    position:relative;
+    color: #FFFFFF;
+  }
+
   &__body {
     width: 80rem;
     font-size: 1.5rem;
     &--list {
-      padding-top: 2.5rem;
+      padding-top: 5rem;
+    }
+    &--addBtn{
+      float: right;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    &--title{
+      float: left;
     }
   }
 }

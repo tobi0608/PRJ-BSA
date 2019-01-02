@@ -38,7 +38,7 @@ export class AppointmentComponent implements OnInit {
             first_name: user[2],
             last_name: user[3],
             type: 'Termin',
-            text: date + ' - ' + time + ': ' + type,
+            text: 'Termin für ' + type + ' am ' + date + ' - ' + ' um ' +  time,
             timestamp: Date.now(),
             seen: 'bell'
         };

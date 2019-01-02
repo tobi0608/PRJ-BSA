@@ -14,6 +14,7 @@ import {PatientSettingsComponent} from '../patient-view/patient-settings/patient
 import {AchievementComponent} from '../patient-view/achievement/achievement.component';
 import {DocAlertListComponent} from '../doc-view/doc-alert-list/doc-alert-list.component';
 import {DoctorSettingsComponent} from '../doc-view/doctor-settings/doctor-settings.component';
+import {PatientRecordComponent} from '../doc-view/patient-list/patient-record/patient-record.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'doctor/messages', component: MessageListComponent },
     { path: 'doctor/alerts', component: DocAlertListComponent },
     { path: 'doctor/patients', component: PatientListComponent },
+    { path: 'doctor/patients/record/:sv', component: PatientRecordComponent },
     { path: 'doctor/settings', component: DoctorSettingsComponent},
     { path: 'patient/dashboard', component: PatientViewComponent },
     { path: 'patient/parameter-chart', component: ParameterChartComponent },
