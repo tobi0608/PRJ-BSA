@@ -4,21 +4,10 @@ import {DATES} from '../../mock-files/mock-vital-parameter';
 import {VitalParameter} from '../../mock-files/vital-parameter';
 import {USERS} from '../../mock-files/mock-user';
 
+let user = [];
 let systoleValues = [];
 let diastoleValues = [];
 let heartRateValues = [];
-let user = document.cookie.split(',');
-
-export function initValues() {
-    DATES.forEach(function (value) {
-        if (value.sv.toString() === user[0]) {
-            systoleValues.unshift([value.timestamp + 3600000, value.systole]);
-            diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
-            heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
-        }
-    });
-}
-initValues();
 
 @Component({
   selector: 'app-parameter-chart',
@@ -39,7 +28,7 @@ export class ParameterChartComponent implements OnInit {
             text: null
         },
         series: [{
-            data: systoleValues,
+            data: [],
             name: 'Systole (mmHg)',
             color: '#0406FF',
             fillColor: '#41ACFF',
@@ -60,7 +49,7 @@ export class ParameterChartComponent implements OnInit {
                 }]
             },
             {
-                data: diastoleValues,
+                data: [],
                 name: 'Diastole (mmHg)',
                 color: '#0406FF',
                 zIndex: 2,
@@ -68,7 +57,7 @@ export class ParameterChartComponent implements OnInit {
                 fillColor: '#FFFFFF',
             },
             {
-                data: heartRateValues,
+                data: [],
                 name: 'Herzrate (Pro S)',
                 color: '#FF0015',
                 zIndex: 3,
@@ -116,10 +105,15 @@ export class ParameterChartComponent implements OnInit {
         diastoleValues = [];
         heartRateValues = [];
         DATES.forEach(function (value) {
-            systoleValues.unshift([value.timestamp + 3600000, value.systole]);
-            diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
-            heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+            if (value.sv.toString() === user[0]) {
+                    systoleValues.unshift([value.timestamp + 3600000, value.systole]);
+                    diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
+                    heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+            }
         });
+        this.chartOptions.series[0].data = systoleValues;
+        this.chartOptions.series[1].data = diastoleValues;
+        this.chartOptions.series[2].data = heartRateValues;
     }
 
     onSend(): void {

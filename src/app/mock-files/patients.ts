@@ -6,8 +6,5 @@ export class Patient {
     age: number;
     registered: string;
     last_visit: string;
-    current_medication: string;
-    medication_interval: string;
-    used_medication: string;
     assignedDoc: number;
 }

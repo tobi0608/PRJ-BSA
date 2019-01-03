@@ -20,51 +20,89 @@
         <h2>Leider ist kein Patient ausgewählt</h2>
         <p>Um einen Patienten auszuwählen bitte <a routerLink="/doctor/patients">hier</a> klicken</p>
       </div>
-
-      <div  class="record__body--selectedPatient" id="selectedPatient">
-        <h2></h2> <!--{{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}}:-->
-        <input type="button" value="Patientenakt bearbeiten">
-        <hr class="m-4">
-        <form>
-          <div class="form-row">
-            <div class="col-2">
-              <label>SV-Nummer:</label>
-              <input name="svFrom" type="text" class="form-control" disabled="true">
+      <div class="record__body--selectedPatient" id="selectedPatient">
+        <div id="information">
+          <h2>Akt von {{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}}:</h2>
+          <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+            <label class="onoffswitch-label" for="myonoffswitch">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+          </div>
+          <hr class="m-4">
+          <form>
+            <div class="form-row">
+              <div class="col-2">
+                <label>SV-Nummer:</label>
+                <input name="svFrom" type="text" class="form-control" disabled="true"
+                       [(ngModel)]="selectedPatient.sv">
+              </div>
+              <div class="col-2">
+                <label>Alter: </label>
+                <input name="age" type="number" class="form-control" disabled="true"
+                       [(ngModel)]="selectedPatient.age">
+              </div>
+              <div class="col-2">
+                <label>Geschlecht:</label>
+                <input name="gender" type="text" class="form-control" disabled="true"
+                       [(ngModel)]="selectedPatient.gender">
+              </div>
             </div>
-            <div class="col-2">
-              <label>Alter: </label>
-              <input name="age" type="number" class="form-control" disabled="true">
+            <div class="form-row">
+              <div class="col-2">
+                <label>Registriert seit:</label>
+                <input name="registered" type="text" class="form-control" disabled="true"
+                       [(ngModel)]="selectedPatient.registered">
+              </div>
+              <div class="col-2">
+                <label>Letzter Besuch:</label>
+                <input name="last_visit" type="text" class="form-control" disabled="true"
+                       [(ngModel)]="selectedPatient.last_visit">
+              </div>
+              <div class="col-2">
+                <input type="button" value="Patient war hier" class="btn btn-danger">
+              </div>
             </div>
-            <div class="col-2">
-              <label>Geschlecht:</label>
-              <input name="gender" type="text" class="form-control" disabled="true">
+          </form>
+        </div>
+        <h3>Medikation:</h3>
+        <div class="form-row">
+          <div class="col-6">
+            <h4>Derzeitige Medikation:</h4>
+            <div id="currentMed">
+              <ul>
+                <li *ngFor="let currentMed of currentMeds">
+                  <span>{{currentMed.medication}} {{currentMed.intervall}} seit {{currentMed.timestampFrom | date:'dd.MM.yyyy'}}</span>
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="form-row">
-            <div class="col-4">
-              <label>Letzter Besuch:</label>
-              <input name="last_visit" type="text" class="form-control" disabled="true">
-            </div>
-            <div class="col-2">
-              <label>Registriert seit:</label>
-              <input name="registered" type="text" class="form-control" disabled="true">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-2">
-              <label>Medikation:</label>
-              <input name="current_medication" type="text" class="form-control" disabled="true">
-            </div>
-            <div class="col-2">
-              <label>Einnahme Intervall:</label>
-              <input name="medication_interval" type="text" class="form-control" disabled="true">
-            </div>
-            <div class="col-3">
-              <label >Bereits probierte Medikammente:</label>
-              <input name="used_medication" type="text" class="form-control" disabled="true">
+        </div>
+        <div class="form-row">
+          <div class="col-6">
+            <h4>Bereits probierte Medikammente:</h4>
+            <div id="usedMed">
+              <ul>
+                <li *ngFor="let usedMed of usedMeds">
+                  <span>{{usedMed.medication}} von {{usedMed.timestampFrom | date:'dd.MM.yyyy'}} bis
+                    {{usedMed.timestampTo | date:'dd.MM.yyyy'}}</span>
+                </li>
+              </ul>
             </div>
           </div>
-        </form>
+        </div>
+        <div>
+          <h3>Blutdruckwerte des Patienten:</h3>
+          <highcharts-chart
+                  [Highcharts]="Highcharts"
+                  [options]="chartOptions"
+                  class="ParameterChart__body--valueChart"
+          ></highcharts-chart>
+        </div>
+      </div>
+      <div class="record__body--newPatient" id="newPatient">
+        <h2>Neuer Patient:</h2>
       </div>
     </div>
   </div>

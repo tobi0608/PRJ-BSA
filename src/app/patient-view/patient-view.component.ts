@@ -5,26 +5,10 @@ import { DATES } from '../mock-files/mock-vital-parameter';
 import { VitalParameter } from '../mock-files/vital-parameter';
 import * as Highcharts from 'highcharts';
 
+let user = [];
 let systoleValues = [];
 let diastoleValues = [];
 let heartRateValues = [];
-
-let user = document.cookie.split(',');
-DATES.find(function (value) {
-    if (value.sv.toString() === user[0]) {
-        if (value.timestamp < Date.now() - 345600001) { // letzten 3 Tage
-            if (systoleValues.length === 0) {
-                console.log('no values the last 3 days');
-                document.getElementById('noValues').style.display = 'block';
-            }
-            return true;
-        } else {
-            systoleValues.unshift([value.timestamp + 3600000, value.systole]);
-            diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
-            heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
-        }
-    }
-});
 
 @Component({
     selector: 'app-patient-view',
@@ -47,8 +31,18 @@ export class PatientViewComponent implements OnInit {
         title: {
             text: null
         },
+        lang: {
+            noData: 'Keine Werte in den letzten 3 Tagen'
+        },
+        noData: {
+            style: {
+                fontWeight: 'bold',
+                fontSize: '15px',
+                color: '#B2101D'
+            }
+        },
         series: [{
-            data: systoleValues,
+            data: [],
             name: 'Systole (mmHg)',
             color: '#0406FF',
             fillColor: '#41ACFF',
@@ -69,7 +63,7 @@ export class PatientViewComponent implements OnInit {
                 }]
         },
             {
-                data: diastoleValues,
+                data: [],
                 name: 'Diastole (mmHg)',
                 color: '#0406FF',
                 zIndex: 2,
@@ -77,7 +71,7 @@ export class PatientViewComponent implements OnInit {
                 fillColor: '#FFFFFF',
             },
             {
-                data: heartRateValues,
+                data: [],
                 name: 'Herzrate (Pro S)',
                 color: '#FF0015',
                 zIndex: 3,
@@ -140,10 +134,18 @@ export class PatientViewComponent implements OnInit {
         diastoleValues = [];
         heartRateValues = [];
         DATES.forEach(function (value) {
-            systoleValues.unshift([value.timestamp + 3600000, value.systole]);
-            diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
-            heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+            if (value.sv.toString() === user[0]) {
+                if (value.timestamp > Date.now() - 345600001) { // letzten 3 Tage
+                    systoleValues.unshift([value.timestamp + 3600000, value.systole]);
+                    diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
+                    heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+                }
+            }
         });
+
+        this.chartOptions.series[0].data = systoleValues;
+        this.chartOptions.series[1].data = diastoleValues;
+        this.chartOptions.series[2].data = heartRateValues;
 
         if (DATES[0].systole <= 140 && DATES[1].systole <= 140 && DATES[2].systole <= 140) {
             this.stat = 'check-circle';
@@ -161,6 +163,7 @@ export class PatientViewComponent implements OnInit {
     }
 
     onSend(): void {
+        console.log(this.chartOptions.series[0].data);
         const timestamp = Date.now();
         const sv = parseInt(user[0], 10);
         const systole = parseInt(this.systole.nativeElement.value, 10);
@@ -180,6 +183,14 @@ export class PatientViewComponent implements OnInit {
         };
         if (systole && diastole && heartRate !== null) {
             DATES.unshift(tmp);
+            systoleValues.unshift([timestamp + 3600000, systole]);
+            diastoleValues.unshift([timestamp + 3600000, diastole]);
+            heartRateValues.unshift([timestamp + 3600000, heartRate]);
+            console.log(this.chartOptions.series[0].data);
+            this.chartOptions.series[0].data = systoleValues;
+            this.chartOptions.series[1].data = diastoleValues;
+            this.chartOptions.series[2].data = heartRateValues;
+            console.log(this.chartOptions.series[0].data);
         }
     }
 

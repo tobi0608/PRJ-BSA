@@ -53,9 +53,12 @@
   }
   &__body {
     width: 80rem;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     &--newPatients {
       padding-top: 2.5rem;
+    }
+    &--chartSection{
+      padding-top: 1rem;
     }
     &--table{
       width: 70%;

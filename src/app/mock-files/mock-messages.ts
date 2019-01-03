@@ -9,7 +9,7 @@ export const MESSAGES: Message[] = [
         type: 'Termin', text: 'Terminbestätigung', timestamp: 11, seen: 'bell'},
     {svFrom: 1234010100, svTo: 2167050980, first_name: 'Max', last_name: 'Mustermann',
         type: 'Bluthochdruck', text: 'Bluthochdruck! 180/85/110', timestamp: 11, seen: ' '},
-    {svFrom: 3187060896, svTo: 2167050980, first_name: 'Tobias', last_name: 'Schwab',
+    {svFrom: 3198060896, svTo: 2167050980, first_name: 'Tobias', last_name: 'Schwab',
         type: 'Termin', text: 'Terminvereinbarung 08.01.2019 - 9Uhr', timestamp: 11, seen: 'bell'},
     {svFrom: 1234010100, svTo: 2167050980, first_name: 'Max', last_name: 'Mustermann',
         type: 'Bluthochdruck', text: 'Bluthochdruck! 200/80/120', timestamp: 11, seen: ' '}

@@ -37,17 +37,6 @@
     &--chart{
         display: block;
     }
-    &--noValues{
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #FFFFFF;
-      background-color: #B2101D;
-      padding: 1rem;
-      opacity: 70%;
-    }
   }
 
   &__welcome-section{

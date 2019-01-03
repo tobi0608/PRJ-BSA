@@ -4,12 +4,6 @@ import * as Highcharts from 'highcharts';
 import {NEWUSERSCOUNT} from '../mock-files/mock-counter';
 
 let user = [];
-let newUsers = [];
-const newUsersCount = [];
-NEWUSERSCOUNT.forEach(function (value) {
-            newUsersCount.push([value.date, value.users]);
-});
-
 
 @Component({
   selector: 'app-doc-view',
@@ -30,7 +24,7 @@ export class DocViewComponent implements OnInit {
             text: null
         },
         series: [{
-            data: newUsersCount,
+            data: [],
             name: 'Users',
             color: '#B2101D'
         }],
@@ -65,13 +59,20 @@ export class DocViewComponent implements OnInit {
               }
           }
       });
-      newUsers = [];
+      const newUsers = [];
       USERS.forEach(function (value) {
           if (value.doctor_sv.toString() === user[0]) {
               newUsers.push(value);
           }
       });
       this.users = newUsers;
+
+      const newUsersCount = [];
+      NEWUSERSCOUNT.forEach(function (value) {
+          newUsersCount.push([value.date, value.users]);
+      });
+      this.patientChartOptions.series[0].data = newUsersCount;
+
   }
     onOff(): void {
         document.cookie = 'null; path=/';
