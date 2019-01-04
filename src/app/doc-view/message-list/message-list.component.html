@@ -1,13 +1,19 @@
 <div class="messageDoctor" id="loginSite">
   <nav class="messageDoctor__navbar">
     <a routerLink="/doctor/dashboard" class="messageDoctor__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages" class="messageDoctor__navbar--nav-item">Terminanfragen</a>
-    <a routerLink="/doctor/alerts" class="messageDoctor__navbar--nav-item">Blutdruckprobleme</a>
-    <a routerLink="/doctor/patients" class="messageDoctor__navbar--nav-item">Patientenübersicht</a>
+    <a routerLink="/doctor/messages" class="messageDoctor__navbar--nav-item">Nachrichten</a>
+    <a routerLink="/doctor/patients" class="messageDoctor__navbar--nav-item">Patienten</a>
     <a routerLink="/doctor/settings" class="messageDoctor__navbar--nav-item">Einstellungen</a>
     <a routerLink="/home" class="messageDoctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
+  <nav class="messageDoctor__navbarSecond">
+  <a routerLink="/doctor/messages" class="messageDoctor__navbarSecond--nav-item">Terminanfragen</a>
+  <a routerLink="/doctor/alerts" class="messageDoctor__navbarSecond--nav-item">Blutdruckprobleme</a>
+  </nav>
+  <div class="messageDoctor__navbarSecond--skewRight"></div>
+  <div class="messageDoctor__navbarSecond--skewLeft"></div>
   <div class="messageDoctor__navbar--skew"></div>
+
   <div class="container-fluid">
     <div class="shadow p-3 bg-white messageDoctor__body">
       <div class="messageDoctor__body--messageList">
@@ -24,13 +30,13 @@
           </thead>
           <tbody>
           <tr *ngFor="let message of messages">
-            <td><fa name="{{message.seen}}"></fa></td>
-            <td>{{message.timestamp | date:'dd.MM.yyyy'}}</td>
-            <td>{{message.last_name}} {{message.first_name}}</td>
-            <td>{{message.text}}</td>
+            <td (click)="onSelect(message.svFrom)"><fa name="{{message.seen}}"></fa></td>
+            <td (click)="onSelect(message.svFrom)">{{message.timestamp | date:'dd.MM.yyyy'}}</td>
+            <td (click)="onSelect(message.svFrom)">{{message.last_name}} {{message.first_name}}</td>
+            <td (click)="onSelect(message.svFrom)">{{message.text}}</td>
             <td>
-                <fa name="check" class="messageDoctor__body--check" (click)="onAccept(message)"></fa>
-                <fa name="times" class="messageDoctor__body--times" (click)="onDenied(message)"></fa>
+                <fa name="{{message.check}}" class="messageDoctor__body--check" (click)="onAccept(message)"></fa>
+                <fa name="{{message.times}}" class="messageDoctor__body--times" (click)="onDenied(message)"></fa>
             </td>
           </tr>
           </tbody>

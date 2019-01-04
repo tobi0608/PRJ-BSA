@@ -1,31 +1,19 @@
 <div class="doctor" id="loginSite">
     <nav class="doctor__navbar">
         <a routerLink="/doctor/dashboard" class="doctor__navbar--nav-item">Dashboard</a>
-        <a routerLink="/doctor/messages" class="doctor__navbar--nav-item">Terminanfragen</a>
-        <a routerLink="/doctor/alerts" class="doctor__navbar--nav-item">Blutdruckprobleme</a>
-        <a routerLink="/doctor/patients" class="doctor__navbar--nav-item">Patientenübersicht</a>
+        <a routerLink="/doctor/messages" class="doctor__navbar--nav-item">Nachrichten</a>
+        <a routerLink="/doctor/patients" class="doctor__navbar--nav-item">Patienten</a>
         <a routerLink="/doctor/settings" class="doctor__navbar--nav-item">Einstellungen</a>
         <a routerLink="/home" class="doctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
     </nav>
     <div class="doctor__navbar--skew"></div>
     <div class="container-fluid">
-        <div class="doctor__welcome-section jumbotron shadow p-3 rounded">
-            <div class="row">
-                <div class="col-6">
-                    <h1>Willkommen Dr. {{name}}</h1>
-                    <p>Sie haben <a class="doctor__welcome-section--messageCount" routerLink="/patient/appointment/alert"
-                                    ></a></p>
-                    <p>und <a class="doctor__welcome-section--alertCount" routerLink="/patient/appointment/alert"
-                                    ></a></p>
-                </div>
-                <div class="col-6">
-                    <div class="doctor__welcome-section--card">
-                        <img src="/assets/card-doctor.png" alt="avatar" class="doctor__welcome-section--avatar">
-                    </div>
-                    <div class="doctor__welcome-section--dayCount">
-                    </div>
-                </div>
-            </div>
+        <div class="doctor__welcome-section shadow p-3 rounded">
+            <h1>Willkommen Dr. {{name}}</h1>
+            <p>Sie haben <a class="doctor__welcome-section--Count" routerLink="/doctor/messages">
+                {{messageCounter}}</a></p>
+            <p>und <a class="doctor__welcome-section--Count" routerLink="/doctor/alerts">
+                {{alertCounter}}</a></p>
         </div>
 
         <div class="shadow p-3 bg-white doctor__body">
@@ -40,7 +28,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let user of users">
+                    <tr *ngFor="let user of users | slice:0:5"
+                        (click)="onSelect(user)">
                         <td>{{user.registered | date:'dd.MM.yyyy'}}</td>
                         <td>{{user.last_name}}</td>
                         <td>{{user.first_name}}</td>

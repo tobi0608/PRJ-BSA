@@ -4,6 +4,6 @@ export class User {
     first_name: string;
     last_name: string;
     type: string;
-    doctor_sv: string;
+    doctor_sv: number;
     registered: number;
 }

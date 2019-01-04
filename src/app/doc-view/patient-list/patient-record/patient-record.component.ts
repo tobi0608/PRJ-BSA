@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {USERS} from '../../../mock-files/mock-user';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PATIENTS} from '../../../mock-files/mock-patients';
 import {Patient} from '../../../mock-files/patients';
 import {MEDICATION} from '../../../mock-files/mock-medication';
 import * as Highcharts from 'highcharts';
 import {DATES} from '../../../mock-files/mock-vital-parameter';
+import {Medication} from '../../../mock-files/medication';
 
 let user = [];
 let patient = [];
@@ -25,6 +26,11 @@ export class PatientRecordComponent implements OnInit {
     selectedPatient: Patient;
     currentMeds;
     usedMeds;
+    @ViewChild('first_name') first_name;
+    @ViewChild('last_name') last_name;
+    @ViewChild('svnr') svnr;
+    @ViewChild('age') age;
+    @ViewChild('gender') gender;
 
     Highcharts = Highcharts;
     chartOptions = {
@@ -72,7 +78,11 @@ export class PatientRecordComponent implements OnInit {
                 fillOpacity: 0,
             },
         ],
+        legend: {
+            enabled: false
+        },
         tooltip: {
+            headerFormat: '',
             shared: true,
             crosshairs: true
         },
@@ -94,7 +104,7 @@ export class PatientRecordComponent implements OnInit {
             }
         }]
     };
-    constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute, public router: Router) { }
 
     ngOnInit() {
         user = document.cookie.split(',');
@@ -126,7 +136,6 @@ export class PatientRecordComponent implements OnInit {
             document.getElementById('noSelectedPatient').style.display = 'none';
             document.getElementById('selectedPatient').style.display = 'block';
         }
-
 
         systoleValues = [];
         diastoleValues = [];
@@ -189,8 +198,60 @@ export class PatientRecordComponent implements OnInit {
         this.usedMeds = usedMedication;
     }
 
+    onHere(pat): void {
+        pat.last_visit = Date.now();
+    }
+    onSend(): void {
+        const med = this.med.nativeElement.value;
+        const intervall = this.intervall.nativeElement.value;
+        const tmp: Medication = {
+            sv: this.route.snapshot.paramMap.get('sv').replace(':', ''),
+            medication: med,
+            intervall: intervall,
+            timestampFrom: Date.now(),
+            timestampTo: 1,
+            fresh: true
+        };
+
+        if (med && intervall !== null) {
+            MEDICATION.unshift(tmp);
+        }
+        this.ngOnInit();
+    }
+    onDelete(meds): void {
+        meds.fresh = false;
+        meds.timestampTo = Date.now();
+        this.ngOnInit();
+    }
+    onEdit(meds): void {
+        document.getElementById(meds.medication).style.display = 'none';
+        document.getElementById(meds.medication + '-form').style.display = 'block';
+    }
+    onSave(meds): void {
+        document.getElementById(meds.medication).style.display = 'block';
+        document.getElementById(meds.medication + '-form').style.display = 'none';
+    }
+    onSavePatient(): void {
+        user = document.cookie.split(',');
+        const tmp: Patient = {
+            sv: this.svnr.nativeElement.value,
+            first_name: this.first_name.nativeElement.value,
+            last_name: this.last_name.nativeElement.value,
+            gender: this.gender.nativeElement.value,
+            age: this.age.nativeElement.value,
+            registered: Date.now(),
+            last_visit: Date.now(),
+            assignedDoc: user[0]
+        };
+        if (true) {
+            PATIENTS.unshift(tmp);
+            this.router.navigate(['doctor/patients/record/:' + tmp.sv]);
+        }
+        this.ngOnInit();
+    }
     onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);
     }
 }
+

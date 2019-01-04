@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MESSAGES} from '../../mock-files/mock-messages';
-import {USERS} from '../../mock-files/mock-user';
+import {MESSAGES} from '../../../mock-files/mock-messages';
+import {USERS} from '../../../mock-files/mock-user';
+import {Router} from '@angular/router';
 
 let user = [];
 let patAlert = [];
@@ -13,11 +14,10 @@ let patAlert = [];
 export class DocAlertListComponent implements OnInit {
     alerts;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
       user = document.cookie.split(',');
-      console.log(user);
       let count = 0;
       USERS.find(function (tmp) {
           count++;
@@ -40,9 +40,14 @@ export class DocAlertListComponent implements OnInit {
       });
       this.alerts = patAlert;
   }
+    onSelect(patient): void {
+        this.router.navigate(['doctor/patients/record/:' + patient]);
+    }
+
     onSeen(alert): void {
         alert.seen = ' ';
     }
+
     onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);

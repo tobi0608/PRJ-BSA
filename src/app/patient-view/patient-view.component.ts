@@ -181,16 +181,15 @@ export class PatientViewComponent implements OnInit {
             timestamp: timestamp,
             i10: iTen
         };
+
         if (systole && diastole && heartRate !== null) {
             DATES.unshift(tmp);
             systoleValues.unshift([timestamp + 3600000, systole]);
             diastoleValues.unshift([timestamp + 3600000, diastole]);
             heartRateValues.unshift([timestamp + 3600000, heartRate]);
-            console.log(this.chartOptions.series[0].data);
             this.chartOptions.series[0].data = systoleValues;
             this.chartOptions.series[1].data = diastoleValues;
             this.chartOptions.series[2].data = heartRateValues;
-            console.log(this.chartOptions.series[0].data);
         }
     }
 

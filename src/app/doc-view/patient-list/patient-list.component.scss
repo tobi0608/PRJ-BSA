@@ -9,8 +9,8 @@
     &--nav-item {
       font-size: 1.5rem;
       color: white;
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
     &--skew {
       width: 0;
@@ -18,12 +18,13 @@
       border-top: 2.5rem solid #B2101D;
       border-right: 2.5rem solid transparent;
       display: block;
-      margin-left: 59.93rem;
+      margin-left: 43.871875rem;
       position: fixed;
       z-index: 9;
     }
   }
   &__navbarSecond{
+    left: 18.008125rem;
     margin-top: 2.2rem;
     position: fixed;
     z-index: 9;
@@ -32,17 +33,28 @@
     &--nav-item{
       font-size: 1.5rem;
       color: white;
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
-    &--skew{
+    &--skewRight{
       margin-top: 2.2rem;
       width: 0;
       height: 0;
       border-top: 2.5rem solid #B2101D;
       border-right: 2.5rem solid transparent;
       display: block;
-      margin-left: 22.036875rem;
+      margin-left: 36.2425rem;
+      position: fixed;
+      z-index: 9;
+    }
+    &--skewLeft{
+      margin-top: 2.2rem;
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-left: 2.5rem solid transparent;
+      display: block;
+      margin-left: 15.508125rem;
       position: fixed;
       z-index: 9;
     }
@@ -62,7 +74,7 @@
     width: 80rem;
     font-size: 1.5rem;
     &--list {
-      padding-top: 5rem;
+      padding-top: 4rem;
     }
     &--addBtn{
       float: right;

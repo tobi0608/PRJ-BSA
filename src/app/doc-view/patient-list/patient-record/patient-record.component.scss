@@ -9,8 +9,8 @@
     &--nav-item {
       font-size: 1.5rem;
       color: white;
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
     &--skew {
       width: 0;
@@ -18,12 +18,13 @@
       border-top: 2.5rem solid #B2101D;
       border-right: 2.5rem solid transparent;
       display: block;
-      margin-left: 59.93rem;
+      margin-left: 43.871875rem;
       position: fixed;
       z-index: 9;
     }
   }
   &__navbarSecond{
+    left: 18.008125rem;
     margin-top: 2.2rem;
     position: fixed;
     z-index: 9;
@@ -32,17 +33,28 @@
     &--nav-item{
       font-size: 1.5rem;
       color: white;
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
-    &--skew{
+    &--skewRight{
       margin-top: 2.2rem;
       width: 0;
       height: 0;
       border-top: 2.5rem solid #B2101D;
       border-right: 2.5rem solid transparent;
       display: block;
-      margin-left: 22.036875rem;
+      margin-left: 36.2425rem;
+      position: fixed;
+      z-index: 9;
+    }
+    &--skewLeft{
+      margin-top: 2.2rem;
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-left: 2.5rem solid transparent;
+      display: block;
+      margin-left: 15.508125rem;
       position: fixed;
       z-index: 9;
     }
@@ -51,18 +63,70 @@
   &__body {
     width: 80rem;
     font-size: 1.5rem;
-    &--noSelectedPatient {
-      padding-top: 5rem;
-    }
-    &--selectedPatient {
-      padding-top: 5rem;
-      display: none;
-    }
-    &--newPatient {
-      padding-top: 5rem;
-      display: none;
-    }
   }
+    &__noSelectedPatient {
+      padding-top: 4rem;
+    }
+    &__selectedPatient {
+      padding-top: 4rem;
+      display: none;
+      &--label{
+        font-weight: bold;
+      }
+      &--btn{
+        margin-top: 2rem;
+        width: 100%;
+        font-size: 1.2rem;
+        padding-bottom: 0.125rem;
+      }
+      &--meds{
+        padding-top: 2rem;
+      }
+      &--newMed{
+        width: 9rem
+      }
+      &--medList{
+        padding-top: 1rem;
+      }
+      &--medItemForm{
+        display: none;
+      }
+      &--edit{
+        padding-left: 1rem;
+        color: green;
+      }
+      &--delete{
+        padding-left: 1rem;
+        color: red;
+      }
+      &--chart{
+        padding-top: 2rem;
+      }
+      &--valueChart{
+        width: 90%;
+        display: block;
+      }
+    }
+
+    &__newPatient {
+      padding-top: 4rem;
+      display: none;
+      &--label{
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+      &--fielset{
+        margin-top: 1rem;
+      }
+      &--fielset-label{
+        font-weight: bold;
+      }
+      &--btn{
+        margin-top: 1rem;
+        width: 100%;
+        font-size: 1.5rem;
+      }
+    }
 }
 
 .noAccess{
@@ -71,50 +135,4 @@
   padding-left: 1rem;
   height: 100%;
   padding-top: 10%;
-}
-
-.onoffswitch {
-  position: relative; width: 210px;
-  -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-}
-.onoffswitch-checkbox {
-  display: none;
-}
-.onoffswitch-label {
-  display: block; overflow: hidden; cursor: pointer;
-  border: 2px solid #B2101D; border-radius: 4px;
-}
-.onoffswitch-inner {
-  display: block; width: 200%; margin-left: -100%;
-  transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-  display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-  font-size: 24px; color: white; font-family: Trebuchet, Arial, sans-serif;
-  box-sizing: border-box;
-}
-.onoffswitch-inner:before {
-  content: "Akt bearbeiten";
-  padding-left: 5px;
-  background-color: #B2101D; color: #FFFFFF;
-}
-.onoffswitch-inner:after {
-  content: "Akt speichern";
-  padding-right: 5px;
-  background-color: #FFFFFF; color: #B2101D;
-  text-align: right;
-}
-.onoffswitch-switch {
-  display: block; width: 18px; margin: 6px;
-  background: #FFFFFF;
-  position: absolute; top: 0; bottom: 0;
-  right: 176px;
-  border: 2px solid #B2101D; border-radius: 4px;
-  transition: all 0.3s ease-in 0s;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-  margin-left: 0;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-  right: 0px;
 }

@@ -1,17 +1,17 @@
 <div class="patientList" id="loginSite">
   <nav class="patientList__navbar">
     <a routerLink="/doctor/dashboard" class="patientList__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages" class="patientList__navbar--nav-item">Terminanfragen</a>
-    <a routerLink="/doctor/alerts" class="patientList__navbar--nav-item">Blutdruckprobleme</a>
-    <a routerLink="/doctor/patients" class="patientList__navbar--nav-item">Patientenübersicht</a>
+    <a routerLink="/doctor/messages" class="patientList__navbar--nav-item">Nachrichten</a>
+    <a routerLink="/doctor/patients" class="patientList__navbar--nav-item">Patienten</a>
     <a routerLink="/doctor/settings" class="patientList__navbar--nav-item">Einstellungen</a>
     <a routerLink="/home" class="patientList__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <nav class="patientList__navbarSecond">
-    <a routerLink="/doctor/patients" class="patientList__navbarSecond--nav-item">Patientenübersicht</a>
+    <a routerLink="/doctor/patients" class="patientList__navbarSecond--nav-item">Übersicht</a>
     <a routerLink="/doctor/patients/record/:sv" class="patientList__navbarSecond--nav-item">Patienten-Akt</a>
   </nav>
-  <div class="patientList__navbarSecond--skew"></div>
+  <div class="patientList__navbarSecond--skewRight"></div>
+  <div class="patientList__navbarSecond--skewLeft"></div>
   <div class="patientList__navbar--skew"></div>
 
   <div class="container-fluid">
@@ -38,8 +38,8 @@
             <td>{{patient.last_name}}</td>
             <td>{{patient.first_name}}</td>
             <td>{{patient.age}}</td>
-            <td>{{patient.last_visit}}</td>
-            <td>{{patient.registered}}</td>
+            <td>{{patient.last_visit | date:'dd.MM.yyyy'}}</td>
+            <td>{{patient.registered | date:'dd.MM.yyyy'}}</td>
           </tr>
           </tbody>
         </table>

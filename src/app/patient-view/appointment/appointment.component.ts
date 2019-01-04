@@ -40,7 +40,9 @@ export class AppointmentComponent implements OnInit {
             type: 'Termin',
             text: 'Termin für ' + type + ' am ' + date + ' - ' + ' um ' +  time,
             timestamp: Date.now(),
-            seen: 'bell'
+            seen: 'bell',
+            check: 'check',
+            times: 'times'
         };
         if (date && time && type !== null) {
             MESSAGES.unshift(tmp);

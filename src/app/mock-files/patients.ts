@@ -4,7 +4,7 @@ export class Patient {
     last_name: string;
     gender: string;
     age: number;
-    registered: string;
-    last_visit: string;
+    registered: number;
+    last_visit: number;
     assignedDoc: number;
 }

@@ -7,4 +7,7 @@ export class Message {
     text: string;
     timestamp: number;
     seen: string;
+    check: string;
+    times: string;
+
 }

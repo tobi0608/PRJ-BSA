@@ -1,12 +1,19 @@
 <div class="alertDoctor" id="loginSite">
   <nav class="alertDoctor__navbar">
     <a routerLink="/doctor/dashboard" class="alertDoctor__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages" class="alertDoctor__navbar--nav-item">Terminanfragen</a>
-    <a routerLink="/doctor/alerts" class="alertDoctor__navbar--nav-item">Blutdruckprobleme</a>
-    <a routerLink="/doctor/patients" class="alertDoctor__navbar--nav-item">Patientenübersicht</a>
+    <a routerLink="/doctor/messages" class="alertDoctor__navbar--nav-item">Nachrichten</a>
+    <a routerLink="/doctor/patients" class="alertDoctor__navbar--nav-item">Patienten</a>
     <a routerLink="/doctor/settings" class="alertDoctor__navbar--nav-item">Einstellungen</a>
     <a routerLink="/home" class="alertDoctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
+  <nav class="alertDoctor__navbarSecond">
+    <a routerLink="/doctor/messages" class="alertDoctor__navbarSecond--nav-item">Terminanfragen</a>
+    <a routerLink="/doctor/alerts" class="alertDoctor__navbarSecond--nav-item">Blutdruckprobleme</a>
+  </nav>
+  <div class="alertDoctor__navbarSecond--skewRight"></div>
+  <div class="alertDoctor__navbarSecond--skewLeft"></div>
+  <div class="alertDoctor__navbar--skew"></div>
+
   <div class="alertDoctor__navbar--skew"></div>
   <div class="container-fluid">
     <div class="shadow p-3 bg-white alertDoctor__body">
@@ -23,7 +30,8 @@
           </thead>
           <tbody>
           <tr *ngFor="let alert of alerts"
-              (click)="onSeen(alert)">
+              (click)="onSeen(alert)"
+              (click)="onSelect(alert.svFrom)">
             <td><fa name="{{alert.seen}}"></fa></td>
             <td>{{alert.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
             <td>{{alert.last_name}} {{alert.first_name}}</td>
