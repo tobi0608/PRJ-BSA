@@ -1,6 +1,6 @@
 import {DATES} from '../mock-files/mock-vital-parameter';
 
-export function PushData(sv, filter): object {
+export function PushData(sv, filter): any {
     const Data = [];
     DATES.forEach(function (value) {
         if (value.sv.toString() === sv) {

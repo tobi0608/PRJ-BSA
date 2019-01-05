@@ -1,12 +1,12 @@
 import {PATIENTS} from '../../../../mock-files/mock-patients';
 
-export function ShowPatient(sv): object {
+export function ShowPatient(sv): any {
     let count = 0;
-    let patient = [];
+    const patient = [];
     PATIENTS.forEach(function (value) {
         count++;
         if (value.sv.toString() === sv) {
-            patient = value;
+            patient.unshift(value);
         }
     });
     return patient;

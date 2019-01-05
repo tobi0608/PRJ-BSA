@@ -1,6 +1,6 @@
 import {DATES} from '../../../mock-files/mock-vital-parameter';
 
-export function ThreeDaysList(filter): object {
+export function ThreeDaysList(filter): any {
     const data = [];
     const user = document.cookie.split(',');
     switch (filter) {
