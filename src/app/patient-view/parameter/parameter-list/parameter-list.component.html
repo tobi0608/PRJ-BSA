@@ -1,18 +1,20 @@
 <div class="parameterList" id="loginSite">
   <nav class="parameterList__navbar">
     <a routerLink="/patient/dashboard" class="parameterList__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/appointment" class="parameterList__navbar--nav-item">Termine</a>
-    <a routerLink="/patient/parameter-chart" class="parameterList__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/parameter/chart" class="parameterList__navbar--nav-active">Blutdruckwerte</a>
     <a routerLink="/patient/achievement" class="parameterList__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/settings" class="parameterList__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/patient/contact/appointment" class="parameterList__navbar--nav-item">Kontakt</a>
+    <a routerLink="/patient/user/information" class="parameterList__navbar--nav-item">Benutzer</a>
     <a routerLink="/home" class="parameterList__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <div class="parameterList__navbar--skew"></div>
   <nav class="parameterList__navbarSecond">
-    <a routerLink="/patient/parameter-chart" class="parameterList__navbarSecond--nav-item">Chart Anischt</a>
-    <a routerLink="/patient/parameter-chart/list" class="parameterList__navbarSecond--nav-item">Deatil Ansicht</a>
+    <a routerLink="/patient/parameter/chart" class="parameterList__navbarSecond--nav-item">Chart Ansicht</a>
+    <a routerLink="/patient/parameter/list" class="parameterList__navbarSecond--nav-active">Detail Ansicht</a>
   </nav>
-  <div class="parameterList__navbarSecond--skew"></div>
+  <div class="parameterList__navbarSecond--skewRight"></div>
+  <div class="parameterList__navbarSecond--skewLeft"></div>
+
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white parameterList__body">

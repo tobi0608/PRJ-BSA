@@ -1,18 +1,19 @@
 <div class="ParameterChart" id="loginSite">
   <nav class="ParameterChart__navbar">
     <a routerLink="/patient/dashboard" class="ParameterChart__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/appointment" class="ParameterChart__navbar--nav-item">Termine</a>
-    <a routerLink="/patient/parameter-chart" class="ParameterChart__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/parameter/chart" class="ParameterChart__navbar--nav-active">Blutdruckwerte</a>
     <a routerLink="/patient/achievement" class="ParameterChart__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/settings" class="ParameterChart__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/patient/contact/appointment" class="ParameterChart__navbar--nav-item">Kontakt</a>
+    <a routerLink="/patient/user/information" class="ParameterChart__navbar--nav-item">Benutzer</a>
     <a routerLink="/home" class="ParameterChart__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <div class="ParameterChart__navbar--skew"></div>
   <nav class="ParameterChart__navbarSecond">
-    <a routerLink="/patient/parameter-chart" class="ParameterChart__navbarSecond--nav-item">Chart Anischt</a>
-    <a routerLink="/patient/parameter-chart/list" class="ParameterChart__navbarSecond--nav-item">Deatil Ansicht</a>
+    <a routerLink="/patient/parameter/chart" class="ParameterChart__navbarSecond--nav-active">Chart Ansicht</a>
+    <a routerLink="/patient/parameter/list" class="ParameterChart__navbarSecond--nav-item">Detail Ansicht</a>
   </nav>
-  <div class="ParameterChart__navbarSecond--skew"></div>
+  <div class="ParameterChart__navbarSecond--skewRight"></div>
+  <div class="ParameterChart__navbarSecond--skewLeft"></div>
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white ParameterChart__body">

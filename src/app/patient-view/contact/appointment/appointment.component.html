@@ -1,18 +1,20 @@
 <div class="appointmentPatient" id="loginSite">
   <nav class="appointmentPatient__navbar">
-    <a routerLink="/patient/dashboard" class="appointmentPatient__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/appointment" class="appointmentPatient__navbar--nav-item">Termine</a>
-    <a routerLink="/patient/parameter-chart" class="appointmentPatient__navbar--nav-item">Blutdruckwerte</a>
-    <a routerLink="/patient/achievement" class="appointmentPatient__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/settings" class="appointmentPatient__navbar--nav-item">Einstellungen</a>
-    <a routerLink="/home" class="appointmentPatient__navbar--nav-item" (click)="onOff()">Abmelden</a>
-  </nav>
+  <a routerLink="/patient/dashboard" class="appointmentPatient__navbar--nav-item">Dashboard</a>
+  <a routerLink="/patient/parameter/chart" class="appointmentPatient__navbar--nav-item">Blutdruckwerte</a>
+  <a routerLink="/patient/achievement" class="appointmentPatient__navbar--nav-item">Herausforderungen</a>
+  <a routerLink="/patient/contact/appointment" class="appointmentPatient__navbar--nav-active">Kontakt</a>
+  <a routerLink="/patient/user/information" class="appointmentPatient__navbar--nav-item">Benutzer</a>
+  <a routerLink="/home" class="appointmentPatient__navbar--nav-item" (click)="onOff()">Abmelden</a>
+</nav>
   <div class="appointmentPatient__navbar--skew"></div>
   <nav class="appointmentPatient__navbarSecond">
-    <a routerLink="/patient/appointment/" class="appointmentPatient__navbarSecond--nav-item">Terminvereinbarung</a>
-    <a routerLink="/patient/appointment/alert" class="appointmentPatient__navbarSecond--nav-item">Benachrichtigungen vom Arzt</a>
+    <a routerLink="/patient/contact/appointment" class="appointmentPatient__navbarSecond--nav-active">Termin</a>
+    <a routerLink="/patient/contact/alert" class="appointmentPatient__navbarSecond--nav-item">Nachrichten</a>
   </nav>
-  <div class="appointmentPatient__navbarSecond--skew"></div>
+  <div class="appointmentPatient__navbarSecond--skewRight"></div>
+  <div class="appointmentPatient__navbarSecond--skewLeft"></div>
+
   <div class="container-fluid">
     <div class="shadow p-3 bg-white appointmentPatient__body">
       <div class="appointmentPatient__body--appointment">

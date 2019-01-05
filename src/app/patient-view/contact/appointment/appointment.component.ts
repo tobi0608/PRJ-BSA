@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {USERS} from '../../mock-files/mock-user';
-import {Message} from '../../mock-files/messages';
-import {MESSAGES} from '../../mock-files/mock-messages';
+import {USERS} from '../../../mock-files/mock-user';
+import {Message} from '../../../mock-files/messages';
+import {MESSAGES} from '../../../mock-files/mock-messages';
 
 @Component({
   selector: 'app-appointment',

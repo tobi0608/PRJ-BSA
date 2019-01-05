@@ -1,10 +1,10 @@
 <div class="patient" id="loginSite">
   <nav class="patient__navbar">
-    <a routerLink="/patient/dashboard" class="patient__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/appointment" class="patient__navbar--nav-item">Termine</a>
-    <a routerLink="/patient/parameter-chart" class="patient__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/dashboard" class="patient__navbar--nav-active">Dashboard</a>
+    <a routerLink="/patient/parameter/chart" class="patient__navbar--nav-item">Blutdruckwerte</a>
     <a routerLink="/patient/achievement" class="patient__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/settings" class="patient__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/patient/contact/appointment" class="patient__navbar--nav-item">Kontakt</a>
+    <a routerLink="/patient/user/information" class="patient__navbar--nav-item">Benutzer</a>
     <a routerLink="/home" class="patient__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <div class="patient__navbar--skew"></div>
@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-6">
           <h1>Hallo {{name}}!</h1>
-          <p>Sie haben <a class="patient__welcome-section--alertCount" routerLink="/patient/appointment/alert"
+          <p>Sie haben <a class="patient__welcome-section--alertCount" routerLink="/patient/contact/alert"
                           id="alertCounter"></a></p>
         </div>
         <div class="col-6">

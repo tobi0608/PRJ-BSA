@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import { USERS } from '../../mock-files/mock-user';
+import { MESSAGES } from '../../mock-files/mock-messages';
+import { DATES } from '../../mock-files/mock-vital-parameter';
+import { VitalParameter } from '../../mock-files/vital-parameter';
 import * as Highcharts from 'highcharts';
-import {DATES} from '../../mock-files/mock-vital-parameter';
-import {VitalParameter} from '../../mock-files/vital-parameter';
-import {USERS} from '../../mock-files/mock-user';
 
 let user = [];
 let systoleValues = [];
@@ -10,22 +11,35 @@ let diastoleValues = [];
 let heartRateValues = [];
 
 @Component({
-  selector: 'app-parameter-chart',
-  templateUrl: './parameter-chart.component.html',
-  styleUrls: ['./parameter-chart.component.scss']
+    selector: 'app-patient-view',
+    templateUrl: './patient-view.component.html',
+    styleUrls: ['./patient-view.component.scss']
 })
-export class ParameterChartComponent implements OnInit {
+
+export class PatientViewComponent implements OnInit {
+    name;
+    stat;
     @ViewChild('systole') systole;
     @ViewChild('diastole') diastole;
     @ViewChild('heartRate') heartRate;
+
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
-            type: 'area',
-            zoomType: 'x'
+            type: 'area'
         },
         title: {
             text: null
+        },
+        lang: {
+            noData: 'Keine Werte in den letzten 3 Tagen'
+        },
+        noData: {
+            style: {
+                fontWeight: 'bold',
+                fontSize: '15px',
+                color: '#B2101D'
+            }
         },
         series: [{
             data: [],
@@ -47,7 +61,7 @@ export class ParameterChartComponent implements OnInit {
                     color: '#FF0000',
                     fillColor: '#FF0000',
                 }]
-            },
+        },
             {
                 data: [],
                 name: 'Diastole (mmHg)',
@@ -61,8 +75,8 @@ export class ParameterChartComponent implements OnInit {
                 name: 'Herzrate (Pro S)',
                 color: '#FF0015',
                 zIndex: 3,
-                fillOpacity: 0,
-            },
+                fillOpacity: 0
+            }
         ],
         tooltip: {
             shared: true,
@@ -80,17 +94,18 @@ export class ParameterChartComponent implements OnInit {
         },
         yAxis: [{
             max: 250,
-            min: 40,
+            min: 60,
             title: {
                 text: null
             }
         }]
     };
 
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
         user = document.cookie.split(',');
+        console.log(user);
 
         USERS.find(function (tmp) {
             if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
@@ -100,24 +115,55 @@ export class ParameterChartComponent implements OnInit {
                 document.getElementById('noAccess').style.display = 'block';
             }
         });
+        let countMessage = 0;
+        MESSAGES.forEach(function (value) {
+            if (value.svTo.toString() === user[0] && value.svFrom.toString() === user[4]
+                && value.seen === 'bell') {
+                countMessage++;
+            }
+            if (countMessage === 1 ) {
+                document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachricht';
+            } else if (countMessage > 1 ) {
+                document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachrichten';
+            } else {
+                document.getElementById('alertCounter').innerText = 'keine neue Nachricht';
+            }
+        });
 
         systoleValues = [];
         diastoleValues = [];
         heartRateValues = [];
         DATES.forEach(function (value) {
             if (value.sv.toString() === user[0]) {
+                if (value.timestamp > Date.now() - 345600001) { // letzten 3 Tage
                     systoleValues.unshift([value.timestamp + 3600000, value.systole]);
                     diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
                     heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
+                }
             }
         });
+
         this.chartOptions.series[0].data = systoleValues;
         this.chartOptions.series[1].data = diastoleValues;
         this.chartOptions.series[2].data = heartRateValues;
+
+        if (DATES[0].systole <= 140 && DATES[1].systole <= 140 && DATES[2].systole <= 140) {
+            this.stat = 'check-circle';
+        } else if (DATES[0].systole <= 140 && DATES[1].systole <= 140) {
+            this.stat = 'exclamation-circle';
+        } else if (DATES[1].systole <= 140 && DATES[2].systole <= 140) {
+            this.stat = 'exclamation-circle';
+        } else if (DATES[0].systole <= 140 && DATES[2].systole <= 140) {
+            this.stat = 'exclamation-circle';
+        } else {
+            this.stat = 'times-circle';
+        }
+
+        this.name = user[2];
     }
 
     onSend(): void {
-        user = document.cookie.split(',');
+        console.log(this.chartOptions.series[0].data);
         const timestamp = Date.now();
         const sv = parseInt(user[0], 10);
         const systole = parseInt(this.systole.nativeElement.value, 10);
@@ -135,8 +181,15 @@ export class ParameterChartComponent implements OnInit {
             timestamp: timestamp,
             i10: iTen
         };
+
         if (systole && diastole && heartRate !== null) {
             DATES.unshift(tmp);
+            systoleValues.unshift([timestamp + 3600000, systole]);
+            diastoleValues.unshift([timestamp + 3600000, diastole]);
+            heartRateValues.unshift([timestamp + 3600000, heartRate]);
+            this.chartOptions.series[0].data = systoleValues;
+            this.chartOptions.series[1].data = diastoleValues;
+            this.chartOptions.series[2].data = heartRateValues;
         }
     }
 

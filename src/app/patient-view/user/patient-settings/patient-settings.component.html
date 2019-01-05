@@ -1,13 +1,19 @@
 <div class="settings" id="loginSite">
   <nav class="settings__navbar">
     <a routerLink="/patient/dashboard" class="settings__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/appointment" class="settings__navbar--nav-item">Termine</a>
-    <a routerLink="/patient/parameter-chart" class="settings__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/parameter/chart" class="settings__navbar--nav-item">Blutdruckwerte</a>
     <a routerLink="/patient/achievement" class="settings__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/settings" class="settings__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/patient/contact/appointment" class="settings__navbar--nav-item">Kontakt</a>
+    <a routerLink="/patient/user/information" class="settings__navbar--nav-active">Benutzer</a>
     <a routerLink="/home" class="settings__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <div class="settings__navbar--skew"></div>
+  <nav class="settings__navbarSecond">
+    <a routerLink="/patient/user/information" class="settings__navbarSecond--nav-item">Informationen</a>
+    <a routerLink="/patient/user/settings" class="settings__navbarSecond--nav-active">Einstellungen</a>
+  </nav>
+  <div class="settings__navbarSecond--skewRight"></div>
+  <div class="settings__navbarSecond--skewLeft"></div>
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white settings__body">

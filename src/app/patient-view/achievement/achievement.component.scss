@@ -5,24 +5,31 @@
     position: fixed;
     z-index: 9;
     height: 2.5rem;
-    background-color: #B2101D;
     &--nav-item {
       font-size: 1.5rem;
       color: white;
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
+      background-color: #B2101D;
+      padding: 0.3rem 0.75rem 0.52rem 0.75rem;
+    }
+    &--nav-active {
+      font-size: 1.5rem;
+      color: #B2101D;
+      padding: 0.3rem 0.75rem 0.42rem 0.75rem;
+      background-color: #FFFFFF;
+      border: 0.1rem solid #B2101D;
     }
     &--skew {
+      margin-left: 56.059375rem;
       width: 0;
       height: 0;
       border-top: 2.5rem solid #B2101D;
       border-right: 2.5rem solid transparent;
       display: block;
-      margin-left: 52.895625rem;
       position: fixed;
       z-index: 9;
     }
   }
+
   &__body {
     width: 80rem;
     font-size: 1.75rem;

@@ -1,18 +1,19 @@
 <div class="messagePatient" id="loginSite">
   <nav class="messagePatient__navbar">
     <a routerLink="/patient/dashboard" class="messagePatient__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/appointment" class="messagePatient__navbar--nav-item">Termine</a>
-    <a routerLink="/patient/parameter-chart" class="messagePatient__navbar--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/parameter/chart" class="messagePatient__navbar--nav-item">Blutdruckwerte</a>
     <a routerLink="/patient/achievement" class="messagePatient__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/settings" class="messagePatient__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/patient/contact/appointment" class="messagePatient__navbar--nav-active">Kontakt</a>
+    <a routerLink="/patient/user/information" class="messagePatient__navbar--nav-item">Benutzer</a>
     <a routerLink="/home" class="messagePatient__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <div class="messagePatient__navbar--skew"></div>
   <nav class="messagePatient__navbarSecond">
-    <a routerLink="/patient/appointment/" class="messagePatient__navbarSecond--nav-item">Terminvereinbarung</a>
-    <a routerLink="/patient/appointment/alert" class="messagePatient__navbarSecond--nav-item">Benachrichtigungen vom Arzt</a>
+    <a routerLink="/patient/contact/appointment" class="messagePatient__navbarSecond--nav-item">Termin</a>
+    <a routerLink="/patient/contact/alert" class="messagePatient__navbarSecond--nav-active">Nachrichten</a>
   </nav>
-  <div class="messagePatient__navbarSecond--skew"></div>
+  <div class="messagePatient__navbarSecond--skewRight"></div>
+  <div class="messagePatient__navbarSecond--skewLeft"></div>
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white messagePatient__body">
