@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {USERS} from '../../mock-files/mock-user';
-
-let user = document.cookie.split(',');
+import {LogInCheck} from '../../global-funtions/LogInCheck';
 
 @Component({
   selector: 'app-achievement',
@@ -13,16 +11,7 @@ export class AchievementComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-      user = document.cookie.split(',');
-
-      USERS.find(function (tmp) {
-          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
-              return true;
-          } else {
-              document.getElementById('loginSite').style.display = 'none';
-              document.getElementById('noAccess').style.display = 'block';
-          }
-      });
+      LogInCheck('patient');
   }
     onOff(): void {
         document.cookie = 'null; path=/';

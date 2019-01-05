@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {USERS} from '../../../mock-files/mock-user';
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {GetDocsSVs} from './functions/GetDocsSVs';
 
-let doc = [];
 let user = [];
 
     @Component({
@@ -19,23 +20,8 @@ export class PatientSettingsComponent implements OnInit {
 
   ngOnInit() {
       user = document.cookie.split(',');
-
-      USERS.find(function (tmp) {
-          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
-              return true;
-          } else {
-              document.getElementById('loginSite').style.display = 'none';
-              document.getElementById('noAccess').style.display = 'block';
-          }
-      });
-      doc = [];
-      USERS.find(function (tmp) {
-          if (tmp.type === 'doctor') {
-              doc.unshift(tmp);
-              return true;
-          }
-      });
-      this.Docs = doc;
+      LogInCheck('patient');
+      this.Docs = GetDocsSVs();
   }
 
     newDoctor(): void {

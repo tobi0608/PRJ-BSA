@@ -1,0 +1,43 @@
+<div class="doctorInformation" id="loginSite">
+  <nav class="doctorInformation__navbar">
+    <a routerLink="/doctor/dashboard" class="doctorInformation__navbar--nav-item">Dashboard</a>
+    <a routerLink="/doctor/messages/appointments" class="doctorInformation__navbar--nav-item">Nachrichten</a>
+    <a routerLink="/doctor/patients/list" class="doctorInformation__navbar--nav-item">Patienten</a>
+    <a routerLink="/doctor/user/information" class="doctorInformation__navbar--nav-active">Benutzer</a>
+    <a routerLink="/home" class="doctorInformation__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  </nav>
+  <div class="doctorInformation__navbar--skew"></div>
+  <nav class="doctorInformation__navbarSecond">
+    <a routerLink="/doctor/user/information" class="doctorInformation__navbarSecond--nav-active">Informationen</a>
+    <a routerLink="/doctor/user/settings" class="doctorInformation__navbarSecond--nav-item">Einstellungen</a>
+  </nav>
+  <div class="doctorInformation__navbarSecond--skewRight"></div>
+  <div class="doctorInformation__navbarSecond--skewLeft"></div>
+
+  <div class="container-fluid">
+    <div class="shadow p-3 bg-white doctorInformation__body">
+      <div class="doctorInformation__general">
+        <h2>Allgemeine Kontoinformationen</h2>
+        <div class="row doctorInformation__general--span">
+          <span class="doctorInformation__general--label">Sozialversicherungs-Nummer:</span>
+          <p>{{user[0]}}</p>
+        </div>
+        <div class="row doctorInformation__general--span">
+          <span class="doctorInformation__general--label">Vorname:</span>
+          <p>{{user[2]}}</p>
+        </div>
+        <div class="row doctorInformation__general--span">
+          <span class="doctorInformation__general--label">Nachname:</span>
+          <p>{{user[3]}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="noAccess" id="noAccess">
+  <div class="jumbotron shadow p-3 bg-white rounded">
+    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
+    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
+  </div>
+</div>

@@ -26,7 +26,7 @@ export class HomeViewComponent implements OnInit {
             if (value.sv.toString() === sv.toString()) {
                 if (value.password === password) {
                     document.cookie = value.sv.toString() + ',' + value.type + ',' + value.first_name +
-                        ',' + value.last_name + ',' + value.doctor_sv.toString();
+                        ',' + value.last_name + ',' + value.doctor_sv.toString() + ',';
                     console.log(document.cookie);
                     site.navigate([value.type + '/dashboard']);
                     return true;

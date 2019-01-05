@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {PATIENTS} from '../../../mock-files/mock-patients';
 import {Router} from '@angular/router';
-import {USERS} from '../../../mock-files/mock-user';
-
-let ownPatients = [];
-let user = [];
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {ShowOwnPatients} from './functions/ShowOwnPatients';
 
 @Component({
     selector: 'app-patient-list',
@@ -18,27 +15,9 @@ export class PatientListComponent implements OnInit {
     constructor(public router: Router) { }
 
     ngOnInit() {
-        user = document.cookie.split(',');
-        let count = 0;
-        USERS.find(function (tmp) {
-            count++;
-            if (tmp.sv.toString() === user[0] && tmp.type === 'doctor') {
-                return true;
-            } else {
-                if (count === USERS.length) {
-                    document.getElementById('loginSite').style.display = 'none';
-                    document.getElementById('noAccess').style.display = 'block';
-                    return true;
-                }
-            }
-        });
-        ownPatients = [];
-        PATIENTS.forEach(function (value) {
-            if (value.assignedDoc.toString() === user[0]) {
-                ownPatients.push(value);
-            }
-        });
-        this.patients = ownPatients;
+        console.log();
+        LogInCheck('doctor');
+        this.patients = ShowOwnPatients();
     }
 
     onAddPatient(): void {

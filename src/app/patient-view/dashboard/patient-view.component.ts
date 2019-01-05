@@ -1,14 +1,17 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { USERS } from '../../mock-files/mock-user';
-import { MESSAGES } from '../../mock-files/mock-messages';
 import { DATES } from '../../mock-files/mock-vital-parameter';
 import { VitalParameter } from '../../mock-files/vital-parameter';
 import * as Highcharts from 'highcharts';
+import {LogInCheck} from '../../global-funtions/LogInCheck';
+import {MessageCounter} from '../../global-funtions/MessageCounter';
+import {ThreeDaysList} from './functions/ThreeDaysList';
+import {StatusCheck} from './functions/StatusCheck';
 
 let user = [];
-let systoleValues = [];
-let diastoleValues = [];
-let heartRateValues = [];
+const systoleValues = [];
+const diastoleValues = [];
+const heartRateValues = [];
+
 
 @Component({
     selector: 'app-patient-view',
@@ -18,11 +21,11 @@ let heartRateValues = [];
 
 export class PatientViewComponent implements OnInit {
     name;
-    stat;
+    status;
+    messageCounter;
     @ViewChild('systole') systole;
     @ViewChild('diastole') diastole;
     @ViewChild('heartRate') heartRate;
-
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
@@ -107,60 +110,13 @@ export class PatientViewComponent implements OnInit {
 
     ngOnInit() {
         user = document.cookie.split(',');
-
-        USERS.find(function (tmp) {
-            if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
-                return true;
-            } else {
-                document.getElementById('loginSite').style.display = 'none';
-                document.getElementById('noAccess').style.display = 'block';
-            }
-        });
-        let countMessage = 0;
-        MESSAGES.forEach(function (value) {
-            if (value.svTo.toString() === user[0] && value.svFrom.toString() === user[4]
-                && value.seen === 'bell') {
-                countMessage++;
-            }
-            if (countMessage === 1 ) {
-                document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachricht';
-            } else if (countMessage > 1 ) {
-                document.getElementById('alertCounter').innerText = countMessage.toString() + ' neue Nachrichten';
-            } else {
-                document.getElementById('alertCounter').innerText = 'keine neue Nachricht';
-            }
-        });
-
-        systoleValues = [];
-        diastoleValues = [];
-        heartRateValues = [];
-        DATES.forEach(function (value) {
-            if (value.sv.toString() === user[0]) {
-                if (value.timestamp > Date.now() - 345600001) { // letzten 3 Tage
-                    systoleValues.unshift([value.timestamp + 3600000, value.systole]);
-                    diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
-                    heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
-                }
-            }
-        });
-
-        this.chartOptions.series[0].data = systoleValues;
-        this.chartOptions.series[1].data = diastoleValues;
-        this.chartOptions.series[2].data = heartRateValues;
-
-        if (DATES[0].systole <= 140 && DATES[1].systole <= 140 && DATES[2].systole <= 140) {
-            this.stat = 'check-circle';
-        } else if (DATES[0].systole <= 140 && DATES[1].systole <= 140) {
-            this.stat = 'exclamation-circle';
-        } else if (DATES[1].systole <= 140 && DATES[2].systole <= 140) {
-            this.stat = 'exclamation-circle';
-        } else if (DATES[0].systole <= 140 && DATES[2].systole <= 140) {
-            this.stat = 'exclamation-circle';
-        } else {
-            this.stat = 'times-circle';
-        }
-
+        LogInCheck('patient');
         this.name = user[2];
+        this.messageCounter = MessageCounter('Message');
+        this.chartOptions.series[0].data = ThreeDaysList('systole');
+        this.chartOptions.series[1].data = ThreeDaysList('diastole');
+        this.chartOptions.series[2].data = ThreeDaysList('heartbeat');
+        this.status = StatusCheck();
     }
 
     onSend(): void {
@@ -192,7 +148,6 @@ export class PatientViewComponent implements OnInit {
             this.ngOnInit();
         }
     }
-
     onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);

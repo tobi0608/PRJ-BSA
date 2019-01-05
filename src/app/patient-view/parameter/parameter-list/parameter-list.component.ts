@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DATES} from '../../../mock-files/mock-vital-parameter';
 import {VitalParameter} from '../../../mock-files/vital-parameter';
-import {USERS} from '../../../mock-files/mock-user';
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {PushData} from '../../../global-funtions/PushData';
 
 let user = [];
-let values = [];
 
 @Component({
   selector: 'app-parameter-list',
@@ -21,26 +21,11 @@ export class ParameterListComponent implements OnInit {
 
   ngOnInit() {
       user = document.cookie.split(',');
-
-      USERS.find(function (tmp) {
-          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
-              return true;
-          } else {
-              document.getElementById('loginSite').style.display = 'none';
-              document.getElementById('noAccess').style.display = 'block';
-          }
-      });
-
-      values = [];
-      DATES.forEach(function (value) {
-          if (value.sv.toString() === user[0]) {
-              values.push(value);
-          }
-      });
-      this.dates = values;
+      LogInCheck('patient');
+      this.dates = PushData(user[0], 'all');
   }
 
-  onSend(): void {
+    onSend(): void {
         user = document.cookie.split(',');
         const sv = parseInt(user[0], 10);
         const systole = parseInt(this.systole.nativeElement.value, 10);

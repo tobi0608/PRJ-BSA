@@ -1,23 +1,19 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {USERS} from '../../../mock-files/mock-user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PATIENTS} from '../../../mock-files/mock-patients';
 import {Patient} from '../../../mock-files/patients';
 import {MEDICATION} from '../../../mock-files/mock-medication';
 import * as Highcharts from 'highcharts';
-import {DATES} from '../../../mock-files/mock-vital-parameter';
 import {Medication} from '../../../mock-files/medication';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {SectionSelection} from './functions/SectionSelection';
+import {PushData} from '../../../global-funtions/PushData';
+import {ShowPatient} from './functions/ShowPatient';
+import {FilterMedication} from './functions/FilterMedication';
 
 let user = [];
-let patient = [];
-let currentMedication = [];
-let usedMedication = [];
-let systoleValues = [];
-let diastoleValues = [];
-let heartRateValues = [];
-
 
 @Component({
     selector: 'app-patient-record',
@@ -25,7 +21,7 @@ let heartRateValues = [];
     styleUrls: ['./patient-record.component.scss']
 })
 export class PatientRecordComponent implements OnInit {
-    selectedPatient: Patient;
+    selectedPatient;
     currentMeds;
     usedMeds;
     @ViewChild('first_name') first_name;
@@ -111,95 +107,15 @@ export class PatientRecordComponent implements OnInit {
     constructor(private route: ActivatedRoute, public router: Router) { }
 
     ngOnInit() {
-        user = document.cookie.split(',');
-        let count = 0;
-        USERS.find(function (tmp) {
-            count++;
-            if (tmp.sv.toString() === user[0] && tmp.type === 'doctor') {
-                return true;
-            } else {
-                if (count === USERS.length) {
-                    document.getElementById('loginSite').style.display = 'none';
-                    document.getElementById('noAccess').style.display = 'block';
-                    return true;
-                }
-            }
-        });
-
+        LogInCheck('doctor');
         const sv = this.route.snapshot.paramMap.get('sv').replace(':', '');
-        if (sv === 'new') {
-            document.getElementById('newPatient').style.display = 'block';
-            document.getElementById('noSelectedPatient').style.display = 'none';
-            document.getElementById('selectedPatient').style.display = 'none';
-        } else if (sv === 'sv') {
-            document.getElementById('newPatient').style.display = 'none';
-            document.getElementById('noSelectedPatient').style.display = 'block';
-            document.getElementById('selectedPatient').style.display = 'none';
-        } else {
-            document.getElementById('newPatient').style.display = 'none';
-            document.getElementById('noSelectedPatient').style.display = 'none';
-            document.getElementById('selectedPatient').style.display = 'block';
-        }
-
-        systoleValues = [];
-        diastoleValues = [];
-        heartRateValues = [];
-        DATES.forEach(function (value) {
-            if (value.sv.toString() === sv) {
-                systoleValues.unshift([value.timestamp + 3600000, value.systole]);
-                diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
-                heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
-            }
-        });
-        this.chartOptions.series[0].data = systoleValues;
-        this.chartOptions.series[1].data = diastoleValues;
-        this.chartOptions.series[2].data = heartRateValues;
-
-        count = 0;
-        patient = [];
-        PATIENTS.forEach(function (value) {
-            count++;
-            if (value.sv.toString() === sv) {
-                patient = [];
-                patient.push(value);
-            } else {
-                if (count === PATIENTS.length && patient.length < 1) {
-                    const tmp: Patient = {
-                        sv: null,
-                        first_name: null,
-                        last_name: null,
-                        gender: null,
-                        age: null,
-                        registered: null,
-                        last_visit: null,
-                        assignedDoc: null
-                    };
-                    patient.push(tmp);
-                }
-            }
-        });
-        this.selectedPatient = patient[0];
-
-        currentMedication = [];
-        usedMedication = [];
-        count = 0;
-        MEDICATION.forEach(function (value) {
-            count++;
-            if (value.sv.toString() === sv && value.fresh === true) {
-                currentMedication.push(value);
-            } else if (value.sv.toString() === sv && value.fresh === false) {
-                usedMedication.push(value);
-            } else {
-                if (count === MEDICATION.length && usedMedication.length < 1) {
-                    document.getElementById('usedMed').innerHTML = 'Noch keine probierten Medikammente';
-                }
-                if (count === MEDICATION.length && currentMedication.length < 1) {
-                    document.getElementById('currentMed').innerHTML = 'Keine verschriebene Medikation';
-                }
-            }
-        });
-        this.currentMeds = currentMedication;
-        this.usedMeds = usedMedication;
+        SectionSelection(sv);
+        this.chartOptions.series[0].data = PushData(sv, 'systole');
+        this.chartOptions.series[1].data = PushData(sv, 'diastole');
+        this.chartOptions.series[2].data = PushData(sv, 'heartbeat');
+        this.selectedPatient = ShowPatient(sv);
+        this.currentMeds = FilterMedication(sv, 'fresh');
+        this.usedMeds = FilterMedication(sv, 'expired');
     }
 
     onHere(pat): void {

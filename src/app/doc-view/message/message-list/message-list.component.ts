@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {MESSAGES} from '../../../mock-files/mock-messages';
-import {USERS} from '../../../mock-files/mock-user';
 import {Message} from '../../../mock-files/messages';
 import {Router} from '@angular/router';
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {MessageFilter} from '../../../global-funtions/MessageFilter';
 
 let user = [];
-let patMessage = [];
 
 @Component({
     selector: 'app-message-list',
@@ -18,28 +18,8 @@ export class MessageListComponent implements OnInit {
     constructor(public router: Router) { }
 
     ngOnInit() {
-        user = document.cookie.split(',');
-        let count = 0;
-        USERS.find(function (tmp) {
-            count++;
-            if (tmp.sv.toString() === user[0] && tmp.type === 'doctor') {
-                return true;
-            } else {
-                if (count === USERS.length) {
-                    document.getElementById('loginSite').style.display = 'none';
-                    document.getElementById('noAccess').style.display = 'block';
-                    return true;
-                }
-            }
-        });
-
-        patMessage = [];
-        MESSAGES.forEach(function (value) {
-            if (value.svTo.toString() === user[0] && value.type === 'Termin') {
-                patMessage.push(value);
-            }
-        });
-        this.messages = patMessage;
+        LogInCheck('doctor');
+        this.messages = MessageFilter('Termin');
     }
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient]);
@@ -64,6 +44,7 @@ export class MessageListComponent implements OnInit {
         };
         MESSAGES.unshift(tmp);
         alert('Der Termin wurde bestätigt!');
+        console.log(tmp);
     }
 
     onDenied(message): void {
@@ -89,6 +70,5 @@ export class MessageListComponent implements OnInit {
 
     onOff(): void {
         document.cookie = 'null; path=/';
-        console.log(document.cookie);
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {USERS} from '../../../mock-files/mock-user';
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {GetDocDetails} from './functions/GetDocDetails';
 let user = [];
-let doc;
 
 @Component({
   selector: 'app-patient-information',
@@ -15,28 +15,9 @@ export class PatientInformationComponent implements OnInit {
 
   ngOnInit() {
       user = document.cookie.split(',');
-      let count = 0;
-      USERS.find(function (tmp) {
-          count++;
-          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
-              return true;
-          } else {
-              if (count === USERS.length) {
-                  document.getElementById('loginSite').style.display = 'none';
-                  document.getElementById('noAccess').style.display = 'block';
-                  return true;
-              }
-          }
-      });
+      LogInCheck('patient');
       this.user = user;
-      USERS.find(function (tmp) {
-          if (tmp.sv.toString() === user[4]) {
-              doc = 'Dr.' + ' '  + tmp.last_name + ' ' + tmp.first_name;
-              console.log(doc);
-              return true;
-          }
-      });
-      this.doc = doc;
+      this.doc = GetDocDetails();
   }
 
     onOff(): void {

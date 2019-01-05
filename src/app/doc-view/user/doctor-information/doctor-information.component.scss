@@ -1,6 +1,6 @@
-.alertDoctor {
+.doctorInformation {
   padding-top: 9rem;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   &__navbar {
     position: fixed;
     z-index: 9;
@@ -11,7 +11,7 @@
       background-color: #B2101D;
       padding: 0.3rem 0.75rem 0.52rem 0.75rem;
     }
-    &--nav-active {
+    &--nav-active{
       font-size: 1.5rem;
       color: #B2101D;
       padding: 0.3rem 0.75rem 0.42rem 0.75rem;
@@ -30,7 +30,7 @@
     }
   }
   &__navbarSecond{
-    left: 2.61125rem;
+    left: 18.35rem;
     margin-top: 2.2rem;
     position: fixed;
     z-index: 9;
@@ -56,7 +56,7 @@
       border-top: 2.5rem solid #B2101D;
       border-right: 2.5rem solid transparent;
       display: block;
-      margin-left: 28.000625rem;
+      margin-left: 39rem;
       position: fixed;
       z-index: 9;
     }
@@ -67,7 +67,7 @@
       border-top: 2.5rem solid #B2101D;
       border-left: 2.5rem solid transparent;
       display: block;
-      margin-left: 0.11125rem;
+      margin-left: 15.9rem;
       position: fixed;
       z-index: 9;
     }
@@ -75,9 +75,15 @@
 
   &__body {
     width: 80rem;
-    font-size: 1.5rem;
-    &--alertList {
-      padding-top: 4rem;
+  }
+  &__general {
+    padding-top: 4rem;
+    &--span{
+      padding-left: 1rem;
+      display: block;
+    }
+    &--label{
+      margin-top: 0.25rem;
     }
   }
 }

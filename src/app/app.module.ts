@@ -21,7 +21,7 @@ import { DocAlertListComponent } from './doc-view/message/doc-alert-list/doc-ale
 import { DoctorSettingsComponent } from './doc-view/user/doctor-settings/doctor-settings.component';
 import { PatientRecordComponent } from './doc-view/patient/patient-record/patient-record.component';
 import { PatientInformationComponent } from './patient-view/user/patient-information/patient-information.component';
-import { DoctorInformationComponent } from './doctor-information/doctor-information.component';
+import { DoctorInformationComponent } from './doc-view/user/doctor-information/doctor-information.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { DoctorInformationComponent } from './doctor-information/doctor-informat
     FormsModule,
     RoutingServiceModule,
     HighchartsChartModule,
-      AngularFontAwesomeModule
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

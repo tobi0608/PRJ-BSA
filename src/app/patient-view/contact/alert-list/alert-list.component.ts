@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MESSAGES} from '../../../mock-files/mock-messages';
-import {USERS} from '../../../mock-files/mock-user';
-
-let alerts = [];
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {MessageFilter} from '../../../global-funtions/MessageFilter';
 
 @Component({
   selector: 'app-alert-list',
@@ -14,23 +12,8 @@ export class AlertListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-      const user = document.cookie.split(',');
-
-      USERS.find(function (tmp) {
-          if (tmp.sv.toString() === user[0] && tmp.type == 'patient') {
-              return true;
-          } else {
-              document.getElementById('loginSite').style.display = 'none';
-              document.getElementById('noAccess').style.display = 'block';
-          }
-      });
-      alerts = [];
-      MESSAGES.forEach(function (value) {
-          if (value.svTo.toString() === user[0] && value.svFrom.toString() === user[4]) {
-              alerts.push(value);
-          }
-      });
-      this.messages = alerts;
+      LogInCheck('patient');
+      this.messages  = MessageFilter('Pat');
   }
     onSeen(message): void {
         message.seen = ' ';

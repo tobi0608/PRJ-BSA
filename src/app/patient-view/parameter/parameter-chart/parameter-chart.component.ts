@@ -2,12 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import {DATES} from '../../../mock-files/mock-vital-parameter';
 import {VitalParameter} from '../../../mock-files/vital-parameter';
-import {USERS} from '../../../mock-files/mock-user';
+import {PushData} from '../../../global-funtions/PushData';
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
 
 let user = [];
-let systoleValues = [];
-let diastoleValues = [];
-let heartRateValues = [];
 
 @Component({
   selector: 'app-parameter-chart',
@@ -95,29 +93,10 @@ export class ParameterChartComponent implements OnInit {
 
     ngOnInit() {
         user = document.cookie.split(',');
-
-        USERS.find(function (tmp) {
-            if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
-                return true;
-            } else {
-                document.getElementById('loginSite').style.display = 'none';
-                document.getElementById('noAccess').style.display = 'block';
-            }
-        });
-
-        systoleValues = [];
-        diastoleValues = [];
-        heartRateValues = [];
-        DATES.forEach(function (value) {
-            if (value.sv.toString() === user[0]) {
-                    systoleValues.unshift([value.timestamp + 3600000, value.systole]);
-                    diastoleValues.unshift([value.timestamp + 3600000, value.diastole]);
-                    heartRateValues.unshift([value.timestamp + 3600000, value.heartbeat]);
-            }
-        });
-        this.chartOptions.series[0].data = systoleValues;
-        this.chartOptions.series[1].data = diastoleValues;
-        this.chartOptions.series[2].data = heartRateValues;
+        LogInCheck('patient');
+        this.chartOptions.series[0].data = PushData(user[0], 'systole');
+        this.chartOptions.series[1].data = PushData(user[0], 'diastole');
+        this.chartOptions.series[2].data = PushData(user[0], 'heartbeat');
     }
 
     onSend(): void {

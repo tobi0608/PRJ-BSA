@@ -121,26 +121,26 @@
         <form ngNativeValidate>
           <div class="form-row">
             <div class="col-3">
-              <label class="record__newPatient--fielset-label">Vorname:</label>
-              <input name="svFrom" type="text" class="form-control" #first_name required pattern="[A-Za-z]">
+              <label for="firstName" class="record__newPatient--fielset-label">Vorname:</label>
+              <input id="firstName" type="text" class="form-control" #first_name required pattern="[A-Za-z]">
             </div>
             <div class="col-3">
-              <label class="record__newPatient--fielset-label">Nachname: </label>
-              <input name="age" type="text" class="form-control" #last_name required pattern="[A-Za-z]">
+              <label for="lastName" class="record__newPatient--fielset-label">Nachname: </label>
+              <input id="lastName" type="text" class="form-control" #last_name required pattern="[A-Za-z]">
             </div>
           </div>
           <div class="form-row">
             <div class="col-2">
-              <label class="record__newPatient--label">SV-Nummer:</label>
-              <input name="svFrom" type="text" class="form-control" #svnr required pattern='[0-9]{10}'>
+              <label for="sv" class="record__newPatient--label">SV-Nummer:</label>
+              <input id="sv" type="text" class="form-control" #svnr required pattern='[0-9]{10}'>
             </div>
             <div class="col-1">
-              <label class="record__newPatient--label">Alter: </label>
-              <input name="age" type="number" class="form-control" #age required min="14" max="120">
+              <label for="age" class="record__newPatient--label">Alter: </label>
+              <input id="age" type="number" class="form-control" #age required min="14" max="120">
             </div>
             <div class="col-3">
-              <label class="record__newPatient--label">Geschlecht:</label>
-              <select class="form-control" #gender>
+              <label for="gender" class="record__newPatient--label">Geschlecht:</label>
+              <select id="gender" class="form-control" #gender>
                 <option value="m">männlich</option>
                 <option value="w">weiblich</option>
               </select>

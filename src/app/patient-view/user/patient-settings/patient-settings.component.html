@@ -20,8 +20,8 @@
       <div class="settings__general">
         <h2>Allgemein</h2>
         <form ngNativeValidate>
-          <label class="settings__general--label">Arzt ändern</label>
-          <select class="custom-select settings__general--input" *ngFor="let doc of Docs" #newDoc>
+          <label for="doc" class="settings__general--label">Arzt ändern</label>
+          <select id="doc" class="custom-select settings__general--input" *ngFor="let doc of Docs" #newDoc>
             <option value="{{doc.sv}}">Dr. {{doc.last_name}} {{doc.first_name}}</option>
           </select>
           <input type="submit" (click)="newDoctor()" value="Arzt speichern"
@@ -32,12 +32,12 @@
           <h2>Sicherheit und Login</h2>
           <form ngNativeValidate>
             <h3>Passwort ändern</h3>
-            <label class="settings__security--label">Aktuelles Passwort</label>
-            <input type="password" class="form-control settings__security--input" required #oldPW>
-            <label class="settings__security--label">Neues Passwort:</label>
-            <input type="password" class="form-control settings__security--input" required #newPW>
-            <label class="settings__security--label">Neues Passwort erneut eingeben:</label>
-            <input type="password" class="form-control settings__security--input" required #repeatPW>
+            <label for="oldPW" class="settings__security--label">Aktuelles Passwort</label>
+            <input id="oldPW" type="password" class="form-control settings__security--input" required #oldPW>
+            <label for="newPW" class="settings__security--label">Neues Passwort:</label>
+            <input id="newPW" type="password" class="form-control settings__security--input" required #newPW>
+            <label for="repeatPW" class="settings__security--label">Neues Passwort erneut eingeben:</label>
+            <input id="repeatPW" type="password" class="form-control settings__security--input" required #repeatPW>
             <input type="submit" (click)="newPassword()" value="Passwort speichern"
                    class="btn btn-danger settings__security--btn">
 

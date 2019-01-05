@@ -5,14 +5,14 @@
       <form class="form-inline" ngNativeValidate>
         <div class="input-group">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="username">S<span class="sr-only">ozial</span>
+            <label for="user" class="input-group-text" for="username">S<span class="sr-only">ozial</span>
               V<span class="sr-only">ersicherungs</span>-Nummer:</label>
           </div>
-          <input type="text" id="username" pattern='[0-9]{10}' value="2167050980" required #sv>
+          <input id="user" type="text" id="username" pattern='[0-9]{10}' value="2167050980" required #sv>
           <div class="input-group-prepend">
-            <label class="input-group-text"  for="user-password">Passwort:</label>
+            <label for="pw" class="input-group-text"  for="user-password">Passwort:</label>
           </div>
-          <input type="password" id="user-password" required #password>
+          <input id="pw" type="password" id="user-password" required #password>
           <input type="submit" value="Log In" (click)="onLogIn()" class="btn btn-danger">
         </div>
       </form>
@@ -23,12 +23,12 @@
       <form ngNativeValidatem>
         <div class="form-row">
           <div class="col-2">
-            <label>Vorname:</label>
-            <input name="firstName" type="text" class="form-control" required>
+            <label for="firstName">Vorname:</label>
+            <input id="firstName" name="firstName" type="text" class="form-control" required>
           </div>
           <div class="col-2">
-            <label>Nachname: </label>
-            <input name="lastName" type="text" class="form-control" required>
+            <label for="lastName">Nachname: </label>
+            <input id="lastName" name="lastName" type="text" class="form-control" required>
           </div>
           <div class="col-2">
             <fieldset>
@@ -48,12 +48,12 @@
         </div>
         <div class="form-row">
           <div class="col-2">
-            <label>SV-Nummer:</label>
-            <input name="sv" type="text" class="form-control" pattern='[0-9]{10}' required>
+            <label for="sv">SV-Nummer:</label>
+            <input id="sv" type="text" class="form-control" pattern='[0-9]{10}' required>
           </div>
           <div class="col-2">
-            <label>Alter: </label>
-            <input name="age" type="number" class="form-control" min="14" max="110" required>
+            <label for="age">Alter: </label>
+            <input id="age" type="number" class="form-control" min="14" max="110" required>
           </div>
           <div class="col-2">
             <fieldset>

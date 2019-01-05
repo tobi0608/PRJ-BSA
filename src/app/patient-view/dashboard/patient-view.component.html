@@ -15,14 +15,14 @@
         <div class="col-6">
           <h1>Hallo {{name}}!</h1>
           <p>Sie haben <a class="patient__welcome-section--alertCount" routerLink="/patient/contact/alert"
-                          id="alertCounter"></a></p>
+                          id="alertCounter">{{messageCounter}}</a></p>
         </div>
         <div class="col-6">
           <div class="patient__welcome-section--card">
             <img src="/assets/card-man.png" alt="avatar" class="patient__welcome-section--avatar">
           </div>
           <div class="patient__welcome-section--dayCount">
-            <fa name="{{stat}}"></fa>
+            <fa name="{{status}}"></fa>
           </div>
         </div>
       </div>

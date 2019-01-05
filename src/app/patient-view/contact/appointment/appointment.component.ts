@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {USERS} from '../../../mock-files/mock-user';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
+import {LogInCheck} from '../../../global-funtions/LogInCheck';
 
 @Component({
   selector: 'app-appointment',
@@ -16,16 +16,7 @@ export class AppointmentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-      const user = document.cookie.split(',');
-
-      USERS.find(function (tmp) {
-          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
-              return true;
-          } else {
-              document.getElementById('loginSite').style.display = 'none';
-              document.getElementById('noAccess').style.display = 'block';
-          }
-      });
+      LogInCheck('patient');
   }
     onSend(): void {
         const user = document.cookie.split(',');
