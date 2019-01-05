@@ -75,9 +75,33 @@
 
   &__body {
     width: 80rem;
-    font-size: 1.75rem;
-    &--list{
-      padding-top: 2.5rem;
+  }
+  &__general {
+    padding-top: 4rem;
+    &--label{
+      margin-top: 0.5rem;
+      display: block;
+    }
+    &--input{
+      width: 50%;
+      display: block;
+      padding-bottom: 0rem;
+    }
+    &--btn{
+      margin-top: 0.5rem;
+      display: block;
+    }
+  }
+  &__security {
+    padding-top: 1.5rem;
+    &--label{
+      margin-top: 0.5rem;
+    }
+    &--input{
+      width: 50%;
+    }
+    &--btn{
+      margin-top: 0.5rem;
     }
   }
 }

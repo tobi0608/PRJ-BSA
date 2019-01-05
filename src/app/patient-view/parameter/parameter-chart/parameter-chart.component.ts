@@ -64,7 +64,11 @@ export class ParameterChartComponent implements OnInit {
                 fillOpacity: 0,
             },
         ],
+        legend: {
+            enabled: false
+        },
         tooltip: {
+            headerFormat: '',
             shared: true,
             crosshairs: true
         },
@@ -137,6 +141,8 @@ export class ParameterChartComponent implements OnInit {
         };
         if (systole && diastole && heartRate !== null) {
             DATES.unshift(tmp);
+            alert('Ihre Werte wurden gespeichert');
+            this.ngOnInit();
         }
     }
 

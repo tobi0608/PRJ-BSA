@@ -1,14 +1,14 @@
 <div class="alertDoctor" id="loginSite">
   <nav class="alertDoctor__navbar">
     <a routerLink="/doctor/dashboard" class="alertDoctor__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages" class="alertDoctor__navbar--nav-active">Nachrichten</a>
-    <a routerLink="/doctor/patients" class="alertDoctor__navbar--nav-item">Patienten</a>
-    <a routerLink="/doctor/settings" class="alertDoctor__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/doctor/messages/appointments" class="alertDoctor__navbar--nav-active">Nachrichten</a>
+    <a routerLink="/doctor/patients/list" class="alertDoctor__navbar--nav-item">Patienten</a>
+    <a routerLink="/doctor/user/information" class="alertDoctor__navbar--nav-item">Benutzer</a>
     <a routerLink="/home" class="alertDoctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <nav class="alertDoctor__navbarSecond">
-    <a routerLink="/doctor/messages" class="alertDoctor__navbarSecond--nav-item">Terminanfragen</a>
-    <a routerLink="/doctor/alerts" class="alertDoctor__navbarSecond--nav-active">Blutdruckprobleme</a>
+    <a routerLink="/doctor/messages/appointments" class="alertDoctor__navbarSecond--nav-item">Terminanfragen</a>
+    <a routerLink="/doctor/messages/alerts" class="alertDoctor__navbarSecond--nav-active">Blutdruckprobleme</a>
   </nav>
   <div class="alertDoctor__navbarSecond--skewRight"></div>
   <div class="alertDoctor__navbarSecond--skewLeft"></div>

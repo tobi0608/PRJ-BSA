@@ -46,6 +46,7 @@ export class AppointmentComponent implements OnInit {
         };
         if (date && time && type !== null) {
             MESSAGES.unshift(tmp);
+            alert('Ihr Terminvorschlag wurde abgeschickt und wird demnächst bearbeitet!');
         }
     }
     onOff(): void {

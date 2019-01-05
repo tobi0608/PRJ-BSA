@@ -1,13 +1,13 @@
 <div class="record" id="loginSite">
   <nav class="record__navbar">
     <a routerLink="/doctor/dashboard" class="record__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages" class="record__navbar--nav-item">Nachrichten</a>
-    <a routerLink="/doctor/patients" class="record__navbar--nav-active">Patienten</a>
-    <a routerLink="/doctor/settings" class="record__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/doctor/messages/appointments" class="record__navbar--nav-item">Nachrichten</a>
+    <a routerLink="/doctor/patients/list" class="record__navbar--nav-active">Patienten</a>
+    <a routerLink="/doctor/user/information" class="record__navbar--nav-item">Benutzer</a>
     <a routerLink="/home" class="record__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <nav class="record__navbarSecond">
-    <a routerLink="/doctor/patients" class="record__navbarSecond--nav-item">Übersicht</a>
+    <a routerLink="/doctor/patients/list" class="record__navbarSecond--nav-item">Übersicht</a>
     <a routerLink="/doctor/patients/record/:sv" class="record__navbarSecond--nav-active">Patienten-Akt</a>
   </nav>
   <div class="record__navbarSecond--skewRight"></div>

@@ -14,7 +14,6 @@ export class AchievementComponent implements OnInit {
 
   ngOnInit() {
       user = document.cookie.split(',');
-      console.log(user);
 
       USERS.find(function (tmp) {
           if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {

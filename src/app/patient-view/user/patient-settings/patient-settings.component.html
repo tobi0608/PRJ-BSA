@@ -17,9 +17,32 @@
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white settings__body">
-      <div class="settings__body--list">
-        <p>patient-settings works!</p>
+      <div class="settings__general">
+        <h2>Allgemein</h2>
+        <form ngNativeValidate>
+          <label class="settings__general--label">Arzt ändern</label>
+          <select class="custom-select settings__general--input" *ngFor="let doc of Docs" #newDoc>
+            <option value="{{doc.sv}}">Dr. {{doc.last_name}} {{doc.first_name}}</option>
+          </select>
+          <input type="submit" (click)="newDoctor()" value="Arzt speichern"
+                 class="btn btn-danger settings__general--btn">
+        </form>
       </div>
+      <div class="settings__security">
+          <h2>Sicherheit und Login</h2>
+          <form ngNativeValidate>
+            <h3>Passwort ändern</h3>
+            <label class="settings__security--label">Aktuelles Passwort</label>
+            <input type="password" class="form-control settings__security--input" required #oldPW>
+            <label class="settings__security--label">Neues Passwort:</label>
+            <input type="password" class="form-control settings__security--input" required #newPW>
+            <label class="settings__security--label">Neues Passwort erneut eingeben:</label>
+            <input type="password" class="form-control settings__security--input" required #repeatPW>
+            <input type="submit" (click)="newPassword()" value="Passwort speichern"
+                   class="btn btn-danger settings__security--btn">
+
+          </form>
+        </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {PATIENTS} from '../../mock-files/mock-patients';
+import {PATIENTS} from '../../../mock-files/mock-patients';
 import {Router} from '@angular/router';
-import {USERS} from '../../mock-files/mock-user';
+import {USERS} from '../../../mock-files/mock-user';
 
 let ownPatients = [];
 let user = [];

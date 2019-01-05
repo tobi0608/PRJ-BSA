@@ -17,10 +17,24 @@
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white information__body">
-      <div class="information__body--general">
-        <p>
-          patient-information works!
-        </p>
+        <div class="information__general">
+          <h2>Allgemeine Kontoinformationen</h2>
+          <div class="row information__general--span">
+            <span class="information__general--label">Sozialversicherungs-Nummer:</span>
+            <p>{{user[0]}}</p>
+          </div>
+          <div class="row information__general--span">
+            <span class="information__general--label">Vorname:</span>
+            <p>{{user[2]}}</p>
+          </div>
+          <div class="row information__general--span">
+            <span class="information__general--label">Nachname:</span>
+            <p>{{user[3]}}</p>
+          </div>
+          <div class="row information__general--span">
+            <span class="information__general--label">Ausgewählter Arzt:</span>
+            <p>{{doc}}</p>
+          </div>
       </div>
     </div>
   </div>

@@ -31,16 +31,6 @@ export class PatientViewComponent implements OnInit {
         title: {
             text: null
         },
-        lang: {
-            noData: 'Keine Werte in den letzten 3 Tagen'
-        },
-        noData: {
-            style: {
-                fontWeight: 'bold',
-                fontSize: '15px',
-                color: '#B2101D'
-            }
-        },
         series: [{
             data: [],
             name: 'Systole (mmHg)',
@@ -78,7 +68,21 @@ export class PatientViewComponent implements OnInit {
                 fillOpacity: 0
             }
         ],
+        lang: {
+            noData: 'Keine Werte in den letzten 3 Tagen'
+        },
+        noData: {
+            style: {
+                fontWeight: 'bold',
+                fontSize: '15px',
+                color: '#B2101D'
+            }
+        },
+        legend: {
+            enabled: false
+        },
         tooltip: {
+            headerFormat: '',
             shared: true,
             crosshairs: true
         },
@@ -93,8 +97,6 @@ export class PatientViewComponent implements OnInit {
             }
         },
         yAxis: [{
-            max: 250,
-            min: 60,
             title: {
                 text: null
             }
@@ -105,7 +107,6 @@ export class PatientViewComponent implements OnInit {
 
     ngOnInit() {
         user = document.cookie.split(',');
-        console.log(user);
 
         USERS.find(function (tmp) {
             if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
@@ -187,9 +188,8 @@ export class PatientViewComponent implements OnInit {
             systoleValues.unshift([timestamp + 3600000, systole]);
             diastoleValues.unshift([timestamp + 3600000, diastole]);
             heartRateValues.unshift([timestamp + 3600000, heartRate]);
-            this.chartOptions.series[0].data = systoleValues;
-            this.chartOptions.series[1].data = diastoleValues;
-            this.chartOptions.series[2].data = heartRateValues;
+            alert('Ihre Werte wurden gespeichert');
+            this.ngOnInit();
         }
     }
 

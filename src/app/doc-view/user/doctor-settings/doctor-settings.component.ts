@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {USERS} from '../../mock-files/mock-user';
+import {USERS} from '../../../mock-files/mock-user';
 let user = [];
 @Component({
   selector: 'app-doctor-settings',
@@ -31,6 +31,7 @@ export class DoctorSettingsComponent implements OnInit {
       this.user = user;
   }
     newPassword(): void {
+        user = document.cookie.split(',');
         const newPW =  this.newPW.nativeElement.value;
         const oldPW = this.oldPW.nativeElement.value;
         const repeatPW = this.repeatPW.nativeElement.value;

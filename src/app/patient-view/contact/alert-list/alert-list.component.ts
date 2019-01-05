@@ -10,14 +10,14 @@ let alerts = [];
   styleUrls: ['./alert-list.component.scss']
 })
 export class AlertListComponent implements OnInit {
-  messages = alerts;
+  messages;
   constructor() { }
 
   ngOnInit() {
       const user = document.cookie.split(',');
 
       USERS.find(function (tmp) {
-          if (tmp.sv.toString() === user[0] && tmp.type === 'patient') {
+          if (tmp.sv.toString() === user[0] && tmp.type == 'patient') {
               return true;
           } else {
               document.getElementById('loginSite').style.display = 'none';

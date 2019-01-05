@@ -3,14 +3,8 @@ import {DATES} from '../../../mock-files/mock-vital-parameter';
 import {VitalParameter} from '../../../mock-files/vital-parameter';
 import {USERS} from '../../../mock-files/mock-user';
 
-const values = [];
-let user = document.cookie.split(',');
-
-DATES.forEach(function (value) {
-    if (value.sv.toString() === user[0]) {
-        values.push(value);
-    }
-});
+let user = [];
+let values = [];
 
 @Component({
   selector: 'app-parameter-list',
@@ -18,7 +12,7 @@ DATES.forEach(function (value) {
   styleUrls: ['./parameter-list.component.scss']
 })
 export class ParameterListComponent implements OnInit {
-  dates = values;
+  dates;
   @ViewChild('systole') systole;
   @ViewChild('diastole') diastole;
   @ViewChild('heartRate') heartRate;
@@ -36,6 +30,14 @@ export class ParameterListComponent implements OnInit {
               document.getElementById('noAccess').style.display = 'block';
           }
       });
+
+      values = [];
+      DATES.forEach(function (value) {
+          if (value.sv.toString() === user[0]) {
+              values.push(value);
+          }
+      });
+      this.dates = values;
   }
 
   onSend(): void {
@@ -59,6 +61,8 @@ export class ParameterListComponent implements OnInit {
         };
       if (systole && diastole && heartRate !== null) {
           DATES.unshift(tmp);
+          alert('Ihre Werte wurden gespeichert');
+          this.ngOnInit();
       }
     }
     onOff(): void {

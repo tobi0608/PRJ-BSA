@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MESSAGES} from '../../mock-files/mock-messages';
-import {USERS} from '../../mock-files/mock-user';
-import {Message} from '../../mock-files/messages';
+import {MESSAGES} from '../../../mock-files/mock-messages';
+import {USERS} from '../../../mock-files/mock-user';
+import {Message} from '../../../mock-files/messages';
 import {Router} from '@angular/router';
 
 let user = [];

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import { USERS } from '../mock-files/mock-user';
+import { USERS } from '../../mock-files/mock-user';
 import * as Highcharts from 'highcharts';
-import {NEWUSERSCOUNT} from '../mock-files/mock-counter';
-import {MESSAGES} from '../mock-files/mock-messages';
+import {NEWUSERSCOUNT} from '../../mock-files/mock-counter';
+import {MESSAGES} from '../../mock-files/mock-messages';
 import {Router} from '@angular/router';
 
 let user = [];

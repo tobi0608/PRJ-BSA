@@ -31,19 +31,26 @@
   }
   &__body{
     width: 80rem;
-    font-size: 1.75rem;
-    &--achievement{
+  }
+    &__achievement{
       padding-top: 2.5rem;
     }
-    &--chartSection{
-      padding-top: 2.5rem;
-      width: 70%;
-      position: relative;
-    }
-    &--chart{
-        display: block;
+  &__appointment{
+    padding-top: 1.5rem;
+    &--link{
+      color: #B2101D;
     }
   }
+    &__parameter{
+      padding-top: 1.5rem;
+      width: 70%;
+      position: relative;
+      &--chart{
+        display: block;
+      }
+    }
+
+
 
   &__welcome-section{
     z-index: 7;

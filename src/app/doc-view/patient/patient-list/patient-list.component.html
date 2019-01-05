@@ -1,13 +1,13 @@
 <div class="patientList" id="loginSite">
   <nav class="patientList__navbar">
     <a routerLink="/doctor/dashboard" class="patientList__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages" class="patientList__navbar--nav-item">Nachrichten</a>
-    <a routerLink="/doctor/patients" class="patientList__navbar--nav-active">Patienten</a>
-    <a routerLink="/doctor/settings" class="patientList__navbar--nav-item">Einstellungen</a>
+    <a routerLink="/doctor/messages/appointments" class="patientList__navbar--nav-item">Nachrichten</a>
+    <a routerLink="/doctor/patients/list" class="patientList__navbar--nav-active">Patienten</a>
+    <a routerLink="/doctor/user/information" class="patientList__navbar--nav-item">Benutzer</a>
     <a routerLink="/home" class="patientList__navbar--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
   <nav class="patientList__navbarSecond">
-    <a routerLink="/doctor/patients" class="patientList__navbarSecond--nav-active">Übersicht</a>
+    <a routerLink="/doctor/patients/list" class="patientList__navbarSecond--nav-active">Übersicht</a>
     <a routerLink="/doctor/patients/record/:sv" class="patientList__navbarSecond--nav-item">Patienten-Akt</a>
   </nav>
   <div class="patientList__navbarSecond--skewRight"></div>
