@@ -1,16 +1,22 @@
 .doctor {
   padding-top: 9rem;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   &__navbar {
     position: fixed;
     z-index: 9;
     height: 2.5rem;
-    background-color: #B2101D;
     &--nav-item {
       font-size: 1.5rem;
       color: white;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
+      background-color: #B2101D;
+      padding: 0.3rem 0.75rem 0.52rem 0.75rem;
+    }
+    &--nav-active {
+      font-size: 1.5rem;
+      color: #B2101D;
+      padding: 0.3rem 0.75rem 0.42rem 0.75rem;
+      background-color: #FFFFFF;
+      border: 0.1rem solid #B2101D;
     }
     &--skew {
       width: 0;
@@ -18,7 +24,7 @@
       border-top: 2.5rem solid #B2101D;
       border-right: 2.5rem solid transparent;
       display: block;
-      margin-left: 43.871875rem;
+      margin-left: 44.07125rem;
       position: fixed;
       z-index: 9;
     }
@@ -40,7 +46,6 @@
   }
   &__body {
     width: 80rem;
-    font-size: 1.35rem;
     &--newPatients {
       padding-top: 2.5rem;
       width: 65%;

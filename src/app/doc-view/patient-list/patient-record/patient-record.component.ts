@@ -7,6 +7,8 @@ import {MEDICATION} from '../../../mock-files/mock-medication';
 import * as Highcharts from 'highcharts';
 import {DATES} from '../../../mock-files/mock-vital-parameter';
 import {Medication} from '../../../mock-files/medication';
+import {Message} from '../../../mock-files/messages';
+import {MESSAGES} from '../../../mock-files/mock-messages';
 
 let user = [];
 let patient = [];
@@ -31,6 +33,8 @@ export class PatientRecordComponent implements OnInit {
     @ViewChild('svnr') svnr;
     @ViewChild('age') age;
     @ViewChild('gender') gender;
+    @ViewChild('med') med;
+    @ViewChild('intervall') intervall;
 
     Highcharts = Highcharts;
     chartOptions = {
@@ -204,8 +208,9 @@ export class PatientRecordComponent implements OnInit {
     onSend(): void {
         const med = this.med.nativeElement.value;
         const intervall = this.intervall.nativeElement.value;
+        const svnr = parseInt(this.route.snapshot.paramMap.get('sv').replace(':', ''), 10);
         const tmp: Medication = {
-            sv: this.route.snapshot.paramMap.get('sv').replace(':', ''),
+            sv: svnr,
             medication: med,
             intervall: intervall,
             timestampFrom: Date.now(),
@@ -216,11 +221,39 @@ export class PatientRecordComponent implements OnInit {
         if (med && intervall !== null) {
             MEDICATION.unshift(tmp);
         }
+        user = document.cookie.split(',');
+        const alert: Message = {
+            svFrom: parseInt(user[0], 10),
+            svTo: svnr,
+            first_name: user[2],
+            last_name: user[3],
+            type: 'Med',
+            text: 'Ihre Medikation wurde umgestellt!',
+            timestamp: Date.now(),
+            seen: 'bell',
+            check: ' ',
+            times: ' '
+        };
+        MESSAGES.unshift(alert);
         this.ngOnInit();
     }
     onDelete(meds): void {
         meds.fresh = false;
         meds.timestampTo = Date.now();
+        user = document.cookie.split(',');
+        const alert: Message = {
+            svFrom: parseInt(user[0], 10),
+            svTo: meds.sv,
+            first_name: user[2],
+            last_name: user[3],
+            type: 'Med',
+            text: 'Ihre Medikation wurde umgestellt!',
+            timestamp: Date.now(),
+            seen: 'bell',
+            check: ' ',
+            times: ' '
+        };
+        MESSAGES.unshift(alert);
         this.ngOnInit();
     }
     onEdit(meds): void {
@@ -230,24 +263,42 @@ export class PatientRecordComponent implements OnInit {
     onSave(meds): void {
         document.getElementById(meds.medication).style.display = 'block';
         document.getElementById(meds.medication + '-form').style.display = 'none';
+        user = document.cookie.split(',');
+        const alert: Message = {
+            svFrom: parseInt(user[0], 10),
+            svTo: meds.sv,
+            first_name: user[2],
+            last_name: user[3],
+            type: 'Med',
+            text: 'Ihre Medikation wurde umgestellt!',
+            timestamp: Date.now(),
+            seen: 'bell',
+            check: ' ',
+            times: ' '
+        };
+        MESSAGES.unshift(alert);
     }
     onSavePatient(): void {
         user = document.cookie.split(',');
-        const tmp: Patient = {
-            sv: this.svnr.nativeElement.value,
-            first_name: this.first_name.nativeElement.value,
-            last_name: this.last_name.nativeElement.value,
-            gender: this.gender.nativeElement.value,
-            age: this.age.nativeElement.value,
+         const svnr =  this.svnr.nativeElement.value;
+         const firstName = this.first_name.nativeElement.value;
+         const lastName = this.last_name.nativeElement.value;
+         const gender = this.gender.nativeElement.value;
+         const age = this.age.nativeElement.value;
+         const tmp: Patient = {
+            sv: parseInt(svnr, 10),
+            first_name: firstName,
+            last_name: lastName,
+            gender: gender,
+            age: parseInt(age, 10),
             registered: Date.now(),
             last_visit: Date.now(),
             assignedDoc: user[0]
         };
-        if (true) {
+        if (svnr !== '' && firstName !== '' && lastName !== '' && age !== '') {
             PATIENTS.unshift(tmp);
-            this.router.navigate(['doctor/patients/record/:' + tmp.sv]);
+            this.router.navigate(['doctor/patients/']);
         }
-        this.ngOnInit();
     }
     onOff(): void {
         document.cookie = 'null; path=/';
