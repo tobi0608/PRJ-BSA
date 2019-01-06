@@ -1,4 +1,4 @@
-import {USERS} from '../mock-files/mock-user';
+import {USERS} from '../../mock-files/mock-user';
 
 export function LogInCheck(filter): void {
     const user = document.cookie.split(',');

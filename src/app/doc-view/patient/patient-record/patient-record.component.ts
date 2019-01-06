@@ -7,11 +7,11 @@ import * as Highcharts from 'highcharts';
 import {Medication} from '../../../mock-files/medication';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {SectionSelection} from './functions/SectionSelection';
-import {PushData} from '../../../global-funtions/PushData';
+import {PushData} from '../../../global-files/function/PushData';
 import {ShowPatient} from './functions/ShowPatient';
-import {FilterMedication} from '../../../global-funtions/FilterMedication';
+import {FilterMedication} from '../../../global-files/function/FilterMedication';
 
 let user = [];
 

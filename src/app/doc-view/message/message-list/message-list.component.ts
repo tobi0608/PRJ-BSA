@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MESSAGES} from '../../../mock-files/mock-messages';
 import {Message} from '../../../mock-files/messages';
 import {Router} from '@angular/router';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
-import {MessageFilter} from '../../../global-funtions/MessageFilter';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
+import {MessageFilter} from '../../../global-files/function/MessageFilter';
 
 let user = [];
 

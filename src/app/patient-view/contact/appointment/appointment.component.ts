@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
 
 @Component({
   selector: 'app-appointment',

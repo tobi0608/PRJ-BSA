@@ -1,4 +1,4 @@
-import {DATES} from '../mock-files/mock-vital-parameter';
+import {DATES} from '../../mock-files/mock-vital-parameter';
 
 export function PushData(sv, filter): any {
     const Data = [];

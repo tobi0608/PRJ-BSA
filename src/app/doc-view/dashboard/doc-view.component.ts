@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import {Router} from '@angular/router';
-import {LogInCheck} from '../../global-funtions/LogInCheck';
-import {MessageCounter} from '../../global-funtions/MessageCounter';
+import {LogInCheck} from '../../global-files/function/LogInCheck';
+import {MessageCounter} from '../../global-files/function/MessageCounter';
 import {lastPatients} from './functions/lastPatients';
 import {UserCounter} from './functions/UserCounter';
 

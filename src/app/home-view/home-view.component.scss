@@ -1,3 +1,9 @@
-.home-view{
-  padding-top: 10rem;
+.home{
+  padding-top: 5rem;
+  &--form4mobile{
+    width: 9.468125rem;
+  }
+  &--saveBtn{
+    margin-top: 1rem;
+  }
 }

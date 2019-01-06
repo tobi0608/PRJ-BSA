@@ -1,36 +1,11 @@
+@import "../../global-files/scss/signIn";
+@import "../../global-files/scss/nav";
+
 .patient{
-  padding-top: 9rem;
+  padding-top: 5.5rem;
   font-size: 1.35rem;
-  &__navbar {
-    position: fixed;
-    z-index: 9;
-    height: 2.5rem;
-    &--nav-item {
-      font-size: 1.5rem;
-      color: white;
-      background-color: #B2101D;
-      padding: 0.3rem 0.75rem 0.52rem 0.75rem;
-    }
-    &--nav-active {
-      font-size: 1.5rem;
-      color: #B2101D;
-      padding: 0.3rem 0.75rem 0.42rem 0.75rem;
-      background-color: #FFFFFF;
-      border: 0.1rem solid #B2101D;
-    }
-    &--skew {
-      margin-left: 56.059375rem;
-      width: 0;
-      height: 0;
-      border-top: 2.5rem solid #B2101D;
-      border-right: 2.5rem solid transparent;
-      display: block;
-      position: fixed;
-      z-index: 9;
-    }
-  }
   &__body{
-    width: 80rem;
+    width: 80%;
   }
     &__achievement{
       padding-top: 2.5rem;
@@ -57,7 +32,7 @@
     background-color: #B2101D;
     margin-top: 2rem;
     float: right;
-    width: 42rem;
+    width: 40%;
     position:relative;
     color: #FFFFFF;
     &--card{
@@ -90,11 +65,4 @@
     top: 25rem;
     right: 0.9375rem;
   }
-}
-.noAccess{
-  display: none;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  height: 100%;
-  padding-top: 10%;
 }

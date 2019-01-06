@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import {DATES} from '../../../mock-files/mock-vital-parameter';
 import {VitalParameter} from '../../../mock-files/vital-parameter';
-import {PushData} from '../../../global-funtions/PushData';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {PushData} from '../../../global-files/function/PushData';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
 

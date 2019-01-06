@@ -1,4 +1,4 @@
-import {MESSAGES} from '../mock-files/mock-messages';
+import {MESSAGES} from '../../mock-files/mock-messages';
 
 export function MessageCounter(filter): string {
     let countMessage = 0;

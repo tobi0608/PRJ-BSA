@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {ShowOwnPatients} from './functions/ShowOwnPatients';
 
 @Component({

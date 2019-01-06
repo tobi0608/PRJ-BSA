@@ -1,19 +1,21 @@
 <div class="container-fluid">
-  <div class="home-view">
+  <div class="home">
     <div class="jumbotron shadow p-3 bg-white rounded home-view__LogIn-form">
       <h1>Anmelden</h1>
       <form class="form-inline" ngNativeValidate>
-        <div class="input-group">
-          <div class="input-group-prepend">
+        <div class="form-row input-group">
+          <div class="col-md-5 input-group-prepend">
             <label for="user" class="input-group-text" for="username">S<span class="sr-only">ozial</span>
-              V<span class="sr-only">ersicherungs</span>-Nummer:</label>
-          </div>
+              V<span class="sr-only">ersicherungs</span>-N<span class="sr-only">ummer</span>r:</label>
           <input id="user" type="text" id="username" pattern='[0-9]{10}' value="2167050980" required #sv>
-          <div class="input-group-prepend">
-            <label for="pw" class="input-group-text"  for="user-password">Passwort:</label>
           </div>
-          <input id="pw" type="password" id="user-password" required #password>
+          <div class="col-md-5 input-group-prepend">
+            <label for="pw" class="input-group-text"  for="user-password">Passwort:</label>
+          <input id="pw" type="password" id="user-password" required #password class="home--form4mobile">
+          </div>
+          <div class="col-md-2">
           <input type="submit" value="Log In" (click)="onLogIn()" class="btn btn-danger">
+          </div>
         </div>
       </form>
       <a routerLink="/home">Passwort vergessen?</a>
@@ -22,60 +24,41 @@
       <h1>Registrieren</h1>
       <form ngNativeValidatem>
         <div class="form-row">
-          <div class="col-2">
+          <div class="col-md-2 col-sm-12">
             <label for="firstName">Vorname:</label>
             <input id="firstName" name="firstName" type="text" class="form-control" required>
           </div>
-          <div class="col-2">
+          <div class="col-md-2 col-sm-12">
             <label for="lastName">Nachname: </label>
             <input id="lastName" name="lastName" type="text" class="form-control" required>
           </div>
-          <div class="col-2">
-            <fieldset>
-              <legend>Art des Kontos:</legend>
-              <div class="form-check form-check-inline">
-                <input type="radio" id="typeDoctor" name="type" value="doctor"
-                       class="form-check-input">
-                <label class="form-check-label" for="typeDoctor"> Doktor</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="radio" id="typePatient" name="type" value="patient"
-                       class="form-check-input" checked="checked">
-                <label class="form-check-label" for="typePatient"> Patient</label>
-              </div>
-            </fieldset>
+          <div class="col-md-2 col-sm-12">
+            <label for="type">Art des Kontos: </label>
+            <select id="type" class="form-control" #gender>
+              <option value="doctor">Patient</option>
+              <option value="patient">Doktor</option>
+            </select>
           </div>
         </div>
         <div class="form-row">
-          <div class="col-2">
+          <div class="col-md-2 col-sm-12">
             <label for="sv">SV-Nummer:</label>
             <input id="sv" type="text" class="form-control" pattern='[0-9]{10}' required>
           </div>
-          <div class="col-2">
+          <div class="col-md-2 col-sm-12">
             <label for="age">Alter: </label>
             <input id="age" type="number" class="form-control" min="14" max="110" required>
           </div>
-          <div class="col-2">
-            <fieldset>
-              <legend>Geschlecht:</legend>
-              <div class="form-check form-check-inline">
-                <input type="radio" id="genderMale" name="gender" value="m"
-                       class="form-check-input">
-                <label class="form-check-label" for="genderMale"> Männlich</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="radio" id="genderFemale" name="gender" value="w"
-                       class="form-check-input" checked="checked">
-                <label class="form-check-label" for="genderFemale"> Weiblich</label>
-              </div>
-            </fieldset>
+          <div class="col-md-2 col-sm-12">
+            <label for="gender">Geschlecht: </label>
+            <select id="gender" class="form-control" #gender>
+              <option value="m">Männlich</option>
+              <option value="w">Weiblich</option>
+            </select>
           </div>
-        </div><br>
-        <input type="submit" value="Registrieren" class="btn btn-danger">
+        </div>
+        <input type="submit" value="Registrieren" class="btn btn-danger home--saveBtn">
       </form>
-    </div>
-    <div class="jumbotron shadow p-3 bg-white rounded home-view__description">
-      <h1>Was ist RivaRocciPass?</h1>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {USERS} from '../../../mock-files/mock-user';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {GetDocsSVs} from './functions/GetDocsSVs';
 
 let user = [];

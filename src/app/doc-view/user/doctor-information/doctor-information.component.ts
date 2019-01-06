@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
 
 let user = [];
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
-import {MessageFilter} from '../../../global-funtions/MessageFilter';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
+import {MessageFilter} from '../../../global-files/function/MessageFilter';
 
 @Component({
   selector: 'app-doc-alert-list',

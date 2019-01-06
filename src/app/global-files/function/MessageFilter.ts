@@ -1,4 +1,4 @@
-import {MESSAGES} from '../mock-files/mock-messages';
+import {MESSAGES} from '../../mock-files/mock-messages';
 
 export function MessageFilter(filter): object {
     const user = document.cookie.split(',');

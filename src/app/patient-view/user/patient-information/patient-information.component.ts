@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LogInCheck} from '../../../global-funtions/LogInCheck';
+import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {GetDocDetails} from './functions/GetDocDetails';
-import {FilterMedication} from '../../../global-funtions/FilterMedication';
+import {FilterMedication} from '../../../global-files/function/FilterMedication';
 let user = [];
 
 @Component({
