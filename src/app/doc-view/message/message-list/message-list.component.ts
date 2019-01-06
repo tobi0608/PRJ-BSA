@@ -67,7 +67,9 @@ export class MessageListComponent implements OnInit {
         MESSAGES.unshift(tmp);
         alert('Der Termin wurde abgelehnt!');
     }
-
+    onRoute(route): void {
+        this.router.navigate([route]);
+    }
     onOff(): void {
         document.cookie = 'null; path=/';
     }

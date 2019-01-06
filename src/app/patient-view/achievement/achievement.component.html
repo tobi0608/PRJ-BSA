@@ -7,13 +7,13 @@
     <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
     <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-  <select class="custom-select navMobile" (click)="onRoute()" #route>
-    <option value="/patient/dashboard">Dashboard</option>
-    <option value="/patient/parameter/chart">Blutdruckwerte</option>
-    <option value="/patient/achievement" selected="selected">Herausforderungen</option>
-    <option value="/patient/contact/appointment">Kontakt</option>
-    <option value="/patient/user/information">Benutzer</option>
-    <option value="/home" (click)="onOff()">Abmelden</option>
+  <select class="custom-select navMobile" (change)="onRoute($event.target.value)">
+    <option value="patient/dashboard">Dashboard</option>
+    <option value="patient/parameter/chart">Blutdruckwerte</option>
+    <option value="patient/achievement" selected="selected">Herausforderungen</option>
+    <option value="patient/contact/appointment">Kontakt</option>
+    <option value="patient/user/information">Benutzer</option>
+    <option value="home" (click)="onOff()">Abmelden</option>
   </select>
   <div class="nav--firstSkewPat"></div>
   <div class="container-fluid">

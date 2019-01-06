@@ -5,6 +5,7 @@ import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {PushData} from '../../../global-files/function/PushData';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
+import {Router} from '@angular/router';
 
 let user = [];
 
@@ -19,14 +20,16 @@ export class ParameterListComponent implements OnInit {
   @ViewChild('diastole') diastole;
   @ViewChild('heartRate') heartRate;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
       user = document.cookie.split(',');
       LogInCheck('patient');
       this.dates = PushData(user[0], 'all');
   }
-
+    onRoute(route): void {
+        this.router.navigate([route]);
+    }
     onSend(): void {
         user = document.cookie.split(',');
         const systole = parseInt(this.systole.nativeElement.value, 10);

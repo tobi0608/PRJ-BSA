@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {MessageFilter} from '../../../global-files/function/MessageFilter';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-alert-list',
@@ -9,12 +10,15 @@ import {MessageFilter} from '../../../global-files/function/MessageFilter';
 })
 export class AlertListComponent implements OnInit {
   messages;
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
       LogInCheck('patient');
       this.messages  = MessageFilter('Pat');
   }
+    onRoute(route): void {
+        this.router.navigate([route]);
+    }
     onSeen(message): void {
         message.seen = ' ';
     }

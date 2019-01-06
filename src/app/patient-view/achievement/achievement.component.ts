@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LogInCheck} from '../../global-files/function/LogInCheck';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-achievement',
@@ -8,11 +9,14 @@ import {LogInCheck} from '../../global-files/function/LogInCheck';
 })
 export class AchievementComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
       LogInCheck('patient');
   }
+    onRoute(route): void {
+        this.router.navigate([route]);
+    }
     onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);

@@ -7,7 +7,7 @@
     <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
     <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-  <select class="custom-select navMobile" (click)="onRoute()" #route>
+  <select class="custom-select navMobile" (change)="onRoute($event.target.value)">
     <option value="/patient/dashboard">Dashboard</option>
     <option value="/patient/parameter/chart">Blutdruckwerte</option>
     <option value="/patient/achievement">Herausforderungen</option>
@@ -22,7 +22,7 @@
   </nav>
   <div class="navContact--skewRight"></div>
   <div class="navContact--skewLeft"></div>
-  <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
+  <select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)">
     <option value="/patient/contact/appointment"selected="selected">Termin</option>
     <option value="/patient/contact/alert">Nachrichten</option>
   </select>

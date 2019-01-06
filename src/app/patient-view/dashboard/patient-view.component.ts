@@ -8,9 +8,9 @@ import {ThreeDaysList} from './functions/ThreeDaysList';
 import {StatusCheck} from './functions/StatusCheck';
 import {Message} from '../../mock-files/messages';
 import {MESSAGES} from '../../mock-files/mock-messages';
+import {Router} from '@angular/router';
 
 let user = [];
-
 
 @Component({
     selector: 'app-patient-view',
@@ -105,7 +105,7 @@ export class PatientViewComponent implements OnInit {
         }]
     };
 
-    constructor() {}
+    constructor(public router: Router) {}
 
     ngOnInit() {
         user = document.cookie.split(',');
@@ -116,6 +116,10 @@ export class PatientViewComponent implements OnInit {
         this.chartOptions.series[1].data = ThreeDaysList('diastole');
         this.chartOptions.series[2].data = ThreeDaysList('heartbeat');
         this.status = StatusCheck();
+    }
+
+    onRoute(route): void {
+        this.router.navigate([route]);
     }
 
     onSend(): void {

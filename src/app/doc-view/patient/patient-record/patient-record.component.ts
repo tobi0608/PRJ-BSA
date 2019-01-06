@@ -109,7 +109,6 @@ export class PatientRecordComponent implements OnInit {
     ngOnInit() {
         LogInCheck('doctor');
         const sv = this.route.snapshot.paramMap.get('sv').replace(':', '');
-        console.log(sv)
         SectionSelection(sv);
         this.chartOptions.series[0].data = PushData(sv, 'systole');
         this.chartOptions.series[1].data = PushData(sv, 'diastole');
@@ -213,8 +212,11 @@ export class PatientRecordComponent implements OnInit {
         };
         if (svnr !== '' && firstName !== '' && lastName !== '' && age !== '') {
             PATIENTS.unshift(tmp);
-            this.router.navigate(['doctor/patients/']);
+            this.router.navigate(['doctor/patients/list']);
         }
+    }
+    onRoute(route): void {
+        this.router.navigate([route]);
     }
     onOff(): void {
         document.cookie = 'null; path=/';

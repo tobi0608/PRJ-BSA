@@ -6,6 +6,7 @@ import {PushData} from '../../../global-files/function/PushData';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
+import {Router} from '@angular/router';
 
 let user = [];
 
@@ -91,7 +92,7 @@ export class ParameterChartComponent implements OnInit {
         }]
     };
 
-    constructor() { }
+    constructor(public router: Router) { }
 
     ngOnInit() {
         user = document.cookie.split(',');
@@ -139,6 +140,9 @@ export class ParameterChartComponent implements OnInit {
             alert('Ihre Werte wurden gespeichert');
             this.ngOnInit();
         }
+    }
+    onRoute(route): void {
+        this.router.navigate([route]);
     }
     onOff(): void {
         document.cookie = 'null; path=/';

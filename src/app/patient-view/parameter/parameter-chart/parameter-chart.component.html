@@ -7,13 +7,13 @@
     <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
     <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-  <select class="custom-select navMobile" (click)="onRoute()" #route>
-    <option value="/patient/dashboard">Dashboard</option>
-    <option value="/patient/parameter/chart" selected="selected">Blutdruckwerte</option>
-    <option value="/patient/achievement">Herausforderungen</option>
-    <option value="/patient/contact/appointment">Kontakt</option>
-    <option value="/patient/user/information">Benutzer</option>
-    <option value="/home" (click)="onOff()">Abmelden</option>
+  <select class="custom-select navMobile" (change)="onRoute($event.target.value)">
+    <option value="patient/dashboard">Dashboard</option>
+    <option value="patient/parameter/chart" selected="selected">Blutdruckwerte</option>
+    <option value="patient/achievement">Herausforderungen</option>
+    <option value="patient/contact/appointment">Kontakt</option>
+    <option value="patient/user/information">Benutzer</option>
+    <option value="home" (click)="onOff()">Abmelden</option>
   </select>
   <div class="nav--firstSkewPat"></div>
   <nav class="navParameter">
@@ -22,9 +22,9 @@
   </nav>
   <div class="navParameter--skewRight"></div>
   <div class="navParameter--skewLeft"></div>
-  <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
-    <option value="/patient/parameter/chart" selected="selected">Chart Ansicht</option>
-    <option value="/patient/parameter/list">Detail Ansicht</option>
+  <select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)">
+    <option value="patient/parameter/chart" selected="selected">Chart Ansicht</option>
+    <option value="patient/parameter/list">Detail Ansicht</option>
   </select>
   <div class="navSecondMobile--skew"></div>
 

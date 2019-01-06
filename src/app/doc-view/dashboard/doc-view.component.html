@@ -6,12 +6,12 @@
         <a routerLink="/doctor/user/information" class="nav--nav-item">Benutzer</a>
         <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
     </nav>
-    <select class="custom-select navMobile" (click)="onRoute()" #route>
-        <option value="/doctor/dashboard" selected="selected">Dashboard</option>
-        <option value="/doctor/messages/appointments">Nachrichten</option>
-        <option value="/doctor/patients/list">Patienten</option>
-        <option value="/doctor/user/information">Benutzer</option>
-        <option value="/home" (click)="onOff()">Abmelden</option>
+    <select class="custom-select navMobile" (change)="onRoute($event.target.value)">
+        <option value="doctor/dashboard" selected="selected">Dashboard</option>
+        <option value="doctor/messages/appointments">Nachrichten</option>
+        <option value="doctor/patients/list">Patienten</option>
+        <option value="doctor/user/information">Benutzer</option>
+        <option value="home" (click)="onOff()">Abmelden</option>
     </select>
     <div class="nav--firstSkewDoc"></div>
     <div class="container-fluid">

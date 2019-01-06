@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-appointment',
@@ -13,11 +14,14 @@ export class AppointmentComponent implements OnInit {
     @ViewChild('date') date;
     @ViewChild('type') type;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
       LogInCheck('patient');
   }
+    onRoute(route): void {
+        this.router.navigate([route]);
+    }
     onSend(): void {
         const user = document.cookie.split(',');
         const date = this.date.nativeElement.value;

@@ -9,7 +9,18 @@ export function ShowPatient(sv): Patient {
         count++;
         if (value.sv.toString() === sv) {
             patient = value;
-        }
+        } else if (sv === 'sv' || sv === 'new') {
+            const tmp: Patient = {
+                sv: null,
+                first_name: null,
+                last_name: null,
+                gender: null,
+                age: null,
+                registered: null,
+                last_visit: null,
+                assignedDoc: null
+            };
+            patient = tmp; }
     });
     return patient;
 }

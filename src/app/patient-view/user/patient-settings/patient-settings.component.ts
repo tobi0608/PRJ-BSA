@@ -2,13 +2,14 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {USERS} from '../../../mock-files/mock-user';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {GetDocsSVs} from './functions/GetDocsSVs';
+import {Router} from '@angular/router';
 
 let user = [];
 
-    @Component({
-  selector: 'app-patient-settings',
-  templateUrl: './patient-settings.component.html',
-  styleUrls: ['./patient-settings.component.scss']
+@Component({
+    selector: 'app-patient-settings',
+    templateUrl: './patient-settings.component.html',
+    styleUrls: ['./patient-settings.component.scss']
 })
 export class PatientSettingsComponent implements OnInit {
     @ViewChild('oldPW') oldPW;
@@ -17,22 +18,22 @@ export class PatientSettingsComponent implements OnInit {
     @ViewChild('newDoc') newDoc;
     @ViewChild('route') route;
     Docs;
-  constructor() {}
-  ngOnInit() {
-      user = document.cookie.split(',');
-      LogInCheck('patient');
-      this.Docs = GetDocsSVs();
-  }
+    constructor(public router: Router) {}
+    ngOnInit() {
+        user = document.cookie.split(',');
+        LogInCheck('patient');
+        this.Docs = GetDocsSVs();
+    }
 
     newDoctor(): void {
         const newDoc =  this.newDoc.nativeElement.value;
         USERS.find(function (tmp) {
             if (tmp.sv.toString() === user[0]) {
-                    if (newDoc !== '') {
-                        tmp.doctor_sv = newDoc;
-                        alert('Ihr Arzt wurde geändert!');
-                        return true;
-                    }
+                if (newDoc !== '') {
+                    tmp.doctor_sv = newDoc;
+                    alert('Ihr Arzt wurde geändert!');
+                    return true;
+                }
             }
         });
     }
@@ -54,7 +55,9 @@ export class PatientSettingsComponent implements OnInit {
             }
         });
     }
-
+    onRoute(route): void {
+        this.router.navigate([route]);
+    }
     onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);

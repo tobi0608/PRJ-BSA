@@ -68,6 +68,9 @@ export class DocViewComponent implements OnInit {
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient.sv]);
     }
+    onRoute(route): void {
+        this.router.navigate([route]);
+    }
     onOff(): void {
         document.cookie = 'null; path=/';
     }
