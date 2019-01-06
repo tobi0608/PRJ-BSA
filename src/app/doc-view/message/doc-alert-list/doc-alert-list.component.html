@@ -40,8 +40,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let alert of alerts"
-              (click)="onSeen(alert)"
-              (click)="onSelect(alert.svFrom)">
+              (click)="onSelect(alert)">
             <td><fa name="{{alert.seen}}"></fa></td>
             <td>{{alert.last_name}} {{alert.first_name}}</td>
             <td>{{alert.text}}</td>
@@ -59,8 +58,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let alert of alerts"
-              (click)="onSeen(alert)"
-              (click)="onSelect(alert.svFrom)">
+              (click)="onSelect(alert)">
             <td><fa name="{{alert.seen}}"></fa></td>
             <td>{{alert.timestamp | date:'dd.MM'}}</td>
             <td>{{alert.last_name}}</td>

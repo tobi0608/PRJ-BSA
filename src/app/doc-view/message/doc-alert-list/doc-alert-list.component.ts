@@ -17,12 +17,9 @@ export class DocAlertListComponent implements OnInit {
       LogInCheck('doctor');
       this.alerts = MessageFilter('Bluthochdruck');
   }
-    onSelect(patient): void {
-        this.router.navigate(['doctor/patients/record/:' + patient]);
-    }
-
-    onSeen(alert): void {
+    onSelect(alert): void {
         alert.seen = ' ';
+        this.router.navigate(['doctor/patients/record/:' + alert.svFrom]);
     }
     onRoute(route): void {
         this.router.navigate([route]);
