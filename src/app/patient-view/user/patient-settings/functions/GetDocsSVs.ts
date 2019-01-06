@@ -2,10 +2,9 @@ import {USERS} from '../../../../mock-files/mock-user';
 
 export function GetDocsSVs(): object {
     const doc = [];
-    USERS.find(function (tmp) {
+    USERS.forEach(function (tmp) {
         if (tmp.type === 'doctor') {
-            doc.unshift(tmp);
-            return true;
+            doc.push(tmp);
         }
     });
     return doc;

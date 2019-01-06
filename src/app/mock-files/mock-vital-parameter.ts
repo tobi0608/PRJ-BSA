@@ -1,6 +1,7 @@
 import { VitalParameter } from './vital-parameter';
 
 export const DATES: VitalParameter[] = [
+    {sv: 3198060896, systole: 124, diastole: 82, heartbeat: 95, timestamp: 1546844426540, i10: ' '},
     {sv: 3198060896, systole: 130, diastole: 78, heartbeat: 73, timestamp: 1546815626540, i10: ' '},
     {sv: 3198060896, systole: 132, diastole: 86, heartbeat: 79, timestamp: 1546786826540, i10: ' '},
     {sv: 3198060896, systole: 138, diastole: 79, heartbeat: 85, timestamp: 1546758026540, i10: ' '},

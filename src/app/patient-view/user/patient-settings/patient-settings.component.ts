@@ -30,8 +30,9 @@ export class PatientSettingsComponent implements OnInit {
         USERS.find(function (tmp) {
             if (tmp.sv.toString() === user[0]) {
                 if (newDoc !== '') {
-                    tmp.doctor_sv = newDoc;
+                    tmp.doctor_sv = parseInt(newDoc, 10);
                     alert('Ihr Arzt wurde geändert!');
+                    console.log(tmp);
                     return true;
                 }
             }
