@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LogInCheck} from '../../../global-funtions/LogInCheck';
 import {GetDocDetails} from './functions/GetDocDetails';
+import {FilterMedication} from '../../../global-funtions/FilterMedication';
 let user = [];
 
 @Component({
@@ -11,6 +12,8 @@ let user = [];
 export class PatientInformationComponent implements OnInit {
   user;
   doc;
+  currentMeds;
+  usedMeds;
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +21,8 @@ export class PatientInformationComponent implements OnInit {
       LogInCheck('patient');
       this.user = user;
       this.doc = GetDocDetails();
+      this.currentMeds = FilterMedication(user[0], 'fresh');
+      this.usedMeds = FilterMedication(user[0], 'expired');
   }
 
     onOff(): void {

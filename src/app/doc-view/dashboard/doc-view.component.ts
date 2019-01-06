@@ -8,6 +8,8 @@ import {UserCounter} from './functions/UserCounter';
 
 let user = [];
 
+console.log();
+
 @Component({
   selector: 'app-doc-view',
   templateUrl: './doc-view.component.html',
@@ -63,11 +65,9 @@ export class DocViewComponent implements OnInit {
       this.users = lastPatients();
       this.patientChartOptions.series[0].data = UserCounter();
   }
-
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient.sv]);
     }
-
     onOff(): void {
         document.cookie = 'null; path=/';
     }

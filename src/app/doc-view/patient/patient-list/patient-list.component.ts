@@ -15,19 +15,15 @@ export class PatientListComponent implements OnInit {
     constructor(public router: Router) { }
 
     ngOnInit() {
-        console.log();
         LogInCheck('doctor');
         this.patients = ShowOwnPatients();
     }
-
     onAddPatient(): void {
         this.router.navigate(['doctor/patients/record/:new']);
     }
-
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient.sv]);
     }
-
     onOff(): void {
         document.cookie = 'null; path=/';
         console.log(document.cookie);

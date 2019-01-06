@@ -6,11 +6,10 @@ import {LogInCheck} from '../../global-funtions/LogInCheck';
 import {MessageCounter} from '../../global-funtions/MessageCounter';
 import {ThreeDaysList} from './functions/ThreeDaysList';
 import {StatusCheck} from './functions/StatusCheck';
+import {Message} from '../../mock-files/messages';
+import {MESSAGES} from '../../mock-files/mock-messages';
 
 let user = [];
-const systoleValues = [];
-const diastoleValues = [];
-const heartRateValues = [];
 
 
 @Component({
@@ -120,9 +119,7 @@ export class PatientViewComponent implements OnInit {
     }
 
     onSend(): void {
-        console.log(this.chartOptions.series[0].data);
-        const timestamp = Date.now();
-        const sv = parseInt(user[0], 10);
+        user = document.cookie.split(',');
         const systole = parseInt(this.systole.nativeElement.value, 10);
         const diastole = parseInt(this.diastole.nativeElement.value, 10);
         const heartRate = parseInt(this.heartRate.nativeElement.value, 10);
@@ -131,19 +128,31 @@ export class PatientViewComponent implements OnInit {
             iTen = 'heart';
         }
         const tmp: VitalParameter = {
-            sv: sv,
+            sv: parseInt(user[0], 10),
             systole: systole,
             diastole: diastole,
             heartbeat: heartRate,
-            timestamp: timestamp,
+            timestamp: Date.now(),
             i10: iTen
         };
 
         if (systole && diastole && heartRate !== null) {
+            if (systole > 140) {
+                const msg: Message = {
+                    svFrom: parseInt(user[0], 10),
+                    svTo: parseInt(user[4], 10),
+                    first_name: user[2],
+                    last_name: user[3],
+                    type: 'Bluthochdruck',
+                    text: 'Bluthochdruck! ' + systole + '/' + diastole + '/' + heartRate + '!',
+                    timestamp: Date.now(),
+                    seen: 'bell',
+                    check: ' ',
+                    times: ' '
+                };
+                MESSAGES.unshift(msg);
+            }
             DATES.unshift(tmp);
-            systoleValues.unshift([timestamp + 3600000, systole]);
-            diastoleValues.unshift([timestamp + 3600000, diastole]);
-            heartRateValues.unshift([timestamp + 3600000, heartRate]);
             alert('Ihre Werte wurden gespeichert');
             this.ngOnInit();
         }

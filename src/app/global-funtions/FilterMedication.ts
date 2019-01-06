@@ -1,4 +1,4 @@
-import {MEDICATION} from '../../../../mock-files/mock-medication';
+import {MEDICATION} from '../mock-files/mock-medication';
 
 export function FilterMedication(sv, filter): object {
     const Meds = [];

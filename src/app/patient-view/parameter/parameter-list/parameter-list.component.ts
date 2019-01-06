@@ -3,6 +3,8 @@ import {DATES} from '../../../mock-files/mock-vital-parameter';
 import {VitalParameter} from '../../../mock-files/vital-parameter';
 import {LogInCheck} from '../../../global-funtions/LogInCheck';
 import {PushData} from '../../../global-funtions/PushData';
+import {Message} from '../../../mock-files/messages';
+import {MESSAGES} from '../../../mock-files/mock-messages';
 
 let user = [];
 
@@ -27,28 +29,42 @@ export class ParameterListComponent implements OnInit {
 
     onSend(): void {
         user = document.cookie.split(',');
-        const sv = parseInt(user[0], 10);
         const systole = parseInt(this.systole.nativeElement.value, 10);
         const diastole = parseInt(this.diastole.nativeElement.value, 10);
         const heartRate = parseInt(this.heartRate.nativeElement.value, 10);
-        const timeDate = Date.now();
         let iTen = ' ';
         if (systole > 140) {
             iTen = 'heart';
         }
         const tmp: VitalParameter = {
-            sv: sv,
+            sv: parseInt(user[0], 10),
             systole: systole,
             diastole: diastole,
             heartbeat: heartRate,
-            timestamp: timeDate,
+            timestamp: Date.now(),
             i10: iTen
         };
-      if (systole && diastole && heartRate !== null) {
-          DATES.unshift(tmp);
-          alert('Ihre Werte wurden gespeichert');
-          this.ngOnInit();
-      }
+
+        if (systole && diastole && heartRate !== null) {
+            if (systole > 140) {
+                const msg: Message = {
+                    svFrom: parseInt(user[0], 10),
+                    svTo: parseInt(user[4], 10),
+                    first_name: user[2],
+                    last_name: user[3],
+                    type: 'Bluthochdruck',
+                    text: 'Bluthochdruck! ' + systole + '/' + diastole + '/' + heartRate + '!',
+                    timestamp: Date.now(),
+                    seen: 'bell',
+                    check: ' ',
+                    times: ' '
+                };
+                MESSAGES.unshift(msg);
+            }
+            DATES.unshift(tmp);
+            alert('Ihre Werte wurden gespeichert');
+            this.ngOnInit();
+        }
     }
     onOff(): void {
         document.cookie = 'null; path=/';

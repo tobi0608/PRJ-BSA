@@ -11,7 +11,7 @@ import {LogInCheck} from '../../../global-funtions/LogInCheck';
 import {SectionSelection} from './functions/SectionSelection';
 import {PushData} from '../../../global-funtions/PushData';
 import {ShowPatient} from './functions/ShowPatient';
-import {FilterMedication} from './functions/FilterMedication';
+import {FilterMedication} from '../../../global-funtions/FilterMedication';
 
 let user = [];
 
@@ -199,13 +199,12 @@ export class PatientRecordComponent implements OnInit {
          const svnr =  this.svnr.nativeElement.value;
          const firstName = this.first_name.nativeElement.value;
          const lastName = this.last_name.nativeElement.value;
-         const gender = this.gender.nativeElement.value;
          const age = this.age.nativeElement.value;
          const tmp: Patient = {
             sv: parseInt(svnr, 10),
             first_name: firstName,
             last_name: lastName,
-            gender: gender,
+            gender: this.gender.nativeElement.value,
             age: parseInt(age, 10),
             registered: Date.now(),
             last_visit: Date.now(),
