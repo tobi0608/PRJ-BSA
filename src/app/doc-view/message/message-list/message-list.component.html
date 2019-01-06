@@ -1,24 +1,36 @@
 <div class="messageDoctor" id="loginSite">
-  <nav class="messageDoctor__navbar">
-    <a routerLink="/doctor/dashboard" class="messageDoctor__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages/appointments" class="messageDoctor__navbar--nav-active">Nachrichten</a>
-    <a routerLink="/doctor/patients/list" class="messageDoctor__navbar--nav-item">Patienten</a>
-    <a routerLink="/doctor/user/information" class="messageDoctor__navbar--nav-item">Benutzer</a>
-    <a routerLink="/home" class="messageDoctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  <nav class="nav">
+    <a routerLink="/doctor/dashboard" class="nav--nav-item">Dashboard</a>
+    <a routerLink="/doctor/messages/appointments" class="nav--nav-active">Nachrichten</a>
+    <a routerLink="/doctor/patients/list" class="nav--nav-item">Patienten</a>
+    <a routerLink="/doctor/user/information" class="nav--nav-item">Benutzer</a>
+    <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-  <nav class="messageDoctor__navbarSecond">
-  <a routerLink="/doctor/messages/appointments" class="messageDoctor__navbarSecond--nav-active">Terminanfragen</a>
-  <a routerLink="/doctor/messages/alerts" class="messageDoctor__navbarSecond--nav-item">Blutdruckprobleme</a>
+  <select class="custom-select navMobile" (click)="onRoute()" #route>
+    <option value="/doctor/dashboard">Dashboard</option>
+    <option value="/doctor/messages/appointments" selected="selected">Nachrichten</option>
+    <option value="/doctor/patients/list">Patienten</option>
+    <option value="/doctor/user/information">Benutzer</option>
+    <option value="/home" (click)="onOff()">Abmelden</option>
+  </select>
+  <div class="nav--firstSkewDoc"></div>
+  <nav class="navMessage">
+    <a routerLink="/doctor/messages/appointments" class="navMessage--nav-active">Terminanfragen</a>
+    <a routerLink="/doctor/messages/alerts" class="navMessage--nav-item">Nachrichten</a>
   </nav>
-  <div class="messageDoctor__navbarSecond--skewRight"></div>
-  <div class="messageDoctor__navbarSecond--skewLeft"></div>
-  <div class="messageDoctor__navbar--skew"></div>
+  <div class="navMessage--skewRight"></div>
+  <div class="navMessage--skewLeft"></div>
+  <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
+    <option value="/doctor/messages/appointments" selected="selected">Terminanfragen</option>
+    <option value="/doctor/messages/alerts">Blutdruckprobleme</option>
+  </select>
+  <div class="navSecondMobile--skew"></div>
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white messageDoctor__body">
       <div class="messageDoctor__body--messageList">
         <h2>Terminanfragen</h2>
-        <table class="table table-hover">
+        <table class="table table-hover messageDoctor__table--full">
           <thead>
           <tr>
             <th scope="col"><fa name="bell"></fa></th>
@@ -35,8 +47,29 @@
             <td (click)="onSelect(message.svFrom)">{{message.last_name}} {{message.first_name}}</td>
             <td (click)="onSelect(message.svFrom)">{{message.text}}</td>
             <td>
-                <fa name="{{message.check}}" class="messageDoctor__body--check" (click)="onAccept(message)"></fa>
-                <fa name="{{message.times}}" class="messageDoctor__body--times" (click)="onDenied(message)"></fa>
+              <fa name="{{message.check}}" class="messageDoctor__body--check" (click)="onAccept(message)"></fa>
+              <fa name="{{message.times}}" class="messageDoctor__body--times" (click)="onDenied(message)"></fa>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <table class="table table-hover messageDoctor__table--mobile">
+          <thead>
+          <tr>
+            <th scope="col"><fa name="bell"></fa></th>
+            <th scope="col">Name</th>
+            <th scope="col">Text</th>
+            <th scope="col">Aktion</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let message of messages">
+            <td (click)="onSelect(message.svFrom)"><fa name="{{message.seen}}"></fa></td>
+            <td (click)="onSelect(message.svFrom)">{{message.last_name}}</td>
+            <td (click)="onSelect(message.svFrom)">{{message.text}}</td>
+            <td>
+              <fa name="{{message.check}}" class="messageDoctor__body--check" (click)="onAccept(message)"></fa>
+              <fa name="{{message.times}}" class="messageDoctor__body--times" (click)="onDenied(message)"></fa>
             </td>
           </tr>
           </tbody>

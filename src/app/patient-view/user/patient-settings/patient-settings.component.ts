@@ -15,9 +15,9 @@ export class PatientSettingsComponent implements OnInit {
     @ViewChild('newPW') newPW;
     @ViewChild('repeatPW') repeatPW;
     @ViewChild('newDoc') newDoc;
+    @ViewChild('route') route;
     Docs;
-  constructor() { }
-
+  constructor() {}
   ngOnInit() {
       user = document.cookie.split(',');
       LogInCheck('patient');

@@ -1,43 +1,53 @@
 <div class="doctorSettings" id="loginSite">
-  <nav class="doctorSettings__navbar">
-    <a routerLink="/doctor/dashboard" class="doctorSettings__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages/appointments" class="doctorSettings__navbar--nav-item">Nachrichten</a>
-    <a routerLink="/doctor/patients/list" class="doctorSettings__navbar--nav-item">Patienten</a>
-    <a routerLink="/doctor/user/information" class="doctorSettings__navbar--nav-active">Benutzer</a>
-    <a routerLink="/home" class="doctorSettings__navbar--nav-item" (click)="onOff()">Abmelden</a>
-  </nav>
-  <div class="doctorSettings__navbar--skew"></div>
-  <nav class="doctorSettings__navbarSecond">
-    <a routerLink="/doctor/user/information" class="doctorSettings__navbarSecond--nav-item">Informationen</a>
-    <a routerLink="/doctor/user/settings" class="doctorSettings__navbarSecond--nav-active">Einstellungen</a>
-  </nav>
-  <div class="doctorSettings__navbarSecond--skewRight"></div>
-  <div class="doctorSettings__navbarSecond--skewLeft"></div>
-
-  <div class="container-fluid">
-    <div class="shadow p-3 bg-white doctorSettings__body">
-      <div class="doctorSettings__general">
-        <h2>Sicherheit und Login</h2>
-        <form ngNativeValidate>
-                <h3>Passwort ändern</h3>
-                <label for="oldPW" class="doctorSettings__general--label">Aktuelles Passwort</label>
-                <input id="oldPW" type="password" class="form-control doctorSettings__general--input" required #oldPW>
-                <label for="newPW" class="doctorSettings__general--label">Neues Passwort:</label>
-                <input id="newPW"type="password" class="form-control doctorSettings__general--input" required #newPW>
-                <label for="repeatPW" class="doctorSettings__general--label">Neues Passwort erneut eingeben:</label>
-                <input id="repeatPW" type="password" class="form-control doctorSettings__general--input"
-                       required #repeatPW>
-                <input type="submit" (click)="newPassword()" value="Speichern"
-                       class="btn btn-danger doctorSettings__general--btn">
-
-        </form>
-      </div>
+    <nav class="nav">
+        <a routerLink="/doctor/dashboard" class="nav--nav-item">Dashboard</a>
+        <a routerLink="/doctor/messages/appointments" class="nav--nav-item">Nachrichten</a>
+        <a routerLink="/doctor/patients/list" class="nav--nav-item">Patienten</a>
+        <a routerLink="/doctor/user/information" class="nav--nav-active">Benutzer</a>
+        <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
+    </nav>
+    <select class="custom-select navMobile" (click)="onRoute()" #route>
+        <option value="/doctor/dashboard">Dashboard</option>
+        <option value="/doctor/messages/appointments">Nachrichten</option>
+        <option value="/doctor/patients/list">Patienten</option>
+        <option value="/doctor/user/information" selected="selecte">Benutzer</option>
+        <option value="/home" (click)="onOff()">Abmelden</option>
+    </select>
+    <div class="nav--firstSkewDoc"></div>
+    <nav class="navUsers">
+        <a routerLink="/doctor/user/information" class="navUsers--nav-item">Informationen</a>
+        <a routerLink="/doctor/user/settings" class="navUsers--nav-active">Einstellungen</a>
+    </nav>
+    <div class="navUsers--skewRight"></div>
+    <div class="navUsers--skewLeft"></div>
+    <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
+        <option value="/doctor/user/information">Informationen</option>
+        <option value="/doctor/user/settings" selected="selecte">Einstellungen</option>
+    </select>
+    <div class="navSecondMobile--skew"></div>
+    <div class="container-fluid">
+        <div class="shadow p-3 bg-white doctorSettings__body">
+            <div class="doctorSettings__general">
+                <h2>Sicherheit und Login</h2>
+                <form ngNativeValidate>
+                    <h3>Passwort ändern</h3>
+                    <label for="oldPW" class="doctorSettings__general--label">Aktuelles Passwort</label>
+                    <input id="oldPW" type="password" class="form-control doctorSettings__general--input" required #oldPW>
+                    <label for="newPW" class="doctorSettings__general--label">Neues Passwort:</label>
+                    <input id="newPW"type="password" class="form-control doctorSettings__general--input" required #newPW>
+                    <label for="repeatPW" class="doctorSettings__general--label">Neues Passwort erneut eingeben:</label>
+                    <input id="repeatPW" type="password" class="form-control doctorSettings__general--input"
+                           required #repeatPW>
+                    <input type="submit" (click)="newPassword()" value="Speichern"
+                           class="btn btn-danger doctorSettings__general--btn">
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <div class="noAccess" id="noAccess">
-  <div class="jumbotron shadow p-3 bg-white rounded">
-    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
-    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
-  </div>
+    <div class="jumbotron shadow p-3 bg-white rounded">
+        <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
+        <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
+    </div>
 </div>

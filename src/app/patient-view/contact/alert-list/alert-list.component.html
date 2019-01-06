@@ -1,25 +1,38 @@
 <div class="messagePatient" id="loginSite">
-  <nav class="messagePatient__navbar">
-    <a routerLink="/patient/dashboard" class="messagePatient__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/parameter/chart" class="messagePatient__navbar--nav-item">Blutdruckwerte</a>
-    <a routerLink="/patient/achievement" class="messagePatient__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/contact/appointment" class="messagePatient__navbar--nav-active">Kontakt</a>
-    <a routerLink="/patient/user/information" class="messagePatient__navbar--nav-item">Benutzer</a>
-    <a routerLink="/home" class="messagePatient__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  <nav class="nav">
+    <a routerLink="/patient/dashboard" class="nav--nav-item">Dashboard</a>
+    <a routerLink="/patient/parameter/chart" class="nav--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/achievement" class="nav--nav-item">Herausforderungen</a>
+    <a routerLink="/patient/contact/appointment" class="nav--nav-active">Kontakt</a>
+    <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
+    <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-  <div class="messagePatient__navbar--skew"></div>
-  <nav class="messagePatient__navbarSecond">
-    <a routerLink="/patient/contact/appointment" class="messagePatient__navbarSecond--nav-item">Termin</a>
-    <a routerLink="/patient/contact/alert" class="messagePatient__navbarSecond--nav-active">Nachrichten</a>
+  <select class="custom-select navMobile" (click)="onRoute()" #route>
+    <option value="/patient/dashboard">Dashboard</option>
+    <option value="/patient/parameter/chart">Blutdruckwerte</option>
+    <option value="/patient/achievement">Herausforderungen</option>
+    <option value="/patient/contact/appointment" selected="selected">Kontakt</option>
+    <option value="/patient/user/information">Benutzer</option>
+    <option value="/home" (click)="onOff()">Abmelden</option>
+  </select>
+  <div class="nav--firstSkewPat"></div>
+  <nav class="navContact">
+    <a routerLink="/patient/contact/appointment" class="navContact--nav-item">Termin</a>
+    <a routerLink="/patient/contact/alert" class="navContact--nav-active">Nachrichten</a>
   </nav>
-  <div class="messagePatient__navbarSecond--skewRight"></div>
-  <div class="messagePatient__navbarSecond--skewLeft"></div>
+  <div class="navContact--skewRight"></div>
+  <div class="navContact--skewLeft"></div>
+  <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
+    <option value="/patient/contact/appointment">Termin</option>
+    <option value="/patient/contact/alert" selected="selected">Nachrichten</option>
+  </select>
+  <div class="navSecondMobile--skew"></div>
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white messagePatient__body">
       <div class="messagePatient__body--alerts">
         <h2>Benachrichtigungen vom Arzt</h2>
-        <table class="table table-hover">
+        <table class="table table-hover messagePatient__body--table">
           <thead>
           <tr>
             <th scope="col"><fa name="bell"></fa></th>
@@ -31,7 +44,7 @@
           <tr *ngFor="let message of messages"
               (click)="onSeen(message)">
             <td><fa name="{{message.seen}}"></fa></td>
-            <td>{{message.timestamp | date:'dd.MM.yyyy'}}
+            <td>{{message.timestamp | date:'dd.MM'}}
             <td>{{message.text}}</td>
           </tr>
           </tbody>

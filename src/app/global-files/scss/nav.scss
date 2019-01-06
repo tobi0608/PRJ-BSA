@@ -16,6 +16,36 @@
   padding: 0rem 0.75rem 0rem 0.75rem;
   border: 0.1rem solid  #B2101D;
 }
+.navSecondMobile{
+  @media only screen and (min-width: 820px) {
+    display: none;
+  }
+  @media only screen and (max-width: 820px) {
+    display: block;
+    margin-top: 2.4rem;
+    position: fixed;
+    z-index: 9;
+    height: 2.5rem;
+    border-radius: 0rem;
+    background-color: #FFFFFF;;
+    font-size: 1.5rem;
+    color: #B2101D;
+    width: 12.5rem;
+    padding: 0rem 0.75rem 0rem 0.75rem;
+    border: 0.1rem solid  #B2101D;
+    &--skew{
+      margin-left: 12.5rem;
+      margin-top: 2.4rem;
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-right: 2.5rem solid transparent;
+      display: block;
+      position: fixed;
+      z-index: 9;
+    }
+  }
+}
 .nav {
   position: fixed;
   z-index: 9;
@@ -51,6 +81,21 @@
     }
     @media only screen and (min-width: 820px) {
       margin-left: 56.059375rem;
+    }
+    width: 0;
+    height: 0;
+    border-top: 2.5rem solid #B2101D;
+    border-right: 2.5rem solid transparent;
+    display: block;
+    position: fixed;
+    z-index: 9;
+  }
+  &--firstSkewDoc {
+    @media only screen and (max-width: 820px) {
+      margin-left: 15rem;
+    }
+    @media only screen and (min-width: 820px) {
+      margin-left: 41.17125rem
     }
     width: 0;
     height: 0;

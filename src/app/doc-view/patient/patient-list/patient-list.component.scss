@@ -1,109 +1,48 @@
-.patientList {
-  padding-top: 9rem;
-  font-size: 1.35rem;
-  &__navbar {
-    position: fixed;
-    z-index: 9;
-    height: 2.5rem;
-    &--nav-item {
-      font-size: 1.5rem;
-      color: white;
-      background-color: #B2101D;
-      padding: 0.3rem 0.75rem 0.52rem 0.75rem;
-    }
-    &--nav-active {
-      font-size: 1.5rem;
-      color: #B2101D;
-      padding: 0.3rem 0.75rem 0.42rem 0.75rem;
-      background-color: #FFFFFF;
-      border: 0.1rem solid #B2101D;
-    }
-    &--skew {
-      width: 0;
-      height: 0;
-      border-top: 2.5rem solid #B2101D;
-      border-right: 2.5rem solid transparent;
-      display: block;
-      margin-left: 41.17125rem;
-      position: fixed;
-      z-index: 9;
-    }
-  }
-  &__navbarSecond{
-    left: 14.008125rem;
-    margin-top: 2.2rem;
-    position: fixed;
-    z-index: 9;
-    height: 2.5rem;
-    background-color: #B2101D;
-    &--nav-item{
-      font-size: 1.5rem;
-      color: white;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-    }
-    &--nav-active {
-      font-size: 1.5rem;
-      color: #B2101D;
-      padding: 0.3rem 0.75rem 0.32rem 0.75rem;
-      background-color: #FFFFFF;
-      border: 0rem 0.1rem 0.1rem 0.1rem solid #B2101D;
-    }
-    &--skewRight{
-      margin-top: 2.2rem;
-      width: 0;
-      height: 0;
-      border-top: 2.5rem solid #B2101D;
-      border-right: 2.5rem solid transparent;
-      display: block;
-      margin-left: 32.2425rem;
-      position: fixed;
-      z-index: 9;
-    }
-    &--skewLeft{
-      margin-top: 2.2rem;
-      width: 0;
-      height: 0;
-      border-top: 2.5rem solid #B2101D;
-      border-left: 2.5rem solid transparent;
-      display: block;
-      margin-left: 11.508125rem;
-      position: fixed;
-      z-index: 9;
-    }
-  }
+@import "../../../global-files/scss/signIn";
+@import "../../../global-files/scss/nav";
+@import "../assets/scss/navPatients";
 
-  &__addPatient{
-    z-index: 7;
-    background-color: #B2101D;
-    margin-top: 2rem;
-    float: right;
-    width: 42rem;
-    position:relative;
-    color: #FFFFFF;
-  }
+.patientList {
+  padding-top: 5.5rem;
+  font-size: 1.35rem;
 
   &__body {
-    width: 80rem;
-    font-size: 1.5rem;
+    @media only screen and (min-width: 1000px) {
+      width: 80%;
+    }
+    @media only screen and (max-width: 1000px) {
+      width: 100%;
+    }
     &--list {
       padding-top: 4rem;
     }
     &--addBtn{
-      float: right;
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
-    &--title{
-      float: left;
+  }
+  &__table {
+    @media only screen and (min-width: 640px) {
+      &--mobile {
+        display: none;
+      }
+      &--full {
+        display: block;;
+      }
+    }
+    @media only screen and (max-width: 640px) {
+      &--mobile {
+        display: block;
+        font-size: 1rem;
+      }
+      &--full {
+        display: none;
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      &--mobile {
+        font-size: 0.6rem;
+      }
     }
   }
-}
-
-.noAccess{
-  display: none;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  height: 100%;
-  padding-top: 10%;
 }

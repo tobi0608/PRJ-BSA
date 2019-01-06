@@ -1,25 +1,54 @@
 <div class="alertDoctor" id="loginSite">
-  <nav class="alertDoctor__navbar">
-    <a routerLink="/doctor/dashboard" class="alertDoctor__navbar--nav-item">Dashboard</a>
-    <a routerLink="/doctor/messages/appointments" class="alertDoctor__navbar--nav-active">Nachrichten</a>
-    <a routerLink="/doctor/patients/list" class="alertDoctor__navbar--nav-item">Patienten</a>
-    <a routerLink="/doctor/user/information" class="alertDoctor__navbar--nav-item">Benutzer</a>
-    <a routerLink="/home" class="alertDoctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  <nav class="nav">
+    <a routerLink="/doctor/dashboard" class="nav--nav-item">Dashboard</a>
+    <a routerLink="/doctor/messages/appointments" class="nav--nav-active">Nachrichten</a>
+    <a routerLink="/doctor/patients/list" class="nav--nav-item">Patienten</a>
+    <a routerLink="/doctor/user/information" class="nav--nav-item">Benutzer</a>
+    <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-  <nav class="alertDoctor__navbarSecond">
-    <a routerLink="/doctor/messages/appointments" class="alertDoctor__navbarSecond--nav-item">Terminanfragen</a>
-    <a routerLink="/doctor/messages/alerts" class="alertDoctor__navbarSecond--nav-active">Blutdruckprobleme</a>
+  <select class="custom-select navMobile" (click)="onRoute()" #route>
+    <option value="/doctor/dashboard">Dashboard</option>
+    <option value="/doctor/messages/appointments" selected="selected">Nachrichten</option>
+    <option value="/doctor/patients/list">Patienten</option>
+    <option value="/doctor/user/information">Benutzer</option>
+    <option value="/home" (click)="onOff()">Abmelden</option>
+  </select>
+  <div class="nav--firstSkewDoc"></div>
+  <nav class="navMessage">
+    <a routerLink="/doctor/messages/appointments" class="navMessage--nav-item">Terminanfragen</a>
+    <a routerLink="/doctor/messages/alerts" class="navMessage--nav-active">Nachrichten</a>
   </nav>
-  <div class="alertDoctor__navbarSecond--skewRight"></div>
-  <div class="alertDoctor__navbarSecond--skewLeft"></div>
-  <div class="alertDoctor__navbar--skew"></div>
+  <div class="navMessage--skewRight"></div>
+  <div class="navMessage--skewLeft"></div>
+  <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
+    <option value="/doctor/messages/appointments">Terminanfragen</option>
+    <option value="/doctor/messages/alerts" selected="selected">Blutdruckprobleme</option>
+  </select>
+  <div class="navSecondMobile--skew"></div>
 
-  <div class="alertDoctor__navbar--skew"></div>
   <div class="container-fluid">
     <div class="shadow p-3 bg-white alertDoctor__body">
       <div class="alertDoctor__body--alertList">
         <h2>Alerts</h2>
-        <table class="table table-hover">
+        <table class="table table-hover alertDoctor__table--full">
+          <thead>
+          <tr>
+            <th scope="col"><fa name="bell"></fa></th>
+            <th scope="col">Name</th>
+            <th scope="col">Text</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let alert of alerts"
+              (click)="onSeen(alert)"
+              (click)="onSelect(alert.svFrom)">
+            <td><fa name="{{alert.seen}}"></fa></td>
+            <td>{{alert.last_name}} {{alert.first_name}}</td>
+            <td>{{alert.text}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <table class="table table-hover alertDoctor__table--mobile">
           <thead>
           <tr>
             <th scope="col"><fa name="bell"></fa></th>
@@ -33,8 +62,8 @@
               (click)="onSeen(alert)"
               (click)="onSelect(alert.svFrom)">
             <td><fa name="{{alert.seen}}"></fa></td>
-            <td>{{alert.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
-            <td>{{alert.last_name}} {{alert.first_name}}</td>
+            <td>{{alert.timestamp | date:'dd.MM'}}</td>
+            <td>{{alert.last_name}}</td>
             <td>{{alert.text}}</td>
           </tr>
           </tbody>

@@ -109,6 +109,7 @@ export class PatientRecordComponent implements OnInit {
     ngOnInit() {
         LogInCheck('doctor');
         const sv = this.route.snapshot.paramMap.get('sv').replace(':', '');
+        console.log(sv)
         SectionSelection(sv);
         this.chartOptions.series[0].data = PushData(sv, 'systole');
         this.chartOptions.series[1].data = PushData(sv, 'diastole');

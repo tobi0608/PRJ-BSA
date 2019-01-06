@@ -1,19 +1,32 @@
 <div class="appointmentPatient" id="loginSite">
-  <nav class="appointmentPatient__navbar">
-  <a routerLink="/patient/dashboard" class="appointmentPatient__navbar--nav-item">Dashboard</a>
-  <a routerLink="/patient/parameter/chart" class="appointmentPatient__navbar--nav-item">Blutdruckwerte</a>
-  <a routerLink="/patient/achievement" class="appointmentPatient__navbar--nav-item">Herausforderungen</a>
-  <a routerLink="/patient/contact/appointment" class="appointmentPatient__navbar--nav-active">Kontakt</a>
-  <a routerLink="/patient/user/information" class="appointmentPatient__navbar--nav-item">Benutzer</a>
-  <a routerLink="/home" class="appointmentPatient__navbar--nav-item" (click)="onOff()">Abmelden</a>
-</nav>
-  <div class="appointmentPatient__navbar--skew"></div>
-  <nav class="appointmentPatient__navbarSecond">
-    <a routerLink="/patient/contact/appointment" class="appointmentPatient__navbarSecond--nav-active">Termin</a>
-    <a routerLink="/patient/contact/alert" class="appointmentPatient__navbarSecond--nav-item">Nachrichten</a>
+  <nav class="nav">
+    <a routerLink="/patient/dashboard" class="nav--nav-item">Dashboard</a>
+    <a routerLink="/patient/parameter/chart" class="nav--nav-item">Blutdruckwerte</a>
+    <a routerLink="/patient/achievement" class="nav--nav-item">Herausforderungen</a>
+    <a routerLink="/patient/contact/appointment" class="nav--nav-active">Kontakt</a>
+    <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
+    <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-  <div class="appointmentPatient__navbarSecond--skewRight"></div>
-  <div class="appointmentPatient__navbarSecond--skewLeft"></div>
+  <select class="custom-select navMobile" (click)="onRoute()" #route>
+    <option value="/patient/dashboard">Dashboard</option>
+    <option value="/patient/parameter/chart">Blutdruckwerte</option>
+    <option value="/patient/achievement">Herausforderungen</option>
+    <option value="/patient/contact/appointment" selected="selected">Kontakt</option>
+    <option value="/patient/user/information">Benutzer</option>
+    <option value="/home" (click)="onOff()">Abmelden</option>
+  </select>
+  <div class="nav--firstSkewPat"></div>
+  <nav class="navContact">
+    <a routerLink="/patient/contact/appointment" class="navContact--nav-active">Termin</a>
+    <a routerLink="/patient/contact/alert" class="navContact--nav-item">Nachrichten</a>
+  </nav>
+  <div class="navContact--skewRight"></div>
+  <div class="navContact--skewLeft"></div>
+  <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
+    <option value="/patient/contact/appointment"selected="selected">Termin</option>
+    <option value="/patient/contact/alert">Nachrichten</option>
+  </select>
+  <div class="navSecondMobile--skew"></div>
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white appointmentPatient__body">

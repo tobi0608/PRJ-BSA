@@ -1,20 +1,32 @@
 <div class="information" id="loginSite">
-  <nav class="information__navbar">
-    <a routerLink="/patient/dashboard" class="information__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/parameter/chart" class="information__navbar--nav-item">Blutdruckwerte</a>
-    <a routerLink="/patient/achievement" class="information__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/contact/appointment" class="information__navbar--nav-item">Kontakt</a>
-    <a routerLink="/patient/user/information" class="information__navbar--nav-active">Benutzer</a>
-    <a routerLink="/home" class="information__navbar--nav-item" (click)="onOff()">Abmelden</a>
-  </nav>
-  <div class="information__navbar--skew"></div>
-  <nav class="information__navbarSecond">
-    <a routerLink="/patient/user/information" class="information__navbarSecond--nav-active">Informationen</a>
-    <a routerLink="/patient/user/settings" class="information__navbarSecond--nav-item">Einstellungen</a>
-  </nav>
-  <div class="information__navbarSecond--skewRight"></div>
-  <div class="information__navbarSecond--skewLeft"></div>
-
+    <nav class="nav">
+      <a routerLink="/patient/dashboard" class="nav--nav-item">Dashboard</a>
+      <a routerLink="/patient/parameter/chart" class="nav--nav-item">Blutdruckwerte</a>
+      <a routerLink="/patient/achievement" class="nav--nav-item">Herausforderungen</a>
+      <a routerLink="/patient/contact/appointment" class="nav--nav-item">Kontakt</a>
+      <a routerLink="/patient/user/information" class="nav--nav-active">Benutzer</a>
+      <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
+    </nav>
+    <select class="custom-select navMobile" (click)="onRoute()" #route>
+      <option value="/patient/dashboard">Dashboard</option>
+      <option value="/patient/parameter/chart">Blutdruckwerte</option>
+      <option value="/patient/achievement">Herausforderungen</option>
+      <option value="/patient/contact/appointment">Kontakt</option>
+      <option value="/patient/user/information" selected="selected">Benutzer</option>
+      <option value="/home" (click)="onOff()">Abmelden</option>
+    </select>
+    <div class="nav--firstSkewPat"></div>
+    <nav class="navUser">
+      <a routerLink="/patient/user/information" class="navUser--nav-active">Informationen</a>
+      <a routerLink="/patient/user/settings" class="navUser--nav-item">Einstellungen</a>
+    </nav>
+    <div class="navUser--skewRight"></div>
+    <div class="navUser--skewLeft"></div>
+    <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
+      <option value="/patient/user/information" selected="selected">Informationen</option>
+      <option value="/patient/user/settings">Einstellungen</option>
+    </select>
+    <div class="navSecondMobile--skew"></div>
   <div class="container-fluid">
     <div class="shadow p-3 bg-white information__body">
         <div class="information__general">
@@ -24,11 +36,11 @@
             <p>{{user[0]}}</p>
           </div>
           <div class="row">
-            <div class="col-2">
+            <div class="col-sm-2 col-12">
             <span class="information__general--label">Vorname:</span>
             <p>{{user[2]}}</p>
             </div>
-            <div class="col-2">
+            <div class="col-sm-2 col-12">
               <span class="information__general--label">Nachname:</span>
               <p>{{user[3]}}</p>
             </div>

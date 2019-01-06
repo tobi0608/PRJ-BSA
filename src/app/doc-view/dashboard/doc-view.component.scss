@@ -1,68 +1,86 @@
-.doctor {
-  padding-top: 9rem;
-  font-size: 1.5rem;
-  &__navbar {
-    position: fixed;
-    z-index: 9;
-    height: 2.5rem;
-    &--nav-item {
-      font-size: 1.5rem;
-      color: white;
-      background-color: #B2101D;
-      padding: 0.3rem 0.75rem 0.52rem 0.75rem;
-    }
-    &--nav-active {
-      font-size: 1.5rem;
-      color: #B2101D;
-      padding: 0.3rem 0.75rem 0.42rem 0.75rem;
-      background-color: #FFFFFF;
-      border: 0.1rem solid #B2101D;
-    }
-    &--skew {
-      width: 0;
-      height: 0;
-      border-top: 2.5rem solid #B2101D;
-      border-right: 2.5rem solid transparent;
-      display: block;
-      margin-left: 41.17125rem;
-      position: fixed;
-      z-index: 9;
-    }
-  }
+@import "../../global-files/scss/signIn";
+@import "../../global-files/scss/nav";
 
-  &__welcome-section{
-    z-index: 8;
-    background-color: #B2101D;
-    margin-top: 2rem;
-    right: 1rem;
-    position: absolute;
-    color: #FFFFFF;
-    &--card{
+.doctor {
+  font-size: 1.35rem;
+  padding-top: 5.5rem;
+  &__welcome-section {
+    z-index: 7;
+    margin-top: 3rem;
+    @media only screen and (min-width: 1000px) {
+      background-color: #B2101D;
+      float: right;
+      width: 40%;
+      position: relative;
+      color: #FFFFFF;
+    }
+    @media only screen and (max-width: 1000px) {
+      background-color: #FFFFFF;
+      width: 90%;
+      position: absolute;
+      color: #000000;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+    }
+    &--card {
+      position: relative;
       height: 8rem;
     }
-    &--Count{
-      color: #FFE26F;
+    &--Count {
+      @media only screen and (min-width: 1000px) {
+        color: #FFE26F;
+      }
+      @media only screen and (max-width: 1000px) {
+        color: #B2101D;
+      }
     }
   }
+
   &__body {
-    width: 80rem;
+    @media only screen and (min-width: 1000px) {
+      width: 80%;
+    }
+    @media only screen and (max-width: 1000px) {
+      width: 100%;
+    }
     &--newPatients {
-      padding-top: 2.5rem;
-      width: 65%;
+      @media only screen and (min-width: 1000px) {
+        padding-top: 2.5rem;
+        width: 65%;
+      }
+      @media only screen and (max-width: 1000px) {
+        padding-top: 13rem;
+      }
+      @media only screen and (max-width: 400px) {
+        padding-top: 18rem;
+      }
     }
-    &--chartSection{
+    &--chartSection {
       padding-top: 1rem;
+      position: relative;
     }
-    &--table{
-      width: 70%;
+    &--chart{
+      display: block;
+    }
+  }
+
+  &__table {
+    width: 70%;
+    @media only screen and (min-width: 550px) {
+      &--mobile {
+        display: none;
+      }
+      &--full {
+        display: block;
+      }
+    }
+    @media only screen and (max-width: 550px) {
+      &--mobile {
+        display: block;
+      }
+      &--full {
+        display: none;
+      }
     }
   }
 }
 
-.noAccess{
-  display: none;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  height: 100%;
-  padding-top: 10%;
-}

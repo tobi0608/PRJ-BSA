@@ -2,67 +2,131 @@
 @import "../../global-files/scss/nav";
 
 .patient{
-  padding-top: 5.5rem;
   font-size: 1.35rem;
+  padding-top: 5.5rem;
   &__body{
-    width: 80%;
+    @media only screen and (min-width: 1000px) {
+      width: 80%;
+    }
+    @media only screen and (max-width: 1000px) {
+      width: 100%;
+    }
   }
-    &__achievement{
+  &__achievement{
+    @media only screen and (min-width: 1000px) {
       padding-top: 2.5rem;
     }
+    @media only screen and (max-width: 1000px) {
+      padding-top: 25rem;
+    }
+  }
   &__appointment{
     padding-top: 1.5rem;
     &--link{
       color: #B2101D;
     }
   }
-    &__parameter{
-      padding-top: 1.5rem;
+  &__parameter{
+    @media only screen and (min-width: 1000px) {
       width: 70%;
-      position: relative;
-      &--chart{
-        display: block;
-      }
     }
-
-
-
+    @media only screen and (max-width: 1000px) {
+      width: 100%;
+    }
+    padding-top: 1.5rem;
+    position: relative;
+    &--chart{
+      display: block;
+    }
+  }
   &__welcome-section{
     z-index: 7;
-    background-color: #B2101D;
-    margin-top: 2rem;
-    float: right;
-    width: 40%;
-    position:relative;
-    color: #FFFFFF;
+    margin-top: 3rem;
+    @media only screen and (min-width: 1000px) {
+      background-color: #B2101D;
+      float: right;
+      width: 40%;
+      position:relative;
+      color: #FFFFFF;
+      &--avatarWhite{
+        position: absolute;
+        width: 15rem;
+        top: 0rem;
+        right: 0;
+      }
+      &--avatarRed{
+        display: none;
+      }
+    }
+    @media only screen and (max-width: 1000px) {
+      background-color: #FFFFFF;
+      width: 90%;
+      position: absolute;
+      color: #000000;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+      &--dayCount{
+        color: #B2101D;
+      }
+      &--avatarWhite{
+        display: none;
+      }
+      &--avatarRed{
+        position: absolute;
+        width: 15rem;
+        top: 0rem;
+        right: 0;
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      &--avatarWhite{
+        display: none;
+      }
+      &--avatarRed{
+        display: none;
+      }
+      &--dayCount{
+        display: none;
+      }
+    }
     &--card{
       position: relative;
-      text-align: center;
-      color: white;
       height: 8rem;
     }
     &--alertCount{
-      color: #FFE26F;
+      @media only screen and (min-width: 1000px) {
+        color: #FFE26F;
+      }
+      @media only screen and (max-width: 1000px) {
+        color: #B2101D;
+      }
     }
     &--dayCount{
-      color: white;
       position: absolute;
       font-size: 3rem;
-      top: 1.8rem;
-      right: 12.7rem;
-    }
-    &--avatar{
-      height: 100%;
+      top: 1.55rem;
+      right: 10.45rem;
     }
   }
-
   &__sendValues-section{
     z-index: 7;
-    position: absolute;
-    background-color: #B2101D;
-    width: 42rem;
-    color: #FFFFFF;
-    top: 25rem;
-    right: 0.9375rem;
+    @media only screen and (min-width: 1000px) {
+      background-color: #B2101D;
+      margin-top: 20rem;
+      right: 1rem;
+      width: 39%;
+      position:absolute;
+      color: #FFFFFF;
+    }
+    @media only screen and (max-width: 1000px) {
+      background-color: #FFFFFF;
+      margin-top: 15.5rem;
+      width: 90%;
+      position: absolute;
+      color: #000000;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+    }
+    &--label{
+      width: 5.8375rem;
+    }
   }
 }

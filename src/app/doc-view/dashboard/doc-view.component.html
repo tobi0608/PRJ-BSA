@@ -1,12 +1,19 @@
 <div class="doctor" id="loginSite">
-    <nav class="doctor__navbar">
-        <a routerLink="/doctor/dashboard" class="doctor__navbar--nav-active">Dashboard</a>
-        <a routerLink="/doctor/messages/appointments" class="doctor__navbar--nav-item">Nachrichten</a>
-        <a routerLink="/doctor/patients/list" class="doctor__navbar--nav-item">Patienten</a>
-        <a routerLink="/doctor/user/information" class="doctor__navbar--nav-item">Benutzer</a>
-        <a routerLink="/home" class="doctor__navbar--nav-item" (click)="onOff()">Abmelden</a>
+    <nav class="nav">
+        <a routerLink="/doctor/dashboard" class="nav--nav-active">Dashboard</a>
+        <a routerLink="/doctor/messages/appointments" class="nav--nav-item">Nachrichten</a>
+        <a routerLink="/doctor/patients/list" class="nav--nav-item">Patienten</a>
+        <a routerLink="/doctor/user/information" class="nav--nav-item">Benutzer</a>
+        <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
     </nav>
-    <div class="doctor__navbar--skew"></div>
+    <select class="custom-select navMobile" (click)="onRoute()" #route>
+        <option value="/doctor/dashboard" selected="selected">Dashboard</option>
+        <option value="/doctor/messages/appointments">Nachrichten</option>
+        <option value="/doctor/patients/list">Patienten</option>
+        <option value="/doctor/user/information">Benutzer</option>
+        <option value="/home" (click)="onOff()">Abmelden</option>
+    </select>
+    <div class="nav--firstSkewDoc"></div>
     <div class="container-fluid">
         <div class="doctor__welcome-section shadow p-3 rounded">
             <h1>Willkommen Dr. {{name}}</h1>
@@ -19,7 +26,7 @@
         <div class="shadow p-3 bg-white doctor__body">
             <div class="doctor__body--newPatients">
                 <h2>Die letzten 5 neu verknüpften Patienten</h2>
-                <table class="table table-hover doctor__body--table">
+                <table class="table table-hover doctor__table--full">
                     <thead>
                     <tr>
                         <th scope="col">Registriert am:</th>
@@ -33,6 +40,21 @@
                         <td>{{user.registered | date:'dd.MM.yyyy'}}</td>
                         <td>{{user.last_name}}</td>
                         <td>{{user.first_name}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-hover doctor__table--mobile">
+                    <thead>
+                    <tr>
+                        <th scope="col">Registriert am:</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of users | slice:0:5"
+                        (click)="onSelect(user)">
+                        <td>{{user.registered | date:'dd.MM'}}</td>
+                        <td>{{user.last_name}} {{user.first_name}}</td>
                     </tr>
                     </tbody>
                 </table>

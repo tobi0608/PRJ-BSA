@@ -1,46 +1,61 @@
 <div class="parameterList" id="loginSite">
-  <nav class="parameterList__navbar">
-    <a routerLink="/patient/dashboard" class="parameterList__navbar--nav-item">Dashboard</a>
-    <a routerLink="/patient/parameter/chart" class="parameterList__navbar--nav-active">Blutdruckwerte</a>
-    <a routerLink="/patient/achievement" class="parameterList__navbar--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/contact/appointment" class="parameterList__navbar--nav-item">Kontakt</a>
-    <a routerLink="/patient/user/information" class="parameterList__navbar--nav-item">Benutzer</a>
-    <a routerLink="/home" class="parameterList__navbar--nav-item" (click)="onOff()">Abmelden</a>
+  <nav class="nav">
+    <a routerLink="/patient/dashboard" class="nav--nav-item">Dashboard</a>
+    <a routerLink="/patient/parameter/chart" class="nav--nav-active">Blutdruckwerte</a>
+    <a routerLink="/patient/achievement" class="nav--nav-item">Herausforderungen</a>
+    <a routerLink="/patient/contact/appointment" class="nav--nav-item">Kontakt</a>
+    <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
+    <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
   </nav>
-  <div class="parameterList__navbar--skew"></div>
-  <nav class="parameterList__navbarSecond">
-    <a routerLink="/patient/parameter/chart" class="parameterList__navbarSecond--nav-item">Chart Ansicht</a>
-    <a routerLink="/patient/parameter/list" class="parameterList__navbarSecond--nav-active">Detail Ansicht</a>
+  <select class="custom-select navMobile" (click)="onRoute()" #route>
+    <option value="/patient/dashboard">Dashboard</option>
+    <option value="/patient/parameter/chart" selected="selected">Blutdruckwerte</option>
+    <option value="/patient/achievement">Herausforderungen</option>
+    <option value="/patient/contact/appointment">Kontakt</option>
+    <option value="/patient/user/information">Benutzer</option>
+    <option value="/home" (click)="onOff()">Abmelden</option>
+  </select>
+  <div class="nav--firstSkewPat"></div>
+  <nav class="navParameter">
+    <a routerLink="/patient/parameter/chart" class="navParameter--nav-item">Chart Ansicht</a>
+    <a routerLink="/patient/parameter/list" class="navParameter--nav-active">Detail Ansicht</a>
   </nav>
-  <div class="parameterList__navbarSecond--skewRight"></div>
-  <div class="parameterList__navbarSecond--skewLeft"></div>
-
+  <div class="navParameter--skewRight"></div>
+  <div class="navParameter--skewLeft"></div>
+  <select class="custom-select navSecondMobile" (click)="onRoute()" #route>
+    <option value="/patient/parameter/chart">Chart Ansicht</option>
+    <option value="/patient/parameter/list" selected="selected">Detail Ansicht</option>
+  </select>
+  <div class="navSecondMobile--skew"></div>
 
   <div class="container-fluid">
     <div class="shadow p-3 bg-white parameterList__body">
       <div class="parameterList__body--sendValues">
         <h2>Blutdruck eintragen</h2>
-        <form ngNativeValidate>
+        <form class="form-inline" ngNativeValidate>
           <div class="input-group">
             <div class="input-group-prepend">
-              <label class="input-group-text" for="systole">Systole:</label>
+              <label class="input-group-text parameterList__body--sendValues--label" for="systole">Systole:</label>
+              <input min="90" max="300" type="number" id="systole" required #systole>
             </div>
-            <input min="90" max="300" type="number" id="systole" required #systole>
             <div class="input-group-prepend">
-              <label class="input-group-text" for="diastole">Diastole:</label>
+              <label class="input-group-text parameterList__body--sendValues--label" for="diastole">Diastole:</label>
+              <input min="50" max="130" type="number" id="diastole" required #diastole>
             </div>
-            <input min="50" max="130" type="number" id="diastole" required #diastole>
             <div class="input-group-prepend">
-              <label class="input-group-text" for="heartRate">Herzrate:</label>
+              <label class="input-group-text parameterList__body--sendValues--label" for="heartRate">Herzrate:</label>
+              <input min="40" max="200" type="number" id="heartRate"required #heartRate>
             </div>
-            <input min="40" max="200" type="number" id="heartRate" required #heartRate>
-            <input type="submit" value="Absenden" (click)="onSend()" class="btn btn-danger">
+            <div class=" ">
+              <button type="submit" (click)="onSend()" class="btn btn-danger">
+                <fa name="heart"></fa></button>
+            </div>
           </div>
         </form>
       </div>
       <div class="parameterList__body--valueList">
         <h2>Vitalparameter</h2>
-        <table class="table table-hover">
+        <table class="table table-hover parameterList__body--full">
           <thead>
           <tr>
             <th scope="col"><fa name="heart" class="parameterList__body--heart"></fa></th>
@@ -57,6 +72,22 @@
             <td>{{data.systole}}</td>
             <td>{{data.diastole}}</td>
             <td>{{data.heartbeat}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <table class="table table-hover parameterList__body--mobile">
+          <thead>
+          <tr>
+            <th scope="col"><fa name="heart" class="parameterList__body--heart"></fa></th>
+            <th scope="col">Datum</th>
+            <th scope="col">Blutdruck</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of dates">
+            <td><fa name="{{data.i10}}" class="parameterList__body--heart"></fa></td>
+            <td>{{data.timestamp | date:'dd.MM - HH'}}</td>
+            <td>{{data.systole}}/{{data.diastole}}/{{data.heartbeat}}</td>
           </tr>
           </tbody>
         </table>
