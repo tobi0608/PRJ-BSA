@@ -1,5 +1,4 @@
 @import "../../global-files/scss/signIn";
-@import "../../global-files/scss/nav";
 
 .patient{
   font-size: 1.35rem;
@@ -124,9 +123,6 @@
       position: absolute;
       color: #000000;
       box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
-    }
-    &--label{
-      width: 5.8375rem;
     }
   }
 }

@@ -2,19 +2,21 @@
   <div class="home">
     <div class="jumbotron shadow p-3 bg-white rounded home-view__LogIn-form">
       <h1>Anmelden</h1>
-      <form class="form-inline" ngNativeValidate>
+      <form class="form-inline" (ngSubmit)="onLogIn()" #logInForm="ngForm" ngNativeValidate>
         <div class="form-row input-group">
           <div class="col-md-5 input-group-prepend">
-            <label class="input-group-text" for="username">S<span class="sr-only">ozial</span>
+            <label class="input-group-text home--formLabel" for="username">S<span class="sr-only">ozial</span>
               V<span class="sr-only">ersicherungs</span>-N<span class="sr-only">ummer</span>r:</label>
-            <input type="text" id="username" pattern='[0-9]{10}' value="2167050980" required #sv>
+            <input type="text" id="username" name="username" value="2167050980"
+                   [(ngModel)]="username" pattern='[0-9]{10}' required>
           </div>
           <div class="col-md-5 input-group-prepend">
-            <label class="input-group-text"  for="user-password">Passwort:</label>
-            <input type="password" id="user-password" required #password class="home--form4mobile">
+            <label class="input-group-text home--formLabel"  for="password">Passwort:</label>
+            <input type="password" id="password" name="password"
+                   [(ngModel)]="password" required>
           </div>
           <div class="col-md-2">
-            <input type="submit" value="Log In" (click)="onLogIn()" class="btn btn-danger">
+            <button type="submit" class="btn btn-danger">Anmelden</button>
           </div>
         </div>
       </form>
@@ -22,7 +24,7 @@
     </div>
     <div class="jumbotron shadow p-3 bg-white rounded home-view__newUser-form">
       <h1>Registrieren</h1>
-      <form ngNativeValidatem>
+      <form>
         <div class="form-row">
           <div class="col-md-2 col-sm-12">
             <label for="firstName">Vorname:</label>
@@ -52,7 +54,7 @@
           <div class="col-md-2 col-sm-12">
             <label for="gender">Geschlecht: </label>
             <select id="gender" class="form-control" #gender>
-              <option value="m">Männlich</option>
+              <option value="m" >Männlich</option>
               <option value="w">Weiblich</option>
             </select>
           </div>

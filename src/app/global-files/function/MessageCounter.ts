@@ -3,11 +3,12 @@ import {MESSAGES} from '../../mock-files/mock-messages';
 export function MessageCounter(filter): string {
     let countMessage = 0;
     let messageTxt = ' ';
-    const user = document.cookie.split(',');
+    const sv = localStorage.getItem('sv');
+    const docSV = localStorage.getItem('DocSV');
     switch (filter) {
         case 'Termin':
             MESSAGES.forEach(function (value) {
-                if (value.svTo.toString() === user[0] && value.type === 'Termin' && value.seen === 'bell') {
+                if (value.svTo.toString() === sv && value.type === 'Termin' && value.seen === 'bell') {
                     countMessage++;
                 }
                 if (countMessage === 1) {
@@ -21,7 +22,7 @@ export function MessageCounter(filter): string {
             break;
         case 'Alert':
             MESSAGES.forEach(function (value) {
-                if (value.svTo.toString() === user[0] && value.type === 'Bluthochdruck' && value.seen === 'bell') {
+                if (value.svTo.toString() === sv && value.type === 'Bluthochdruck' && value.seen === 'bell') {
                     countMessage++;
                 }
                 if (countMessage === 1) {
@@ -35,7 +36,7 @@ export function MessageCounter(filter): string {
             break;
         case 'Message':
             MESSAGES.forEach(function (value) {
-                if (value.svTo.toString() === user[0] && value.svFrom.toString() === user[4]
+                if (value.svTo.toString() === sv && value.svFrom.toString() === docSV
                     && value.seen === 'bell') {
                     countMessage++;
                 }

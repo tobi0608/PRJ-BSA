@@ -22,6 +22,8 @@ import { DoctorSettingsComponent } from './doc-view/user/doctor-settings/doctor-
 import { PatientRecordComponent } from './doc-view/patient/patient-record/patient-record.component';
 import { PatientInformationComponent } from './patient-view/user/patient-information/patient-information.component';
 import { DoctorInformationComponent } from './doc-view/user/doctor-information/doctor-information.component';
+import { SendValueComponent } from './patient-view/assets/components/send-value/send-value.component';
+import { NavbarPatientsComponent } from './patient-view/assets/components/navbar-patients/navbar-patients.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { DoctorInformationComponent } from './doc-view/user/doctor-information/d
     DoctorSettingsComponent,
     PatientRecordComponent,
     PatientInformationComponent,
-    DoctorInformationComponent
+    DoctorInformationComponent,
+    SendValueComponent,
+    NavbarPatientsComponent
   ],
   imports: [
     BrowserModule,

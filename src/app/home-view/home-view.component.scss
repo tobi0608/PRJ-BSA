@@ -1,7 +1,9 @@
+@import "../global-files/scss/form-validation";
+
 .home{
   padding-top: 5rem;
-  &--form4mobile{
-    width: 9.468125rem;
+  &--formLabel{
+    width: 6.055625rem;
   }
   &--saveBtn{
     margin-top: 1rem;

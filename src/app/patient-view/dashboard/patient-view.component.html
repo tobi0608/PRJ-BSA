@@ -1,21 +1,5 @@
 <div class="patient" id="loginSite">
-  <nav class="nav">
-    <a routerLink="/patient/dashboard" class="nav--nav-active">Dashboard</a>
-    <a routerLink="/patient/parameter/chart" class="nav--nav-item">Blutdruckwerte</a>
-    <a routerLink="/patient/achievement" class="nav--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/contact/appointment" class="nav--nav-item">Kontakt</a>
-    <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
-    <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
-  </nav>
-  <select class="custom-select navMobile" (change)="onRoute($event.target.value)">
-    <option value="patient/dashboard" selected="selected">Dashboard</option>
-    <option value="patient/parameter/chart">Blutdruckwerte</option>
-    <option value="patient/achievement">Herausforderungen</option>
-    <option value="patient/contact/appointment">Kontakt</option>
-    <option value="patient/user/information">Benutzer</option>
-    <option value="home" (click)="onOff()">Abmelden</option>
-  </select>
-  <div class="nav--firstSkewPat"></div>
+  <app-navbar-patients></app-navbar-patients>
   <div class="container-fluid">
     <div class="patient__welcome-section jumbotron shadow p-3 rounded">
       <div class="row">
@@ -37,29 +21,8 @@
         {{messageCounter}}</a></p>
     </div>
     <div class="patient__sendValues-section jumbotron shadow p-3 rounded">
-      <h1>Blutdruck eintragen</h1>
-      <form class="form-inline" ngNativeValidate>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <label class="input-group-text patient__sendValues-section--label" for="systole">Systole:</label>
-            <input min="90" max="300" type="number" id="systole" required #systole>
-          </div>
-          <div class="input-group-prepend">
-            <label class="input-group-text patient__sendValues-section--label" for="diastole">Diastole:</label>
-            <input min="50" max="130" type="number" id="diastole" required #diastole>
-          </div>
-          <div class="input-group-prepend">
-            <label class="input-group-text patient__sendValues-section--label" for="heartRate">Herzrate:</label>
-            <input min="40" max="200" type="number" id="heartRate" required #heartRate>
-          </div>
-          <div class=" ">
-            <button type="submit" (click)="onSend()" class="btn btn-danger">
-              <fa name="heart"></fa></button>
-          </div>
-        </div>
-      </form>
+        <app-send-value></app-send-value>
     </div>
-
     <div class="shadow p-3 bg-white patient__body">
       <div class="patient__achievement">
         <h2>Herausforderungen</h2>

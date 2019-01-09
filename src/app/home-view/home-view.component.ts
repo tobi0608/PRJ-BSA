@@ -9,8 +9,9 @@ import {Router} from '@angular/router';
 })
 
 export class HomeViewComponent implements OnInit {
-    @ViewChild('sv') sv;
-    @ViewChild('password') password;
+    username;
+    password;
+    @ViewChild('logInForm') logInForm;
 
     constructor(public router: Router) {}
 
@@ -18,28 +19,26 @@ export class HomeViewComponent implements OnInit {
     }
     onLogIn(): void {
         const site = this.router;
-        const sv = this.sv.nativeElement.value;
-        const password = this.password.nativeElement.value;
-        let count = 0;
-        USERS.find(function (value) {
-            count++;
-            if (value.sv.toString() === sv.toString()) {
-                if (value.password === password) {
-                    document.cookie = ' ' + value.sv.toString() + ',' + value.type + ',' + value.first_name +
-                        ',' + value.last_name + ',' + value.doctor_sv.toString() + ',';
-                    site.navigate([value.type + '/dashboard']);
-                    return true;
-                } else {
-                    alert('Falsches Passwort!');
-                    return true;
-                }
-            } else {
-                if (count === USERS.length) {
-                    alert('Falsche Sozialversicherungsnummer!');
-                    return true;
-                }
-            }
+        const sv = this.username;
+        const password = this.password;
+        if (this.logInForm.form.valid) {
+        const user = USERS.find(function (tmp) {
+            return tmp.sv.toString() === sv.toString();
         });
+            if (!user) {
+                alert('Falsche Sozialversicherungsnummer!');
+                return;
+            }
+            if (user.password === password) {
+                localStorage.setItem('sv', user.sv.toString());
+                localStorage.setItem('type', user.type);
+                localStorage.setItem('firstName', user.first_name);
+                localStorage.setItem('lastName', user.last_name);
+                localStorage.setItem('DocSV', user.doctor_sv.toString());
+                site.navigate([user.type + '/dashboard']);
+            } else {
+                alert('Falsches Passwort!');
+            }
+        }
     }
-
 }
