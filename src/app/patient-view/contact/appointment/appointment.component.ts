@@ -2,50 +2,44 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
-import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-appointment',
-  templateUrl: './appointment.component.html',
-  styleUrls: ['./appointment.component.scss']
+    selector: 'app-appointment',
+    templateUrl: './appointment.component.html',
+    styleUrls: ['./appointment.component.scss']
 })
 export class AppointmentComponent implements OnInit {
-    @ViewChild('time') time;
-    @ViewChild('date') date;
-    @ViewChild('type') type;
+    @ViewChild('appointmentForm') appointmentForm;
+    time;
+    date;
+    type;
 
-  constructor(public router: Router) { }
+    constructor() { }
 
-  ngOnInit() {
-      LogInCheck('patient');
-  }
-    onRoute(route): void {
-        this.router.navigate([route]);
+    ngOnInit() {
+        LogInCheck('patient');
     }
     onSend(): void {
-        const user = document.cookie.split(',');
-        const date = this.date.nativeElement.value;
-        const time = this.time.nativeElement.value;
-        const type = this.type.nativeElement.value;
-        const tmp: Message = {
-            svFrom: parseInt(user[0], 10),
-            svTo: parseInt(user[4], 10),
-            first_name: user[2],
-            last_name: user[3],
-            type: 'Termin',
-            text: 'Termin für ' + type + ' am ' + date + ' - ' + ' um ' +  time,
-            timestamp: Date.now(),
-            seen: 'bell',
-            check: 'check',
-            times: 'times'
-        };
-        if (date && time && type !== null) {
+        if (this.appointmentForm.form.valid) {
+            const sv = localStorage.getItem('sv');
+            const firstName = localStorage.getItem('firstName');
+            const lastName = localStorage.getItem('firstName');
+            const docSV = localStorage.getItem('DocSV');
+            const tmp: Message = {
+                svFrom: parseInt(sv, 10),
+                svTo: parseInt(docSV, 10),
+                first_name: firstName,
+                last_name: lastName,
+                type: 'Termin',
+                text: 'Termin für ' + this.type + ' am ' + this.date + ' - ' + ' um ' +  this.time,
+                timestamp: Date.now(),
+                seen: 'bell',
+                check: 'check',
+                times: 'times'
+            };
             MESSAGES.unshift(tmp);
             alert('Ihr Terminvorschlag wurde abgeschickt und wird demnächst bearbeitet!');
         }
     }
-    onOff(): void {
-        document.cookie = 'null; path=/';
-        console.log(document.cookie);
-    }
+
 }

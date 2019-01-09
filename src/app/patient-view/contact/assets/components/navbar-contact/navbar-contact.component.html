@@ -1,0 +1,11 @@
+<nav class="navContact">
+  <a routerLink="/patient/contact/appointment" class="navContact--nav-item">Termin</a>
+  <a routerLink="/patient/contact/alert" class="navContact--nav-item">Nachrichten</a>
+</nav>
+<div class="navContact--skewRight"></div>
+<div class="navContact--skewLeft"></div>
+<select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)">
+  <option value="/patient/contact/appointment" selected="selected">Termin</option>
+  <option value="/patient/contact/alert">Nachrichten</option>
+</select>
+<div class="navSecondMobile--skew"></div>

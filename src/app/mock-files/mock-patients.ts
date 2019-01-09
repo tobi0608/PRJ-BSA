@@ -4,6 +4,9 @@ export const PATIENTS: Patient[] = [
     {sv: 1234010100, first_name: 'Fabian', last_name: 'Hammer', gender: 'm', age: 19, registered: 1
         , last_visit: 1,
         assignedDoc: 2167050980},
+    {sv: 2870180796, first_name: 'Benni', last_name: 'Titlbach', gender: 'm', age: 21, registered: 1
+        , last_visit: 1,
+        assignedDoc: 2167050980},
     {sv: 5678041295, first_name: 'Lara', last_name: 'Stadtherr', gender: 'w', age: 24, registered: 1
         , last_visit: 1,
         assignedDoc: 2167050980},

@@ -24,6 +24,10 @@ import { PatientInformationComponent } from './patient-view/user/patient-informa
 import { DoctorInformationComponent } from './doc-view/user/doctor-information/doctor-information.component';
 import { SendValueComponent } from './patient-view/assets/components/send-value/send-value.component';
 import { NavbarPatientsComponent } from './patient-view/assets/components/navbar-patients/navbar-patients.component';
+import { NavbarParameterComponent } from './patient-view/parameter/assets/components/navbar-parameter/navbar-parameter.component';
+import { NoAccessComponent } from './global-files/components/no-access/no-access.component';
+import { NavbarContactComponent } from './patient-view/contact/assets/components/navbar-contact/navbar-contact.component';
+import { NavbarUserPatientComponent } from './patient-view/user/assets/components/navbar-user-patient/navbar-user-patient.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { NavbarPatientsComponent } from './patient-view/assets/components/navbar
     PatientInformationComponent,
     DoctorInformationComponent,
     SendValueComponent,
-    NavbarPatientsComponent
+    NavbarPatientsComponent,
+    NavbarParameterComponent,
+    NoAccessComponent,
+    NavbarContactComponent,
+    NavbarUserPatientComponent
   ],
   imports: [
     BrowserModule,

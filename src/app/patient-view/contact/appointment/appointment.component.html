@@ -1,66 +1,36 @@
 <div class="appointmentPatient" id="loginSite">
-  <nav class="nav">
-    <a routerLink="/patient/dashboard" class="nav--nav-item">Dashboard</a>
-    <a routerLink="/patient/parameter/chart" class="nav--nav-item">Blutdruckwerte</a>
-    <a routerLink="/patient/achievement" class="nav--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/contact/appointment" class="nav--nav-active">Kontakt</a>
-    <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
-    <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
-  </nav>
-  <select class="custom-select navMobile" (change)="onRoute($event.target.value)">
-    <option value="/patient/dashboard">Dashboard</option>
-    <option value="/patient/parameter/chart">Blutdruckwerte</option>
-    <option value="/patient/achievement">Herausforderungen</option>
-    <option value="/patient/contact/appointment" selected="selected">Kontakt</option>
-    <option value="/patient/user/information">Benutzer</option>
-    <option value="/home" (click)="onOff()">Abmelden</option>
-  </select>
-  <div class="nav--firstSkewPat"></div>
-  <nav class="navContact">
-    <a routerLink="/patient/contact/appointment" class="navContact--nav-active">Termin</a>
-    <a routerLink="/patient/contact/alert" class="navContact--nav-item">Nachrichten</a>
-  </nav>
-  <div class="navContact--skewRight"></div>
-  <div class="navContact--skewLeft"></div>
-  <select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)">
-    <option value="/patient/contact/appointment" selected="selected">Termin</option>
-    <option value="/patient/contact/alert">Nachrichten</option>
-  </select>
-  <div class="navSecondMobile--skew"></div>
-
+  <app-navbar-patients></app-navbar-patients>
+    <app-navbar-contact></app-navbar-contact>
   <div class="container-fluid">
     <div class="shadow p-3 bg-white appointmentPatient__body">
       <div class="appointmentPatient__body--appointment">
         <h2>Terminvereinbarung</h2>
-        <form ngNativeValidate>
+        <form (ngSubmit)="onSend()" #appointmentForm="ngForm" ngNativeValidate>
           <div class="form-group">
               <label for="date">Datum: </label>
-              <input type="date" id="date" class="form-control" required #date>
+              <input type="date" id="date" name="date" class="form-control"
+                     [(ngModel)]="date" required>
           </div>
           <div class="form-group">
               <label for="time">Uhrzeit: </label>
-              <input type="time" min="8:00" max="16:00" step="00:30" id="time" class="form-control" required #time>
+              <input type="time" id="time" class="form-control" name="time"
+                     min="8:00" max="16:00" step="00:30" [(ngModel)]="time" required>
           </div>
           <div class="form-group">
               <label for="type">Grund des Termins: </label>
-              <select required id="type" class="form-control" #type>
+              <select id="type" name="type" class="form-control"
+                      [(ngModel)]="type" required>
                 <option value="Neueinstellung">Neueinstellung der Medikamente</option>
                 <option value="Kontrolltermin">Kontrolltermin für den Blutdruck</option>
                 <option value="Gesundheitscheck">Gesundheitscheck</option>
               </select>
           </div>
           <div class="form-group">
-              <input type="submit" value="Absenden" class="form-control btn btn-danger" (click)="onSend()">
+              <button type="submit" class="form-control btn btn-danger">Absenden</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
-<div class="noAccess" #noAccessSite id="noAccess">
-  <div class="jumbotron shadow p-3 bg-white rounded">
-    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
-    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
-  </div>
-</div>
+<app-no-access></app-no-access>

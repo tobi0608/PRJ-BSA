@@ -1,0 +1,22 @@
+<h1>Blutdruck eintragen</h1>
+<form class="form-inline" (ngSubmit)="onSend()" #sendValueForm="ngForm" ngNativeValidate>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <label class="input-group-text sendValues--label" for="systole">Systole:</label>
+      <input type="number" id="systole" name="systole"
+             [(ngModel)]="systole" min="90" max="300" required>
+    </div>
+    <div class="input-group-prepend">
+      <label class="input-group-text sendValues--label" for="diastole">Diastole:</label>
+      <input type="number" id="diastole" name="diastole"
+             [(ngModel)]="diastole" min="50" max="130" required>
+    </div>
+    <div class="input-group-prepend">
+      <label class="input-group-text sendValues--label" for="heartRate">Herzrate:</label>
+      <input type="number" id="heartRate" name="heartRate"
+             [(ngModel)]="heartRate" min="40" max="200" required>
+    </div>
+    <label class="sr-only" for="sendBtn">Abschicken</label>
+    <button type="submit" id="sendBtn" class="btn btn-danger"><fa name="share-square"></fa></button>
+  </div>
+</form>

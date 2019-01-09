@@ -1,0 +1,11 @@
+<nav class="navParameter">
+  <a routerLink="/patient/parameter/chart" class="navParameter--nav-item">Chart Ansicht</a>
+  <a routerLink="/patient/parameter/list" class="navParameter--nav-item">Detail Ansicht</a>
+</nav>
+<div class="navParameter--skewRight"></div>
+<div class="navParameter--skewLeft"></div>
+<select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)">
+  <option value="patient/parameter/chart">Chart Ansicht</option>
+  <option value="patient/parameter/list">Detail Ansicht</option>
+</select>
+<div class="navSecondMobile--skew"></div>

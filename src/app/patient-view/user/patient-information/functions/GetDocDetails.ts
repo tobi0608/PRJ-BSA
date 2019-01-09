@@ -1,10 +1,10 @@
 import {USERS} from '../../../../mock-files/mock-user';
 
 export function GetDocDetails(): string {
-    const user = document.cookie.split(',');
+    const sv = localStorage.getItem('sv');
     let doc = '';
     USERS.find(function (tmp) {
-        if (tmp.sv.toString() === user[0]) {
+        if (tmp.sv.toString() === sv) {
             USERS.find(function (tmp2) {
                 if (tmp.doctor_sv === tmp2.sv) {
                     doc = 'Dr.' + ' ' + tmp2.last_name + ' ' + tmp2.first_name;

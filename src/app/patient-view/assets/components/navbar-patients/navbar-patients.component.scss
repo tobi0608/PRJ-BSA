@@ -1,0 +1,19 @@
+@import "../../../../global-files/scss/nav";
+
+.nav{
+  &--SkewPat {
+    @media only screen and (max-width: 820px) {
+      margin-left: 15rem;
+    }
+    @media only screen and (min-width: 820px) {
+      margin-left: 56.059375rem;
+    }
+    width: 0;
+    height: 0;
+    border-top: 2.5rem solid #B2101D;
+    border-right: 2.5rem solid transparent;
+    display: block;
+    position: fixed;
+    z-index: 9;
+  }
+}

@@ -1,48 +1,22 @@
 <div class="information" id="loginSite">
-    <nav class="nav">
-      <a routerLink="/patient/dashboard" class="nav--nav-item">Dashboard</a>
-      <a routerLink="/patient/parameter/chart" class="nav--nav-item">Blutdruckwerte</a>
-      <a routerLink="/patient/achievement" class="nav--nav-item">Herausforderungen</a>
-      <a routerLink="/patient/contact/appointment" class="nav--nav-item">Kontakt</a>
-      <a routerLink="/patient/user/information" class="nav--nav-active">Benutzer</a>
-      <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
-    </nav>
-    <select class="custom-select navMobile" (change)="onRoute($event.target.value)">
-      <option value="patient/dashboard">Dashboard</option>
-      <option value="patient/parameter/chart">Blutdruckwerte</option>
-      <option value="patient/achievement">Herausforderungen</option>
-      <option value="patient/contact/appointment">Kontakt</option>
-      <option value="patient/user/information" selected="selected">Benutzer</option>
-      <option value="home" (click)="onOff()">Abmelden</option>
-    </select>
-    <div class="nav--firstSkewPat"></div>
-    <nav class="navUser">
-      <a routerLink="/patient/user/information" class="navUser--nav-active">Informationen</a>
-      <a routerLink="/patient/user/settings" class="navUser--nav-item">Einstellungen</a>
-    </nav>
-    <div class="navUser--skewRight"></div>
-    <div class="navUser--skewLeft"></div>
-    <select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)">
-      <option value="patient/user/information" selected="selected">Informationen</option>
-      <option value="patient/user/settings">Einstellungen</option>
-    </select>
-    <div class="navSecondMobile--skew"></div>
+    <app-navbar-patients></app-navbar-patients>
+    <app-navbar-user-patient></app-navbar-user-patient>
   <div class="container-fluid">
     <div class="shadow p-3 bg-white information__body">
         <div class="information__general">
           <h2>Allgemeine Kontoinformationen</h2>
           <div class="row information__general--span">
             <span class="information__general--label">Sozialversicherungs-Nummer:</span>
-            <p>{{user[0]}}</p>
+            <p>{{user.sv}}</p>
           </div>
           <div class="row">
             <div class="col-sm-2 col-12">
             <span class="information__general--label">Vorname:</span>
-            <p>{{user[2]}}</p>
+            <p>{{user.first_name}}</p>
             </div>
             <div class="col-sm-2 col-12">
               <span class="information__general--label">Nachname:</span>
-              <p>{{user[3]}}</p>
+              <p>{{user.last_name}}</p>
             </div>
           </div>
           <div class="row information__general--span">
@@ -71,9 +45,4 @@
     </div>
   </div>
 </div>
-<div class="noAccess" #noAccessSite id="noAccess">
-  <div class="jumbotron shadow p-3 bg-white rounded">
-    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
-    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
-  </div>
-</div>
+<app-no-access></app-no-access>

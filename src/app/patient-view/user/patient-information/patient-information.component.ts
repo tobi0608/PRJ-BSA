@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
+import {GetUserData} from '../../../global-files/function/GetUserData';
 import {GetDocDetails} from './functions/GetDocDetails';
 import {FilterMedication} from '../../../global-files/function/FilterMedication';
-import {Router} from '@angular/router';
-let user = [];
 
 @Component({
   selector: 'app-patient-information',
@@ -15,21 +14,14 @@ export class PatientInformationComponent implements OnInit {
   doc;
   currentMeds;
   usedMeds;
-  constructor(public router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-      user = document.cookie.split(',');
+      const sv = localStorage.getItem('sv');
       LogInCheck('patient');
-      this.user = user;
+      this.user = GetUserData(sv);
       this.doc = GetDocDetails();
-      this.currentMeds = FilterMedication(user[0], 'fresh');
-      this.usedMeds = FilterMedication(user[0], 'expired');
+      this.currentMeds = FilterMedication(sv, 'fresh');
+      this.usedMeds = FilterMedication(sv, 'expired');
   }
-    onRoute(route): void {
-        this.router.navigate([route]);
-    }
-    onOff(): void {
-        document.cookie = 'null; path=/';
-        console.log(document.cookie);
-    }
 }

@@ -1,33 +1,6 @@
 <div class="messagePatient" id="loginSite">
-  <nav class="nav">
-    <a routerLink="/patient/dashboard" class="nav--nav-item">Dashboard</a>
-    <a routerLink="/patient/parameter/chart" class="nav--nav-item">Blutdruckwerte</a>
-    <a routerLink="/patient/achievement" class="nav--nav-item">Herausforderungen</a>
-    <a routerLink="/patient/contact/appointment" class="nav--nav-active">Kontakt</a>
-    <a routerLink="/patient/user/information" class="nav--nav-item">Benutzer</a>
-    <a routerLink="/home" class="nav--nav-item" (click)="onOff()">Abmelden</a>
-  </nav>
-  <select class="custom-select navMobile" (change)="onRoute($event.target.value)">
-    <option value="patient/dashboard">Dashboard</option>
-    <option value="patient/parameter/chart">Blutdruckwerte</option>
-    <option value="patient/achievement">Herausforderungen</option>
-    <option value="patient/contact/appointment" selected="selected">Kontakt</option>
-    <option value="patient/user/information">Benutzer</option>
-    <option value="home" (click)="onOff()">Abmelden</option>
-  </select>
-  <div class="nav--firstSkewPat"></div>
-  <nav class="navContact">
-    <a routerLink="/patient/contact/appointment" class="navContact--nav-item">Termin</a>
-    <a routerLink="/patient/contact/alert" class="navContact--nav-active">Nachrichten</a>
-  </nav>
-  <div class="navContact--skewRight"></div>
-  <div class="navContact--skewLeft"></div>
-  <select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)">
-    <option value="patient/contact/appointment">Termin</option>
-    <option value="patient/contact/alert" selected="selected">Nachrichten</option>
-  </select>
-  <div class="navSecondMobile--skew"></div>
-
+  <app-navbar-patients></app-navbar-patients>
+  <app-navbar-contact></app-navbar-contact>
   <div class="container-fluid">
     <div class="shadow p-3 bg-white messagePatient__body">
       <div class="messagePatient__body--alerts">
@@ -53,9 +26,4 @@
     </div>
   </div>
 </div>
-<div class="noAccess" #noAccessSite id="noAccess">
-  <div class="jumbotron shadow p-3 bg-white rounded">
-    <h1>Sie haben keinen Zutritt zu diesem Teil der Seite</h1>
-    <p>Bitte melden Sie sich <a routerLink="/home">hier</a> an</p>
-  </div>
-</div>
+<app-no-access></app-no-access>
