@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import * as Highcharts from 'highcharts';
+import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
 import {LogInCheck} from '../../global-files/function/LogInCheck';
 import {MessageCounter} from '../../global-files/function/MessageCounter';
 import {ThreeDaysList} from './functions/ThreeDaysList';
 import {StatusCheck} from './functions/StatusCheck';
-import {ActivatedRoute} from '@angular/router';
+NoDataToDisplay(Highcharts);
 
 @Component({
     selector: 'app-patient-view',
@@ -67,7 +68,7 @@ export class PatientViewComponent implements OnInit {
         noData: {
             style: {
                 fontWeight: 'bold',
-                fontSize: '15px',
+                fontSize: '1.5rem',
                 color: '#B2101D'
             }
         },
