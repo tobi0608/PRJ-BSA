@@ -1,5 +1,5 @@
 .navMobile{
-  @media only screen and (min-width: 920px) {
+  @media only screen and (min-width: 921px) {
     display: none;
   }
   @media only screen and (max-width: 920px) {
@@ -17,7 +17,7 @@
   border: 0.1rem solid  #B2101D;
 }
 .navSecondMobile{
-  @media only screen and (min-width: 920px) {
+  @media only screen and (min-width: 921px) {
     display: none;
   }
   @media only screen and (max-width: 920px) {
@@ -54,7 +54,7 @@
     @media only screen and (max-width: 920px) {
       display: none;
     }
-    @media only screen and (min-width: 920px) {
+    @media only screen and (min-width: 921px) {
       display: block;
     }
     font-size: 1.5rem;
@@ -66,7 +66,7 @@
     @media only screen and (max-width: 920px) {
       display: none;
     }
-    @media only screen and (min-width: 920px) {
+    @media only screen and (min-width: 921px) {
       display: block;
     }
     font-size: 1.5rem;
@@ -79,7 +79,7 @@
     @media only screen and (max-width: 920px) {
       margin-left: 15rem;
     }
-    @media only screen and (min-width: 920px) {
+    @media only screen and (min-width: 921px) {
       margin-left: 41.17125rem
     }
     width: 0;
@@ -90,4 +90,11 @@
     position: fixed;
     z-index: 9;
   }
+}
+a:not([href]):not([tabindex]) {
+  color: #FFFFFF;
+  cursor: pointer;
+}
+a:not([href]):not([tabindex]):hover {
+  text-decoration: underline;
 }

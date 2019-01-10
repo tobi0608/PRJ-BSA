@@ -38,7 +38,7 @@
             <tbody>
             <tr *ngFor="let data of dates">
               <td><fa name="{{data.i10}}" class="parameterList__body--heart"></fa></td>
-              <td>{{data.timestamp | date:'dd.MM - HH'}}</td>
+              <td>{{data.timestamp | date:'dd.MM - HH'}} Uhr</td>
               <td>{{data.systole}}/{{data.diastole}}/{{data.heartbeat}}</td>
             </tr>
             </tbody>

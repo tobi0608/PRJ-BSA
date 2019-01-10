@@ -7,7 +7,7 @@
   z-index: 9;
   height: 2.5rem;
   background-color: #B2101D;
-  @media only screen and (min-width: 820px) {
+  @media only screen and (min-width: 921px) {
     display: block;
     &--skewRight{
       margin-left: 53.7rem;
@@ -32,7 +32,7 @@
       z-index: 9;
     }
   }
-  @media only screen and (max-width: 820px) {
+  @media only screen and (max-width: 920px) {
     display: none;
   }
   &--nav-item{

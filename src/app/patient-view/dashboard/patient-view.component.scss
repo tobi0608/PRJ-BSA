@@ -11,7 +11,7 @@
   }
   &__achievement{
     @media only screen and (min-width: 1000px) {
-      padding-top: 2.5rem;
+      padding-top: 3rem;
     }
     @media only screen and (max-width: 1000px) {
       padding-top: 25rem;
@@ -37,6 +37,7 @@
     }
   }
   &__welcome-section{
+    font-size: 1.35rem;
     z-index: 7;
     margin-top: 3rem;
     @media only screen and (min-width: 1000px) {
@@ -74,7 +75,7 @@
         right: 0;
       }
     }
-    @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 460px) {
       &--avatarWhite{
         display: none;
       }
