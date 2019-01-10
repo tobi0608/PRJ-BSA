@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
+import HighchartsMore from 'highcharts/highcharts-more.src.js';
 import {PushData} from '../../../global-files/function/PushData';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
 NoDataToDisplay(Highcharts);
+HighchartsMore(Highcharts);
 
 @Component({
   selector: 'app-parameter-chart',
@@ -14,7 +16,7 @@ export class ParameterChartComponent implements OnInit {
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
-            type: 'area',
+            type: 'arearange',
             zoomType: 'x'
         },
         title: {
@@ -22,14 +24,15 @@ export class ParameterChartComponent implements OnInit {
         },
         series: [{
             data: [],
-            name: 'Systole (mmHg)',
-            color: '#0406FF',
+            name: 'Blutdruck (mmHg)',
+            color: '#0011ff',
             fillColor: '#41ACFF',
+            lineWidth: 3,
             zIndex: 1,
             zones: [
                 {
                     value: 69,
-                    color: '#FF0000',
+                    color: '#0011ff',
                     fillColor: '#FF0000'
                 },
                 {
@@ -37,28 +40,22 @@ export class ParameterChartComponent implements OnInit {
                 },
                 {
                     value: 300,
-                    color: '#FF0000',
+                    color: '#0011ff',
                     fillColor: '#FF0000',
                 }]
         },
             {
-                data: [],
-                name: 'Diastole (mmHg)',
-                color: '#0406FF',
-                zIndex: 2,
-                fillOpacity: 1,
-                fillColor: '#FFFFFF',
-            },
-            {
+                type: 'area',
                 data: [],
                 name: 'Herzrate (Pro S)',
-                color: '#FF0015',
+                color: '#B2101D',
                 zIndex: 3,
                 fillOpacity: 0,
-            },
+                lineWidth: 3.5
+            }
         ],
         lang: {
-            noData: 'Bis jetzt noch keine Werte eingetragen!'
+            noData: 'Es wurden noch keine Daten hinzugefügt!'
         },
         noData: {
             style: {
@@ -67,11 +64,9 @@ export class ParameterChartComponent implements OnInit {
                 color: '#B2101D'
             }
         },
-        legend: {
-            enabled: false
-        },
         tooltip: {
-            headerFormat: '',
+            xDateFormat: '%d.%m.%Y %H:%M',
+            headerFormat: '<span style="font-weight: bold">{point.key}</span><br>',
             shared: true,
             crosshairs: true
         },
@@ -86,8 +81,6 @@ export class ParameterChartComponent implements OnInit {
             }
         },
         yAxis: [{
-            max: 250,
-            min: 40,
             title: {
                 text: null
             }
@@ -100,8 +93,7 @@ export class ParameterChartComponent implements OnInit {
     ngOnInit() {
         const sv = localStorage.getItem('sv');
         LogInCheck('patient');
-        this.chartOptions.series[0].data = PushData(sv, 'systole');
-        this.chartOptions.series[1].data = PushData(sv, 'diastole');
-        this.chartOptions.series[2].data = PushData(sv, 'heartbeat');
+        this.chartOptions.series[0].data = PushData(sv, 'bloodPressure');
+        this.chartOptions.series[1].data = PushData(sv, 'heartbeat');
     }
 }

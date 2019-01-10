@@ -5,28 +5,30 @@
     <div class="shadow p-3 bg-white settings__body">
       <div class="settings__general">
         <h2>Allgemein</h2>
-        <form ngNativeValidate>
-          <label for="doc" class="settings__general--label">Arzt ändern</label>
-          <select id="doc" class="custom-select settings__general--input" #newDoc>
+        <h3>Zugewiesenen Arzt ändern</h3>
+        <form (ngSubmit)="newDoctor()" #newDocForm="ngForm" ngNativeValidate>
+          <label for="newDoc" class="settings__general--label">Arzt auswählen:</label>
+          <select id="newDoc" name="newDoc" class="custom-select settings__general--input"
+                  [(ngModel)]="newDoc" required>
             <option *ngFor="let doc of Docs"  value="{{doc.sv}}">Dr. {{doc.last_name}} {{doc.first_name}}</option>
           </select>
-          <input type="submit" (click)="newDoctor()" value="Arzt speichern"
-                 class="btn btn-danger settings__general--btn">
+          <button type="submit" class="btn btn-danger settings__general--btn">Arzt speichern</button>
         </form>
       </div>
       <div class="settings__security">
           <h2>Sicherheit und Login</h2>
-          <form ngNativeValidate>
+          <form (ngSubmit)="newPassword()" #newPasswordForm="ngForm" ngNativeValidate>
             <h3>Passwort ändern</h3>
             <label for="oldPW" class="settings__security--label">Aktuelles Passwort</label>
-            <input id="oldPW" type="password" class="form-control settings__security--input" required #oldPW>
+            <input id="oldPW" type="password" name="oldPW" class="form-control settings__security--input"
+                   [(ngModel)]="oldPW" required>
             <label for="newPW" class="settings__security--label">Neues Passwort:</label>
-            <input id="newPW" type="password" class="form-control settings__security--input" required #newPW>
+            <input id="newPW" type="password" name="newPW" class="form-control settings__security--input"
+                   [(ngModel)]="newPW" required>
             <label for="repeatPW" class="settings__security--label">Neues Passwort erneut eingeben:</label>
-            <input id="repeatPW" type="password" class="form-control settings__security--input" required #repeatPW>
-            <input type="submit" (click)="newPassword()" value="Passwort speichern"
-                   class="btn btn-danger settings__security--btn">
-
+            <input id="repeatPW" type="password" name="repeatPW" class="form-control settings__security--input"
+                   [(ngModel)]="repeatPW" required>
+            <button type="submit" class="btn btn-danger settings__security--btn">Passwort speichern</button>
           </form>
         </div>
     </div>

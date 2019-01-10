@@ -4,43 +4,12 @@
   <div class="container-fluid">
     <div class="shadow p-3 bg-white information__body">
         <div class="information__general">
-          <h2>Allgemeine Kontoinformationen</h2>
-          <div class="row information__general--span">
-            <span class="information__general--label">Sozialversicherungs-Nummer:</span>
-            <p>{{user.sv}}</p>
-          </div>
-          <div class="row">
-            <div class="col-sm-2 col-12">
-            <span class="information__general--label">Vorname:</span>
-            <p>{{user.first_name}}</p>
-            </div>
-            <div class="col-sm-2 col-12">
-              <span class="information__general--label">Nachname:</span>
-              <p>{{user.last_name}}</p>
-            </div>
-          </div>
+          <app-user-information></app-user-information>
           <div class="row information__general--span">
             <span class="information__general--label">Ausgewählter Arzt:</span>
             <p>{{doc}}</p>
           </div>
-          <h3>Derzeitige Medikation</h3>
-          <div class="row information__general--span">
-            <ul>
-              <li *ngFor="let currentMed of currentMeds">
-                <span>{{currentMed.medication}} {{currentMed.intervall}}
-                  seit {{currentMed.timestampFrom | date:'dd.MM.yyyy'}}</span>
-              </li>
-            </ul>
-          </div>
-          <h3>Bereits probierte Medikamente</h3>
-          <div class="row information__general--span">
-            <ul>
-              <li *ngFor="let usedMed of usedMeds">
-                  <span>{{usedMed.medication}} von {{usedMed.timestampFrom | date:'dd.MM.yyyy'}} bis
-                    {{usedMed.timestampTo | date:'dd.MM.yyyy'}}</span>
-              </li>
-            </ul>
-          </div>
+          <app-medication-information></app-medication-information>
       </div>
     </div>
   </div>

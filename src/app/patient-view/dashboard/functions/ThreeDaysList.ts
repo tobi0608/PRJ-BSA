@@ -4,20 +4,11 @@ export function ThreeDaysList(filter): any {
     const data = [];
     const sv = localStorage.getItem('sv');
     switch (filter) {
-        case 'systole':
+        case 'bloodPressure':
             DATES.forEach(function (value) {
                 if (value.sv.toString() === sv) {
                     if (value.timestamp > Date.now() - 345600001) { // letzten 3 Tage
-                        data.unshift([value.timestamp + 3600000, value.systole]);
-                    }
-                }
-            });
-            break;
-        case 'diastole':
-            DATES.forEach(function (value) {
-                if (value.sv.toString() === sv) {
-                    if (value.timestamp > Date.now() - 345600001) { // letzten 3 Tage
-                        data.unshift([value.timestamp + 3600000, value.diastole]);
+                        data.unshift([value.timestamp + 3600000, value.systole, value.diastole]);
                     }
                 }
             });

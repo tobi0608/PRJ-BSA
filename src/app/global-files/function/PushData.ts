@@ -5,11 +5,8 @@ export function PushData(sv, filter): any {
     DATES.forEach(function (value) {
         if (value.sv.toString() === sv) {
             switch (filter) {
-                case 'systole':
-                    Data.unshift([value.timestamp + 3600000, value.systole]);
-                    break;
-                case 'diastole':
-                    Data.unshift([value.timestamp + 3600000, value.diastole]);
+                case 'bloodPressure':
+                    Data.unshift([value.timestamp + 3600000, value.systole, value.diastole]);
                     break;
                 case 'heartbeat':
                     Data.unshift([value.timestamp + 3600000, value.heartbeat]);

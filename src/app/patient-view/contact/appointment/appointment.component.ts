@@ -19,6 +19,7 @@ export class AppointmentComponent implements OnInit {
     ngOnInit() {
         LogInCheck('patient');
     }
+
     onSend(): void {
         if (this.appointmentForm.form.valid) {
             const sv = localStorage.getItem('sv');

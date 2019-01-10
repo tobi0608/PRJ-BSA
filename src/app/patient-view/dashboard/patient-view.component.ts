@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
+import HighchartsMore from 'highcharts/highcharts-more.src.js';
 import {LogInCheck} from '../../global-files/function/LogInCheck';
 import {MessageCounter} from '../../global-files/function/MessageCounter';
 import {ThreeDaysList} from './functions/ThreeDaysList';
 import {StatusCheck} from './functions/StatusCheck';
 NoDataToDisplay(Highcharts);
+HighchartsMore(Highcharts);
 
 @Component({
     selector: 'app-patient-view',
@@ -20,21 +22,22 @@ export class PatientViewComponent implements OnInit {
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
-            type: 'area'
+            type: 'arearange'
         },
         title: {
             text: null
         },
         series: [{
             data: [],
-            name: 'Systole (mmHg)',
-            color: '#0406FF',
+            name: 'Blutdruck (mmHg)',
+            color: '#0011ff',
             fillColor: '#41ACFF',
+            lineWidth: 3,
             zIndex: 1,
             zones: [
                 {
                     value: 69,
-                    color: '#FF0000',
+                    color: '#0011ff',
                     fillColor: '#FF0000'
                 },
                 {
@@ -42,24 +45,18 @@ export class PatientViewComponent implements OnInit {
                 },
                 {
                     value: 300,
-                    color: '#FF0000',
+                    color: '#0011ff',
                     fillColor: '#FF0000',
                 }]
         },
             {
-                data: [],
-                name: 'Diastole (mmHg)',
-                color: '#0406FF',
-                zIndex: 2,
-                fillOpacity: 1,
-                fillColor: '#FFFFFF',
-            },
-            {
+                type: 'area',
                 data: [],
                 name: 'Herzrate (Pro S)',
-                color: '#FF0015',
+                color: '#B2101D',
                 zIndex: 3,
-                fillOpacity: 0
+                fillOpacity: 0,
+                lineWidth: 5
             }
         ],
         lang: {
@@ -72,11 +69,9 @@ export class PatientViewComponent implements OnInit {
                 color: '#B2101D'
             }
         },
-        legend: {
-            enabled: false
-        },
         tooltip: {
-            headerFormat: '',
+            xDateFormat: '%d.%m.%Y %H:%M',
+            headerFormat: '<span style="font-weight: bold">{point.key}</span><br>',
             shared: true,
             crosshairs: true
         },
@@ -103,9 +98,8 @@ export class PatientViewComponent implements OnInit {
         LogInCheck('patient');
         this.name = localStorage.getItem('firstName');
         this.messageCounter = MessageCounter('Message');
-        this.chartOptions.series[0].data = ThreeDaysList('systole');
-        this.chartOptions.series[1].data = ThreeDaysList('diastole');
-        this.chartOptions.series[2].data = ThreeDaysList('heartbeat');
+        this.chartOptions.series[0].data = ThreeDaysList('bloodPressure');
+        this.chartOptions.series[1].data = ThreeDaysList('heartbeat');
         this.status = StatusCheck();
     }
 }
