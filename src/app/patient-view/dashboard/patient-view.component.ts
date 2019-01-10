@@ -4,6 +4,7 @@ import {LogInCheck} from '../../global-files/function/LogInCheck';
 import {MessageCounter} from '../../global-files/function/MessageCounter';
 import {ThreeDaysList} from './functions/ThreeDaysList';
 import {StatusCheck} from './functions/StatusCheck';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-patient-view',

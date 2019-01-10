@@ -30,11 +30,14 @@ const routes: Routes = [
     { path: 'doctor/user/information', component: DoctorInformationComponent},
 
     { path: 'patient/dashboard', component: PatientViewComponent },
+    { path: 'patient/parameter', redirectTo: 'patient/parameter/chart', pathMatch: 'full' },
     { path: 'patient/parameter/chart', component: ParameterChartComponent },
     { path: 'patient/parameter/list', component: ParameterListComponent },
+    { path: 'patient/contact', redirectTo: 'patient/contact/appointment', pathMatch: 'full' },
     { path: 'patient/contact/appointment', component: AppointmentComponent },
     { path: 'patient/contact/alert', component: AlertListComponent },
     { path: 'patient/achievement', component: AchievementComponent },
+    { path: 'patient/user', redirectTo: 'patient/user/information', pathMatch: 'full' },
     { path: 'patient/user/settings', component: PatientSettingsComponent },
     { path: 'patient/user/information', component: PatientInformationComponent }
 

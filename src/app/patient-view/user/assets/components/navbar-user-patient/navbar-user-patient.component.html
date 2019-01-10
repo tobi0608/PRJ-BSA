@@ -1,10 +1,10 @@
-<nav class="navUser">
+<nav class="navUser" #nav>
   <a routerLink="/patient/user/information" class="navUser--nav-item">Informationen</a>
   <a routerLink="/patient/user/settings" class="navUser--nav-item">Einstellungen</a>
 </nav>
 <div class="navUser--skewRight"></div>
 <div class="navUser--skewLeft"></div>
-<select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)">
+<select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)" #navMobile>
   <option value="patient/user/information">Informationen</option>
   <option value="patient/user/settings">Einstellungen</option>
 </select>
