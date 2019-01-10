@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import * as Highcharts from 'highcharts';
+import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
 import {PushData} from '../../../global-files/function/PushData';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
+NoDataToDisplay(Highcharts);
 
 @Component({
   selector: 'app-parameter-chart',
@@ -55,6 +57,16 @@ export class ParameterChartComponent implements OnInit {
                 fillOpacity: 0,
             },
         ],
+        lang: {
+            noData: 'Bis jetzt noch keine Werte eingetragen!'
+        },
+        noData: {
+            style: {
+                fontWeight: 'bold',
+                fontSize: '1.5rem',
+                color: '#B2101D'
+            }
+        },
         legend: {
             enabled: false
         },
