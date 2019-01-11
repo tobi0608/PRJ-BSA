@@ -1,0 +1,33 @@
+.settings {
+  &--heading{
+    padding-top: 1.5rem;
+  }
+  &--label{
+    width: 8.706875rem;
+  }
+  &--input{
+    @media only screen and (min-width: 575px) {
+      width: 50%;
+    }
+    @media only screen and (max-width: 575px) {
+      width: 100%;
+    }
+  }
+  &--field{
+    margin-top: 0.5rem;
+  }
+  &--btn{
+    margin-right: 0.5rem;
+  }
+  &--PWBtn{
+    margin-top: 0.5rem;
+  }
+  &--text{
+    @media only screen and (min-width: 575px) {
+      width: 50%;
+    }
+    @media only screen and (max-width: 575px) {
+      width: 100%;
+    }
+  }
+}

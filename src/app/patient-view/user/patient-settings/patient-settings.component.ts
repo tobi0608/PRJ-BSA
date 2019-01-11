@@ -10,10 +10,6 @@ import {GetDocsSVs} from './functions/GetDocsSVs';
 })
 export class PatientSettingsComponent implements OnInit {
     @ViewChild('newDocForm') newDocForm;
-    @ViewChild('newPasswordForm') newPasswordForm;
-    oldPW;
-    newPW;
-    repeatPW;
     newDoc;
     Docs;
     constructor() {}
@@ -23,31 +19,15 @@ export class PatientSettingsComponent implements OnInit {
     }
 
     newDoctor(): void {
+        const newDoc = this.newDoc;
         if (this.newDocForm.form.valid) {
             USERS.find(function (tmp) {
                 if (tmp.sv.toString() === localStorage.getItem('sv')) {
-                        tmp.doctor_sv = parseInt(this.newDoc, 10);
+                        tmp.doctor_sv = parseInt(newDoc, 10);
                         alert('Ihr Arzt wurde geändert!');
                         return true;
                 }
             });
         }
-    }
-
-    newPassword(): void {
-        const newPW =  this.newPW;
-        const oldPW = this.oldPW;
-        const repeatPW = this.repeatPW;
-        USERS.find(function (tmp) {
-            if (tmp.sv.toString() === localStorage.getItem('sv')) {
-                if (tmp.password === oldPW) {
-                    if (newPW === repeatPW) {
-                        tmp.password = newPW;
-                        alert('Ihr Passwort wurde geändert!');
-                        return true;
-                    }
-                }
-            }
-        });
     }
 }

@@ -29,7 +29,7 @@ import { NoAccessComponent } from './global-files/components/no-access/no-access
 import { NavbarContactComponent } from './patient-view/contact/assets/components/navbar-contact/navbar-contact.component';
 import { NavbarUserPatientComponent } from './patient-view/user/assets/components/navbar-user-patient/navbar-user-patient.component';
 import { UserInformationComponent } from './global-files/components/user-information/user-information.component';
-import { MedicationInformationComponent } from './global-files/components/medication-information/medication-information.component';
+import { UserSettingsComponent } from './global-files/components/user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { MedicationInformationComponent } from './global-files/components/medica
     NavbarContactComponent,
     NavbarUserPatientComponent,
     UserInformationComponent,
-    MedicationInformationComponent
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,

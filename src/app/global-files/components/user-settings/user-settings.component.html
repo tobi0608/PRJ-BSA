@@ -1,0 +1,52 @@
+<h2 class="settings--heading">Allgemein</h2>
+<form (ngSubmit)="saveInformation('firstName')" class="form-inline" #newFirstNameForm="ngForm" ngNativeValidate>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <label for="firstName" class="settings--label input-group-text">Vorname:</label>
+    </div>
+    <input id="firstName" type="text" name="firstName" class="form-control settings--btn"
+           [(ngModel)]="firstName" required>
+  </div>
+  <button type="submit" class="btn btn-danger">Änderungen speichern</button>
+</form>
+<form (ngSubmit)="saveInformation('lastName')" class="form-inline settings--field" #newLastNameForm="ngForm" ngNativeValidate>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <label for="lastName" class="settings--label input-group-text">Nachname:</label>
+    </div>
+    <input id="lastName" type="text" name="lastName" class="form-control settings--btn"
+           [(ngModel)]="lastName" required>
+  </div>
+  <button type="submit" class="btn btn-danger">Änderungen speichern</button>
+</form>
+<form (ngSubmit)="saveInformation('email')" class="form-inline settings--field" #newEmailForm="ngForm" ngNativeValidate>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <label for="email" class="settings--label input-group-text">E-Mail Adresse:</label>
+    </div>
+    <input id="email" type="email" name="email" class="form-control settings--btn"
+           [(ngModel)]="email" pattern='[0-9a-zA-Z.-]{1,}[@]{1}[0-9a-zA-Z.-]{1,}[.]{1}[0-9a-zA-Z]{2,}' required>
+  </div>
+  <button type="submit" class="btn btn-danger">Änderungen speichern</button>
+</form>
+
+<h2 class="settings--heading">Sicherheit und Login</h2>
+<form (ngSubmit)="newPassword()" #newPasswordForm="ngForm" ngNativeValidate>
+  <h3>Passwort ändern</h3>
+  <label for="oldPW" class="settings--field">Aktuelles Passwort</label>
+  <input id="oldPW" type="password" name="oldPW" class="form-control settings--input"
+         [(ngModel)]="oldPW" required>
+  <label for="newPW" class="settings--field">Neues Passwort:</label>
+  <input id="newPW" type="password" name="newPW" class="form-control settings--input"
+         [(ngModel)]="newPW" required>
+  <label for="repeatPW" class="settings--field">Neues Passwort erneut eingeben:</label>
+  <input id="repeatPW" type="password" name="repeatPW" class="form-control settings--input"
+         [(ngModel)]="repeatPW" required>
+  <button type="submit" class="btn btn-danger settings--PWBtn">Passwort speichern</button>
+</form>
+<h2 class="settings--heading">Erweitert</h2>
+<h3>Deaktiviere dein Konto</h3>
+<p class="settings--text">Durch die Deaktivierung deines Kontos wird dein Profil gesperrt und dein Werte und Informationen,
+  die du auf RivaRocciPass geteilt hast, entfernt. Manche Informationen können weiterhin für andere sichtbar sein,
+  wie deine Nachrichten, die du gesendet hast.</p>
+<button type="click" class="btn btn-danger" (click)="deleteUser()">Konto deaktivieren</button>

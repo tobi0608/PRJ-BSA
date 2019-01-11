@@ -18,7 +18,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let data of dates">
+            <tr *ngFor="let data of dates" class="parameterList__row--{{data.i10}}">
               <td><fa name="{{data.i10}}" class="parameterList__body--heart"></fa></td>
               <td>{{data.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
               <td>{{data.systole}}</td>
