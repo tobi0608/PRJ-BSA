@@ -36,7 +36,8 @@ export class AppointmentComponent implements OnInit {
                 timestamp: Date.now(),
                 seen: 'bell',
                 check: 'check',
-                times: 'times'
+                times: 'times',
+                info: ''
             };
             MESSAGES.unshift(tmp);
             alert('Ihr Terminvorschlag wurde abgeschickt und wird demnächst bearbeitet!');

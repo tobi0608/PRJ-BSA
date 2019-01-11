@@ -149,7 +149,8 @@ export class PatientRecordComponent implements OnInit {
             timestamp: Date.now(),
             seen: 'bell',
             check: ' ',
-            times: ' '
+            times: ' ',
+            info: ' '
         };
         MESSAGES.unshift(alert);
         this.ngOnInit();
@@ -167,7 +168,8 @@ export class PatientRecordComponent implements OnInit {
             timestamp: Date.now(),
             seen: 'bell',
             check: ' ',
-            times: ' '
+            times: ' ',
+            info: ' '
         };
         MESSAGES.unshift(alert);
         this.ngOnInit();
@@ -189,7 +191,8 @@ export class PatientRecordComponent implements OnInit {
             timestamp: Date.now(),
             seen: 'bell',
             check: ' ',
-            times: ' '
+            times: ' ',
+            info: ' '
         };
         MESSAGES.unshift(alert);
     }

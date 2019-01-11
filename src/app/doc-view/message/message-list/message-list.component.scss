@@ -23,19 +23,17 @@
     }
   }
   &__table {
-    width: 70%;
+    width: 100%;
     @media only screen and (min-width: 600px) {
       &--mobile {
         display: none;
       }
       &--full {
-        display: block;
+        width: 50%;
       }
     }
     @media only screen and (max-width: 600px) {
-      font-size: 0.5rem;
       &--mobile {
-        display: block;
         font-size: 0.75rem;
       }
       &--full {
@@ -43,4 +41,9 @@
       }
     }
   }
+}
+
+.noRequest {
+  color: #B2101D;
+  font-weight: bold;
 }

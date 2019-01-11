@@ -47,7 +47,8 @@ export class SendValueComponent implements OnInit {
                     timestamp: Date.now(),
                     seen: 'bell',
                     check: ' ',
-                    times: ' '
+                    times: ' ',
+                    info: ''
                 };
                 MESSAGES.unshift(msg);
             }

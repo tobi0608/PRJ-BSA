@@ -12,20 +12,24 @@ import {MessageFilter} from '../../../global-files/function/MessageFilter';
 })
 export class MessageListComponent implements OnInit {
     messages;
+    acceptMessages;
+    deniedMessages;
     constructor(public router: Router) { }
 
     ngOnInit() {
         LogInCheck('doctor');
-        this.messages = MessageFilter('Termin');
+        this.messages = MessageFilter('request');
+        this.acceptMessages = MessageFilter('accept');
+        this.deniedMessages = MessageFilter('denied');
     }
     onSelect(patient): void {
-        this.router.navigate(['doctor/patients/record/:' + patient]);
+        if (patient) {
+            this.router.navigate(['doctor/patients/record/:' + patient]);
+        }
     }
-
     onAccept(message): void {
         message.seen = ' ';
-        message.check = ' ';
-        message.times = ' ';
+        message.info = 'accept';
         const tmp: Message = {
             svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: parseInt(message.svFrom, 10),
@@ -36,16 +40,17 @@ export class MessageListComponent implements OnInit {
             timestamp: Date.now(),
             seen: 'bell',
             check: ' ',
-            times: ' '
+            times: ' ',
+            info: ' '
         };
         MESSAGES.unshift(tmp);
+        console.log(tmp);
         alert('Der Termin wurde bestätigt!');
+        this.ngOnInit();
     }
-
     onDenied(message): void {
         message.seen = ' ';
-        message.check = ' ';
-        message.times = ' ';
+        message.info = 'denied';
         const tmp: Message = {
             svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: parseInt(message.svFrom, 10),
@@ -56,9 +61,11 @@ export class MessageListComponent implements OnInit {
             timestamp: Date.now(),
             seen: 'bell',
             check: ' ',
-            times: ' '
+            times: ' ',
+            info: ' '
         };
         MESSAGES.unshift(tmp);
         alert('Der Termin wurde abgelehnt!');
+        this.ngOnInit();
     }
 }

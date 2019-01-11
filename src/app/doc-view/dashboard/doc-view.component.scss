@@ -69,14 +69,8 @@
       &--mobile {
         display: none;
       }
-      &--full {
-        display: block;
-      }
     }
     @media only screen and (max-width: 550px) {
-      &--mobile {
-        display: block;
-      }
       &--full {
         display: none;
       }

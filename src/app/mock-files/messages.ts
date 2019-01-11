@@ -9,5 +9,5 @@ export class Message {
     seen: string;
     check: string;
     times: string;
-
+    info: string;
 }
