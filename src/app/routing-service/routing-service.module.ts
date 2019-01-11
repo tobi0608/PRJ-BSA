@@ -22,10 +22,13 @@ const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeViewComponent },
     { path: 'doctor/dashboard', component: DocViewComponent },
+    { path: 'doctor/messages', redirectTo: 'doctor/messages/appointments', pathMatch: 'full' },
     { path: 'doctor/messages/appointments', component: MessageListComponent },
     { path: 'doctor/messages/alerts', component: DocAlertListComponent },
+    { path: 'doctor/patients/', redirectTo: 'doctor/patients/list', pathMatch: 'full' },
     { path: 'doctor/patients/list', component: PatientListComponent },
     { path: 'doctor/patients/record/:sv', component: PatientRecordComponent },
+    { path: 'doctor/user', redirectTo: 'doctor/user/information', pathMatch: 'full' },
     { path: 'doctor/user/settings', component: DoctorSettingsComponent},
     { path: 'doctor/user/information', component: DoctorInformationComponent},
 

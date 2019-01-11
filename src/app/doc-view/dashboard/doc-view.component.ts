@@ -1,14 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import * as Highcharts from 'highcharts';
+import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
 import {Router} from '@angular/router';
 import {LogInCheck} from '../../global-files/function/LogInCheck';
 import {MessageCounter} from '../../global-files/function/MessageCounter';
 import {lastPatients} from './functions/lastPatients';
 import {UserCounter} from './functions/UserCounter';
-
-let user = [];
-
-console.log();
+NoDataToDisplay(Highcharts);
 
 @Component({
   selector: 'app-doc-view',
@@ -35,6 +33,16 @@ export class DocViewComponent implements OnInit {
             name: 'Users',
             color: '#B2101D'
         }],
+        lang: {
+            noData: 'Kein Patientenzuwachs in der letzten Woche'
+        },
+        noData: {
+            style: {
+                fontWeight: 'bold',
+                fontSize: '1.5rem',
+                color: '#B2101D'
+            }
+        },
         legend: {
             enabled: false
         },
@@ -57,9 +65,8 @@ export class DocViewComponent implements OnInit {
   constructor(public router: Router) {}
 
   ngOnInit() {
-      user = document.cookie.split(',');
       LogInCheck('doctor');
-      this.name = user[3];
+      this.name = localStorage.getItem('lastName');
       this.messageCounter = MessageCounter('Termin');
       this.alertCounter = MessageCounter('Alert');
       this.users = lastPatients();
@@ -67,12 +74,6 @@ export class DocViewComponent implements OnInit {
   }
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient.sv]);
-    }
-    onRoute(route): void {
-        this.router.navigate([route]);
-    }
-    onOff(): void {
-        document.cookie = 'null; path=/';
     }
 }
 

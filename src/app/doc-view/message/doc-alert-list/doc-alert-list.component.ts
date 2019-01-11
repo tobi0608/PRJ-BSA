@@ -21,11 +21,4 @@ export class DocAlertListComponent implements OnInit {
         alert.seen = ' ';
         this.router.navigate(['doctor/patients/record/:' + alert.svFrom]);
     }
-    onRoute(route): void {
-        this.router.navigate([route]);
-    }
-    onOff(): void {
-        document.cookie = 'null; path=/';
-        console.log(document.cookie);
-    }
 }

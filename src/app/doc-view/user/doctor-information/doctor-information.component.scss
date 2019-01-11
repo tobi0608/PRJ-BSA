@@ -1,10 +1,6 @@
-@import "../../../global-files/scss/signIn";
-@import "../../../global-files/scss/nav";
-@import "../assets/scss/navUser";
-
 .doctorInformation {
   padding-top: 5.5rem;
-  font-size: 1.35rem;
+  font-size: 1rem;
   &__body {
     @media only screen and (min-width: 1000px) {
       width: 80%;

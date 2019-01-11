@@ -1,0 +1,15 @@
+<nav class="nav" #nav>
+  <a routerLink="/doctor/dashboard" class="nav--nav-item" name="dashboard">Dashboard</a>
+  <a routerLink="/doctor/messages/appointments" class="nav--nav-item" name="messages">Nachrichten</a>
+  <a routerLink="/doctor/patients/list" class="nav--nav-item" name="patients">Patienten</a>
+  <a routerLink="/doctor/user/information" class="nav--nav-item" name="user">Benutzer</a>
+  <a class="nav--nav-item" (click)="onOff()" name="logoff">Abmelden</a>
+</nav>
+<select class="custom-select navMobile" (change)="onRoute($event.target.value)" #navMobile>
+  <option value="doctor/dashboard">Dashboard</option>
+  <option value="doctor/messages/appointments">Nachrichten</option>
+  <option value="doctor/patients/list">Patienten</option>
+  <option value="doctor/user/information">Benutzer</option>
+  <option value=" " (click)="onOff()">Abmelden</option>
+</select>
+<div class="nav--SkewDoc"></div>

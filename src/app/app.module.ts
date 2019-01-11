@@ -30,6 +30,10 @@ import { NavbarContactComponent } from './patient-view/contact/assets/components
 import { NavbarUserPatientComponent } from './patient-view/user/assets/components/navbar-user-patient/navbar-user-patient.component';
 import { UserInformationComponent } from './global-files/components/user-information/user-information.component';
 import { UserSettingsComponent } from './global-files/components/user-settings/user-settings.component';
+import { NavbarDoctorComponent } from './doc-view/assets/components/navbar-doctor/navbar-doctor.component';
+import { NavbarMessageComponent } from './doc-view/message/assets/components/navbar-message/navbar-message.component';
+import { NavbarUserDoctorComponent } from './doc-view/user/assets/components/navbar-user-doctor/navbar-user-doctor.component';
+import { NavbarPatientComponent } from './doc-view/patient/assets/components/navbar-patient/navbar-patient.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,11 @@ import { UserSettingsComponent } from './global-files/components/user-settings/u
     NavbarContactComponent,
     NavbarUserPatientComponent,
     UserInformationComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    NavbarDoctorComponent,
+    NavbarMessageComponent,
+    NavbarUserDoctorComponent,
+    NavbarPatientComponent
   ],
   imports: [
     BrowserModule,

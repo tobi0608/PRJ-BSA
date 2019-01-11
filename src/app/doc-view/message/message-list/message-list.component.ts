@@ -5,8 +5,6 @@ import {Router} from '@angular/router';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
 import {MessageFilter} from '../../../global-files/function/MessageFilter';
 
-let user = [];
-
 @Component({
     selector: 'app-message-list',
     templateUrl: './message-list.component.html',
@@ -14,7 +12,6 @@ let user = [];
 })
 export class MessageListComponent implements OnInit {
     messages;
-
     constructor(public router: Router) { }
 
     ngOnInit() {
@@ -26,15 +23,14 @@ export class MessageListComponent implements OnInit {
     }
 
     onAccept(message): void {
-        user = document.cookie.split(',');
         message.seen = ' ';
         message.check = ' ';
         message.times = ' ';
         const tmp: Message = {
-            svFrom: parseInt(user[0], 10),
+            svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: parseInt(message.svFrom, 10),
-            first_name: user[2],
-            last_name: user[3],
+            first_name: localStorage.getItem('firstName'),
+            last_name: localStorage.getItem('lastName'),
             type: 'Termin',
             text: 'Ihr Termin wurde bestätigt!',
             timestamp: Date.now(),
@@ -44,19 +40,17 @@ export class MessageListComponent implements OnInit {
         };
         MESSAGES.unshift(tmp);
         alert('Der Termin wurde bestätigt!');
-        console.log(tmp);
     }
 
     onDenied(message): void {
-        user = document.cookie.split(',');
         message.seen = ' ';
         message.check = ' ';
         message.times = ' ';
         const tmp: Message = {
-            svFrom: parseInt(user[0], 10),
+            svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: parseInt(message.svFrom, 10),
-            first_name: user[2],
-            last_name: user[3],
+            first_name: localStorage.getItem('firstName'),
+            last_name: localStorage.getItem('lastName'),
             type: 'Termin',
             text: 'Ihr Termin wurde abgelehnt!',
             timestamp: Date.now(),
@@ -66,11 +60,5 @@ export class MessageListComponent implements OnInit {
         };
         MESSAGES.unshift(tmp);
         alert('Der Termin wurde abgelehnt!');
-    }
-    onRoute(route): void {
-        this.router.navigate([route]);
-    }
-    onOff(): void {
-        document.cookie = 'null; path=/';
     }
 }

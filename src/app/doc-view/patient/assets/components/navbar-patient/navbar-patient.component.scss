@@ -1,0 +1,52 @@
+@import "../../../../../global-files/scss/nav";
+
+.navPatients{
+  left: 14.008125rem;
+  margin-top: 2.4rem;
+  position: fixed;
+  z-index: 9;
+  height: 2.5rem;
+  background-color: #B2101D;
+  @media only screen and (min-width: 921px) {
+    display: block;
+    &--skewRight{
+      margin-left: 32.2425rem;
+      margin-top: 2.4rem;
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-right: 2.5rem solid transparent;
+      display: block;
+      position: fixed;
+      z-index: 9;
+    }
+    &--skewLeft{
+      margin-left: 11.508125rem;
+      margin-top: 2.4rem;
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid #B2101D;
+      border-left: 2.5rem solid transparent;
+      display: block;
+      position: fixed;
+      z-index: 9;
+    }
+  }
+  @media only screen and (max-width: 920px) {
+    display: none;
+  }
+  &--nav-item{
+    font-size: 1.5rem;
+    color: white;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  &--nav-active {
+    font-size: 1.5rem;
+    color: #B2101D;
+    padding: 0.3rem 0.75rem 0.32rem 0.75rem;
+    background-color: #FFFFFF;
+    border: 0.1rem solid #B2101D;
+    border-top: 0rem;
+  }
+}

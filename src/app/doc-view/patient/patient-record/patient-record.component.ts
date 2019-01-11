@@ -4,6 +4,8 @@ import {PATIENTS} from '../../../mock-files/mock-patients';
 import {Patient} from '../../../mock-files/patients';
 import {MEDICATION} from '../../../mock-files/mock-medication';
 import * as Highcharts from 'highcharts';
+import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
+import HighchartsMore from 'highcharts/highcharts-more.src.js';
 import {Medication} from '../../../mock-files/medication';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
@@ -12,8 +14,8 @@ import {SectionSelection} from './functions/SectionSelection';
 import {PushData} from '../../../global-files/function/PushData';
 import {ShowPatient} from './functions/ShowPatient';
 import {FilterMedication} from '../../../global-files/function/FilterMedication';
-
-let user = [];
+NoDataToDisplay(Highcharts);
+HighchartsMore(Highcharts);
 
 @Component({
     selector: 'app-patient-record',
@@ -35,7 +37,7 @@ export class PatientRecordComponent implements OnInit {
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
-            type: 'area',
+            type: 'arearange',
             zoomType: 'x'
         },
         title: {
@@ -43,14 +45,15 @@ export class PatientRecordComponent implements OnInit {
         },
         series: [{
             data: [],
-            name: 'Systole (mmHg)',
-            color: '#0406FF',
+            name: 'Blutdruck (mmHg)',
+            color: '#0011ff',
             fillColor: '#41ACFF',
+            lineWidth: 3,
             zIndex: 1,
             zones: [
                 {
                     value: 69,
-                    color: '#FF0000',
+                    color: '#0011ff',
                     fillColor: '#FF0000'
                 },
                 {
@@ -58,31 +61,33 @@ export class PatientRecordComponent implements OnInit {
                 },
                 {
                     value: 300,
-                    color: '#FF0000',
+                    color: '#0011ff',
                     fillColor: '#FF0000',
                 }]
         },
             {
-                data: [],
-                name: 'Diastole (mmHg)',
-                color: '#0406FF',
-                zIndex: 2,
-                fillOpacity: 1,
-                fillColor: '#FFFFFF',
-            },
-            {
+                type: 'area',
                 data: [],
                 name: 'Herzrate (Pro S)',
-                color: '#FF0015',
+                color: '#B2101D',
                 zIndex: 3,
                 fillOpacity: 0,
-            },
+                lineWidth: 3.5
+            }
         ],
-        legend: {
-            enabled: false
+        lang: {
+            noData: 'Es wurden noch keine Daten hinzugefügt!'
+        },
+        noData: {
+            style: {
+                fontWeight: 'bold',
+                fontSize: '1.5rem',
+                color: '#B2101D'
+            }
         },
         tooltip: {
-            headerFormat: '',
+            xDateFormat: '%d.%m.%Y %H:%M',
+            headerFormat: '<span style="font-weight: bold">{point.key}</span><br>',
             shared: true,
             crosshairs: true
         },
@@ -97,8 +102,6 @@ export class PatientRecordComponent implements OnInit {
             }
         },
         yAxis: [{
-            max: 250,
-            min: 40,
             title: {
                 text: null
             }
@@ -110,9 +113,8 @@ export class PatientRecordComponent implements OnInit {
         LogInCheck('doctor');
         const sv = this.route.snapshot.paramMap.get('sv').replace(':', '');
         SectionSelection(sv);
-        this.chartOptions.series[0].data = PushData(sv, 'systole');
-        this.chartOptions.series[1].data = PushData(sv, 'diastole');
-        this.chartOptions.series[2].data = PushData(sv, 'heartbeat');
+        this.chartOptions.series[0].data = PushData(sv, 'bloodPressure');
+        this.chartOptions.series[1].data = PushData(sv, 'heartbeat');
         this.selectedPatient = ShowPatient(sv);
         this.currentMeds = FilterMedication(sv, 'fresh');
         this.usedMeds = FilterMedication(sv, 'expired');
@@ -137,12 +139,11 @@ export class PatientRecordComponent implements OnInit {
         if (med && intervall !== null) {
             MEDICATION.unshift(tmp);
         }
-        user = document.cookie.split(',');
         const alert: Message = {
-            svFrom: parseInt(user[0], 10),
+            svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: svnr,
-            first_name: user[2],
-            last_name: user[3],
+            first_name: localStorage.getItem('lastName'),
+            last_name: localStorage.getItem('firstName'),
             type: 'Med',
             text: 'Ihre Medikation wurde umgestellt!',
             timestamp: Date.now(),
@@ -156,12 +157,11 @@ export class PatientRecordComponent implements OnInit {
     onDelete(meds): void {
         meds.fresh = false;
         meds.timestampTo = Date.now();
-        user = document.cookie.split(',');
         const alert: Message = {
-            svFrom: parseInt(user[0], 10),
+            svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: meds.sv,
-            first_name: user[2],
-            last_name: user[3],
+            first_name: localStorage.getItem('lastName'),
+            last_name: localStorage.getItem('firstName'),
             type: 'Med',
             text: 'Ihre Medikation wurde umgestellt!',
             timestamp: Date.now(),
@@ -179,12 +179,11 @@ export class PatientRecordComponent implements OnInit {
     onSave(meds): void {
         document.getElementById(meds.medication).style.display = 'block';
         document.getElementById(meds.medication + '-form').style.display = 'none';
-        user = document.cookie.split(',');
         const alert: Message = {
-            svFrom: parseInt(user[0], 10),
+            svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: meds.sv,
-            first_name: user[2],
-            last_name: user[3],
+            first_name: localStorage.getItem('lastName'),
+            last_name: localStorage.getItem('firstName'),
             type: 'Med',
             text: 'Ihre Medikation wurde umgestellt!',
             timestamp: Date.now(),
@@ -195,7 +194,6 @@ export class PatientRecordComponent implements OnInit {
         MESSAGES.unshift(alert);
     }
     onSavePatient(): void {
-        user = document.cookie.split(',');
          const svnr =  this.svnr.nativeElement.value;
          const firstName = this.first_name.nativeElement.value;
          const lastName = this.last_name.nativeElement.value;
@@ -208,19 +206,12 @@ export class PatientRecordComponent implements OnInit {
             age: parseInt(age, 10),
             registered: Date.now(),
             last_visit: Date.now(),
-            assignedDoc: user[0]
+            assignedDoc: parseInt(localStorage.getItem('sv'), 10)
         };
         if (svnr !== '' && firstName !== '' && lastName !== '' && age !== '') {
             PATIENTS.unshift(tmp);
             this.router.navigate(['doctor/patients/list']);
         }
-    }
-    onRoute(route): void {
-        this.router.navigate([route]);
-    }
-    onOff(): void {
-        document.cookie = 'null; path=/';
-        console.log(document.cookie);
     }
 }
 
