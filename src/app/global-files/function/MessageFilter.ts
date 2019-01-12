@@ -48,7 +48,6 @@ export function MessageFilter(filter): object {
             break;
     }
     if (!(messages && messages.length)) {
-        console.log(0);
         const tmp: Message = {
             svFrom: 0,
             svTo: 0,

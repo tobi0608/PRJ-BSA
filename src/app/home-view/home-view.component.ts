@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {USERS} from '../mock-files/mock-user';
 import {Router} from '@angular/router';
+import {User} from '../mock-files/user';
 
 @Component({
     selector: 'app-home-view',
@@ -9,38 +10,60 @@ import {Router} from '@angular/router';
 })
 
 export class HomeViewComponent implements OnInit {
-    username;
-    password;
     @ViewChild('logInForm') logInForm;
 
     constructor(public router: Router) {}
 
     ngOnInit() {
     }
-    onLogIn(): void {
+
+    onLogIn(array): void {
         const site = this.router;
-        const sv = this.username;
-        const password = this.password;
-        if (this.logInForm.form.valid) {
         const user = USERS.find(function (tmp) {
-            return tmp.sv.toString() === sv.toString();
+            return tmp.sv.toString() === array.username;
         });
-            if (!user) {
-                alert('Falsche Sozialversicherungsnummer!');
-                return;
-            }
-            if (user.password === password) {
-                localStorage.setItem('sv', user.sv.toString());
-                localStorage.setItem('type', user.type);
-                localStorage.setItem('firstName', user.first_name);
-                localStorage.setItem('lastName', user.last_name);
-                localStorage.setItem('DocSV', user.doctor_sv.toString());
-                site.navigate([user.type + '/dashboard']);
-            } else {
-                alert('Falsches Passwort!');
-            }
+        if (!user) {
+            alert('Falsche Sozialversicherungsnummer!');
+            return;
+        }
+        if (user.password === array.password) {
+            localStorage.setItem('sv', user.sv.toString());
+            localStorage.setItem('type', user.type);
+            localStorage.setItem('firstName', user.first_name);
+            localStorage.setItem('lastName', user.last_name);
+            localStorage.setItem('DocSV', user.doctor_sv.toString());
+            site.navigate([user.type + '/dashboard']);
+        } else {
+            alert('Falsches Passwort!');
         }
     }
 
+    newUser(array): void {
+        const sv = USERS.find(function (tmp) {
+            return tmp.sv.toString() === array.sv;
+        });
+        console.log(array);
+        if (!sv) {
+            const tmp: User = {
+                sv: parseInt(array.sv, 10),
+                password: array.pw,
+                first_name: array.firstName,
+                last_name: array.lastName,
+                email: array.email,
+                type: array.type,
+                doctor_sv: 0,
+                registered: Date.now()
+            };
+            USERS.unshift(tmp);
+            alert('Sie haben sich erfolgreich registriert!');
+            this.logInForm.form.value.username = array.sv;
+            this.logInForm.form.value.password = array.pw;
+            this.onLogIn(this.logInForm.value);
+            return;
+        } else {
+            alert('Der User wurde bereits angelegt!');
+            return;
+        }
+    }
 
 }

@@ -13,7 +13,7 @@
             <p>{{openhours.address}}</p>
             <h2>Medikation:</h2>
             <h3>Derzeitige Medikation</h3>
-            <div class="row information__general--span">
+            <div id="currentMed" class="row information__general--span">
                 <ul>
                     <li *ngFor="let currentMed of currentMeds">
                 <span>{{currentMed.medication}} {{currentMed.intervall}}
@@ -22,7 +22,7 @@
                 </ul>
             </div>
             <h3>Bereits probierte Medikamente</h3>
-            <div class="row information__general--span">
+            <div id="usedMed" class="row information__general--span">
                 <ul>
                     <li *ngFor="let usedMed of usedMeds">
                   <span>{{usedMed.medication}} von {{usedMed.timestampFrom | date:'dd.MM.yyyy'}} bis
