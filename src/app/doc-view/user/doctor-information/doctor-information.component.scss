@@ -8,6 +8,10 @@
     @media only screen and (max-width: 1000px) {
       width: 100%;
     }
+    &--times {
+      left: 10rem;
+      position: absolute;
+    }
   }
   &__general {
     padding-top: 4rem;

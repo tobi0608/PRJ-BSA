@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Message} from '../../../mock-files/messages';
 import {MESSAGES} from '../../../mock-files/mock-messages';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
+import {GetOpenHours} from '../../../global-files/function/GetOpenHours';
 
 @Component({
     selector: 'app-appointment',
@@ -13,11 +14,13 @@ export class AppointmentComponent implements OnInit {
     time;
     date;
     type;
+    openhours;
 
     constructor() { }
 
     ngOnInit() {
         LogInCheck('patient');
+        this.openhours = GetOpenHours('patient');
     }
 
     onSend(): void {

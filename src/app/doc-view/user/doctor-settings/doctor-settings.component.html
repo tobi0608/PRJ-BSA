@@ -4,6 +4,94 @@
     <div class="container-fluid">
         <div class="shadow p-3 bg-white doctorSettings__body">
             <div class="doctorSettings__general">
+                <h2>Ordination Einstellungen:</h2>
+                <form (ngSubmit)="saveInformation('address', addressForm.value)" #addressForm="ngForm" ngNativeValidate>
+                    <div class="form-row">
+                        <div class="input-group col-lg-6">
+                            <div class="input-group-prepend">
+                                <label for="address"
+                                       class="doctorSettings__general--label input-group-text">Adresse:</label>
+                            </div>
+                            <input id="address" type="text" name="address" class="form-control"
+                                   [(ngModel)]="address" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger doctorSettings__general--btn">Speichern</button>
+                </form>
+                <h3 class="doctorSettings__general--heading">Ordinations Zeiten:</h3>
+                <form (ngSubmit)="saveInformation('openhours', openhoursForm.value)" #openhoursForm="ngForm"
+                      ngNativeValidate>
+                    <div class="form-row ">
+                        <div class="input-group col-lg-6">
+                            <div class="input-group-prepend">
+                                <label for="mon" class="doctorSettings__general--label input-group-text">Montag:</label>
+                            </div>
+                            <input id="mon" type="text" name="mon" class="form-control"
+                                   [(ngModel)]="mon" required>
+                        </div>
+                    </div>
+                    <div class="form-row doctorSettings__general--field">
+                        <div class="input-group col-lg-6">
+                            <div class="input-group-prepend">
+                                <label for="tues"
+                                       class="doctorSettings__general--label input-group-text">Dienstag:</label>
+                            </div>
+                            <input id="tues" type="text" name="tues" class="form-control"
+                                   [(ngModel)]="tues" required>
+                        </div>
+                    </div>
+                    <div class="form-row doctorSettings__general--field">
+                        <div class="input-group col-lg-6">
+                            <div class="input-group-prepend">
+                                <label for="wed"
+                                       class="doctorSettings__general--label input-group-text">Mittwoch:</label>
+                            </div>
+                            <input id="wed" type="text" name="wed" class="form-control"
+                                   [(ngModel)]="wed" required>
+                        </div>
+                    </div>
+                    <div class="form-row doctorSettings__general--field">
+                        <div class="input-group col-lg-6">
+                            <div class="input-group-prepend">
+                                <label for="thues"
+                                       class="doctorSettings__general--label input-group-text">Donnerstag:</label>
+                            </div>
+                            <input id="thues" type="text" name="thues" class="form-control"
+                                   [(ngModel)]="thues" required>
+                        </div>
+                    </div>
+                    <div class="form-row doctorSettings__general--field">
+                        <div class="input-group col-lg-6">
+                            <div class="input-group-prepend">
+                                <label for="fri"
+                                       class="doctorSettings__general--label input-group-text">Freitag:</label>
+                            </div>
+                            <input id="fri" type="text" name="fri" class="form-control"
+                                   [(ngModel)]="fri" required>
+                        </div>
+                    </div>
+                    <div class="form-row doctorSettings__general--field">
+                        <div class="input-group col-lg-6">
+                            <div class="input-group-prepend">
+                                <label for="sat"
+                                       class="doctorSettings__general--label input-group-text">Samstag:</label>
+                            </div>
+                            <input id="sat" type="text" name="sat" class="form-control"
+                                   [(ngModel)]="sat" required>
+                        </div>
+                    </div>
+                    <div class="form-row doctorSettings__general--field">
+                        <div class="input-group col-lg-6">
+                            <div class="input-group-prepend">
+                                <label for="sun"
+                                       class="doctorSettings__general--label input-group-text">Sonntag:</label>
+                            </div>
+                            <input id="sun" type="text" name="sun" class="form-control"
+                                   [(ngModel)]="sun" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger doctorSettings__general--btn">Speichern</button>
+                </form>
                 <app-user-settings></app-user-settings>
             </div>
         </div>

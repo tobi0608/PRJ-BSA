@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {USERS} from '../../../mock-files/mock-user';
 import {GetUserData} from '../../function/GetUserData';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-user-settings',
@@ -15,7 +16,8 @@ export class UserSettingsComponent implements OnInit {
     lastName;
     email;
 
-    constructor() { }
+    constructor(public router: Router) {
+    }
 
     ngOnInit() {
         const sv = localStorage.getItem('sv');
@@ -46,19 +48,31 @@ export class UserSettingsComponent implements OnInit {
         });
         switch (filter) {
             case 'firstName':
-                    user.first_name = this.firstName;
-                    localStorage.setItem('firstName', user.first_name);
-                    console.log('test');
+                user.first_name = this.firstName;
+                localStorage.setItem('firstName', user.first_name);
+                alert('Ihr Vorname wurde geändert!');
                 break;
             case 'lastName':
-                    user.last_name = this.lastName;
-                    localStorage.setItem('lastName', user.last_name);
+                user.last_name = this.lastName;
+                localStorage.setItem('lastName', user.last_name);
+                alert('Ihr Nachname wurde geändert!');
                 break;
             case 'email':
-                    user.email = this.email;
+                user.email = this.email;
+                alert('Ihre E-Mail wurde geändert!');
                 break;
         }
     }
     deleteUser(): void {
+        if (confirm('Hiermit deaktivieren Sie ihr Konto!')) {
+            console.log(USERS);
+            const user = USERS.find(function (tmp) {
+                return tmp.sv.toString() === localStorage.getItem('sv');
+            });
+            USERS.splice(USERS.indexOf(user), 1);
+            console.log(USERS);
+            localStorage.clear();
+            this.router.navigate(['home']);
+        }
     }
 }

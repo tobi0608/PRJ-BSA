@@ -15,7 +15,6 @@ export function ShowPatient(sv): Patient {
                 first_name: null,
                 last_name: null,
                 gender: null,
-                age: null,
                 registered: null,
                 last_visit: null,
                 assignedDoc: null

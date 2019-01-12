@@ -4,6 +4,14 @@
   <div class="container-fluid">
     <div class="shadow p-3 bg-white appointmentPatient__body">
       <div class="appointmentPatient__body--appointment">
+          <h2>Ordinations Zeiten:</h2>
+          <p>Montag: <span class="appointmentPatient__body--times">{{openhours.mon}}</span></p>
+          <p>Dienstag: <span class="appointmentPatient__body--times">{{openhours.tues}}</span></p>
+          <p>Mittwoch: <span class="appointmentPatient__body--times">{{openhours.wed}}</span></p>
+          <p>Donnerstag: <span class="appointmentPatient__body--times">{{openhours.thues}}</span></p>
+          <p>Freitag: <span class="appointmentPatient__body--times">{{openhours.fri}}</span></p>
+          <p>Samstag: <span class="appointmentPatient__body--times">{{openhours.sat}}</span></p>
+          <p>Sonntag: <span class="appointmentPatient__body--times">{{openhours.sun}}</span></p>
         <h2>Terminvereinbarung</h2>
         <form (ngSubmit)="onSend()" #appointmentForm="ngForm" ngNativeValidate>
           <div class="form-group">

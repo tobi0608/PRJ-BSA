@@ -14,6 +14,7 @@ import {SectionSelection} from './functions/SectionSelection';
 import {PushData} from '../../../global-files/function/PushData';
 import {ShowPatient} from './functions/ShowPatient';
 import {FilterMedication} from '../../../global-files/function/FilterMedication';
+import {calcAge} from './functions/calcAge';
 NoDataToDisplay(Highcharts);
 HighchartsMore(Highcharts);
 
@@ -26,10 +27,10 @@ export class PatientRecordComponent implements OnInit {
     selectedPatient;
     currentMeds;
     usedMeds;
+    age;
     @ViewChild('first_name') first_name;
     @ViewChild('last_name') last_name;
     @ViewChild('svnr') svnr;
-    @ViewChild('age') age;
     @ViewChild('gender') gender;
     @ViewChild('med') med;
     @ViewChild('intervall') intervall;
@@ -118,6 +119,7 @@ export class PatientRecordComponent implements OnInit {
         this.selectedPatient = ShowPatient(sv);
         this.currentMeds = FilterMedication(sv, 'fresh');
         this.usedMeds = FilterMedication(sv, 'expired');
+        this.age = parseInt(calcAge(sv), 10);
     }
 
     onHere(pat): void {
@@ -200,18 +202,16 @@ export class PatientRecordComponent implements OnInit {
          const svnr =  this.svnr.nativeElement.value;
          const firstName = this.first_name.nativeElement.value;
          const lastName = this.last_name.nativeElement.value;
-         const age = this.age.nativeElement.value;
          const tmp: Patient = {
             sv: parseInt(svnr, 10),
             first_name: firstName,
             last_name: lastName,
             gender: this.gender.nativeElement.value,
-            age: parseInt(age, 10),
             registered: Date.now(),
             last_visit: Date.now(),
             assignedDoc: parseInt(localStorage.getItem('sv'), 10)
         };
-        if (svnr !== '' && firstName !== '' && lastName !== '' && age !== '') {
+        if (svnr !== '' && firstName !== '' && lastName !== '') {
             PATIENTS.unshift(tmp);
             this.router.navigate(['doctor/patients/list']);
         }

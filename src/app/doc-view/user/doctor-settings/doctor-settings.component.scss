@@ -11,13 +11,16 @@
   }
   &__general {
     padding-top: 4rem;
-    &--label{
-      margin-top: 0.5rem;
+    &--heading {
+      padding-top: 1.5rem;
     }
-    &--input{
-      width: 50%;
+    &--label{
+      width: 8.706875rem;
     }
     &--btn{
+      margin-top: 0.5rem;
+    }
+    &--field {
       margin-top: 0.5rem;
     }
   }
