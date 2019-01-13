@@ -1,4 +1,4 @@
-import { VitalParameter } from './vital-parameter';
+import {VitalParameter} from './vital-parameter';
 
 export const DATES: VitalParameter[] = [
     {sv: 3198060896, systole: 124, diastole: 82, heartbeat: 95, timestamp: 1546844426540, i10: ' '},

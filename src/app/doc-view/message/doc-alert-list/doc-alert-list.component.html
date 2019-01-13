@@ -1,48 +1,56 @@
 <div class="alertDoctor" id="loginSite">
-  <app-navbar-doctor></app-navbar-doctor>
-  <app-navbar-message></app-navbar-message>
-  <div class="container-fluid">
-    <div class="shadow p-3 bg-white alertDoctor__body">
-      <div class="alertDoctor__body--alertList">
-        <h2>Alerts</h2>
-        <table class="table table-hover alertDoctor__table--full">
-          <thead>
-          <tr>
-            <th scope="col"><fa name="bell"></fa></th>
-            <th scope="col">Name</th>
-            <th scope="col">Text</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let alert of alerts"
-              (click)="onSelect(alert)">
-            <td><fa name="{{alert.seen}}"></fa></td>
-            <td>{{alert.last_name}} {{alert.first_name}}</td>
-            <td>{{alert.text}}</td>
-          </tr>
-          </tbody>
-        </table>
-        <table class="table table-hover alertDoctor__table--mobile">
-          <thead>
-          <tr>
-            <th scope="col"><fa name="bell"></fa></th>
-            <th scope="col">Erhalten am:</th>
-            <th scope="col">Name</th>
-            <th scope="col">Text</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let alert of alerts"
-              (click)="onSelect(alert)">
-            <td><fa name="{{alert.seen}}"></fa></td>
-            <td>{{alert.timestamp | date:'dd.MM'}}</td>
-            <td>{{alert.last_name}}</td>
-            <td>{{alert.text}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+    <app-navbar-doctor></app-navbar-doctor>
+    <app-navbar-message></app-navbar-message>
+    <div class="container-fluid">
+        <div class="shadow p-3 bg-white alertDoctor__body">
+            <div class="alertDoctor__body--alertList">
+                <h2>Alerts</h2>
+                <table class="table table-hover alertDoctor__table--full">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            <fa name="bell"></fa>
+                        </th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Text</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let alert of alerts"
+                        (click)="onSelect(alert)">
+                        <td>
+                            <fa name="{{alert.seen}}"></fa>
+                        </td>
+                        <td>{{alert.last_name}} {{alert.first_name}}</td>
+                        <td>{{alert.text}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-hover alertDoctor__table--mobile">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            <fa name="bell"></fa>
+                        </th>
+                        <th scope="col">Erhalten am:</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Text</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let alert of alerts"
+                        (click)="onSelect(alert)">
+                        <td>
+                            <fa name="{{alert.seen}}"></fa>
+                        </td>
+                        <td>{{alert.timestamp | date:'dd.MM'}}</td>
+                        <td>{{alert.last_name}}</td>
+                        <td>{{alert.text}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <app-no-access></app-no-access>

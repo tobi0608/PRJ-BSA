@@ -2,14 +2,16 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-navbar-doctor',
-  templateUrl: './navbar-doctor.component.html',
-  styleUrls: ['./navbar-doctor.component.scss']
+    selector: 'app-navbar-doctor',
+    templateUrl: './navbar-doctor.component.html',
+    styleUrls: ['./navbar-doctor.component.scss']
 })
 export class NavbarDoctorComponent implements OnInit {
     @ViewChild('nav') nav;
     @ViewChild('navMobile') navMobile;
-    constructor(private route: ActivatedRoute, public router: Router) { }
+
+    constructor(private route: ActivatedRoute, public router: Router) {
+    }
 
     ngOnInit() {
         const route = this.route.snapshot.routeConfig.path.split('/');
@@ -24,6 +26,7 @@ export class NavbarDoctorComponent implements OnInit {
             }
         });
     }
+
     onRoute(route): void {
         if (route !== ' ') {
             this.router.navigate([route]);
@@ -31,6 +34,7 @@ export class NavbarDoctorComponent implements OnInit {
             this.onOff();
         }
     }
+
     onOff(): void {
         if (confirm('Bei Bestätigung melden Sie sich von Ihrem Profil ab')) {
             localStorage.clear();

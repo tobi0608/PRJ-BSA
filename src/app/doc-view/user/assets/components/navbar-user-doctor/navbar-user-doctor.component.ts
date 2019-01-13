@@ -2,14 +2,16 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-navbar-user-doctor',
-  templateUrl: './navbar-user-doctor.component.html',
-  styleUrls: ['./navbar-user-doctor.component.scss']
+    selector: 'app-navbar-user-doctor',
+    templateUrl: './navbar-user-doctor.component.html',
+    styleUrls: ['./navbar-user-doctor.component.scss']
 })
 export class NavbarUserDoctorComponent implements OnInit {
     @ViewChild('nav') nav;
     @ViewChild('navMobile') navMobile;
-    constructor(private route: ActivatedRoute, public router: Router) { }
+
+    constructor(private route: ActivatedRoute, public router: Router) {
+    }
 
     ngOnInit() {
         const route = this.route.snapshot.routeConfig.path;
@@ -24,6 +26,7 @@ export class NavbarUserDoctorComponent implements OnInit {
             }
         });
     }
+
     onRoute(route): void {
         this.router.navigate([route]);
     }

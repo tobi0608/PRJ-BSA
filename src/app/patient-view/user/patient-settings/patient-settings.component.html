@@ -9,7 +9,8 @@
           <label for="newDoc" class="settings__general--label">Arzt auswählen:</label>
           <select id="newDoc" name="newDoc" class="custom-select settings__general--input"
                   [(ngModel)]="newDoc" required>
-            <option *ngFor="let doc of Docs"  value="{{doc.sv}}">Dr. {{doc.last_name}} {{doc.first_name}}</option>
+            <option *ngFor="let doc of Docs" value="{{doc.sv}}">Dr. {{doc.last_name}} {{doc.first_name}}
+            </option>
           </select>
           <button type="submit" class="btn btn-danger settings__general--btn">Arzt speichern</button>
         </form>

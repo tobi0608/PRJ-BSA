@@ -26,8 +26,9 @@ export class UserSettingsComponent implements OnInit {
         this.lastName = user.last_name;
         this.email = user.email;
     }
+
     newPassword(): void {
-        const newPW =  this.newPW;
+        const newPW = this.newPW;
         const oldPW = this.oldPW;
         const repeatPW = this.repeatPW;
         USERS.find(function (tmp) {
@@ -42,6 +43,7 @@ export class UserSettingsComponent implements OnInit {
             }
         });
     }
+
     saveInformation(filter): void {
         const user = USERS.find(function (tmp) {
             return tmp.sv.toString() === localStorage.getItem('sv');
@@ -63,6 +65,7 @@ export class UserSettingsComponent implements OnInit {
                 break;
         }
     }
+
     deleteUser(): void {
         if (confirm('Hiermit deaktivieren Sie ihr Konto!')) {
             console.log(USERS);

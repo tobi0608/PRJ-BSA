@@ -6,6 +6,7 @@ import {LogInCheck} from '../../global-files/function/LogInCheck';
 import {MessageCounter} from '../../global-files/function/MessageCounter';
 import {ThreeDaysList} from './functions/ThreeDaysList';
 import {StatusCheck} from './functions/StatusCheck';
+
 NoDataToDisplay(Highcharts);
 HighchartsMore(Highcharts);
 
@@ -93,7 +94,8 @@ export class PatientViewComponent implements OnInit {
         }]
     };
 
-    constructor() {}
+    constructor() {
+    }
 
     ngOnInit() {
         LogInCheck('patient');

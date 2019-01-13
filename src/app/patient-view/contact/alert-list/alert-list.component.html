@@ -8,7 +8,9 @@
         <table class="table table-hover messagePatient__body--table">
           <thead>
           <tr>
-            <th scope="col"><fa name="bell"></fa></th>
+            <th scope="col">
+              <fa name="bell"></fa>
+            </th>
             <th scope="col">Datum</th>
             <th scope="col">Nachricht</th>
           </tr>
@@ -16,7 +18,9 @@
           <tbody>
           <tr *ngFor="let message of messages"
               (click)="onSeen(message)">
-            <td><fa name="{{message.seen}}"></fa></td>
+            <td>
+              <fa name="{{message.seen}}"></fa>
+            </td>
             <td>{{message.timestamp | date:'dd.MM.yyyy'}}
             <td>{{message.text}}</td>
           </tr>

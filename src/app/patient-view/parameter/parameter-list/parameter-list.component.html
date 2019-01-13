@@ -10,7 +10,9 @@
           <table class="table table-hover parameterList__body--full">
             <thead>
             <tr>
-              <th scope="col"><fa name="heart" class="parameterList__body--heart"></fa></th>
+              <th scope="col">
+                <fa name="heart" class="parameterList__body--heart"></fa>
+              </th>
               <th scope="col">Datum</th>
               <th scope="col">Systole</th>
               <th scope="col">Diastole</th>
@@ -19,7 +21,9 @@
             </thead>
             <tbody>
             <tr *ngFor="let data of dates" class="parameterList__row--{{data.i10}}">
-              <td><fa name="{{data.i10}}" class="parameterList__body--heart"></fa></td>
+              <td>
+                <fa name="{{data.i10}}" class="parameterList__body--heart"></fa>
+              </td>
               <td>{{data.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
               <td>{{data.systole}}</td>
               <td>{{data.diastole}}</td>
@@ -30,14 +34,18 @@
           <table class="table table-hover parameterList__body--mobile">
             <thead>
             <tr>
-              <th scope="col"><fa name="heart" class="parameterList__body--heart"></fa></th>
+              <th scope="col">
+                <fa name="heart" class="parameterList__body--heart"></fa>
+              </th>
               <th scope="col">Datum</th>
               <th scope="col">Blutdruck</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let data of dates">
-              <td><fa name="{{data.i10}}" class="parameterList__body--heart"></fa></td>
+              <td>
+                <fa name="{{data.i10}}" class="parameterList__body--heart"></fa>
+              </td>
               <td>{{data.timestamp | date:'dd.MM - HH'}} Uhr</td>
               <td>{{data.systole}}/{{data.diastole}}/{{data.heartbeat}}</td>
             </tr>

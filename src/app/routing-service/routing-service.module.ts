@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 import {DocViewComponent} from '../doc-view/dashboard/doc-view.component';
 import {MessageListComponent} from '../doc-view/message/message-list/message-list.component';
@@ -19,35 +19,36 @@ import {PatientInformationComponent} from '../patient-view/user/patient-informat
 import {DoctorInformationComponent} from '../doc-view/user/doctor-information/doctor-information.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: HomeViewComponent },
-    { path: 'doctor/dashboard', component: DocViewComponent },
-    { path: 'doctor/messages', redirectTo: 'doctor/messages/appointments', pathMatch: 'full' },
-    { path: 'doctor/messages/appointments', component: MessageListComponent },
-    { path: 'doctor/messages/alerts', component: DocAlertListComponent },
-    { path: 'doctor/patients/', redirectTo: 'doctor/patients/list', pathMatch: 'full' },
-    { path: 'doctor/patients/list', component: PatientListComponent },
-    { path: 'doctor/patients/record/:sv', component: PatientRecordComponent },
-    { path: 'doctor/user', redirectTo: 'doctor/user/information', pathMatch: 'full' },
-    { path: 'doctor/user/settings', component: DoctorSettingsComponent},
-    { path: 'doctor/user/information', component: DoctorInformationComponent},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: 'home', component: HomeViewComponent},
+    {path: 'doctor/dashboard', component: DocViewComponent},
+    {path: 'doctor/messages', redirectTo: 'doctor/messages/appointments', pathMatch: 'full'},
+    {path: 'doctor/messages/appointments', component: MessageListComponent},
+    {path: 'doctor/messages/alerts', component: DocAlertListComponent},
+    {path: 'doctor/patients/', redirectTo: 'doctor/patients/list', pathMatch: 'full'},
+    {path: 'doctor/patients/list', component: PatientListComponent},
+    {path: 'doctor/patients/record/:sv', component: PatientRecordComponent},
+    {path: 'doctor/user', redirectTo: 'doctor/user/information', pathMatch: 'full'},
+    {path: 'doctor/user/settings', component: DoctorSettingsComponent},
+    {path: 'doctor/user/information', component: DoctorInformationComponent},
 
-    { path: 'patient/dashboard', component: PatientViewComponent },
-    { path: 'patient/parameter', redirectTo: 'patient/parameter/chart', pathMatch: 'full' },
-    { path: 'patient/parameter/chart', component: ParameterChartComponent },
-    { path: 'patient/parameter/list', component: ParameterListComponent },
-    { path: 'patient/contact', redirectTo: 'patient/contact/appointment', pathMatch: 'full' },
-    { path: 'patient/contact/appointment', component: AppointmentComponent },
-    { path: 'patient/contact/alert', component: AlertListComponent },
-    { path: 'patient/achievement', component: AchievementComponent },
-    { path: 'patient/user', redirectTo: 'patient/user/information', pathMatch: 'full' },
-    { path: 'patient/user/settings', component: PatientSettingsComponent },
-    { path: 'patient/user/information', component: PatientInformationComponent }
+    {path: 'patient/dashboard', component: PatientViewComponent},
+    {path: 'patient/parameter', redirectTo: 'patient/parameter/chart', pathMatch: 'full'},
+    {path: 'patient/parameter/chart', component: ParameterChartComponent},
+    {path: 'patient/parameter/list', component: ParameterListComponent},
+    {path: 'patient/contact', redirectTo: 'patient/contact/appointment', pathMatch: 'full'},
+    {path: 'patient/contact/appointment', component: AppointmentComponent},
+    {path: 'patient/contact/alert', component: AlertListComponent},
+    {path: 'patient/achievement', component: AchievementComponent},
+    {path: 'patient/user', redirectTo: 'patient/user/information', pathMatch: 'full'},
+    {path: 'patient/user/settings', component: PatientSettingsComponent},
+    {path: 'patient/user/information', component: PatientInformationComponent}
 
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
-export class RoutingServiceModule { }
+export class RoutingServiceModule {
+}

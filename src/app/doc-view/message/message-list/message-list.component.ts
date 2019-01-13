@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MESSAGES} from '../../../mock-files/mock-messages';
 import {Message} from '../../../mock-files/messages';
 import {Router} from '@angular/router';
@@ -14,7 +14,9 @@ export class MessageListComponent implements OnInit {
     messages;
     acceptMessages;
     deniedMessages;
-    constructor(public router: Router) { }
+
+    constructor(public router: Router) {
+    }
 
     ngOnInit() {
         LogInCheck('doctor');
@@ -22,11 +24,13 @@ export class MessageListComponent implements OnInit {
         this.acceptMessages = MessageFilter('accept');
         this.deniedMessages = MessageFilter('denied');
     }
+
     onSelect(patient): void {
         if (patient) {
             this.router.navigate(['doctor/patients/record/:' + patient]);
         }
     }
+
     onAccept(message): void {
         message.seen = ' ';
         message.info = 'accept';
@@ -48,6 +52,7 @@ export class MessageListComponent implements OnInit {
         alert('Der Termin wurde bestätigt!');
         this.ngOnInit();
     }
+
     onDenied(message): void {
         message.seen = ' ';
         message.info = 'denied';

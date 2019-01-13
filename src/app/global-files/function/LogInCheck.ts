@@ -6,7 +6,7 @@ export function LogInCheck(filter): void {
     let user;
     if (sv !== null) {
         user = USERS.find(function (tmp) {
-            return tmp.sv.toString() === sv.toString() && type  === filter;
+            return tmp.sv.toString() === sv.toString() && type === filter;
         });
     }
     if (!user) {

@@ -1,48 +1,48 @@
 <div class="patient" id="loginSite">
-  <app-navbar-patients></app-navbar-patients>
-  <div class="container-fluid">
-    <div class="patient__welcome-section jumbotron shadow p-3 rounded">
-      <div class="row">
-        <div class="col-6">
-          <h1>Hallo</h1>
-          <h1>{{name}}!</h1>
+    <app-navbar-patients></app-navbar-patients>
+    <div class="container-fluid">
+        <div class="patient__welcome-section jumbotron shadow p-3 rounded">
+            <div class="row">
+                <div class="col-6">
+                    <h1>Hallo</h1>
+                    <h1>{{name}}!</h1>
+                </div>
+                <div class="col-6">
+                    <div class="patient__welcome-section--card">
+                        <img src="/assets/card-man.png" alt="avatar" class="patient__welcome-section--avatarWhite">
+                        <img src="/assets/card-man-mobile.png" alt="avatar" class="patient__welcome-section--avatarRed">
+                    </div>
+                    <div class="patient__welcome-section--dayCount">
+                        <fa name="{{status}}"></fa>
+                    </div>
+                </div>
+            </div>
+            <p>Sie haben <a class="patient__welcome-section--alertCount" routerLink="/patient/contact/alert">
+                {{messageCounter}}</a></p>
         </div>
-        <div class="col-6">
-          <div class="patient__welcome-section--card">
-            <img src="/assets/card-man.png" alt="avatar" class="patient__welcome-section--avatarWhite">
-            <img src="/assets/card-man-mobile.png" alt="avatar" class="patient__welcome-section--avatarRed">
-          </div>
-          <div class="patient__welcome-section--dayCount">
-            <fa name="{{status}}"></fa>
-          </div>
+        <div class="patient__sendValues-section jumbotron shadow p-3 rounded">
+            <app-send-value (notify)='onTest($event)'></app-send-value>
         </div>
-      </div>
-      <p>Sie haben <a class="patient__welcome-section--alertCount" routerLink="/patient/contact/alert">
-        {{messageCounter}}</a></p>
+        <div class="shadow p-3 bg-white patient__body">
+            <div class="patient__achievement">
+                <h2>Herausforderungen</h2>
+                <p>Ihnen fehlen noch 3 Tage für den nächsten Erfolg!</p>
+            </div>
+            <div class="patient__appointment">
+                <h2>Termin</h2>
+                <p>Sie können <a class="patient__appointment--link" routerLink="/patient/contact/appointment">
+                    hier</a> online einen Termin vereinbaren</p>
+            </div>
+            <div class="patient__parameter">
+                <h2>Ihre Blutdruckwerte der letzten 3 Tage</h2>
+                <highcharts-chart
+                        [Highcharts]="Highcharts"
+                        [options]="chartOptions"
+                        [(update)]="updateFlag"
+                        class="patient__parameter--chart"
+                ></highcharts-chart>
+            </div>
+        </div>
     </div>
-    <div class="patient__sendValues-section jumbotron shadow p-3 rounded">
-        <app-send-value (notify)='onTest($event)'></app-send-value>
-    </div>
-    <div class="shadow p-3 bg-white patient__body">
-      <div class="patient__achievement">
-        <h2>Herausforderungen</h2>
-        <p>Ihnen fehlen noch 3 Tage für den nächsten Erfolg!</p>
-      </div>
-      <div class="patient__appointment">
-        <h2>Termin</h2>
-        <p>Sie können <a class="patient__appointment--link" routerLink="/patient/contact/appointment">
-          hier</a> online einen Termin vereinbaren</p>
-      </div>
-      <div class="patient__parameter">
-        <h2>Ihre Blutdruckwerte der letzten 3 Tage</h2>
-        <highcharts-chart
-                [Highcharts]="Highcharts"
-                [options]="chartOptions"
-                [(update)]="updateFlag"
-                class="patient__parameter--chart"
-        ></highcharts-chart>
-      </div>
-    </div>
-  </div>
 </div>
 <app-no-access></app-no-access>

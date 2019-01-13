@@ -1,79 +1,80 @@
 <div class="container-fluid">
-  <div class="home">
-    <div class="jumbotron shadow p-3 bg-white rounded home-view__LogIn-form">
-      <h1>Anmelden</h1>
-      <form class="form-inline" (ngSubmit)="onLogIn(logInForm.value)" #logInForm="ngForm" ngNativeValidate>
-        <div class="form-row input-group">
-          <div class="col-md-5 input-group-prepend">
-            <label class="input-group-text home--formLabel" for="username">S<span class="sr-only">ozial</span>
-              V<span class="sr-only">ersicherungs</span>-N<span class="sr-only">ummer</span>r:</label>
-            <input type="text" id="username" name="username" value="2167050980"
-                   [(ngModel)]="logInForm.username" pattern='[0-9]{10}' required #username>
-          </div>
-          <div class="col-md-5 input-group-prepend">
-            <label class="input-group-text home--formLabel"  for="password">Passwort:</label>
-            <input type="password" id="password" name="password"
-                   [(ngModel)]="logInForm.password" required #password>
-          </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-danger">Anmelden</button>
-          </div>
+    <div class="home">
+        <div class="jumbotron shadow p-3 bg-white rounded home-view__LogIn-form">
+            <h1>Anmelden</h1>
+            <form class="form-inline" (ngSubmit)="onLogIn(logInForm.value)" #logInForm="ngForm" ngNativeValidate>
+                <div class="form-row input-group">
+                    <div class="col-md-5 input-group-prepend">
+                        <label class="input-group-text home--formLabel" for="username">S<span
+                                class="sr-only">ozial</span>
+                            V<span class="sr-only">ersicherungs</span>-N<span class="sr-only">ummer</span>r:</label>
+                        <input type="text" id="username" name="username" value="2167050980"
+                               [(ngModel)]="logInForm.username" pattern='[0-9]{10}' required #username>
+                    </div>
+                    <div class="col-md-5 input-group-prepend">
+                        <label class="input-group-text home--formLabel" for="password">Passwort:</label>
+                        <input type="password" id="password" name="password"
+                               [(ngModel)]="logInForm.password" required #password>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-danger">Anmelden</button>
+                    </div>
+                </div>
+            </form>
+            <a routerLink="/home">Passwort vergessen?</a>
         </div>
-      </form>
-      <a routerLink="/home">Passwort vergessen?</a>
+        <div class="jumbotron shadow p-3 bg-white rounded home-view__newUser-form">
+            <h1>Registrieren</h1>
+            <form (ngSubmit)="newUser(newUserForm.value)" #newUserForm="ngForm" ngNativeValidate>
+                <div class="form-row">
+                    <div class="col-md-2 col-sm-12">
+                        <label for="firstName">Vorname:</label>
+                        <input id="firstName" name="firstName" type="text" class="form-control"
+                               [(ngModel)]="newUserForm.firstName" required>
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        <label for="lastName">Nachname: </label>
+                        <input id="lastName" name="lastName" type="text" class="form-control"
+                               [(ngModel)]="newUserForm.lastName" required>
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        <label for="type">Art des Kontos: </label>
+                        <select id="type" name="type" class="form-control"
+                                [(ngModel)]="newUserForm.type" required>
+                            <option value="patient">Patient</option>
+                            <option value="doctor">Doktor</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-2 col-sm-12">
+                        <label for="sv">SV-Nummer:</label>
+                        <input id="sv" type="text" name="sv" class="form-control"
+                               [(ngModel)]="newUserForm.sv" pattern='[0-9]{10}' required>
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        <label for="email">E-Mail Adresse: </label>
+                        <input id="email" type="email" name="email" class="form-control"
+                               [(ngModel)]="newUserForm.email" required>
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        <label for="gender">Geschlecht: </label>
+                        <select id="gender" name="gender" class="form-control"
+                                [(ngModel)]="newUserForm.gender" required>
+                            <option value="m">Männlich</option>
+                            <option value="w">Weiblich</option>
+                        </select>
+                    </div>
+                    <div class="form-row input-group">
+                        <div class="col-md-2 col-sm-12">
+                            <label for="pw">Passwort: </label>
+                            <input type="password" id="pw" name="pw" class="form-control"
+                                   [(ngModel)]="newUserForm.pw" required>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Registrieren" class="btn btn-danger home--saveBtn">
+            </form>
+        </div>
     </div>
-    <div class="jumbotron shadow p-3 bg-white rounded home-view__newUser-form">
-      <h1>Registrieren</h1>
-      <form (ngSubmit)="newUser(newUserForm.value)" #newUserForm="ngForm" ngNativeValidate>
-        <div class="form-row">
-          <div class="col-md-2 col-sm-12">
-            <label for="firstName">Vorname:</label>
-            <input id="firstName" name="firstName" type="text" class="form-control"
-                   [(ngModel)]="newUserForm.firstName" required>
-          </div>
-          <div class="col-md-2 col-sm-12">
-            <label for="lastName">Nachname: </label>
-            <input id="lastName" name="lastName" type="text" class="form-control"
-                   [(ngModel)]="newUserForm.lastName" required>
-          </div>
-          <div class="col-md-2 col-sm-12">
-            <label for="type">Art des Kontos: </label>
-            <select id="type" name="type" class="form-control"
-                    [(ngModel)]="newUserForm.type" required>
-              <option value="patient">Patient</option>
-              <option value="doctor">Doktor</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-2 col-sm-12">
-            <label for="sv">SV-Nummer:</label>
-            <input id="sv" type="text" name="sv" class="form-control"
-                   [(ngModel)]="newUserForm.sv" pattern='[0-9]{10}' required>
-          </div>
-          <div class="col-md-2 col-sm-12">
-            <label for="email">E-Mail Adresse: </label>
-            <input id="email" type="email" name="email" class="form-control"
-                   [(ngModel)]="newUserForm.email" required>
-          </div>
-          <div class="col-md-2 col-sm-12">
-            <label for="gender">Geschlecht: </label>
-            <select id="gender" name="gender" class="form-control"
-                    [(ngModel)]="newUserForm.gender" required>
-              <option value="m">Männlich</option>
-              <option value="w">Weiblich</option>
-            </select>
-          </div>
-          <div class="form-row input-group">
-            <div class="col-md-2 col-sm-12">
-              <label for="pw">Passwort: </label>
-              <input type="password" id="pw" name="pw" class="form-control"
-                     [(ngModel)]="newUserForm.pw" required>
-            </div>
-          </div>
-        </div>
-        <input type="submit" value="Registrieren" class="btn btn-danger home--saveBtn">
-      </form>
-    </div>
-  </div>
 </div>

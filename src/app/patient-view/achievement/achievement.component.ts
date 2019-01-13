@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LogInCheck} from '../../global-files/function/LogInCheck';
 
 @Component({
-  selector: 'app-achievement',
-  templateUrl: './achievement.component.html',
-  styleUrls: ['./achievement.component.scss']
+    selector: 'app-achievement',
+    templateUrl: './achievement.component.html',
+    styleUrls: ['./achievement.component.scss']
 })
 export class AchievementComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-      LogInCheck('patient');
-  }
+    ngOnInit() {
+        LogInCheck('patient');
+    }
 }

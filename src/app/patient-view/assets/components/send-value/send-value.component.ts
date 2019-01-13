@@ -5,19 +5,22 @@ import {MESSAGES} from '../../../../mock-files/mock-messages';
 import {VitalParameter} from '../../../../mock-files/vital-parameter';
 
 @Component({
-  selector: 'app-send-value',
-  templateUrl: './send-value.component.html',
-  styleUrls: ['./send-value.component.scss']
+    selector: 'app-send-value',
+    templateUrl: './send-value.component.html',
+    styleUrls: ['./send-value.component.scss']
 })
 export class SendValueComponent implements OnInit {
     systole;
     diastole;
     heartRate;
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
-    constructor() { }
+
+    constructor() {
+    }
 
     ngOnInit() {
     }
+
     onSend(): void {
         const systole = parseInt(this.systole, 10);
         const diastole = parseInt(this.diastole, 10);

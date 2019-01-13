@@ -12,7 +12,8 @@ import {User} from '../mock-files/user';
 export class HomeViewComponent implements OnInit {
     @ViewChild('logInForm') logInForm;
 
-    constructor(public router: Router) {}
+    constructor(public router: Router) {
+    }
 
     ngOnInit() {
     }

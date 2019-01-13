@@ -6,19 +6,20 @@ import {LogInCheck} from '../../global-files/function/LogInCheck';
 import {MessageCounter} from '../../global-files/function/MessageCounter';
 import {lastPatients} from './functions/lastPatients';
 import {UserCounter} from './functions/UserCounter';
+
 NoDataToDisplay(Highcharts);
 
 @Component({
-  selector: 'app-doc-view',
-  templateUrl: './doc-view.component.html',
-  styleUrls: ['./doc-view.component.scss']
+    selector: 'app-doc-view',
+    templateUrl: './doc-view.component.html',
+    styleUrls: ['./doc-view.component.scss']
 })
 
 export class DocViewComponent implements OnInit {
-  name;
-  users;
-  messageCounter;
-  alertCounter;
+    name;
+    users;
+    messageCounter;
+    alertCounter;
 
     patientChart = Highcharts;
     patientChartOptions = {
@@ -62,16 +63,18 @@ export class DocViewComponent implements OnInit {
         }]
     };
 
-  constructor(public router: Router) {}
+    constructor(public router: Router) {
+    }
 
-  ngOnInit() {
-      LogInCheck('doctor');
-      this.name = localStorage.getItem('lastName');
-      this.messageCounter = MessageCounter('Termin');
-      this.alertCounter = MessageCounter('Alert');
-      this.users = lastPatients();
-      this.patientChartOptions.series[0].data = UserCounter();
-  }
+    ngOnInit() {
+        LogInCheck('doctor');
+        this.name = localStorage.getItem('lastName');
+        this.messageCounter = MessageCounter('Termin');
+        this.alertCounter = MessageCounter('Alert');
+        this.users = lastPatients();
+        this.patientChartOptions.series[0].data = UserCounter();
+    }
+
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient.sv]);
     }

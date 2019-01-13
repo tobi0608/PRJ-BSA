@@ -12,15 +12,18 @@ import {ShowOwnPatients} from './functions/ShowOwnPatients';
 export class PatientListComponent implements OnInit {
     patients;
 
-    constructor(public router: Router) { }
+    constructor(public router: Router) {
+    }
 
     ngOnInit() {
         LogInCheck('doctor');
         this.patients = ShowOwnPatients();
     }
+
     onAddPatient(): void {
         this.router.navigate(['doctor/patients/record/:new']);
     }
+
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient.sv]);
     }

@@ -1,6 +1,6 @@
 @import "../../../../../global-files/scss/nav";
 
-.navUsers{
+.navUsers {
   left: 17.95rem;
   margin-top: 2.4rem;
   position: fixed;
@@ -9,7 +9,7 @@
   background-color: #B2101D;
   @media only screen and (min-width: 921px) {
     display: block;
-    &--skewRight{
+    &--skewRight {
       margin-left: 38.8rem;
       margin-top: 2.4rem;
       width: 0;
@@ -20,7 +20,7 @@
       position: fixed;
       z-index: 9;
     }
-    &--skewLeft{
+    &--skewLeft {
       margin-left: 15.45rem;
       margin-top: 2.4rem;
       width: 0;
@@ -35,7 +35,7 @@
   @media only screen and (max-width: 920px) {
     display: none;
   }
-  &--nav-item{
+  &--nav-item {
     font-size: 1.5rem;
     color: white;
     padding-left: 0.75rem;

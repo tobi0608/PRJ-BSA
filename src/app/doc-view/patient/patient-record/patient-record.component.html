@@ -1,145 +1,153 @@
 <div class="record" id="loginSite">
-  <app-navbar-doctor></app-navbar-doctor>
-  <app-navbar-patient></app-navbar-patient>
-  <div class="container-fluid">
-    <div class="shadow p-3 bg-white record__body">
-      <div class="record__noSelectedPatient" id="noSelectedPatient">
-        <h2>Leider ist kein Patient ausgewählt</h2>
-        <p>Um einen Patienten auszuwählen bitte <a routerLink="/doctor/patients/list">hier</a> klicken</p>
-      </div>
+    <app-navbar-doctor></app-navbar-doctor>
+    <app-navbar-patient></app-navbar-patient>
+    <div class="container-fluid">
+        <div class="shadow p-3 bg-white record__body">
+            <div class="record__noSelectedPatient" id="noSelectedPatient">
+                <h2>Leider ist kein Patient ausgewählt</h2>
+                <p>Um einen Patienten auszuwählen bitte <a routerLink="/doctor/patients/list">hier</a> klicken</p>
+            </div>
 
-      <div class="record__selectedPatient" id="selectedPatient">
-        <div class="record__selectedPatient--record" id="information">
-          <h2>Akt von {{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}}:</h2>
-          <hr class="m-4">
-          <div class="row">
-            <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-              <span class="record__selectedPatient--label">SV-Nummer:</span><br>
-              <span>{{selectedPatient.sv}}</span>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-              <span class="record__selectedPatient--label">Alter:</span><br>
-                <span>{{age}}</span>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-              <span class="record__selectedPatient--label">Geschlecht:</span><br>
-              <span>{{selectedPatient.gender}}</span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-              <span class="record__selectedPatient--label">Registriert seit:</span><br>
-              <span>{{selectedPatient.registered | date:'dd.MM.yyyy'}}</span>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-              <span class="record__selectedPatient--label">Letzter Besuch:</span><br>
-              <span>{{selectedPatient.last_visit | date:'dd.MM.yyyy'}}</span>
-            </div>
-            <div class="co-12 col-sm-4 col-md-4 col-lg-3 col-xl-2">
-              <input type="button" value="Patient war hier" class="btn btn-danger record__selectedPatient--btn"
-                     (click)="onHere(selectedPatient)">
-            </div>
-          </div>
-        </div>
-        <div class="record__selectedPatient--meds">
-          <h3>Medikation:</h3>
-          <h4>Neues Medikation hinzufügen:</h4>
-          <form ngNativeValidate>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="medikament">Medikament:</label>
-                <input type="text" id="medikament" #med required class="record__selectedPatient--newMed">
-              </div>
-              <div class="input-group-prepend">
-                <label class="input-group-text record__selectedPatient--newMedLabel" for="intervall">
-                  Intervall:</label>
-                <input type="text" id="intervall" #intervall required class="record__selectedPatient--newMed"
-                       pattern='[0-9][-][0-9][-][0-9][-][0-9]'>
-              </div>
-              <input type="submit" value="Speichern" (click)="onSend()"
-                     class="btn btn-danger record__selectedPatient--newMedBtn">
-            </div>
-          </form>
-          <div class="record__selectedPatient--medList">
-            <h4>Derzeitige Medikation:</h4>
-            <div id="currentMed">
-              <ul>
-                <li *ngFor="let currentMed of currentMeds">
-                  <div id="{{currentMed.medication}}-form" style="Display: none;">
-                    <form ngNativeValidat>
-                      <input type="text" value="{{currentMed.medication}}" class="form" required>
-                      <span> </span>
-                      <input type="text" value="{{currentMed.intervall}}" class="form" required>
-                      <fa class="record__selectedPatient--edit" name="check" (click)="onSave(currentMed)"></fa>
+            <div class="record__selectedPatient" id="selectedPatient">
+                <div class="record__selectedPatient--record" id="information">
+                    <h2>Akt von {{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}}:</h2>
+                    <hr class="m-4">
+                    <div class="row">
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <span class="record__selectedPatient--label">SV-Nummer:</span><br>
+                            <span>{{selectedPatient.sv}}</span>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <span class="record__selectedPatient--label">Alter:</span><br>
+                            <span>{{age}}</span>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <span class="record__selectedPatient--label">Geschlecht:</span><br>
+                            <span>{{selectedPatient.gender}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <span class="record__selectedPatient--label">Registriert seit:</span><br>
+                            <span>{{selectedPatient.registered | date:'dd.MM.yyyy'}}</span>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <span class="record__selectedPatient--label">Letzter Besuch:</span><br>
+                            <span>{{selectedPatient.last_visit | date:'dd.MM.yyyy'}}</span>
+                        </div>
+                        <div class="co-12 col-sm-4 col-md-4 col-lg-3 col-xl-2">
+                            <input type="button" value="Patient war hier"
+                                   class="btn btn-danger record__selectedPatient--btn"
+                                   (click)="onHere(selectedPatient)">
+                        </div>
+                    </div>
+                </div>
+                <div class="record__selectedPatient--meds">
+                    <h3>Medikation:</h3>
+                    <h4>Neues Medikation hinzufügen:</h4>
+                    <form ngNativeValidate>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="medikament">Medikament:</label>
+                                <input type="text" id="medikament" #med required
+                                       class="record__selectedPatient--newMed">
+                            </div>
+                            <div class="input-group-prepend">
+                                <label class="input-group-text record__selectedPatient--newMedLabel" for="intervall">
+                                    Intervall:</label>
+                                <input type="text" id="intervall" #intervall required
+                                       class="record__selectedPatient--newMed"
+                                       pattern='[0-9][-][0-9][-][0-9][-][0-9]'>
+                            </div>
+                            <input type="submit" value="Speichern" (click)="onSend()"
+                                   class="btn btn-danger record__selectedPatient--newMedBtn">
+                        </div>
                     </form>
-                  </div>
-                  <div id="{{currentMed.medication}}">
-                    <span>{{currentMed.medication}}</span>
-                    <span> {{currentMed.intervall}}seit {{currentMed.timestampFrom | date:'dd.MM.yyyy'}}</span>
-                    <fa class="record__selectedPatient--edit" name="pencil" (click)="onEdit(currentMed)"></fa>
-                    <fa class="record__selectedPatient--delete" name="trash" (click)="onDelete(currentMed)"></fa>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="record__selectedPatient--medList">
-            <h4>Bereits probierte Medikammente:</h4>
-            <div id="usedMed">
-              <ul>
-                <li *ngFor="let usedMed of usedMeds">
+                    <div class="record__selectedPatient--medList">
+                        <h4>Derzeitige Medikation:</h4>
+                        <div id="currentMed">
+                            <ul>
+                                <li *ngFor="let currentMed of currentMeds">
+                                    <div id="{{currentMed.medication}}-form" style="Display: none;">
+                                        <form ngNativeValidat>
+                                            <input type="text" value="{{currentMed.medication}}" class="form" required>
+                                            <span> </span>
+                                            <input type="text" value="{{currentMed.intervall}}" class="form" required>
+                                            <fa class="record__selectedPatient--edit" name="check"
+                                                (click)="onSave(currentMed)"></fa>
+                                        </form>
+                                    </div>
+                                    <div id="{{currentMed.medication}}">
+                                        <span>{{currentMed.medication}}</span>
+                                        <span> {{currentMed.intervall}}seit {{currentMed.timestampFrom | date:'dd.MM.yyyy'}}</span>
+                                        <fa class="record__selectedPatient--edit" name="pencil"
+                                            (click)="onEdit(currentMed)"></fa>
+                                        <fa class="record__selectedPatient--delete" name="trash"
+                                            (click)="onDelete(currentMed)"></fa>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="record__selectedPatient--medList">
+                        <h4>Bereits probierte Medikammente:</h4>
+                        <div id="usedMed">
+                            <ul>
+                                <li *ngFor="let usedMed of usedMeds">
                   <span>{{usedMed.medication}} von {{usedMed.timestampFrom | date:'dd.MM.yyyy'}} bis
                     {{usedMed.timestampTo | date:'dd.MM.yyyy'}}</span>
-                </li>
-              </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="record__selectedPatient--chart">
+                    <h3>Blutdruckwerte des Patienten:</h3>
+                    <highcharts-chart
+                            [Highcharts]="Highcharts"
+                            [options]="chartOptions"
+                            class="record__selectedPatient--valueChart"
+                    ></highcharts-chart>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="record__selectedPatient--chart">
-          <h3>Blutdruckwerte des Patienten:</h3>
-          <highcharts-chart
-                  [Highcharts]="Highcharts"
-                  [options]="chartOptions"
-                  class="record__selectedPatient--valueChart"
-          ></highcharts-chart>
-        </div>
-      </div>
 
-      <div class="record__newPatient" id="newPatient">
-        <h2>Neuer Patient:</h2>
-        <form ngNativeValidate>
-          <div class="form-row">
-            <div class="col-12 col-md-6 col-lg-3">
-              <label for="firstName" class="record__newPatient--label">Vorname:</label>
-              <input id="firstName" type="text" class="form-control" #first_name required pattern="[A-Za-z]">
+            <div class="record__newPatient" id="newPatient">
+                <h2>Neuer Patient:</h2>
+                <form ngNativeValidate>
+                    <div class="form-row">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <label for="firstName" class="record__newPatient--label">Vorname:</label>
+                            <input id="firstName" type="text" class="form-control" #first_name required
+                                   pattern="[A-Za-z]">
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <label for="lastName" class="record__newPatient--label">Nachname: </label>
+                            <input id="lastName" type="text" class="form-control" #last_name required
+                                   pattern="[A-Za-z]">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12 col-md-9 col-lg-4">
+                            <label for="sv" class="record__newPatient--label">SV-Nummer:</label>
+                            <input id="sv" type="text" class="form-control" #svnr required pattern='[0-9]{10}'>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-2">
+                            <label for="gender" class="record__newPatient--label">Geschlecht:</label>
+                            <select id="gender" class="form-control" #gender>
+                                <option value="m">männlich</option>
+                                <option value="w">weiblich</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12 col-lg-6">
+                            <input type="submit" value="Akt anlegen" class="btn btn-danger record__newPatient--btn"
+                                   (click)="onSavePatient()">
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="col-12 col-md-6 col-lg-3">
-              <label for="lastName" class="record__newPatient--label">Nachname: </label>
-              <input id="lastName" type="text" class="form-control" #last_name required pattern="[A-Za-z]">
-            </div>
-          </div>
-          <div class="form-row">
-              <div class="col-12 col-md-9 col-lg-4">
-              <label for="sv" class="record__newPatient--label">SV-Nummer:</label>
-              <input id="sv" type="text" class="form-control" #svnr required pattern='[0-9]{10}'>
-            </div>
-            <div class="col-12 col-md-3 col-lg-2">
-              <label for="gender" class="record__newPatient--label">Geschlecht:</label>
-              <select id="gender" class="form-control" #gender>
-                <option value="m">männlich</option>
-                <option value="w">weiblich</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-12 col-lg-6">
-              <input type="submit" value="Akt anlegen" class="btn btn-danger record__newPatient--btn"
-                     (click)="onSavePatient()">
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
 <app-no-access></app-no-access>

@@ -1,7 +1,7 @@
 .information {
   padding-top: 5.5rem;
   font-size: 1rem;
-  &__body{
+  &__body {
     @media only screen and (min-width: 1000px) {
       width: 80%;
     }
@@ -9,13 +9,13 @@
       width: 100%;
     }
   }
-  &__general{
+  &__general {
     padding-top: 4rem;
-    &--span{
+    &--span {
       padding-left: 1rem;
       display: block;
     }
-    &--label{
+    &--label {
       margin-top: 0.25rem;
     }
   }

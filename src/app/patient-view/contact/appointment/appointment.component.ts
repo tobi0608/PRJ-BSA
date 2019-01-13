@@ -16,7 +16,8 @@ export class AppointmentComponent implements OnInit {
     type;
     openhours;
 
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit() {
         LogInCheck('patient');
@@ -35,7 +36,7 @@ export class AppointmentComponent implements OnInit {
                 first_name: firstName,
                 last_name: lastName,
                 type: 'Termin',
-                text: 'Termin für ' + this.type + ' am ' + this.date + ' - ' + ' um ' +  this.time,
+                text: 'Termin für ' + this.type + ' am ' + this.date + ' - ' + ' um ' + this.time,
                 timestamp: Date.now(),
                 seen: 'bell',
                 check: 'check',

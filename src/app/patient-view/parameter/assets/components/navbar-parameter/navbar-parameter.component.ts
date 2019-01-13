@@ -2,14 +2,16 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-navbar-parameter',
-  templateUrl: './navbar-parameter.component.html',
-  styleUrls: ['./navbar-parameter.component.scss']
+    selector: 'app-navbar-parameter',
+    templateUrl: './navbar-parameter.component.html',
+    styleUrls: ['./navbar-parameter.component.scss']
 })
 export class NavbarParameterComponent implements OnInit {
     @ViewChild('nav') nav;
     @ViewChild('navMobile') navMobile;
-    constructor(private route: ActivatedRoute, public router: Router) { }
+
+    constructor(private route: ActivatedRoute, public router: Router) {
+    }
 
     ngOnInit() {
         const route = this.route.snapshot.routeConfig.path;
@@ -24,6 +26,7 @@ export class NavbarParameterComponent implements OnInit {
             }
         });
     }
+
     onRoute(route): void {
         this.router.navigate([route]);
     }

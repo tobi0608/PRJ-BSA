@@ -12,7 +12,10 @@ export class PatientSettingsComponent implements OnInit {
     @ViewChild('newDocForm') newDocForm;
     newDoc;
     Docs;
-    constructor() {}
+
+    constructor() {
+    }
+
     ngOnInit() {
         LogInCheck('patient');
         this.Docs = GetDocsSVs();
@@ -23,10 +26,10 @@ export class PatientSettingsComponent implements OnInit {
         if (this.newDocForm.form.valid) {
             USERS.find(function (tmp) {
                 if (tmp.sv.toString() === localStorage.getItem('sv')) {
-                        tmp.doctor_sv = parseInt(newDoc, 10);
+                    tmp.doctor_sv = parseInt(newDoc, 10);
                     localStorage.setItem('DocSV', tmp.doctor_sv.toString());
-                        alert('Ihr Arzt wurde geändert!');
-                        return true;
+                    alert('Ihr Arzt wurde geändert!');
+                    return true;
                 }
             });
         }

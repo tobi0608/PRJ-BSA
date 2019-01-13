@@ -15,52 +15,52 @@
   &__selectedPatient {
     padding-top: 4rem;
     display: none;
-    &--label{
+    &--label {
       font-weight: bold;
     }
-    &--btn{
+    &--btn {
       margin-top: 2rem;
       width: 100%;
       font-size: 1.2rem;
       padding-bottom: 0.125rem;
     }
-    &--meds{
+    &--meds {
       padding-top: 2rem;
     }
-    &--newMed{
+    &--newMed {
       width: 9rem
     }
-    &--newMedLabel{
+    &--newMedLabel {
       width: 7.48125rem;
     }
-    &--newMedBtn{
+    &--newMedBtn {
       width: 7.48125rem;
       @media only screen and (max-width: 500px) {
         position: absolute;
         margin-top: 4.75rem;
       }
     }
-    &--medList{
+    &--medList {
       padding-top: 1rem;
       @media only screen and (max-width: 500px) {
         padding-top: 3rem;
       }
     }
-    &--medItemForm{
+    &--medItemForm {
       display: none;
     }
-    &--edit{
+    &--edit {
       padding-left: 1rem;
       color: green;
     }
-    &--delete{
+    &--delete {
       padding-left: 1rem;
       color: red;
     }
-    &--chart{
+    &--chart {
       padding-top: 2rem;
     }
-    &--valueChart{
+    &--valueChart {
       width: 90%;
       display: block;
     }
@@ -68,16 +68,16 @@
   &__newPatient {
     padding-top: 4rem;
     display: none;
-    &--label{
+    &--label {
       margin-top: 0.5rem;
     }
-    &--fielset{
+    &--fielset {
       margin-top: 1rem;
     }
-    &--fielset-label{
+    &--fielset-label {
       font-weight: bold;
     }
-    &--btn{
+    &--btn {
       margin-top: 1rem;
       width: 100%;
       font-size: 1.5rem;

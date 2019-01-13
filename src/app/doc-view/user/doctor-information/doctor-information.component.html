@@ -1,23 +1,23 @@
 <div class="doctorInformation" id="loginSite">
-  <app-navbar-doctor></app-navbar-doctor>
-  <app-navbar-user-doctor></app-navbar-user-doctor>
-  <div class="container-fluid">
-    <div class="shadow p-3 bg-white doctorInformation__body">
-      <div class="doctorInformation__general">
-        <app-user-information></app-user-information>
-          <h2>Ordination:</h2>
-          <span>Zeiten:</span>
-          <p>Montag: <span class="doctorInformation__body--times">{{openhours.mon}}</span></p>
-          <p>Dienstag: <span class="doctorInformation__body--times">{{openhours.tues}}</span></p>
-          <p>Mittwoch: <span class="doctorInformation__body--times">{{openhours.wed}}</span></p>
-          <p>Donnerstag: <span class="doctorInformation__body--times">{{openhours.thues}}</span></p>
-          <p>Freitag: <span class="doctorInformation__body--times">{{openhours.fri}}</span></p>
-          <p>Samstag: <span class="doctorInformation__body--times">{{openhours.sat}}</span></p>
-          <p>Sonntag: <span class="doctorInformation__body--times">{{openhours.sun}}</span></p>
-          <span>Adresse:</span>
-          <p>{{openhours.address}}</p>
-      </div>
+    <app-navbar-doctor></app-navbar-doctor>
+    <app-navbar-user-doctor></app-navbar-user-doctor>
+    <div class="container-fluid">
+        <div class="shadow p-3 bg-white doctorInformation__body">
+            <div class="doctorInformation__general">
+                <app-user-information></app-user-information>
+                <h2>Ordination:</h2>
+                <span>Zeiten:</span>
+                <p>Montag: <span class="doctorInformation__body--times">{{openhours.mon}}</span></p>
+                <p>Dienstag: <span class="doctorInformation__body--times">{{openhours.tues}}</span></p>
+                <p>Mittwoch: <span class="doctorInformation__body--times">{{openhours.wed}}</span></p>
+                <p>Donnerstag: <span class="doctorInformation__body--times">{{openhours.thues}}</span></p>
+                <p>Freitag: <span class="doctorInformation__body--times">{{openhours.fri}}</span></p>
+                <p>Samstag: <span class="doctorInformation__body--times">{{openhours.sat}}</span></p>
+                <p>Sonntag: <span class="doctorInformation__body--times">{{openhours.sun}}</span></p>
+                <span>Adresse:</span>
+                <p>{{openhours.address}}</p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <app-no-access></app-no-access>

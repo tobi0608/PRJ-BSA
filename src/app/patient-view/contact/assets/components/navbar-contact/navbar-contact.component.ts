@@ -2,14 +2,16 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-navbar-contact',
-  templateUrl: './navbar-contact.component.html',
-  styleUrls: ['./navbar-contact.component.scss']
+    selector: 'app-navbar-contact',
+    templateUrl: './navbar-contact.component.html',
+    styleUrls: ['./navbar-contact.component.scss']
 })
 export class NavbarContactComponent implements OnInit {
     @ViewChild('nav') nav;
     @ViewChild('navMobile') navMobile;
-    constructor(private route: ActivatedRoute, public router: Router) { }
+
+    constructor(private route: ActivatedRoute, public router: Router) {
+    }
 
     ngOnInit() {
         const route = this.route.snapshot.routeConfig.path;
@@ -24,6 +26,7 @@ export class NavbarContactComponent implements OnInit {
             }
         });
     }
+
     onRoute(route): void {
         this.router.navigate([route]);
     }

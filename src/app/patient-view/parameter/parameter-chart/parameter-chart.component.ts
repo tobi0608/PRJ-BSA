@@ -4,13 +4,14 @@ import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
 import HighchartsMore from 'highcharts/highcharts-more.src.js';
 import {PushData} from '../../../global-files/function/PushData';
 import {LogInCheck} from '../../../global-files/function/LogInCheck';
+
 NoDataToDisplay(Highcharts);
 HighchartsMore(Highcharts);
 
 @Component({
-  selector: 'app-parameter-chart',
-  templateUrl: './parameter-chart.component.html',
-  styleUrls: ['./parameter-chart.component.scss']
+    selector: 'app-parameter-chart',
+    templateUrl: './parameter-chart.component.html',
+    styleUrls: ['./parameter-chart.component.scss']
 })
 export class ParameterChartComponent implements OnInit {
     Highcharts = Highcharts;

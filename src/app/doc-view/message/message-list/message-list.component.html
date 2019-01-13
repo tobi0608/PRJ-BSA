@@ -1,92 +1,104 @@
 <div class="messageDoctor" id="loginSite">
-  <app-navbar-doctor></app-navbar-doctor>
-  <app-navbar-message></app-navbar-message>
-  <div class="container-fluid">
-    <div class="shadow p-3 bg-white messageDoctor__body">
-      <div class="messageDoctor__body--messageList">
-        <h2>Terminanfragen</h2>
-        <table class="table table-hover messageDoctor__table--full">
-          <thead>
-          <tr>
-            <th scope="col"><fa name="bell"></fa></th>
-            <th scope="col">Erhalten am:</th>
-            <th scope="col">Name</th>
-            <th scope="col">Text</th>
-            <th scope="col">Aktion</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let message of messages">
-            <td (click)="onSelect(message.svFrom)"><fa name="{{message.seen}}"></fa></td>
-            <td (click)="onSelect(message.svFrom)">{{message.timestamp | date:'dd.MM.yyyy'}}</td>
-            <td (click)="onSelect(message.svFrom)">{{message.last_name}} {{message.first_name}}</td>
-              <td class="{{message.info}}">{{message.text}}</td>
-            <td>
-              <fa name="{{message.check}}" class="messageDoctor__body--check" (click)="onAccept(message)"></fa>
-              <fa name="{{message.times}}" class="messageDoctor__body--times" (click)="onDenied(message)"></fa>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <table class="table table-hover messageDoctor__table--mobile">
-          <thead>
-          <tr>
-            <th scope="col"><fa name="bell"></fa></th>
-            <th scope="col">Name</th>
-            <th scope="col">Text</th>
-            <th scope="col">Aktion</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let message of messages">
-            <td (click)="onSelect(message.svFrom)"><fa name="{{message.seen}}"></fa></td>
-            <td (click)="onSelect(message.svFrom)">{{message.last_name}}</td>
-              <td class="{{message.info}}">{{message.text}}</td>
-            <td>
-              <fa name="{{message.check}}" class="messageDoctor__body--check" (click)="onAccept(message)"></fa>
-              <fa name="{{message.times}}" class="messageDoctor__body--times" (click)="onDenied(message)"></fa>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-          <div class="row">
-              <div class="col-md-6">
-                  <h3>Angenommene Anfragen:</h3>
-                  <table class="table table-hover">
-                      <thead>
-                      <tr>
-                          <th scope="col">Name</th>
-                          <th scope="col">Text</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr *ngFor="let message of acceptMessages">
-                          <td (click)="onSelect(message.svFrom)">{{message.last_name}} {{message.first_name}}</td>
-                          <td class="{{message.info}}">{{message.text}}</td>
-                      </tr>
-                      </tbody>
-                  </table>
-              </div>
-              <div class="col-md-6">
-                  <h3>Abgelehnte Anfragen:</h3>
-                  <table class="table table-hover">
-                      <thead>
-                      <tr>
-                          <th scope="col">Name</th>
-                          <th scope="col">Text</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr *ngFor="let message of deniedMessages">
-                          <td (click)="onSelect(message.svFrom)">{{message.last_name}} {{message.first_name}}</td>
-                          <td class="{{message.info}}">{{message.text}}</td>
-                      </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </div>
-      </div>
+    <app-navbar-doctor></app-navbar-doctor>
+    <app-navbar-message></app-navbar-message>
+    <div class="container-fluid">
+        <div class="shadow p-3 bg-white messageDoctor__body">
+            <div class="messageDoctor__body--messageList">
+                <h2>Terminanfragen</h2>
+                <table class="table table-hover messageDoctor__table--full">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            <fa name="bell"></fa>
+                        </th>
+                        <th scope="col">Erhalten am:</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Text</th>
+                        <th scope="col">Aktion</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let message of messages">
+                        <td (click)="onSelect(message.svFrom)">
+                            <fa name="{{message.seen}}"></fa>
+                        </td>
+                        <td (click)="onSelect(message.svFrom)">{{message.timestamp | date:'dd.MM.yyyy'}}</td>
+                        <td (click)="onSelect(message.svFrom)">{{message.last_name}} {{message.first_name}}</td>
+                        <td class="{{message.info}}">{{message.text}}</td>
+                        <td>
+                            <fa name="{{message.check}}" class="messageDoctor__body--check"
+                                (click)="onAccept(message)"></fa>
+                            <fa name="{{message.times}}" class="messageDoctor__body--times"
+                                (click)="onDenied(message)"></fa>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-hover messageDoctor__table--mobile">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            <fa name="bell"></fa>
+                        </th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Text</th>
+                        <th scope="col">Aktion</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let message of messages">
+                        <td (click)="onSelect(message.svFrom)">
+                            <fa name="{{message.seen}}"></fa>
+                        </td>
+                        <td (click)="onSelect(message.svFrom)">{{message.last_name}}</td>
+                        <td class="{{message.info}}">{{message.text}}</td>
+                        <td>
+                            <fa name="{{message.check}}" class="messageDoctor__body--check"
+                                (click)="onAccept(message)"></fa>
+                            <fa name="{{message.times}}" class="messageDoctor__body--times"
+                                (click)="onDenied(message)"></fa>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Angenommene Anfragen:</h3>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Text</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let message of acceptMessages">
+                                <td (click)="onSelect(message.svFrom)">{{message.last_name}} {{message.first_name}}</td>
+                                <td class="{{message.info}}">{{message.text}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Abgelehnte Anfragen:</h3>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Text</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let message of deniedMessages">
+                                <td (click)="onSelect(message.svFrom)">{{message.last_name}} {{message.first_name}}</td>
+                                <td class="{{message.info}}">{{message.text}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <app-no-access></app-no-access>

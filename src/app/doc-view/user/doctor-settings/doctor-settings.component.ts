@@ -4,9 +4,9 @@ import {GetOpenHours} from '../../../global-files/function/GetOpenHours';
 import {OPENHOURS} from '../../../mock-files/mock-openhours';
 
 @Component({
-  selector: 'app-doctor-settings',
-  templateUrl: './doctor-settings.component.html',
-  styleUrls: ['./doctor-settings.component.scss']
+    selector: 'app-doctor-settings',
+    templateUrl: './doctor-settings.component.html',
+    styleUrls: ['./doctor-settings.component.scss']
 })
 export class DoctorSettingsComponent implements OnInit {
     address;
@@ -17,20 +17,22 @@ export class DoctorSettingsComponent implements OnInit {
     fri;
     sat;
     sun;
-  constructor() { }
 
-  ngOnInit() {
-      LogInCheck('doctor');
-      const information = GetOpenHours('doctor');
-      this.address = information.address;
-      this.mon = information.mon;
-      this.tues = information.tues;
-      this.wed = information.wed;
-      this.thues = information.thues;
-      this.fri = information.fri;
-      this.sat = information.sat;
-      this.sun = information.sun;
-  }
+    constructor() {
+    }
+
+    ngOnInit() {
+        LogInCheck('doctor');
+        const information = GetOpenHours('doctor');
+        this.address = information.address;
+        this.mon = information.mon;
+        this.tues = information.tues;
+        this.wed = information.wed;
+        this.thues = information.thues;
+        this.fri = information.fri;
+        this.sat = information.sat;
+        this.sun = information.sun;
+    }
 
     saveInformation(filter, array): void {
         const openhours = OPENHOURS.find(function (tmp) {

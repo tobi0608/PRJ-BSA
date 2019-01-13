@@ -19,7 +19,8 @@ export function ShowPatient(sv): Patient {
                 last_visit: null,
                 assignedDoc: null
             };
-            patient = tmp; }
+            patient = tmp;
+        }
     });
     return patient;
 }

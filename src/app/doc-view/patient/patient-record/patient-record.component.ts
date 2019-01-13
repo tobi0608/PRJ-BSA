@@ -15,6 +15,7 @@ import {PushData} from '../../../global-files/function/PushData';
 import {ShowPatient} from './functions/ShowPatient';
 import {FilterMedication} from '../../../global-files/function/FilterMedication';
 import {calcAge} from './functions/calcAge';
+
 NoDataToDisplay(Highcharts);
 HighchartsMore(Highcharts);
 
@@ -108,7 +109,9 @@ export class PatientRecordComponent implements OnInit {
             }
         }]
     };
-    constructor(private route: ActivatedRoute, public router: Router) { }
+
+    constructor(private route: ActivatedRoute, public router: Router) {
+    }
 
     ngOnInit() {
         LogInCheck('doctor');
@@ -125,6 +128,7 @@ export class PatientRecordComponent implements OnInit {
     onHere(pat): void {
         pat.last_visit = Date.now();
     }
+
     onSend(): void {
         const med = this.med.nativeElement.value;
         const intervall = this.intervall.nativeElement.value;
@@ -157,6 +161,7 @@ export class PatientRecordComponent implements OnInit {
         MESSAGES.unshift(alert);
         this.ngOnInit();
     }
+
     onDelete(meds): void {
         meds.fresh = false;
         meds.timestampTo = Date.now();
@@ -176,10 +181,12 @@ export class PatientRecordComponent implements OnInit {
         MESSAGES.unshift(alert);
         this.ngOnInit();
     }
+
     onEdit(meds): void {
         document.getElementById(meds.medication).style.display = 'none';
         document.getElementById(meds.medication + '-form').style.display = 'block';
     }
+
     onSave(meds): void {
         document.getElementById(meds.medication).style.display = 'block';
         document.getElementById(meds.medication + '-form').style.display = 'none';
@@ -198,11 +205,12 @@ export class PatientRecordComponent implements OnInit {
         };
         MESSAGES.unshift(alert);
     }
+
     onSavePatient(): void {
-         const svnr =  this.svnr.nativeElement.value;
-         const firstName = this.first_name.nativeElement.value;
-         const lastName = this.last_name.nativeElement.value;
-         const tmp: Patient = {
+        const svnr = this.svnr.nativeElement.value;
+        const firstName = this.first_name.nativeElement.value;
+        const lastName = this.last_name.nativeElement.value;
+        const tmp: Patient = {
             sv: parseInt(svnr, 10),
             first_name: firstName,
             last_name: lastName,
