@@ -48,7 +48,6 @@ export class MessageListComponent implements OnInit {
             info: ' '
         };
         MESSAGES.unshift(tmp);
-        console.log(tmp);
         alert('Der Termin wurde bestätigt!');
         this.ngOnInit();
     }
