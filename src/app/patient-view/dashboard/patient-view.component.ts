@@ -19,6 +19,7 @@ export class PatientViewComponent implements OnInit {
     name;
     status;
     messageCounter;
+    updateFlag = true;
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
@@ -101,5 +102,14 @@ export class PatientViewComponent implements OnInit {
         this.chartOptions.series[0].data = ThreeDaysList('bloodPressure');
         this.chartOptions.series[1].data = ThreeDaysList('heartbeat');
         this.status = StatusCheck();
+    }
+
+    onTest(event): void {
+        const values = event.split(';');
+        this.chartOptions.series[0].data.unshift([parseInt(values[0], 10) + 3600000,
+            parseInt(values[1], 10), parseInt(values[2], 10)]);
+        this.chartOptions.series[1].data.unshift([parseInt(values[0], 10) + 3600000,
+            parseInt(values[3], 10)]);
+        this.ngOnInit();
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DATES} from '../../../../mock-files/mock-vital-parameter';
 import {Message} from '../../../../mock-files/messages';
 import {MESSAGES} from '../../../../mock-files/mock-messages';
@@ -13,11 +13,11 @@ export class SendValueComponent implements OnInit {
     systole;
     diastole;
     heartRate;
-
+    @Output() notify: EventEmitter<string> = new EventEmitter<string>();
     constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
     onSend(): void {
         const systole = parseInt(this.systole, 10);
         const diastole = parseInt(this.diastole, 10);
@@ -53,6 +53,8 @@ export class SendValueComponent implements OnInit {
                 MESSAGES.unshift(msg);
             }
             DATES.unshift(tmp);
+            this.notify.emit(tmp.timestamp.toString() + ';' + systole.toString() + ';' + diastole.toString() + ';' +
+                heartRate.toString());
             alert('Ihre Werte wurden gespeichert');
         }
     }
