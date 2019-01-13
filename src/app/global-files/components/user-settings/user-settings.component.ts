@@ -9,9 +9,6 @@ import {Router} from '@angular/router';
     styleUrls: ['./user-settings.component.scss']
 })
 export class UserSettingsComponent implements OnInit {
-    oldPW;
-    newPW;
-    repeatPW;
     firstName;
     lastName;
     email;
@@ -27,10 +24,10 @@ export class UserSettingsComponent implements OnInit {
         this.email = user.email;
     }
 
-    newPassword(): void {
-        const newPW = this.newPW;
-        const oldPW = this.oldPW;
-        const repeatPW = this.repeatPW;
+    newPassword(array): void {
+        const newPW = array.newPW;
+        const oldPW = array.oldPW;
+        const repeatPW = array.repeatPW;
         USERS.find(function (tmp) {
             if (tmp.sv.toString() === localStorage.getItem('sv')) {
                 if (tmp.password === oldPW) {

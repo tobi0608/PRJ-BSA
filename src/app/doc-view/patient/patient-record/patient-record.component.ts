@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PATIENTS} from '../../../mock-files/mock-patients';
 import {Patient} from '../../../mock-files/patients';
@@ -29,12 +29,6 @@ export class PatientRecordComponent implements OnInit {
     currentMeds;
     usedMeds;
     age;
-    @ViewChild('first_name') first_name;
-    @ViewChild('last_name') last_name;
-    @ViewChild('svnr') svnr;
-    @ViewChild('gender') gender;
-    @ViewChild('med') med;
-    @ViewChild('intervall') intervall;
 
     Highcharts = Highcharts;
     chartOptions = {
@@ -129,23 +123,18 @@ export class PatientRecordComponent implements OnInit {
         pat.last_visit = Date.now();
     }
 
-    onSend(): void {
-        const med = this.med.nativeElement.value;
-        const intervall = this.intervall.nativeElement.value;
+    onSend(array): void {
         const svnr = parseInt(this.route.snapshot.paramMap.get('sv').replace(':', ''), 10);
         const tmp: Medication = {
             sv: svnr,
-            medication: med,
-            intervall: intervall,
+            medication: array.medikament,
+            intervall: array.intervall,
             timestampFrom: Date.now(),
             timestampTo: 1,
             fresh: true
         };
-
-        if (med && intervall !== null) {
-            MEDICATION.unshift(tmp);
-        }
-        const alert: Message = {
+        MEDICATION.unshift(tmp);
+        const msg: Message = {
             svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: svnr,
             first_name: localStorage.getItem('lastName'),
@@ -158,28 +147,31 @@ export class PatientRecordComponent implements OnInit {
             times: ' ',
             info: ' '
         };
-        MESSAGES.unshift(alert);
+        MESSAGES.unshift(msg);
         this.ngOnInit();
+        alert('Medikament hinzugefügt!');
     }
 
     onDelete(meds): void {
-        meds.fresh = false;
-        meds.timestampTo = Date.now();
-        const alert: Message = {
-            svFrom: parseInt(localStorage.getItem('sv'), 10),
-            svTo: meds.sv,
-            first_name: localStorage.getItem('lastName'),
-            last_name: localStorage.getItem('firstName'),
-            type: 'Med',
-            text: 'Ihre Medikation wurde umgestellt!',
-            timestamp: Date.now(),
-            seen: 'bell',
-            check: ' ',
-            times: ' ',
-            info: ' '
-        };
-        MESSAGES.unshift(alert);
-        this.ngOnInit();
+        if (confirm('Bei Bestätigung wird das Medikament entfernt')) {
+            meds.fresh = false;
+            meds.timestampTo = Date.now();
+            const alert: Message = {
+                svFrom: parseInt(localStorage.getItem('sv'), 10),
+                svTo: meds.sv,
+                first_name: localStorage.getItem('lastName'),
+                last_name: localStorage.getItem('firstName'),
+                type: 'Med',
+                text: 'Ihre Medikation wurde umgestellt!',
+                timestamp: Date.now(),
+                seen: 'bell',
+                check: ' ',
+                times: ' ',
+                info: ' '
+            };
+            MESSAGES.unshift(alert);
+            this.ngOnInit();
+        }
     }
 
     onEdit(meds): void {
@@ -206,23 +198,18 @@ export class PatientRecordComponent implements OnInit {
         MESSAGES.unshift(alert);
     }
 
-    onSavePatient(): void {
-        const svnr = this.svnr.nativeElement.value;
-        const firstName = this.first_name.nativeElement.value;
-        const lastName = this.last_name.nativeElement.value;
+    onSavePatient(array): void {
         const tmp: Patient = {
-            sv: parseInt(svnr, 10),
-            first_name: firstName,
-            last_name: lastName,
-            gender: this.gender.nativeElement.value,
+            sv: parseInt(array.sv, 10),
+            first_name: array.firstName,
+            last_name: array.lastName,
+            gender: array.gender,
             registered: Date.now(),
             last_visit: Date.now(),
             assignedDoc: parseInt(localStorage.getItem('sv'), 10)
         };
-        if (svnr !== '' && firstName !== '' && lastName !== '') {
-            PATIENTS.unshift(tmp);
-            this.router.navigate(['doctor/patients/list']);
-        }
+        PATIENTS.unshift(tmp);
+        this.router.navigate(['doctor/patients/list']);
     }
 }
 

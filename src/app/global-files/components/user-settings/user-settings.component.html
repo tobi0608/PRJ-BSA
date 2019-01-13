@@ -30,29 +30,28 @@
     </div>
     <button type="submit" class="btn btn-danger">Speichern</button>
 </form>
-
 <h2 class="settings--heading">Sicherheit und Login</h2>
-<form (ngSubmit)="newPassword()" #newPasswordForm="ngForm" ngNativeValidate>
+<form (ngSubmit)="newPassword(newPasswordForm.value)" #newPasswordForm="ngForm" ngNativeValidate>
     <h3>Passwort ändern</h3>
     <div class="form-row">
         <div class="col-lg-6">
             <label for="oldPW" class="settings--field">Aktuelles Passwort</label>
             <input id="oldPW" type="password" name="oldPW" class="form-control"
-                   [(ngModel)]="oldPW" required>
+                   [(ngModel)]="newPasswordForm.oldPW" required>
         </div>
     </div>
     <div class="form-row">
         <div class="col-lg-6">
             <label for="newPW" class="settings--field">Neues Passwort:</label>
             <input id="newPW" type="password" name="newPW" class="form-control"
-                   [(ngModel)]="newPW" required>
+                   [(ngModel)]="newPasswordForm.newPW" required>
         </div>
     </div>
     <div class="form-row">
         <div class="col-lg-6">
             <label for="repeatPW" class="settings--field">Neues Passwort erneut eingeben:</label>
             <input id="repeatPW" type="password" name="repeatPW" class="form-control"
-                   [(ngModel)]="repeatPW" required>
+                   [(ngModel)]="newPasswordForm.repeatPW" required>
         </div>
     </div>
     <button type="submit" class="btn btn-danger settings--PWBtn">Speichern</button>

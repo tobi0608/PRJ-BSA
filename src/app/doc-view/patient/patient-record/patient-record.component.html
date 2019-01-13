@@ -45,22 +45,26 @@
                 <div class="record__selectedPatient--meds">
                     <h3>Medikation:</h3>
                     <h4>Neues Medikation hinzufügen:</h4>
-                    <form ngNativeValidate>
+                    <form class="form-inline" (ngSubmit)="onSend(newMedForm.value)" #newMedForm="ngForm"
+                          ngNativeValidate>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="medikament">Medikament:</label>
-                                <input type="text" id="medikament" #med required
-                                       class="record__selectedPatient--newMed">
+                                <input type="text" id="medikament" name="medikament"
+                                       class="record__selectedPatient--newMed"
+                                       [(ngModel)]="newMedForm.medikament" required>
                             </div>
                             <div class="input-group-prepend">
                                 <label class="input-group-text record__selectedPatient--newMedLabel" for="intervall">
                                     Intervall:</label>
-                                <input type="text" id="intervall" #intervall required
+                                <input type="text" id="intervall" name="intervall"
                                        class="record__selectedPatient--newMed"
-                                       pattern='[0-9][-][0-9][-][0-9][-][0-9]'>
+                                       [(ngModel)]="newMedForm.intervall" pattern='[0-9][-][0-9][-][0-9][-][0-9]'
+                                       required>
                             </div>
-                            <input type="submit" value="Speichern" (click)="onSend()"
-                                   class="btn btn-danger record__selectedPatient--newMedBtn">
+                            <button type="submit" class="btn btn-danger record__selectedPatient--newMedBtn">
+                                Speichern
+                            </button>
                         </div>
                     </form>
                     <div class="record__selectedPatient--medList">
@@ -90,7 +94,7 @@
                         </div>
                     </div>
                     <div class="record__selectedPatient--medList">
-                        <h4>Bereits probierte Medikammente:</h4>
+                        <h4>Bereits probierte Medikamente:</h4>
                         <div id="usedMed">
                             <ul>
                                 <li *ngFor="let usedMed of usedMeds">
@@ -113,27 +117,29 @@
 
             <div class="record__newPatient" id="newPatient">
                 <h2>Neuer Patient:</h2>
-                <form ngNativeValidate>
+                <form (ngSubmit)="onSavePatient(newPatientForm.value)" #newPatientForm="ngForm" ngNativeValidate>
                     <div class="form-row">
                         <div class="col-12 col-md-6 col-lg-3">
                             <label for="firstName" class="record__newPatient--label">Vorname:</label>
-                            <input id="firstName" type="text" class="form-control" #first_name required
-                                   pattern="[A-Za-z]">
+                            <input id="firstName" type="text" name="firstName" class="form-control"
+                                   [(ngModel)]="newPatientForm.firstName" pattern="[A-Za-z]" required>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3">
                             <label for="lastName" class="record__newPatient--label">Nachname: </label>
-                            <input id="lastName" type="text" class="form-control" #last_name required
-                                   pattern="[A-Za-z]">
+                            <input id="lastName" type="text" name="lastName" class="form-control"
+                                   [(ngModel)]="newPatientForm.lastName" pattern="[A-Za-z]" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-12 col-md-9 col-lg-4">
                             <label for="sv" class="record__newPatient--label">SV-Nummer:</label>
-                            <input id="sv" type="text" class="form-control" #svnr required pattern='[0-9]{10}'>
+                            <input id="sv" type="text" name="sv" class="form-control"
+                                   [(ngModel)]="newPatientForm.sv" pattern='[0-9]{10}' required>
                         </div>
                         <div class="col-12 col-md-3 col-lg-2">
                             <label for="gender" class="record__newPatient--label">Geschlecht:</label>
-                            <select id="gender" class="form-control" #gender>
+                            <select id="gender" name="gender" class="form-control"
+                                    [(ngModel)]="newPatientForm.gender" required>
                                 <option value="m">männlich</option>
                                 <option value="w">weiblich</option>
                             </select>
@@ -141,8 +147,9 @@
                     </div>
                     <div class="form-row">
                         <div class="col-12 col-lg-6">
-                            <input type="submit" value="Akt anlegen" class="btn btn-danger record__newPatient--btn"
-                                   (click)="onSavePatient()">
+                            <button type="submit" class="btn btn-danger record__newPatient--btn">
+                                Akt anlegen
+                            </button>
                         </div>
                     </div>
                 </form>

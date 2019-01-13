@@ -1,17 +1,17 @@
 <nav class="nav" #nav>
-  <a routerLink="/patient/dashboard" class="nav--nav-item" name="dashboard">Dashboard</a>
-  <a routerLink="/patient/parameter" class="nav--nav-item" name="parameter">Blutdruckwerte</a>
-  <a routerLink="/patient/achievement" class="nav--nav-item" name="achievement">Auszeichnungen</a>
-  <a routerLink="/patient/contact" class="nav--nav-item" name="contact">Kontakt</a>
-  <a routerLink="/patient/user" class="nav--nav-item" name="user">Benutzer</a>
-  <a class="nav--nav-item" (click)="onOff()" name="logoff">Abmelden</a>
+    <a routerLink="/patient/dashboard" class="nav--nav-item" name="dashboard">Dashboard</a>
+    <a routerLink="/patient/parameter" class="nav--nav-item" name="parameter">Blutdruckwerte</a>
+    <a routerLink="/patient/achievement" class="nav--nav-item" name="achievement">Auszeichnungen</a>
+    <a routerLink="/patient/contact" class="nav--nav-item" name="contact">Kontakt</a>
+    <a routerLink="/patient/user" class="nav--nav-item" name="user">Benutzer</a>
+    <a class="nav--nav-item" (click)="onOff()" name="logoff">Abmelden</a>
 </nav>
 <select class="custom-select navMobile" (change)="onRoute($event.target.value)" #navMobile>
-  <option value="patient/dashboard">Dashboard</option>
-  <option value="patient/parameter">Blutdruckwerte</option>
-  <option value="patient/achievement">Auszeichnungen</option>
-  <option value="patient/contact">Kontakt</option>
-  <option value="patient/user">Benutzer</option>
-  <option value=" " (click)="onOff()">Abmelden</option>
+    <option value="patient/dashboard">Dashboard</option>
+    <option value="patient/parameter">Blutdruckwerte</option>
+    <option value="patient/achievement">Auszeichnungen</option>
+    <option value="patient/contact">Kontakt</option>
+    <option value="patient/user">Benutzer</option>
+    <option value=" " (click)="onOff()">Abmelden</option>
 </select>
 <div class="nav--SkewPat"></div>

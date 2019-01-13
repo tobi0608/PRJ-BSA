@@ -1,22 +1,22 @@
 <div class="settings" id="loginSite">
-  <app-navbar-patients></app-navbar-patients>
-  <app-navbar-user-patient></app-navbar-user-patient>
-  <div class="container-fluid">
-    <div class="shadow p-3 bg-white settings__body">
-      <div class="settings__general">
-        <h2>Zugewiesenen Arzt ändern</h2>
-        <form (ngSubmit)="newDoctor()" #newDocForm="ngForm" ngNativeValidate>
-          <label for="newDoc" class="settings__general--label">Arzt auswählen:</label>
-          <select id="newDoc" name="newDoc" class="custom-select settings__general--input"
-                  [(ngModel)]="newDoc" required>
-            <option *ngFor="let doc of Docs" value="{{doc.sv}}">Dr. {{doc.last_name}} {{doc.first_name}}
-            </option>
-          </select>
-          <button type="submit" class="btn btn-danger settings__general--btn">Arzt speichern</button>
-        </form>
-      </div>
-      <app-user-settings></app-user-settings>
+    <app-navbar-patients></app-navbar-patients>
+    <app-navbar-user-patient></app-navbar-user-patient>
+    <div class="container-fluid">
+        <div class="shadow p-3 bg-white settings__body">
+            <div class="settings__general">
+                <h2>Zugewiesenen Arzt ändern</h2>
+                <form (ngSubmit)="newDoctor(newDocForm.value)" #newDocForm="ngForm" ngNativeValidate>
+                    <label for="newDoc" class="settings__general--label">Arzt auswählen:</label>
+                    <select id="newDoc" name="newDoc" class="custom-select settings__general--input"
+                            [(ngModel)]="newDocForm.sv" required>
+                        <option *ngFor="let doc of Docs" value="{{doc.sv}}">Dr. {{doc.last_name}} {{doc.first_name}}
+                        </option>
+                    </select>
+                    <button type="submit" class="btn btn-danger settings__general--btn">Arzt speichern</button>
+                </form>
+            </div>
+            <app-user-settings></app-user-settings>
+        </div>
     </div>
-  </div>
 </div>
 <app-no-access></app-no-access>

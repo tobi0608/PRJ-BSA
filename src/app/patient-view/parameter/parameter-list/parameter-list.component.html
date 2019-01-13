@@ -1,59 +1,59 @@
 <div class="parameterList" id="loginSite">
-  <app-navbar-patients></app-navbar-patients>
-  <app-navbar-parameter></app-navbar-parameter>
-  <div class="container-fluid">
-    <div class="shadow p-3 bg-white parameterList">
-      <div class="parameterList__body">
-        <app-send-value></app-send-value>
-        <div class="parameterList__body--valueList">
-          <h2>Vitalparameter</h2>
-          <table class="table table-hover parameterList__body--full">
-            <thead>
-            <tr>
-              <th scope="col">
-                <fa name="heart" class="parameterList__body--heart"></fa>
-              </th>
-              <th scope="col">Datum</th>
-              <th scope="col">Systole</th>
-              <th scope="col">Diastole</th>
-              <th scope="col">Herzrate</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let data of dates" class="parameterList__row--{{data.i10}}">
-              <td>
-                <fa name="{{data.i10}}" class="parameterList__body--heart"></fa>
-              </td>
-              <td>{{data.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
-              <td>{{data.systole}}</td>
-              <td>{{data.diastole}}</td>
-              <td>{{data.heartbeat}}</td>
-            </tr>
-            </tbody>
-          </table>
-          <table class="table table-hover parameterList__body--mobile">
-            <thead>
-            <tr>
-              <th scope="col">
-                <fa name="heart" class="parameterList__body--heart"></fa>
-              </th>
-              <th scope="col">Datum</th>
-              <th scope="col">Blutdruck</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let data of dates">
-              <td>
-                <fa name="{{data.i10}}" class="parameterList__body--heart"></fa>
-              </td>
-              <td>{{data.timestamp | date:'dd.MM - HH'}} Uhr</td>
-              <td>{{data.systole}}/{{data.diastole}}/{{data.heartbeat}}</td>
-            </tr>
-            </tbody>
-          </table>
+    <app-navbar-patients></app-navbar-patients>
+    <app-navbar-parameter></app-navbar-parameter>
+    <div class="container-fluid">
+        <div class="shadow p-3 bg-white parameterList">
+            <div class="parameterList__body">
+                <app-send-value></app-send-value>
+                <div class="parameterList__body--valueList">
+                    <h2>Vitalparameter</h2>
+                    <table class="table table-hover parameterList__body--full">
+                        <thead>
+                        <tr>
+                            <th scope="col">
+                                <fa name="heart" class="parameterList__body--heart"></fa>
+                            </th>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Systole</th>
+                            <th scope="col">Diastole</th>
+                            <th scope="col">Herzrate</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let data of dates" class="parameterList__row--{{data.i10}}">
+                            <td>
+                                <fa name="{{data.i10}}" class="parameterList__body--heart"></fa>
+                            </td>
+                            <td>{{data.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
+                            <td>{{data.systole}}</td>
+                            <td>{{data.diastole}}</td>
+                            <td>{{data.heartbeat}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-hover parameterList__body--mobile">
+                        <thead>
+                        <tr>
+                            <th scope="col">
+                                <fa name="heart" class="parameterList__body--heart"></fa>
+                            </th>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Blutdruck</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let data of dates">
+                            <td>
+                                <fa name="{{data.i10}}" class="parameterList__body--heart"></fa>
+                            </td>
+                            <td>{{data.timestamp | date:'dd.MM - HH'}} Uhr</td>
+                            <td>{{data.systole}}/{{data.diastole}}/{{data.heartbeat}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <app-no-access></app-no-access>

@@ -13,21 +13,21 @@
                 <p>Samstag: <span class="appointmentPatient__body--times">{{openhours.sat}}</span></p>
                 <p>Sonntag: <span class="appointmentPatient__body--times">{{openhours.sun}}</span></p>
                 <h2>Terminvereinbarung</h2>
-                <form (ngSubmit)="onSend()" #appointmentForm="ngForm" ngNativeValidate>
+                <form (ngSubmit)="onSend(appointmentForm.value)" #appointmentForm="ngForm" ngNativeValidate>
                     <div class="form-group">
                         <label for="date">Datum: </label>
                         <input type="date" id="date" name="date" class="form-control"
-                               [(ngModel)]="date" required>
+                               [(ngModel)]="appointmentForm.date" required>
                     </div>
                     <div class="form-group">
                         <label for="time">Uhrzeit: </label>
                         <input type="time" id="time" class="form-control" name="time"
-                               min="8:00" max="16:00" step="00:30" [(ngModel)]="time" required>
+                               min="8:00" max="16:00" step="00:30" [(ngModel)]="appointmentForm.time" required>
                     </div>
                     <div class="form-group">
                         <label for="type">Grund des Termins: </label>
                         <select id="type" name="type" class="form-control"
-                                [(ngModel)]="type" required>
+                                [(ngModel)]="appointmentForm.type" required>
                             <option value="Neueinstellung">Neueinstellung der Medikamente</option>
                             <option value="Kontrolltermin">Kontrolltermin für den Blutdruck</option>
                             <option value="Gesundheitscheck">Gesundheitscheck</option>
