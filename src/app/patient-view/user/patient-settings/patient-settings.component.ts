@@ -22,8 +22,8 @@ export class PatientSettingsComponent implements OnInit {
     newDoctor(array): void {
         USERS.find(function (tmp) {
             if (tmp.sv.toString() === localStorage.getItem('sv')) {
-                tmp.doctor_sv = parseInt(array.sv, 10);
-                localStorage.setItem('DocSV', tmp.doctor_sv.toString());
+                tmp.assignedDoc = parseInt(array.sv, 10);
+                localStorage.setItem('DocSV', tmp.assignedDoc.toString());
                 alert('Ihr Arzt wurde geändert!');
                 return true;
             }

@@ -5,6 +5,8 @@ export class User {
     last_name: string;
     email: string;
     type: string;
-    doctor_sv: number;
+    gender: string;
     registered: number;
+    last_visit: number;
+    assignedDoc: number;
 }

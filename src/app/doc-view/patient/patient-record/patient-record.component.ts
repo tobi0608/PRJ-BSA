@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PATIENTS} from '../../../mock-files/mock-patients';
-import {Patient} from '../../../mock-files/patients';
 import {MEDICATION} from '../../../mock-files/mock-medication';
 import * as Highcharts from 'highcharts';
 import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
@@ -15,6 +13,8 @@ import {PushData} from '../../../global-files/function/PushData';
 import {ShowPatient} from './functions/ShowPatient';
 import {FilterMedication} from '../../../global-files/function/FilterMedication';
 import {calcAge} from './functions/calcAge';
+import {USERS} from '../../../mock-files/mock-user';
+import {User} from '../../../mock-files/user';
 
 NoDataToDisplay(Highcharts);
 HighchartsMore(Highcharts);
@@ -122,7 +122,6 @@ export class PatientRecordComponent implements OnInit {
     onHere(pat): void {
         pat.last_visit = Date.now();
     }
-
     onSend(array): void {
         const svnr = parseInt(this.route.snapshot.paramMap.get('sv').replace(':', ''), 10);
         const tmp: Medication = {
@@ -151,7 +150,6 @@ export class PatientRecordComponent implements OnInit {
         this.ngOnInit();
         alert('Medikament hinzugefügt!');
     }
-
     onDelete(meds): void {
         if (confirm('Bei Bestätigung wird das Medikament entfernt')) {
             meds.fresh = false;
@@ -173,12 +171,10 @@ export class PatientRecordComponent implements OnInit {
             this.ngOnInit();
         }
     }
-
     onEdit(meds): void {
         document.getElementById(meds.medication).style.display = 'none';
         document.getElementById(meds.medication + '-form').style.display = 'block';
     }
-
     onSave(meds): void {
         document.getElementById(meds.medication).style.display = 'block';
         document.getElementById(meds.medication + '-form').style.display = 'none';
@@ -197,18 +193,20 @@ export class PatientRecordComponent implements OnInit {
         };
         MESSAGES.unshift(alert);
     }
-
     onSavePatient(array): void {
-        const tmp: Patient = {
+        const tmp: User = {
             sv: parseInt(array.sv, 10),
+            password: 'root',
+            type: 'patient',
             first_name: array.firstName,
             last_name: array.lastName,
             gender: array.gender,
+            email: array.email,
             registered: Date.now(),
             last_visit: Date.now(),
             assignedDoc: parseInt(localStorage.getItem('sv'), 10)
         };
-        PATIENTS.unshift(tmp);
+        USERS.unshift(tmp);
         this.router.navigate(['doctor/patients/list']);
     }
 }

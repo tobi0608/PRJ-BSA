@@ -32,13 +32,12 @@ export class HomeViewComponent implements OnInit {
             localStorage.setItem('type', user.type);
             localStorage.setItem('firstName', user.first_name);
             localStorage.setItem('lastName', user.last_name);
-            localStorage.setItem('DocSV', user.doctor_sv.toString());
+            localStorage.setItem('DocSV', user.assignedDoc.toString());
             site.navigate([user.type + '/dashboard']);
         } else {
             alert('Falsches Passwort!');
         }
     }
-
     newUser(array): void {
         const sv = USERS.find(function (tmp) {
             return tmp.sv.toString() === array.sv;
@@ -52,8 +51,10 @@ export class HomeViewComponent implements OnInit {
                 last_name: array.lastName,
                 email: array.email,
                 type: array.type,
-                doctor_sv: 0,
-                registered: Date.now()
+                assignedDoc: 0,
+                registered: Date.now(),
+                gender: array.gender,
+                last_visit: Date.now()
             };
             USERS.unshift(tmp);
             alert('Sie haben sich erfolgreich registriert!');
@@ -67,4 +68,22 @@ export class HomeViewComponent implements OnInit {
         }
     }
 
+    onTest(filter): void {
+        switch (filter) {
+            case 'patient':
+                const patient = {
+                    username: '3198060896',
+                    password: 'root'
+                };
+                this.onLogIn(patient);
+                break;
+            case 'doc':
+                const doc = {
+                    username: '2167050980',
+                    password: 'root'
+                };
+                this.onLogIn(doc);
+                break;
+        }
+    }
 }

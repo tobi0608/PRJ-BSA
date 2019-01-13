@@ -146,6 +146,13 @@
                         </div>
                     </div>
                     <div class="form-row">
+                        <div class="col-12 col-md-9 col-lg-4">
+                            <label for="email" class="record__newPatient--label">E-Mail Adresse:</label>
+                            <input id="email" type="email" name="email" class="form-control"
+                                   [(ngModel)]="newPatientForm.email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
                         <div class="col-12 col-lg-6">
                             <button type="submit" class="btn btn-danger record__newPatient--btn">
                                 Akt anlegen

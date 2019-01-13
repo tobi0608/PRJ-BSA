@@ -76,5 +76,10 @@
                 <input type="submit" value="Registrieren" class="btn btn-danger home--saveBtn">
             </form>
         </div>
+        <div class="jumbotron shadow p-3 bg-white rounded home-view__test">
+            <h1>Test-Nutzer:</h1>
+            <button (click)="onTest('doc')" class="btn btn-danger">Arzt User</button>
+            <button (click)="onTest('patient')" class="btn btn-danger home--testBtn">Patient User</button>
+        </div>
     </div>
 </div>
