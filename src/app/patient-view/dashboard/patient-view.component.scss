@@ -2,7 +2,7 @@
   font-size: 1rem;
   padding-top: 5.5rem;
   &__body {
-    @media only screen and (min-width: 1000px) {
+    @media only screen and (min-width: 1001px) {
       width: 80%;
     }
     @media only screen and (max-width: 1000px) {
@@ -10,7 +10,7 @@
     }
   }
   &__achievement {
-    @media only screen and (min-width: 1000px) {
+    @media only screen and (min-width: 1001px) {
       padding-top: 3rem;
     }
     @media only screen and (max-width: 1000px) {
@@ -24,7 +24,7 @@
     }
   }
   &__parameter {
-    @media only screen and (min-width: 1000px) {
+    @media only screen and (min-width: 1001px) {
       width: 70%;
     }
     @media only screen and (max-width: 1000px) {
@@ -40,7 +40,7 @@
     font-size: 1.35rem;
     z-index: 7;
     margin-top: 3rem;
-    @media only screen and (min-width: 1000px) {
+    @media only screen and (min-width: 1001px) {
       background-color: #B2101D;
       float: right;
       width: 40%;
@@ -91,7 +91,7 @@
       height: 8rem;
     }
     &--alertCount {
-      @media only screen and (min-width: 1000px) {
+      @media only screen and (min-width: 1001px) {
         color: #FFE26F;
       }
       @media only screen and (max-width: 1000px) {
@@ -107,7 +107,7 @@
   }
   &__sendValues-section {
     z-index: 7;
-    @media only screen and (min-width: 1000px) {
+    @media only screen and (min-width: 1001px) {
       background-color: #B2101D;
       margin-top: 20rem;
       right: 1rem;

@@ -1,7 +1,7 @@
 .parameterList {
   padding-top: 5.5rem;
   font-size: 1rem;
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 1001px) {
     width: 80%;
   }
   @media only screen and (max-width: 1000px) {
@@ -20,7 +20,7 @@
     &--heart {
       color: #B2101D;
     }
-    @media only screen and (min-width: 550px) {
+    @media only screen and (min-width: 551px) {
       &--mobile {
         display: none;
       }
