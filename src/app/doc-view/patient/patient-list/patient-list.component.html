@@ -5,12 +5,14 @@
         <div class="shadow p-3 bg-white patientList__body">
             <div class="patientList__body--list">
                 <div class="row">
-                    <div class="col-sm-6 col-12">
+                    <div class="col-6">
                         <h2>Patientenübersicht</h2>
                     </div>
-                    <div class="col-sm-6 col-12">
-                        <input type="button" class="btn btn-danger patientList__body--addBtn"
+                    <div class="col-6">
+                        <input type="button" class="btn btn-danger patientList__body--btn-full"
                                value="Neuen Patienten anlegen" (click)="onAddPatient()">
+                        <input type="button" class="btn btn-danger patientList__body--btn-mobile"
+                               value="+" (click)="onAddPatient()">
                     </div>
                 </div>
                 <table class="table table-hover patientList__table--full">
@@ -19,7 +21,7 @@
                         <th scope="col">SV-Nummer</th>
                         <th scope="col">Nachname</th>
                         <th scope="col">Vorname</th>
-                        <th scope="col">Alter</th>
+                        <th scope="col">Geschlecht</th>
                         <th scope="col">Letzter Besuch</th>
                         <th scope="col">Registriert seit</th>
                     </tr>
@@ -30,7 +32,7 @@
                         <td>{{patient.sv}}</td>
                         <td>{{patient.last_name}}</td>
                         <td>{{patient.first_name}}</td>
-                        <td>{{patient.age}}</td>
+                        <td>{{patient.gender}}</td>
                         <td>{{patient.last_visit | date:'dd.MM.yyyy'}}</td>
                         <td>{{patient.registered | date:'dd.MM.yyyy'}}</td>
                     </tr>

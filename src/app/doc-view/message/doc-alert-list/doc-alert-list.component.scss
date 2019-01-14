@@ -18,14 +18,14 @@
       &--mobile {
         display: none;
       }
-      &--full {
-        width: 50%;
-      }
     }
     @media only screen and (max-width: 600px) {
       &--mobile {
         display: block;
         font-size: 1rem;
+      }
+      &--full {
+        display: none;
       }
     }
     @media only screen and (max-width: 400px) {

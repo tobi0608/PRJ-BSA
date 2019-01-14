@@ -115,7 +115,18 @@ export class PatientRecordComponent implements OnInit {
         this.chartOptions.series[1].data = PushData(sv, 'heartbeat');
         this.selectedPatient = ShowPatient(sv);
         this.currentMeds = FilterMedication(sv, 'fresh');
+        console.log(this.currentMeds);
+        if (this.currentMeds.length === 0) {
+            document.getElementById('currentMed').style.display = 'block';
+        } else {
+            document.getElementById('currentMed').style.display = 'none';
+        }
         this.usedMeds = FilterMedication(sv, 'expired');
+        if (this.usedMeds.length === 0) {
+            document.getElementById('usedMed').style.display = 'block';
+        } else {
+            document.getElementById('usedMed').style.display = 'none';
+        }
         this.age = parseInt(calcAge(sv), 10);
     }
 
@@ -172,12 +183,12 @@ export class PatientRecordComponent implements OnInit {
         }
     }
     onEdit(meds): void {
-        document.getElementById(meds.medication).style.display = 'none';
-        document.getElementById(meds.medication + '-form').style.display = 'block';
+        document.getElementById(meds.timestampFrom).style.display = 'none';
+        document.getElementById(meds.timestampFrom + '-form').style.display = 'block';
     }
     onSave(meds): void {
-        document.getElementById(meds.medication).style.display = 'block';
-        document.getElementById(meds.medication + '-form').style.display = 'none';
+        document.getElementById(meds.timestampFrom).style.display = 'block';
+        document.getElementById(meds.timestampFrom + '-form').style.display = 'none';
         const alert: Message = {
             svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: meds.sv,
@@ -192,6 +203,7 @@ export class PatientRecordComponent implements OnInit {
             info: ' '
         };
         MESSAGES.unshift(alert);
+        this.ngOnInit();
     }
     onSavePatient(array): void {
         const tmp: User = {

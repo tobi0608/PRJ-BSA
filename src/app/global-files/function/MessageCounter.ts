@@ -22,7 +22,8 @@ export function MessageCounter(filter): string {
             break;
         case 'Alert':
             MESSAGES.forEach(function (value) {
-                if (value.svTo.toString() === sv && value.type === 'Bluthochdruck' && value.seen === 'bell') {
+                if (value.svTo.toString() === sv && value.type === 'Bluthochdruck' || value.type === 'NewPat'
+                    && value.seen === 'bell') {
                     countMessage++;
                 }
                 if (countMessage === 1) {

@@ -16,7 +16,7 @@ export class DocAlertListComponent implements OnInit {
 
     ngOnInit() {
         LogInCheck('doctor');
-        this.alerts = MessageFilter('Bluthochdruck');
+        this.alerts = MessageFilter('alerts');
     }
 
     onSelect(alert): void {

@@ -5,15 +5,13 @@
             <form class="form-inline" (ngSubmit)="onLogIn(logInForm.value)" #logInForm="ngForm" ngNativeValidate>
                 <div class="form-row input-group">
                     <div class="col-md-5 input-group-prepend">
-                        <label class="input-group-text home--formLabel" for="username">S<span
-                                class="sr-only">ozial</span>
-                            V<span class="sr-only">ersicherungs</span>-N<span class="sr-only">ummer</span>r:</label>
-                        <input type="text" id="username" name="username" value="2167050980"
+                        <label class="input-group-text home--form" for="username">SV-Nr:</label>
+                        <input type="text" id="username" name="username" class="form-control"
                                [(ngModel)]="logInForm.username" pattern='[0-9]{10}' required>
                     </div>
                     <div class="col-md-5 input-group-prepend">
-                        <label class="input-group-text home--formLabel" for="password">Passwort:</label>
-                        <input type="password" id="password" name="password"
+                        <label class="input-group-text home--form" for="password">Passwort:</label>
+                        <input type="password" id="password" name="password" class="form-control"
                                [(ngModel)]="logInForm.password" required>
                     </div>
                     <div class="col-md-2">

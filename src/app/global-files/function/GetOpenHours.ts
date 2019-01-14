@@ -16,7 +16,6 @@ export function GetOpenHours(filter): any {
                 return tmp.sv.toString() === sv;
             });
             if (!openhours) {
-                console.log(0);
                 const tmp: Openhours = {
                     sv: parseInt(sv, 10),
                     mon: ' ',
@@ -30,7 +29,6 @@ export function GetOpenHours(filter): any {
                 };
                 OPENHOURS.unshift(tmp);
                 openhours = tmp;
-                return;
             }
             break;
     }

@@ -18,9 +18,14 @@
   }
   &--btn {
     margin-right: 0.5rem;
+    width: 8.706875rem;
+    @media only screen and (max-width: 575px) {
+      margin-top: 0.5rem;
+    }
   }
   &--PWBtn {
     margin-top: 0.5rem;
+    width: 8.706875rem;
   }
   &--text {
     @media only screen and (min-width: 575px) {

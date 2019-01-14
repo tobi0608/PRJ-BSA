@@ -4,10 +4,10 @@
         <div class="input-group-prepend">
             <label for="firstName" class="settings--label input-group-text">Vorname:</label>
         </div>
-        <input id="firstName" type="text" name="firstName" class="form-control settings--btn"
+        <input id="firstName" type="text" name="firstName" class="form-control"
                [(ngModel)]="firstName" required>
     </div>
-    <button type="submit" class="btn btn-danger">Speichern</button>
+    <button type="submit" class="btn btn-danger settings--btn">Speichern</button>
 </form>
 <form (ngSubmit)="saveInformation('lastName')" class="form-inline settings--field" #newLastNameForm="ngForm"
       ngNativeValidate>
@@ -15,20 +15,20 @@
         <div class="input-group-prepend">
             <label for="lastName" class="settings--label input-group-text">Nachname:</label>
         </div>
-        <input id="lastName" type="text" name="lastName" class="form-control settings--btn"
+        <input id="lastName" type="text" name="lastName" class="form-control"
                [(ngModel)]="lastName" required>
     </div>
-    <button type="submit" class="btn btn-danger">Speichern</button>
+    <button type="submit" class="btn btn-danger settings--btn">Speichern</button>
 </form>
 <form (ngSubmit)="saveInformation('email')" class="form-inline settings--field" #newEmailForm="ngForm" ngNativeValidate>
     <div class="input-group">
         <div class="input-group-prepend">
             <label for="email" class="settings--label input-group-text">E-Mail Adresse:</label>
         </div>
-        <input id="email" type="email" name="email" class="form-control settings--btn"
+        <input id="email" type="email" name="email" class="form-control"
                [(ngModel)]="email" pattern='[0-9a-zA-Z.-]{1,}[@]{1}[0-9a-zA-Z.-]{1,}[.]{1}[0-9a-zA-Z]{2,}' required>
     </div>
-    <button type="submit" class="btn btn-danger">Speichern</button>
+    <button type="submit" class="btn btn-danger settings--btn">Speichern</button>
 </form>
 <h2 class="settings--heading">Sicherheit und Login</h2>
 <form (ngSubmit)="newPassword(newPasswordForm.value)" #newPasswordForm="ngForm" ngNativeValidate>

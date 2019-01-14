@@ -35,10 +35,6 @@
     }
     &--newMedBtn {
       width: 7.48125rem;
-      @media only screen and (max-width: 500px) {
-        position: absolute;
-        margin-top: 4.75rem;
-      }
     }
     &--medList {
       padding-top: 1rem;
