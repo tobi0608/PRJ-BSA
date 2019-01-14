@@ -67,7 +67,6 @@ export class HomeViewComponent implements OnInit {
             return;
         }
     }
-
     onTest(filter): void {
         switch (filter) {
             case 'patient':

@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="shadow p-3 bg-white parameterList">
             <div class="parameterList__body">
-                <app-send-value></app-send-value>
+                <app-send-value (notify)='onSend($event)'></app-send-value>
                 <div class="parameterList__body--valueList">
                     <h2>Vitalparameter</h2>
                     <table class="table table-hover parameterList__body--full">

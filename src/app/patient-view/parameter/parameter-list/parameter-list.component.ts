@@ -18,4 +18,8 @@ export class ParameterListComponent implements OnInit {
         LogInCheck('patient');
         this.dates = PushData(sv, 'all');
     }
+
+    onSend(event): void {
+        this.ngOnInit();
+    }
 }

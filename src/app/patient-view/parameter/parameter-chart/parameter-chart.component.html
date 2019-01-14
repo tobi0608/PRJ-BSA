@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="shadow p-3 bg-white ParameterChart">
             <div class="ParameterChart__body">
-                <app-send-value></app-send-value>
+                <app-send-value (notify)='onSend($event)'></app-send-value>
                 <div class="ParameterChart__body--valueView">
                     <h2>Blutdruckwerte</h2>
                     <highcharts-chart

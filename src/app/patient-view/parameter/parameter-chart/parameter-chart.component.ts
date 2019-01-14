@@ -20,6 +20,7 @@ export class ParameterChartComponent implements OnInit {
             type: 'arearange',
             zoomType: 'x'
         },
+        loading: false,
         title: {
             text: null
         },

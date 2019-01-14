@@ -106,7 +106,7 @@ export class PatientViewComponent implements OnInit {
         this.status = StatusCheck();
     }
 
-    onTest(event): void {
+    onSend(event): void {
         const values = event.split(';');
         this.chartOptions.series[0].data.unshift([parseInt(values[0], 10) + 3600000,
             parseInt(values[1], 10), parseInt(values[2], 10)]);
