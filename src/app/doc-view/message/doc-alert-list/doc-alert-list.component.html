@@ -11,27 +11,6 @@
                         <th scope="col">
                             <fa name="bell"></fa>
                         </th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Text</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let alert of alerts"
-                        (click)="onSelect(alert)">
-                        <td>
-                            <fa name="{{alert.seen}}"></fa>
-                        </td>
-                        <td>{{alert.last_name}} {{alert.first_name}}</td>
-                        <td>{{alert.text}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <table class="table table-hover alertDoctor__table--mobile">
-                    <thead>
-                    <tr>
-                        <th scope="col">
-                            <fa name="bell"></fa>
-                        </th>
                         <th scope="col">Erhalten am:</th>
                         <th scope="col">Name</th>
                         <th scope="col">Text</th>
@@ -43,7 +22,28 @@
                         <td>
                             <fa name="{{alert.seen}}"></fa>
                         </td>
-                        <td>{{alert.timestamp | date:'dd.MM'}}</td>
+                        <td>{{alert.timestamp | date:'dd.MM.yyyy'}}</td>
+                        <td>{{alert.last_name}} {{alert.first_name}}</td>
+                        <td>{{alert.text}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-hover alertDoctor__table--mobile">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            <fa name="bell"></fa>
+                        </th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Text</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let alert of alerts"
+                        (click)="onSelect(alert)">
+                        <td>
+                            <fa name="{{alert.seen}}"></fa>
+                        </td>
                         <td>{{alert.last_name}}</td>
                         <td>{{alert.text}}</td>
                     </tr>

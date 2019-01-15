@@ -133,6 +133,7 @@ export class PatientRecordComponent implements OnInit {
     onHere(pat): void {
         pat.last_visit = Date.now();
     }
+
     onSend(array): void {
         const svnr = parseInt(this.route.snapshot.paramMap.get('sv').replace(':', ''), 10);
         const tmp: Medication = {
@@ -161,6 +162,7 @@ export class PatientRecordComponent implements OnInit {
         this.ngOnInit();
         alert('Medikament hinzugefügt!');
     }
+
     onDelete(meds): void {
         if (confirm('Bei Bestätigung wird das Medikament entfernt')) {
             meds.fresh = false;
@@ -182,10 +184,12 @@ export class PatientRecordComponent implements OnInit {
             this.ngOnInit();
         }
     }
+
     onEdit(meds): void {
         document.getElementById(meds.timestampFrom).style.display = 'none';
         document.getElementById(meds.timestampFrom + '-form').style.display = 'block';
     }
+
     onSave(meds): void {
         document.getElementById(meds.timestampFrom).style.display = 'block';
         document.getElementById(meds.timestampFrom + '-form').style.display = 'none';
@@ -205,6 +209,7 @@ export class PatientRecordComponent implements OnInit {
         MESSAGES.unshift(alert);
         this.ngOnInit();
     }
+
     onSavePatient(array): void {
         const tmp: User = {
             sv: parseInt(array.sv, 10),

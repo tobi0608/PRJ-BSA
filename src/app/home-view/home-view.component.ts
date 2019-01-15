@@ -38,6 +38,7 @@ export class HomeViewComponent implements OnInit {
             alert('Falsches Passwort!');
         }
     }
+
     newUser(array): void {
         const sv = USERS.find(function (tmp) {
             return tmp.sv.toString() === array.sv;
@@ -67,6 +68,7 @@ export class HomeViewComponent implements OnInit {
             return;
         }
     }
+
     onTest(filter): void {
         switch (filter) {
             case 'patient':
