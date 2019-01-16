@@ -19,7 +19,7 @@ export class ParameterListComponent implements OnInit {
         this.dates = PushData(sv, 'all');
     }
 
-    onSend(event): void {
+    onSend(): void {
         this.ngOnInit();
     }
 }
