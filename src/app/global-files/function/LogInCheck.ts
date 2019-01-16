@@ -13,7 +13,5 @@ export function LogInCheck(filter): void {
         document.getElementById('loginSite').style.display = 'none';
         document.getElementById('noAccess').style.display = 'block';
         return;
-    } else {
-        return;
     }
 }

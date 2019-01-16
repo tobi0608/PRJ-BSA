@@ -23,7 +23,7 @@ export class AppointmentComponent implements OnInit {
     onSend(array): void {
         const sv = localStorage.getItem('sv');
         const firstName = localStorage.getItem('firstName');
-        const lastName = localStorage.getItem('firstName');
+        const lastName = localStorage.getItem('lastName');
         const docSV = localStorage.getItem('DocSV');
         const tmp: Message = {
             svFrom: parseInt(sv, 10),

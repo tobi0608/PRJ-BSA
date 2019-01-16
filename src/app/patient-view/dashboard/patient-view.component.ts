@@ -17,9 +17,9 @@ HighchartsMore(Highcharts);
 })
 
 export class PatientViewComponent implements OnInit {
-    name;
-    status;
-    messageCounter;
+    name = ' ';
+    status = ' ';
+    messageCounter = ' ';
     updateFlag = true;
     Highcharts = Highcharts;
     chartOptions = {
@@ -99,19 +99,12 @@ export class PatientViewComponent implements OnInit {
 
     ngOnInit() {
         LogInCheck('patient');
-        this.name = localStorage.getItem('firstName');
-        this.messageCounter = MessageCounter('Message');
-        this.chartOptions.series[0].data = ThreeDaysList('bloodPressure');
-        this.chartOptions.series[1].data = ThreeDaysList('heartbeat');
-        this.status = StatusCheck();
-    }
-
-    onSend(event): void {
-        const values = event.split(';');
-        this.chartOptions.series[0].data.unshift([parseInt(values[0], 10) + 3600000,
-            parseInt(values[1], 10), parseInt(values[2], 10)]);
-        this.chartOptions.series[1].data.unshift([parseInt(values[0], 10) + 3600000,
-            parseInt(values[3], 10)]);
-        this.ngOnInit();
+        if (localStorage.length > 1) {
+            this.name = localStorage.getItem('firstName');
+            this.messageCounter = MessageCounter('Message');
+            this.chartOptions.series[0].data = ThreeDaysList('bloodPressure');
+            this.chartOptions.series[1].data = ThreeDaysList('heartbeat');
+            this.status = StatusCheck();
+        }
     }
 }

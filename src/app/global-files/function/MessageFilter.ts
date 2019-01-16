@@ -29,7 +29,7 @@ export function MessageFilter(filter): object {
             break;
         case 'alerts':
             MESSAGES.forEach(function (value) {
-                if (value.svTo.toString() === sv && value.type === 'Bluthochdruck' || value.type === 'NewPat') {
+                if (value.svTo.toString() === sv && (value.type === 'Bluthochdruck' || value.type === 'NewPat')) {
                     messages.push(value);
                 }
             });

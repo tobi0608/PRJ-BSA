@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MEDICATION} from '../../../mock-files/mock-medication';
 import * as Highcharts from 'highcharts';
@@ -29,6 +29,7 @@ export class PatientRecordComponent implements OnInit {
     currentMeds;
     usedMeds;
     age;
+    @ViewChild('changeMedForm') changeMedForm;
 
     Highcharts = Highcharts;
     chartOptions = {
@@ -115,7 +116,6 @@ export class PatientRecordComponent implements OnInit {
         this.chartOptions.series[1].data = PushData(sv, 'heartbeat');
         this.selectedPatient = ShowPatient(sv);
         this.currentMeds = FilterMedication(sv, 'fresh');
-        console.log(this.currentMeds);
         if (this.currentMeds.length === 0) {
             document.getElementById('currentMed').style.display = 'block';
         } else {
@@ -191,8 +191,6 @@ export class PatientRecordComponent implements OnInit {
     }
 
     onSave(meds): void {
-        document.getElementById(meds.timestampFrom).style.display = 'block';
-        document.getElementById(meds.timestampFrom + '-form').style.display = 'none';
         const alert: Message = {
             svFrom: parseInt(localStorage.getItem('sv'), 10),
             svTo: meds.sv,
@@ -207,6 +205,10 @@ export class PatientRecordComponent implements OnInit {
             info: ' '
         };
         MESSAGES.unshift(alert);
+        if (this.changeMedForm.form.valid) {
+            document.getElementById(meds.timestampFrom).style.display = 'block';
+            document.getElementById(meds.timestampFrom + '-form').style.display = 'none';
+        }
         this.ngOnInit();
     }
 

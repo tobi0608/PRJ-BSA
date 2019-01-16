@@ -21,6 +21,7 @@ export class PatientInformationComponent implements OnInit {
     ngOnInit() {
         const sv = localStorage.getItem('sv');
         LogInCheck('patient');
+
         this.doc = GetDocDetails();
         this.currentMeds = FilterMedication(sv, 'fresh');
         this.usedMeds = FilterMedication(sv, 'expired');

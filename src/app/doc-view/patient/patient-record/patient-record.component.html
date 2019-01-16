@@ -57,8 +57,8 @@
                                 <label class="input-group-text record__selectedPatient--newMedLabel" for="intervall">
                                     Intervall:</label>
                                 <input type="text" id="intervall" name="intervall"
-                                       class="record__selectedPatient--newMed"
-                                       [(ngModel)]="newMedForm.intervall" pattern='[0-9][-][0-9][-][0-9][-][0-9]'
+                                       class="record__selectedPatient--newMed" placeholder="0-0-0-0"
+                                       [(ngModel)]="newMedForm.intervall" pattern='[0-99][-][0-99][-][0-99][-][0-99]'
                                        required>
                             </div>
                             <button type="submit" class="btn btn-danger record__selectedPatient--newMedBtn">
@@ -72,13 +72,16 @@
                             <ul>
                                 <li *ngFor="let currentMed of currentMeds">
                                     <div id="{{currentMed.timestampFrom}}-form" style="Display: none;">
-                                        <form ngNativeValidat>
+                                        <form (ngSubmit)="onSave(currentMed)" #changeMedForm="ngForm" ngNativeValidat>
                                             <input type="text" [(ngModel)]="currentMed.medication" name="medication"
                                                    class="form" required>
                                             <input type="text" [(ngModel)]="currentMed.intervall" name="intervall"
-                                                   class="form" required>
-                                            <fa class="record__selectedPatient--edit" name="check"
-                                                (click)="onSave(currentMed)"></fa>
+                                                   class="form" pattern='[0-9][-][0-9][-][0-9][-][0-9]'
+                                                   placeholder="0-0-0-0"
+                                                   required>
+                                            <button type="submit">
+                                                <fa class="record__selectedPatient--edit" name="check"></fa>
+                                            </button>
                                         </form>
                                     </div>
                                     <div id="{{currentMed.timestampFrom}}">
