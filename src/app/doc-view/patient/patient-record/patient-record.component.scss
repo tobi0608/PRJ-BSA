@@ -50,10 +50,15 @@
     &--edit {
       padding-left: 1rem;
       color: green;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: inherit;
     }
     &--delete {
       padding-left: 1rem;
       color: red;
+      cursor: pointer;
     }
     &--chart {
       padding-top: 2rem;

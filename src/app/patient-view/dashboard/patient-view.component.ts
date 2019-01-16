@@ -54,7 +54,7 @@ export class PatientViewComponent implements OnInit {
             {
                 type: 'area',
                 data: [],
-                name: 'Herzrate (Pro S)',
+                name: 'Herzrate (Pro M)',
                 color: '#B2101D',
                 zIndex: 3,
                 fillOpacity: 0,
