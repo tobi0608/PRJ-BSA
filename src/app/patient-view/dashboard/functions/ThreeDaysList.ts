@@ -1,5 +1,10 @@
 import {DATES} from '../../../mock-files/mock-vital-parameter';
 
+/**
+ * Abfrage für die Werte der letzten 3 Tage
+ * @param filter Welche Art von Werte gefragt ist
+ * @returns {any} Übergibt ein Obj. mit den gewünschten Format für den Chart
+ */
 export function ThreeDaysList(filter): any {
     const data = [];
     const sv = localStorage.getItem('sv');

@@ -16,11 +16,22 @@ NoDataToDisplay(Highcharts);
 })
 
 export class DocViewComponent implements OnInit {
+    /**
+     * Objekt für den Namen des angemeldeten Users
+     */
     name;
+    /**
+     * Objekt mit den Infos der letzten Patienten
+     */
     users;
+    /**
+     * Counter der Nachrichten
+     */
     messageCounter;
     alertCounter;
-
+    /**
+     * Objekte für das Chart mit den benötigten Optionen siehe HighChart-Api
+     */
     patientChart = Highcharts;
     patientChartOptions = {
         chart: {
@@ -75,6 +86,10 @@ export class DocViewComponent implements OnInit {
         this.patientChartOptions.series[0].data = UserCounter();
     }
 
+    /**
+     * Weiterleitung zum ausgewählten Patienten
+     * @param patient ausgewählter Patient
+     */
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient.sv]);
     }

@@ -7,6 +7,9 @@ import {ActivatedRoute, Router} from '@angular/router';
     styleUrls: ['./navbar-parameter.component.scss']
 })
 export class NavbarParameterComponent implements OnInit {
+    /**
+     * Für das highlighten des derzeitigen Component
+     */
     @ViewChild('nav') nav;
     @ViewChild('navMobile') navMobile;
 
@@ -27,6 +30,10 @@ export class NavbarParameterComponent implements OnInit {
         });
     }
 
+    /**
+     * Leitet dich zum gewünschten Component weiter
+     * @param route gewähltes Component
+     */
     onRoute(route): void {
         this.router.navigate([route]);
     }

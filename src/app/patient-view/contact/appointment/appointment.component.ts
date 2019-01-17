@@ -10,6 +10,9 @@ import {GetOpenHours} from '../../../global-files/function/GetOpenHours';
     styleUrls: ['./appointment.component.scss']
 })
 export class AppointmentComponent implements OnInit {
+    /**
+     * Obj. mit den Öffnungszeiten
+     */
     openhours;
 
     constructor() {
@@ -20,7 +23,11 @@ export class AppointmentComponent implements OnInit {
         this.openhours = GetOpenHours('patient');
     }
 
-    onSend(array): void {
+    /**
+     * Sendet eine Benachrichtigung an den Arzt für die Terminvereinbarung
+     * @param obj Obj. mit den Daten des Formulares
+     */
+    onSend(obj): void {
         const sv = localStorage.getItem('sv');
         const firstName = localStorage.getItem('firstName');
         const lastName = localStorage.getItem('lastName');
@@ -31,7 +38,7 @@ export class AppointmentComponent implements OnInit {
             first_name: firstName,
             last_name: lastName,
             type: 'Termin',
-            text: 'Termin für ' + array.type + ' am ' + array.date + ' - ' + ' um ' + array.time,
+            text: 'Termin für ' + obj.type + ' am ' + obj.date + ' - ' + ' um ' + obj.time,
             timestamp: Date.now(),
             seen: 'bell',
             check: 'check',

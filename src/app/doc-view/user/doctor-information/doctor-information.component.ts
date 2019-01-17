@@ -8,6 +8,9 @@ import {GetOpenHours} from '../../../global-files/function/GetOpenHours';
     styleUrls: ['./doctor-information.component.scss']
 })
 export class DoctorInformationComponent implements OnInit {
+    /**
+     * Objekt für die Öffnungszeiten im HTML
+     */
     openhours;
 
     constructor() {

@@ -1,5 +1,9 @@
 import {DATES} from '../../../mock-files/mock-vital-parameter';
 
+/**
+ * Übergibt den Namen des awesome-fonts für den Status
+ * @returns {string} Name des awesome-fonts
+ */
 export function StatusCheck(): string {
     let status = '';
     const last = [];

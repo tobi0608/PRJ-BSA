@@ -8,6 +8,9 @@ import {PushData} from '../../../global-files/function/PushData';
     styleUrls: ['./parameter-list.component.scss']
 })
 export class ParameterListComponent implements OnInit {
+    /**
+     * Objekt mit den Vitalwerten
+     */
     dates;
 
     constructor() {
@@ -19,6 +22,9 @@ export class ParameterListComponent implements OnInit {
         this.dates = PushData(sv, 'all');
     }
 
+    /**
+     * Refresht das Component nach dem hinzufügen von Werten
+     */
     onSend(): void {
         this.ngOnInit();
     }

@@ -28,6 +28,7 @@
     "highcharts": "^7.0.1",
     "highcharts-angular": "^2.4.0",
     "rxjs": "~6.3.3",
+    "typedoc": "^0.14.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

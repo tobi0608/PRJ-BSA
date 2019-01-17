@@ -9,6 +9,9 @@ import {MessageFilter} from '../../../global-files/function/MessageFilter';
     styleUrls: ['./doc-alert-list.component.scss']
 })
 export class DocAlertListComponent implements OnInit {
+    /**
+     * Objekt mit den gewünschten Nachrichten
+     */
     alerts;
 
     constructor(public router: Router) {
@@ -19,6 +22,10 @@ export class DocAlertListComponent implements OnInit {
         this.alerts = MessageFilter('alerts');
     }
 
+    /**
+     * Ausgewählte Nachrichten werden als gesehen markiert und der Empfänger wird zu den Daten des Senders geleitet
+     * @param alert Übergibt ausgewählte Nachricht
+     */
     onSelect(alert): void {
         alert.seen = ' ';
         this.router.navigate(['doctor/patients/record/:' + alert.svFrom]);

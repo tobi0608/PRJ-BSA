@@ -10,6 +10,9 @@ import {User} from '../mock-files/user';
 })
 
 export class HomeViewComponent implements OnInit {
+    /**
+     * Objekt für Zugriff auf Form für onTest und newUser-Funktion
+     */
     @ViewChild('logInForm') logInForm;
 
     constructor(public router: Router) {
@@ -18,6 +21,10 @@ export class HomeViewComponent implements OnInit {
     ngOnInit() {
     }
 
+    /**
+     *  Überprüft angegebene Zugriffdaten
+     * @param array Array mit angegebener SV-Nummer und Passwort
+     */
     onLogIn(array): void {
         const site = this.router;
         const user = USERS.find(function (tmp) {
@@ -39,6 +46,10 @@ export class HomeViewComponent implements OnInit {
         }
     }
 
+    /**
+     * Erstellt einen neuen User
+     * @param array Array mit eingetragenen Werte für den neuen User
+     */
     newUser(array): void {
         const sv = USERS.find(function (tmp) {
             return tmp.sv.toString() === array.sv;
@@ -69,6 +80,10 @@ export class HomeViewComponent implements OnInit {
         }
     }
 
+    /**
+     * Funktion für die Präsentation, übergibt automatisch LogIn Daten für den Arzt oder Patienten
+     * @param filter Gibt an welcher Button gedrückt wurde
+     */
     onTest(filter): void {
         switch (filter) {
             case 'patient':

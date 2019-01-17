@@ -7,6 +7,9 @@ import {ActivatedRoute, Router} from '@angular/router';
     styleUrls: ['./navbar-contact.component.scss']
 })
 export class NavbarContactComponent implements OnInit {
+    /**
+     * Für das highlighten des derzeitigen Component
+     */
     @ViewChild('nav') nav;
     @ViewChild('navMobile') navMobile;
 
@@ -27,6 +30,10 @@ export class NavbarContactComponent implements OnInit {
         });
     }
 
+    /**
+     * Leitet dich zum gewünschten Component weiter
+     * @param route gewähltes Component
+     */
     onRoute(route): void {
         this.router.navigate([route]);
     }

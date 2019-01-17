@@ -1,6 +1,11 @@
 import {MESSAGES} from '../../mock-files/mock-messages';
 import {Message} from '../../mock-files/messages';
 
+/**
+ * Übergibt die gewünschten Nachrichten
+ * @param filter Welche Art von Nachrichten gesucht sind
+ * @returns {object} Übergibt die gewünschten Nachrichten
+ */
 export function MessageFilter(filter): object {
     const sv = localStorage.getItem('sv');
     const docSV = localStorage.getItem('DocSV');

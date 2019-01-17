@@ -11,6 +11,9 @@ import {MessageFilter} from '../../../global-files/function/MessageFilter';
     styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent implements OnInit {
+    /**
+     * Objekte für die einzelnen Nachrichten Kategorien
+     */
     messages;
     acceptMessages;
     deniedMessages;
@@ -25,12 +28,20 @@ export class MessageListComponent implements OnInit {
         this.deniedMessages = MessageFilter('denied');
     }
 
-    onSelect(patient): void {
-        if (patient) {
-            this.router.navigate(['doctor/patients/record/:' + patient]);
+    /**
+     * Arzt wird zum ausgewählten Patienten weitergeleitet
+     * @param sv Übergibt ausgewählte sv
+     */
+    onSelect(sv): void {
+        if (sv) {
+            this.router.navigate(['doctor/patients/record/:' + sv]);
         }
     }
 
+    /**
+     * Ausgewählte Anfrage wird aktzeptiert und sendet Benachrichtigung an User
+     * @param message Übergibt ausgewählte Nachricht
+     */
     onAccept(message): void {
         message.seen = ' ';
         message.info = 'accept';
@@ -52,6 +63,10 @@ export class MessageListComponent implements OnInit {
         this.ngOnInit();
     }
 
+    /**
+     * Ausgewählte Anfrage wird abgelehnt und sendet Benachrichtigung an User
+     * @param message Übergibt ausgewählte Nachricht
+     */
     onDenied(message): void {
         message.seen = ' ';
         message.info = 'denied';

@@ -1,6 +1,11 @@
 import {OPENHOURS} from '../../mock-files/mock-openhours';
 import {Openhours} from '../../mock-files/openhours';
 
+/**
+ * Gibt die Öffnungsteiten des zugewiesenen Arzt oder eigene aus
+ * @param filter Für welchen Typ die Daten gewünscht sind
+ * @returns {any} Übergibt Objekt mit den gewünschten Öffnungszeiten
+ */
 export function GetOpenHours(filter): any {
     let openhours;
     switch (filter) {

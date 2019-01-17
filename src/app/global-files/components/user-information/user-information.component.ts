@@ -7,6 +7,9 @@ import {GetUserData} from '../../function/GetUserData';
     styleUrls: ['./user-information.component.scss']
 })
 export class UserInformationComponent implements OnInit {
+    /**
+     * Objekt mit den Informationen des angemeldeten Users
+     */
     user;
 
     constructor() {

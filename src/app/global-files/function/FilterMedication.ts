@@ -1,5 +1,11 @@
 import {MEDICATION} from '../../mock-files/mock-medication';
 
+/**
+ * Gibt gewünschte und auf User zugewiesene Medikation aus
+ * @param sv Übergibt die SV-Nummer des Users
+ * @param filter Welche Art von Med. gefragt ist
+ * @returns {object} Übergibt Objekt mit den gewünschten Medikamenten
+ */
 export function FilterMedication(sv, filter): object {
     const Meds = [];
     let count = 0;

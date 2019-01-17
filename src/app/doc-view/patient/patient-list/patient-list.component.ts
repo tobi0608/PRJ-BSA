@@ -10,6 +10,9 @@ import {ShowOwnPatients} from './functions/ShowOwnPatients';
 })
 
 export class PatientListComponent implements OnInit {
+    /**
+     * Objekt mit den zugewiesenen Patienten
+     */
     patients;
 
     constructor(public router: Router) {
@@ -20,10 +23,17 @@ export class PatientListComponent implements OnInit {
         this.patients = ShowOwnPatients();
     }
 
+    /**
+     * Weiterleitung für hinzufügen eines neuen Users
+     */
     onAddPatient(): void {
         this.router.navigate(['doctor/patients/record/:new']);
     }
 
+    /**
+     * Weiterleitung zum ausgewählten Patienten
+     * @param patient ausgewählter Patient
+     */
     onSelect(patient): void {
         this.router.navigate(['doctor/patients/record/:' + patient.sv]);
     }

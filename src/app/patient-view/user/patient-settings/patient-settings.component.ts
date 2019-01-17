@@ -11,6 +11,9 @@ import {Message} from '../../../mock-files/messages';
     styleUrls: ['./patient-settings.component.scss']
 })
 export class PatientSettingsComponent implements OnInit {
+    /**
+     * Objekt mit allen Ärzten
+     */
     Docs;
 
     constructor() {
@@ -21,6 +24,10 @@ export class PatientSettingsComponent implements OnInit {
         this.Docs = GetDocsSVs();
     }
 
+    /**
+     * Ändert den zugewiesenen Arzt und benachritet ihn
+     * @param sv SV des ausgewählten Arztes
+     */
     newDoctor(sv): void {
         USERS.find(function (tmp) {
             if (tmp.sv.toString() === localStorage.getItem('sv')) {

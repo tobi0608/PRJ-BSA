@@ -1,5 +1,9 @@
 import {USERS} from '../../mock-files/mock-user';
 
+/**
+ * Überprüft die Zugangsberechtigung
+ * @param filter Welche Typ sich gesucht ist
+ */
 export function LogInCheck(filter): void {
     const sv = localStorage.getItem('sv');
     const type = localStorage.getItem('type');

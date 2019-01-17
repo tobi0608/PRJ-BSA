@@ -9,6 +9,9 @@ import {OPENHOURS} from '../../../mock-files/mock-openhours';
     styleUrls: ['./doctor-settings.component.scss']
 })
 export class DoctorSettingsComponent implements OnInit {
+    /**
+     * Objekte für die Öffnungszeiten
+     */
     address;
     mon;
     tues;
@@ -34,6 +37,10 @@ export class DoctorSettingsComponent implements OnInit {
         this.sun = information.sun;
     }
 
+    /**
+     * Speichert die geänderte Information
+     * @param filter Zuweisung welches Information geändert wird
+     */
     saveInformation(filter, array): void {
         const openhours = OPENHOURS.find(function (tmp) {
             return tmp.sv.toString() === localStorage.getItem('sv');

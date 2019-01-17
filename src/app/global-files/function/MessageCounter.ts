@@ -1,5 +1,10 @@
 import {MESSAGES} from '../../mock-files/mock-messages';
 
+/**
+ * Übergibt den passenden Text mit der Anzahl der neuen Nachrichten
+ * @param filter Welche Art von Nachrichten gesucht sind
+ * @returns {string} Übergibt den Text mit der Anzahl der Nachrichten
+ */
 export function MessageCounter(filter): string {
     let countMessage = 0;
     let messageTxt = ' ';

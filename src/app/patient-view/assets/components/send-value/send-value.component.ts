@@ -10,6 +10,9 @@ import {VitalParameter} from '../../../../mock-files/vital-parameter';
     styleUrls: ['./send-value.component.scss']
 })
 export class SendValueComponent implements OnInit {
+    /**
+     * Output für den refresh des Components für die Liste
+     */
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
     constructor() {
@@ -18,10 +21,14 @@ export class SendValueComponent implements OnInit {
     ngOnInit() {
     }
 
-    onSend(array): void {
-        const systole = parseInt(array.systole, 10);
-        const diastole = parseInt(array.diastole, 10);
-        const heartRate = parseInt(array.heartRate, 10);
+    /**
+     * Übergabe der Formular Werte an die Mockdaten und Benachrichtigung bei Hypertonie
+     * @param obj Objekt mit den Werten des Formulars
+     */
+    onSend(obj): void {
+        const systole = parseInt(obj.systole, 10);
+        const diastole = parseInt(obj.diastole, 10);
+        const heartRate = parseInt(obj.heartRate, 10);
         let iTen = ' ';
         if (systole > 140) {
             iTen = 'heart';
@@ -51,8 +58,7 @@ export class SendValueComponent implements OnInit {
             MESSAGES.unshift(msg);
         }
         DATES.unshift(tmp);
-        this.notify.emit(tmp.timestamp.toString() + ';' + systole.toString() + ';' + diastole.toString() + ';' +
-            heartRate.toString());
+        this.notify.emit();
         alert('Ihre Werte wurden gespeichert');
     }
 }

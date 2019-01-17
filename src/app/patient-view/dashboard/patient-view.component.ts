@@ -17,10 +17,21 @@ HighchartsMore(Highcharts);
 })
 
 export class PatientViewComponent implements OnInit {
+    /**
+     * Objekt mit den Namen des angemeldeten Users
+     */
     name = ' ';
+    /**
+     * Objekt mit den Status
+     */
     status = ' ';
+    /**
+     * Objekt für den Message Zähler
+     */
     messageCounter = ' ';
-    updateFlag = true;
+    /**
+     * Objekte für das Chart mit den benötigten Optionen siehe HighChart-Api
+     */
     Highcharts = Highcharts;
     chartOptions = {
         chart: {

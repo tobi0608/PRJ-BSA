@@ -25,12 +25,27 @@ HighchartsMore(Highcharts);
     styleUrls: ['./patient-record.component.scss']
 })
 export class PatientRecordComponent implements OnInit {
+    /**
+     * Objekt für die Daten des Users
+     */
     selectedPatient;
+    /**
+     * Objekte für die Medikamente des Users
+     */
     currentMeds;
     usedMeds;
+    /**
+     * Objekt für das Alter des Users
+     */
     age;
+    /**
+     * Objekte für das ändern des Medikament Formular für die onSave-Funktion
+     */
     @ViewChild('changeMedForm') changeMedForm;
 
+    /**
+     * Objekte für das Chart mit den benötigten Optionen siehe HighChart-Api
+     */
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
@@ -130,11 +145,19 @@ export class PatientRecordComponent implements OnInit {
         this.age = parseInt(calcAge(sv), 10);
     }
 
+    /**
+     * Funktion für das eintragen des derzeitigen Timestamp
+     * @param pat ausgewählter Patient
+     */
     onHere(pat): void {
         pat.last_visit = Date.now();
     }
 
-    onSend(array): void {
+    /**
+     * Neues Med. hinzufügen mit Benachrichtigung für den User
+     * @param array Objekt mit den Daten des Med.
+     */
+    onNewMed(array): void {
         const svnr = parseInt(this.route.snapshot.paramMap.get('sv').replace(':', ''), 10);
         const tmp: Medication = {
             sv: svnr,
@@ -163,6 +186,10 @@ export class PatientRecordComponent implements OnInit {
         alert('Medikament hinzugefügt!');
     }
 
+    /**
+     * Löschen des ausgewählten Med.
+     * @param meds ausgewähltes Med.
+     */
     onDelete(meds): void {
         if (confirm('Bei Bestätigung wird das Medikament entfernt')) {
             meds.fresh = false;
@@ -185,11 +212,19 @@ export class PatientRecordComponent implements OnInit {
         }
     }
 
+    /**
+     * Öffnet Form des zu ändernten Med.
+     * @param meds ausgewählte Med.
+     */
     onEdit(meds): void {
         document.getElementById(meds.timestampFrom).style.display = 'none';
         document.getElementById(meds.timestampFrom + '-form').style.display = 'block';
     }
 
+    /**
+     * Änderung des derzeitigen Medikament oder intervall mit Benachrichtigung
+     * @param meds ausgewählte Med.
+     */
     onSave(meds): void {
         const alert: Message = {
             svFrom: parseInt(localStorage.getItem('sv'), 10),
@@ -212,6 +247,10 @@ export class PatientRecordComponent implements OnInit {
         this.ngOnInit();
     }
 
+    /**
+     * Speicherung des neuen Users
+     * @param array Daten des neu eingetragenen Users
+     */
     onSavePatient(array): void {
         const tmp: User = {
             sv: parseInt(array.sv, 10),

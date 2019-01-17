@@ -7,6 +7,9 @@ import {ActivatedRoute, Router} from '@angular/router';
     styleUrls: ['./navbar-patients.component.scss']
 })
 export class NavbarPatientsComponent implements OnInit {
+    /**
+     * Für das highlighten des derzeitigen Component
+     */
     @ViewChild('nav') nav;
     @ViewChild('navMobile') navMobile;
 
@@ -27,6 +30,10 @@ export class NavbarPatientsComponent implements OnInit {
         });
     }
 
+    /**
+     * Leitet dich zum gewünschten Component weiter oder zur onOff-Funktion
+     * @param route gewähltes Component
+     */
     onRoute(route): void {
         if (route !== ' ') {
             this.router.navigate([route]);
@@ -35,6 +42,9 @@ export class NavbarPatientsComponent implements OnInit {
         }
     }
 
+    /**
+     * Löscht LocalStorage und leitet dich zum LogIn weiter
+     */
     onOff(): void {
         if (confirm('Bei Bestätigung melden Sie sich von Ihrem Profil ab')) {
             localStorage.clear();

@@ -14,6 +14,9 @@ HighchartsMore(Highcharts);
     styleUrls: ['./parameter-chart.component.scss']
 })
 export class ParameterChartComponent implements OnInit {
+    /**
+     * Objekte für das Chart mit den benötigten Optionen siehe HighChart-Api
+     */
     Highcharts = Highcharts;
     chartOptions = {
         chart: {
