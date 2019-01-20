@@ -1,26 +1,28 @@
+@import "../../../global-files/scss/variables";
+
 .doctorInformation {
-  padding-top: 5.5rem;
-  font-size: 1rem;
-  &__body {
-    @media only screen and (min-width: 1000px) {
-      width: 80%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-    &--times {
-      left: 10rem;
-      position: absolute;
-    }
-  }
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
+}
+
+.body {
+  padding-top: $padding-header-after-nav;
   &__general {
-    padding-top: 4rem;
     &--span {
       padding-left: 1rem;
       display: block;
     }
     &--label {
       margin-top: 0.25rem;
+    }
+    &--day {
+      left: 10rem;
+      position: absolute;
+    }
+    &--header {
+      display: block;
+      font-weight: bold;
     }
   }
 }

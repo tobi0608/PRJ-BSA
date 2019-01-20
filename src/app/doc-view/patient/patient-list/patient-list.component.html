@@ -2,20 +2,20 @@
     <app-navbar-doctor></app-navbar-doctor>
     <app-navbar-patient></app-navbar-patient>
     <div class="container-fluid">
-        <div class="shadow p-3 bg-white patientList__body">
-            <div class="patientList__body--list">
+        <div class="shadow p-3 bg-white body">
+            <div class="body__list">
                 <div class="row">
                     <div class="col-6">
                         <h2>Patientenübersicht</h2>
                     </div>
                     <div class="col-6">
-                        <input type="button" class="btn btn-danger patientList__body--btn-full"
+                        <input type="button" class="btn btn-danger body__btn--full"
                                value="Neuen Patienten anlegen" (click)="onAddPatient()">
-                        <input type="button" class="btn btn-danger patientList__body--btn-mobile"
+                        <input type="button" class="btn btn-danger body__btn--mobile"
                                value="+" (click)="onAddPatient()">
                     </div>
                 </div>
-                <table class="table table-hover patientList__table--full">
+                <table class="table table-hover body__table--full">
                     <thead>
                     <tr>
                         <th scope="col">SV-Nummer</th>
@@ -38,7 +38,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <table class="table table-hover patientList__table--mobile">
+                <table class="table table-hover body__table--mobile">
                     <thead>
                     <tr>
                         <th scope="col">SV-Nummer</th>

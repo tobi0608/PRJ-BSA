@@ -1,31 +1,33 @@
 @import "../../../../../global-files/scss/nav";
+@import "../../../../../global-files/scss/variables";
 
 .navUser {
-  left: 31.13rem;
+  font-family: Arial;
+  left: 31.7rem;
   margin-top: 2.4rem;
   position: fixed;
   z-index: 9;
   height: 2.5rem;
-  background-color: #B2101D;
+  background-color: $rrp-primary-color;
   @media only screen and (min-width: 921px) {
     display: block;
-    &--skewRight {
-      margin-left: 51.95rem;
+    &__skewRight {
+      margin-left: 53rem;
       margin-top: 2.4rem;
       width: 0;
       height: 0;
-      border-top: 2.5rem solid #B2101D;
+      border-top: 2.5rem solid $rrp-primary-color;
       border-right: 2.5rem solid transparent;
       display: block;
       position: fixed;
       z-index: 9;
     }
-    &--skewLeft {
-      margin-left: 28.7rem;
+    &__skewLeft {
+      margin-left: 29.2rem;
       margin-top: 2.4rem;
       width: 0;
       height: 0;
-      border-top: 2.5rem solid #B2101D;
+      border-top: 2.5rem solid $rrp-primary-color;
       border-left: 2.5rem solid transparent;
       display: block;
       position: fixed;
@@ -37,16 +39,16 @@
   }
   &--nav-item {
     font-size: 1.5rem;
-    color: white;
+    color: $rrp-inverse-color;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
   &--nav-active {
     font-size: 1.5rem;
-    color: #B2101D;
+    color: $rrp-primary-color;
     padding: 0.3rem 0.75rem 0.32rem 0.75rem;
-    background-color: #FFFFFF;
-    border: 0.1rem solid #B2101D;
+    background-color: $rrp-inverse-color;
+    border: 0.1rem solid $rrp-primary-color;
     border-top: 0rem;
   }
 }

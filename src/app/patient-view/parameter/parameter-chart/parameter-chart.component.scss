@@ -1,20 +1,18 @@
+@import "../../../global-files/scss/variables";
+
 .ParameterChart {
-  padding-top: 5.5rem;
-  font-size: 1rem;
-  @media only screen and (min-width: 1001px) {
-    width: 80%;
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
+}
+
+.body {
+  padding-top: $padding-header-after-nav;
+  &__valueView {
+    padding-top: $padding-between-elements;
   }
-  @media only screen and (max-width: 1000px) {
-    width: 100%;
-  }
-  &__body {
-    margin-top: 5rem;
-    &--valueView {
-      padding-top: 2rem;
-    }
-    &--valueChart {
+  &__Chart {
       width: 95%;
       display: block;
     }
-  }
 }

@@ -1,50 +1,42 @@
-@import "../../global-files/scss/nav";
+@import "../../global-files/scss/variables";
 
 .doctor {
-  font-size: 1rem;
-  padding-top: 5.5rem;
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
   &__welcome-section {
     font-size: 1.35rem;
     z-index: 7;
     margin-top: 3rem;
     @media only screen and (min-width: 1001px) {
-      background-color: #B2101D;
+      background-color: $rrp-primary-color;
       float: right;
       width: 40%;
       position: relative;
-      color: #FFFFFF;
+      color: $rrp-inverse-color;
     }
     @media only screen and (max-width: 1000px) {
-      background-color: #FFFFFF;
+      background-color: $rrp-inverse-color;
       width: 90%;
       position: absolute;
-      color: #000000;
       box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
-    }
-    &--card {
-      position: relative;
-      height: 8rem;
     }
     &--Count {
       @media only screen and (min-width: 1001px) {
-        color: #FFE26F;
+        color: $rrp-secondary-color;
       }
       @media only screen and (max-width: 1000px) {
-        color: #B2101D;
+        color: $rrp-primary-color;
       }
     }
   }
+}
 
-  &__body {
+.body {
+  @extend %responsive-body;
+  &__newPatients {
     @media only screen and (min-width: 1001px) {
-      width: 80%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-    &--newPatients {
-      @media only screen and (min-width: 1001px) {
-        padding-top: 2.5rem;
+      padding-top: $padding-header-after-nav;
         width: 65%;
       }
       @media only screen and (max-width: 1000px) {
@@ -54,15 +46,13 @@
         padding-top: 18rem;
       }
     }
-    &--chartSection {
-      padding-top: 1rem;
+  &__chartSection {
+    padding-top: $padding-between-elements;
       position: relative;
     }
-    &--chart {
+  &__chart {
       display: block;
     }
-  }
-
   &__table {
     width: 70%;
     @media only screen and (min-width: 551px) {

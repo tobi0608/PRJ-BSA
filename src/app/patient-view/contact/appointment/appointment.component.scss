@@ -1,23 +1,22 @@
+@import "../../../global-files/scss/variables";
+
 .appointmentPatient {
-  padding-top: 5.5rem;
-  font-size: 1rem;
-  &__body {
-    @media only screen and (min-width: 1001px) {
-      width: 80%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-    &--times {
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
+}
+
+.body {
+  &__appointment {
+    padding-top: $padding-header-after-nav;
+    &--header {
       left: 10rem;
       position: absolute;
     }
-    &--appointment {
-      padding-top: 4.5rem;
-    }
   }
   &__form {
-    width: 20.324375rem;
+    padding-top: $padding-between-elements;
+    width: 20rem;
   }
 }
 

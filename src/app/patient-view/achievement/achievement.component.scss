@@ -1,15 +1,12 @@
+@import "../../global-files/scss/variables";
+
 .achievement {
-  padding-top: 5.5rem;
-  font-size: 1rem;
-  &__body {
-    @media only screen and (min-width: 1000px) {
-      width: 80%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-    &--list {
-      padding-top: 2.5rem;
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
+  .body {
+    &__list {
+      padding-top: $padding-header-after-nav;
     }
   }
 }

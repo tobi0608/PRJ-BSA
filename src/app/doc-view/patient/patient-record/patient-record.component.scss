@@ -1,53 +1,49 @@
 @import "../../../global-files/scss/form-validation";
+@import "../../../global-files/scss/variables";
 
 .record {
-  padding-top: 5.5rem;
-  font-size: 1.35rem;
-  &__body {
-    @media only screen and (min-width: 1001px) {
-      width: 80%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-  }
-  &__noSelectedPatient {
-    padding-top: 4rem;
-  }
-  &__selectedPatient {
-    padding-top: 4rem;
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
+}
+
+.noSelectedPatient {
+  padding-top: $padding-header-after-nav;
+}
+
+.selectedPatient {
+  padding-top: $padding-header-after-nav;
     display: none;
-    &--label {
+  &__label {
       font-weight: bold;
     }
-    &--btn {
-      margin-top: 2rem;
+  &__btn {
+    margin-top: 1rem;
       width: 100%;
-      font-size: 1.2rem;
-      padding-bottom: 0.125rem;
+    margin-bottom: 0.125rem;
     }
-    &--meds {
+  &__meds {
       padding-top: 2rem;
     }
-    &--newMed {
+  &__newMed {
       width: 9rem
     }
-    &--newMedLabel {
+  &__newMedLabel {
       width: 7.48125rem;
     }
-    &--newMedBtn {
+  &__newMedBtn {
       width: 7.48125rem;
     }
-    &--medList {
+  &__medList {
       padding-top: 1rem;
       @media only screen and (max-width: 500px) {
         padding-top: 3rem;
       }
     }
-    &--medItemForm {
+  &__medItemForm {
       display: none;
     }
-    &--edit {
+  &__edit {
       padding-left: 1rem;
       color: green;
       background: none;
@@ -55,35 +51,34 @@
       cursor: pointer;
       outline: inherit;
     }
-    &--delete {
+  &__delete {
       padding-left: 1rem;
       color: red;
       cursor: pointer;
     }
-    &--chart {
+  &__chart {
       padding-top: 2rem;
     }
-    &--valueChart {
+  &__valueChart {
       width: 90%;
       display: block;
     }
   }
-  &__newPatient {
-    padding-top: 4rem;
-    display: none;
-    &--label {
+
+.newPatient {
+  padding-top: $padding-header-after-nav;
+  &__label {
       margin-top: 0.5rem;
     }
-    &--fielset {
+  &__fielset {
       margin-top: 1rem;
     }
-    &--fielset-label {
+  &__fielset-label {
       font-weight: bold;
     }
-    &--btn {
+  &__btn {
       margin-top: 1rem;
       width: 100%;
       font-size: 1.5rem;
     }
-  }
 }

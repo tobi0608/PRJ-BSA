@@ -1,9 +1,10 @@
 @import "../global-files/scss/form-validation";
+@import "../global-files/scss/variables";
 
 .home {
-  padding-top: 5rem;
+  padding-top: $padding-header;
   &--form {
-    width: 6.18875rem;
+    width: $form-width;
   }
   &--saveBtn {
     margin-top: 1rem;

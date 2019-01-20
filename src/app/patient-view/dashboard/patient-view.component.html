@@ -8,7 +8,7 @@
                     <h1>{{name}}!</h1>
                 </div>
                 <div class="col-6">
-                    <div class="patient__welcome-section--card">
+                    <div class="patient__card">
                         <img src="/assets/card-man.png" alt="avatar" class="patient__welcome-section--avatarWhite">
                         <img src="/assets/card-man-mobile.png" alt="avatar" class="patient__welcome-section--avatarRed">
                     </div>
@@ -23,22 +23,22 @@
         <div class="patient__sendValues-section jumbotron shadow p-3 rounded">
             <app-send-value></app-send-value>
         </div>
-        <div class="shadow p-3 bg-white patient__body">
-            <div class="patient__achievement">
+        <div class="shadow p-3 bg-white body">
+            <div class="body__achievement">
                 <h2>Herausforderungen</h2>
                 <p>Ihnen fehlen noch 3 Tage für den nächsten Erfolg!</p>
             </div>
-            <div class="patient__appointment">
+            <div class="body__appointment">
                 <h2>Termin</h2>
-                <p>Sie können <a class="patient__appointment--link" routerLink="/patient/contact/appointment">
+                <p>Sie können <a class="body__appointment--link" routerLink="/patient/contact/appointment">
                     hier</a> online einen Termin vereinbaren</p>
             </div>
-            <div class="patient__parameter">
+            <div class="body__parameter">
                 <h2>Ihre Blutdruckwerte der letzten 3 Tage</h2>
                 <highcharts-chart
                         [Highcharts]="Highcharts"
                         [options]="chartOptions"
-                        class="patient__parameter--chart"
+                        class="body__chart"
                 ></highcharts-chart>
             </div>
         </div>

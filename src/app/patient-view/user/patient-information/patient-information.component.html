@@ -2,18 +2,18 @@
     <app-navbar-patients></app-navbar-patients>
     <app-navbar-user-patient></app-navbar-user-patient>
     <div class="container-fluid">
-        <div class="shadow p-3 bg-white information__body">
-            <div class="information__general">
+        <div class="shadow p-3 bg-white">
+            <div class="body">
                 <app-user-information></app-user-information>
-                <div class="row information__general--span">
-                    <span class="information__general--label">Ausgewählter Arzt:</span>
+                <div class="row body__general--span">
+                    <span class="body__general--label body__general--header">Ausgewählter Arzt:</span>
                     <p>{{doc}}</p>
                 </div>
-                <span>Ordinations Adresse:</span>
+                <span class="body__general--header">Ordinations Adresse:</span>
                 <p>{{openhours.address}}</p>
-                <h2>Medikation:</h2>
-                <h3>Derzeitige Medikation</h3>
-                <div id="currentMed" class="row information__general--span">
+                <span class="body__general--header">Medikation:</span>
+                <span class="body__general--header">Derzeitige Medikation</span>
+                <div id="currentMed" class="row body__general--span">
                     <ul>
                         <li *ngFor="let currentMed of currentMeds">
                 <span>{{currentMed.medication}} {{currentMed.intervall}}
@@ -21,8 +21,8 @@
                         </li>
                     </ul>
                 </div>
-                <h3>Bereits probierte Medikamente</h3>
-                <div id="usedMed" class="row information__general--span">
+                <span class="body__general--header">Bereits probierte Medikamente</span>
+                <div id="usedMed" class="row body__general--span">
                     <ul>
                         <li *ngFor="let usedMed of usedMeds">
                   <span>{{usedMed.medication}} von {{usedMed.timestampFrom | date:'dd.MM.yyyy'}} bis

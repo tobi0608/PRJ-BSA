@@ -1,3 +1,5 @@
+@import "/variables";
+
 .navMobile {
   @media only screen and (min-width: 921px) {
     display: none;
@@ -9,12 +11,12 @@
   z-index: 9;
   height: 2.5rem;
   border-radius: 0rem;
-  background-color: #FFFFFF;;
+  background-color: $rrp-inverse-color;
   font-size: 1.5rem;
-  color: #B2101D;
+  color: $rrp-primary-color;
   width: 15rem;
   padding: 0rem 0.75rem 0rem 0.75rem;
-  border: 0.1rem solid #B2101D;
+  border: 0.1rem solid $rrp-primary-color;
 }
 
 .navSecondMobile {
@@ -28,18 +30,18 @@
     z-index: 9;
     height: 2.5rem;
     border-radius: 0rem;
-    background-color: #FFFFFF;;
+    background-color: $rrp-inverse-color;
     font-size: 1.5rem;
-    color: #B2101D;
+    color: $rrp-primary-color;
     width: 12.5rem;
     padding: 0rem 0.75rem 0rem 0.75rem;
-    border: 0.1rem solid #B2101D;
-    &--skew {
+    border: 0.1rem solid $rrp-primary-color;
+    &__skew {
       margin-left: 12.5rem;
       margin-top: 2.4rem;
       width: 0;
       height: 0;
-      border-top: 2.5rem solid #B2101D;
+      border-top: 2.5rem solid $rrp-primary-color;
       border-right: 2.5rem solid transparent;
       display: block;
       position: fixed;
@@ -49,6 +51,7 @@
 }
 
 .nav {
+  font-family: Arial;
   position: fixed;
   z-index: 9;
   height: 2.5rem;
@@ -60,8 +63,8 @@
       display: block;
     }
     font-size: 1.5rem;
-    color: white;
-    background-color: #B2101D;
+    color: $rrp-inverse-color;
+    background-color: $rrp-primary-color;
     padding: 0rem 0.75rem 0rem 0.75rem;
   }
   &--nav-active {
@@ -72,15 +75,15 @@
       display: block;
     }
     font-size: 1.5rem;
-    color: #B2101D;
+    color: $rrp-primary-color;
     padding: 0rem 0.75rem 0rem 0.75rem;
-    background-color: #FFFFFF;
-    border: 0.1rem solid #B2101D;
+    background-color: $rrp-inverse-color;
+    border: 0.1rem solid $rrp-primary-color;
   }
 }
 
 a:not([href]):not([tabindex]) {
-  color: #FFFFFF;
+  color: $rrp-inverse-color;
   cursor: pointer;
 }
 

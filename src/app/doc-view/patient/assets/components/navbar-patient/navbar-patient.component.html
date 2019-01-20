@@ -2,10 +2,10 @@
     <a routerLink="/doctor/patients/list" class="navPatients--nav-item">Übersicht</a>
     <a routerLink="/doctor/patients/record/:sv" class="navPatients--nav-item">Patienten-Akt</a>
 </nav>
-<div class="navPatients--skewRight"></div>
-<div class="navPatients--skewLeft"></div>
+<div class="navPatients__skewRight"></div>
+<div class="navPatients__skewLeft"></div>
 <select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)" #navMobile>
     <option value="doctor/patients/list">Übersicht</option>
     <option value="doctor/patients/record/:sv">Patienten-Akt</option>
 </select>
-<div class="navSecondMobile--skew"></div>
+<div class="navSecondMobile__skew"></div>

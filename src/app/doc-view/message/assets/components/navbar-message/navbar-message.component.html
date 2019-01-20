@@ -2,10 +2,10 @@
     <a routerLink="/doctor/messages/appointments" class="navMessage--nav-item">Terminanfragen</a>
     <a routerLink="/doctor/messages/alerts" class="navMessage--nav-item">Alerts</a>
 </nav>
-<div class="navMessage--skewRight"></div>
-<div class="navMessage--skewLeft"></div>
+<div class="navMessage__skewRight"></div>
+<div class="navMessage__skewLeft"></div>
 <select class="custom-select navSecondMobile" (change)="onRoute($event.target.value)" #navMobile>
     <option value="doctor/messages/appointments">Terminanfragen</option>
     <option value="doctor/messages/alerts">Alerts</option>
 </select>
-<div class="navSecondMobile--skew"></div>
+<div class="navSecondMobile__skew"></div>

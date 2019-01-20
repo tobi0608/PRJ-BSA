@@ -1,51 +1,22 @@
+@import "../../global-files/scss/variables";
+
 .patient {
-  font-size: 1rem;
-  padding-top: 5.5rem;
-  &__body {
-    @media only screen and (min-width: 1001px) {
-      width: 80%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-  }
-  &__achievement {
-    @media only screen and (min-width: 1001px) {
-      padding-top: 3rem;
-    }
-    @media only screen and (max-width: 1000px) {
-      padding-top: 25rem;
-    }
-  }
-  &__appointment {
-    padding-top: 1.5rem;
-    &--link {
-      color: #B2101D;
-    }
-  }
-  &__parameter {
-    @media only screen and (min-width: 1001px) {
-      width: 70%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-    padding-top: 1.5rem;
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  &__card {
     position: relative;
-    &--chart {
-      display: block;
-    }
+    height: 8rem;
   }
   &__welcome-section {
-    font-size: 1.35rem;
+    font-size: $font-bigger-size;
     z-index: 7;
     margin-top: 3rem;
-    @media only screen and (min-width: 1001px) {
-      background-color: #B2101D;
+    @media only screen and (min-width: 1053px) {
+      background-color: $rrp-primary-color;
       float: right;
       width: 40%;
       position: relative;
-      color: #FFFFFF;
+      color: $rrp-inverse-color;
       &--avatarWhite {
         position: absolute;
         width: 15rem;
@@ -56,14 +27,14 @@
         display: none;
       }
     }
-    @media only screen and (max-width: 1000px) {
-      background-color: #FFFFFF;
+    @media only screen and (max-width: 1052px) {
+      background-color: $rrp-inverse-color;
       width: 90%;
       position: absolute;
       color: #000000;
       box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
       &--dayCount {
-        color: #B2101D;
+        color: $rrp-primary-color;
       }
       &--avatarWhite {
         display: none;
@@ -86,16 +57,12 @@
         display: none;
       }
     }
-    &--card {
-      position: relative;
-      height: 8rem;
-    }
     &--alertCount {
-      @media only screen and (min-width: 1001px) {
-        color: #FFE26F;
+      @media only screen and (min-width: 1053px) {
+        color: $rrp-secondary-color;
       }
-      @media only screen and (max-width: 1000px) {
-        color: #B2101D;
+      @media only screen and (max-width: 1052px) {
+        color: $rrp-primary-color;
       }
     }
     &--dayCount {
@@ -107,21 +74,52 @@
   }
   &__sendValues-section {
     z-index: 7;
-    @media only screen and (min-width: 1001px) {
-      background-color: #B2101D;
+    @media only screen and (min-width: 1053px) {
+      background-color: $rrp-primary-color;
       margin-top: 20rem;
       right: 1rem;
       width: 39%;
       position: absolute;
-      color: #FFFFFF;
+      color: $rrp-inverse-color;
     }
-    @media only screen and (max-width: 1000px) {
-      background-color: #FFFFFF;
+    @media only screen and (max-width: 1052px) {
+      background-color: $rrp-inverse-color;
       margin-top: 15.5rem;
       width: 90%;
       position: absolute;
       color: #000000;
       box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
     }
+  }
+}
+
+.body {
+  @extend %responsive-body;
+  &__achievement {
+    @media only screen and (min-width: 1053px) {
+      padding-top: $padding-header-after-nav;
+    }
+    @media only screen and (max-width: 1052px) {
+      padding-top: 25rem;
+    }
+  }
+  &__appointment {
+    padding-top: $padding-between-elements;
+    &--link {
+      color: $rrp-primary-color;
+    }
+  }
+  &__parameter {
+    padding-top: $padding-between-elements;
+    position: relative;
+    @media only screen and (min-width: 1053px) {
+      width: 70%;
+    }
+    @media only screen and (max-width: 1052px) {
+      width: 100%;
+    }
+  }
+  &__chart {
+    display: block;
   }
 }

@@ -1,44 +1,41 @@
+@import "../../../global-files/scss/variables";
+
 .patientList {
-  padding-top: 5.5rem;
-  font-size: 1rem;
-  &__body {
-    @media only screen and (min-width: 1001px) {
-      width: 80%;
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
+}
+
+.body {
+  &__list {
+    padding-top: $padding-header-after-nav;
     }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-    &--list {
-      padding-top: 4rem;
-    }
-    &--btn {
+  &__btn {
+    float: right;
+    position: relative;
       @media only screen and (min-width: 571px) {
-        &-mobile {
-          display: none;
-        }
-        &-full {
+        &--full {
           float: right;
           position: relative;
+        }
+        &--mobile {
+          display: none;
         }
       }
       @media only screen and (max-width: 570px) {
-        &-mobile {
+        &--full {
+          display: none;
+        }
+        &--mobile {
           float: right;
           position: relative;
         }
-        &-full {
-          display: none;
-        }
       }
     }
-  }
-
   &__table {
     @media only screen and (min-width: 681px) {
       &--mobile {
         display: none;
-      }
-      &--full {
       }
     }
     @media only screen and (max-width: 680px) {

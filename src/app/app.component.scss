@@ -1,12 +1,14 @@
+@import "global-files/scss/variables";
+
 .index-header {
-  background-color: #B2101D;
+  background-color: $rrp-primary-color;
   position: fixed;
   width: 100%;
   z-index: 9;
+  color: $rrp-inverse-color;
+  padding-left: 1rem;
   &__title-md {
-    color: #FFFFFF;
     font-size: 4rem;
-    margin-left: 1rem;
     @media only screen and (min-width: 601px) {
       display: none;
     }
@@ -15,9 +17,7 @@
     }
   }
   &__title {
-    color: #FFFFFF;
     font-size: 4rem;
-    margin-left: 1rem;
     @media only screen and (max-width: 600px) {
       display: none;
     }

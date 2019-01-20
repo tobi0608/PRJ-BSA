@@ -2,17 +2,17 @@
     <app-navbar-patients></app-navbar-patients>
     <app-navbar-user-patient></app-navbar-user-patient>
     <div class="container-fluid">
-        <div class="shadow p-3 bg-white settings__body">
-            <div class="settings__general">
+        <div class="shadow p-3 bg-white">
+            <div class="body">
                 <h2>Zugewiesenen Arzt ändern</h2>
                 <form (ngSubmit)="newDoctor($event.target[0].value)" #newDocForm="ngForm" ngNativeValidate>
-                    <label for="newDoc" class="settings__general--label">Arzt auswählen:</label>
-                    <select id="newDoc" name="newDoc" class="custom-select settings__general--input" required>
+                    <label for="newDoc" class="body__general--label">Arzt auswählen:</label>
+                    <select id="newDoc" name="newDoc" class="custom-select body__general--input" required>
                         <option *ngFor="let doc of Docs" value="{{doc.sv}}" name="sv">
                             Dr. {{doc.last_name}} {{doc.first_name}}
                         </option>
                     </select>
-                    <button type="submit" class="btn btn-danger settings__general--btn">Arzt speichern</button>
+                    <button type="submit" class="btn btn-danger body__general--btn">Arzt speichern</button>
                 </form>
             </div>
             <app-user-settings></app-user-settings>

@@ -2,20 +2,20 @@
     <app-navbar-doctor></app-navbar-doctor>
     <app-navbar-user-doctor></app-navbar-user-doctor>
     <div class="container-fluid">
-        <div class="shadow p-3 bg-white doctorInformation__body">
-            <div class="doctorInformation__general">
+        <div class="shadow p-3 bg-white">
+            <div class="body">
                 <app-user-information></app-user-information>
                 <h2>Ordination:</h2>
-                <span>Zeiten:</span>
-                <p>Montag: <span class="doctorInformation__body--times">{{openhours.mon}}</span></p>
-                <p>Dienstag: <span class="doctorInformation__body--times">{{openhours.tues}}</span></p>
-                <p>Mittwoch: <span class="doctorInformation__body--times">{{openhours.wed}}</span></p>
-                <p>Donnerstag: <span class="doctorInformation__body--times">{{openhours.thues}}</span></p>
-                <p>Freitag: <span class="doctorInformation__body--times">{{openhours.fri}}</span></p>
-                <p>Samstag: <span class="doctorInformation__body--times">{{openhours.sat}}</span></p>
-                <p>Sonntag: <span class="doctorInformation__body--times">{{openhours.sun}}</span></p>
-                <span>Adresse:</span>
-                <p>{{openhours.address}}</p>
+                <span class="body__general--header">Zeiten:</span>
+                <p>Montag: <span class="body__general--day">{{openhours.mon}}</span></p>
+                <p>Dienstag: <span class="body__general--day">{{openhours.tues}}</span></p>
+                <p>Mittwoch: <span class="body__general--day">{{openhours.wed}}</span></p>
+                <p>Donnerstag: <span class="body__general--day">{{openhours.thues}}</span></p>
+                <p>Freitag: <span class="body__general--day">{{openhours.fri}}</span></p>
+                <p>Samstag: <span class="body__general--day">{{openhours.sat}}</span></p>
+                <p>Sonntag: <span class="body__general--day">{{openhours.sun}}</span></p>
+                <span class="body__general--header">Adresse:</span>
+                <span>{{openhours.address}}</span>
             </div>
         </div>
     </div>

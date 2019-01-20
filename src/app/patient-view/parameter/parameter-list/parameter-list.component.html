@@ -2,16 +2,16 @@
     <app-navbar-patients></app-navbar-patients>
     <app-navbar-parameter></app-navbar-parameter>
     <div class="container-fluid">
-        <div class="shadow p-3 bg-white parameterList">
-            <div class="parameterList__body">
+        <div class="shadow p-3 bg-white">
+            <div class="body">
                 <app-send-value (notify)='onSend($event)'></app-send-value>
-                <div class="parameterList__body--valueList">
+                <div class="body__valueList">
                     <h2>Vitalparameter</h2>
-                    <table class="table table-hover parameterList__body--full">
+                    <table class="table table-hover body--full">
                         <thead>
                         <tr>
                             <th scope="col">
-                                <fa name="heart" class="parameterList__body--heart"></fa>
+                                <fa name="heart" class="body--heart"></fa>
                             </th>
                             <th scope="col">Datum</th>
                             <th scope="col">Systole</th>
@@ -20,9 +20,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let data of dates" class="parameterList__row--{{data.i10}}">
+                        <tr *ngFor="let data of dates" class="body--{{data.i10}}">
                             <td>
-                                <fa name="{{data.i10}}" class="parameterList__body--heart"></fa>
+                                <fa name="{{data.i10}}" class="body--heart"></fa>
                             </td>
                             <td>{{data.timestamp | date:'dd.MM.yyyy - HH:mm'}}</td>
                             <td>{{data.systole}}</td>
@@ -31,20 +31,20 @@
                         </tr>
                         </tbody>
                     </table>
-                    <table class="table table-hover parameterList__body--mobile">
+                    <table class="table table-hover body--mobile">
                         <thead>
                         <tr>
                             <th scope="col">
-                                <fa name="heart" class="parameterList__body--heart"></fa>
+                                <fa name="heart" class="body--heart"></fa>
                             </th>
                             <th scope="col">Datum</th>
                             <th scope="col">Blutdruck</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let data of dates">
+                        <tr *ngFor="let data of dates" class="body--{{data.i10}}">
                             <td>
-                                <fa name="{{data.i10}}" class="parameterList__body--heart"></fa>
+                                <fa name="{{data.i10}}" class="body--heart"></fa>
                             </td>
                             <td>{{data.timestamp | date:'dd.MM - HH'}} Uhr</td>
                             <td>{{data.systole}}/{{data.diastole}}/{{data.heartbeat}}</td>

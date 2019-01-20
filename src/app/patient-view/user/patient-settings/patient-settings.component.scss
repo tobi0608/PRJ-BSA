@@ -1,16 +1,14 @@
+@import "../../../global-files/scss/variables";
+
 .settings {
-  padding-top: 5.5rem;
-  font-size: 1rem;
-  &__body {
-    @media only screen and (min-width: 1001px) {
-      width: 80%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-    }
-  }
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
+}
+
+.body {
+  padding-top: $padding-header-after-nav;
   &__general {
-    padding-top: 4rem;
     &--label {
       margin-top: 0.5rem;
       display: block;
@@ -18,7 +16,6 @@
     &--input {
       width: 50%;
       display: block;
-      padding-bottom: 0rem;
     }
     &--btn {
       margin-top: 0.5rem;

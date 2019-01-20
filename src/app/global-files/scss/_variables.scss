@@ -1,0 +1,22 @@
+$rrp-primary-color: #B2101D;
+$rrp-secondary-color: #FFE26F;
+$rrp-inverse-color: #FFFFFF;
+
+$form-width: 6.18875rem;
+
+$padding-header: 5rem;
+$padding-header-for-nav: 5.5rem;
+$padding-header-after-nav: 4.5rem;
+$padding-between-elements: 1.5rem;
+
+$font-normal-size: 1rem;
+$font-bigger-size: 1.35rem;
+
+%responsive-body {
+  @media only screen and (min-width: 1053px) {
+    width: 80%;
+  }
+  @media only screen and (max-width: 1052px) {
+    width: 100%;
+  }
+}

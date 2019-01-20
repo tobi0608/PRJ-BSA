@@ -9,10 +9,10 @@
                 {{alertCounter}}</a></p>
         </div>
 
-        <div class="shadow p-3 bg-white doctor__body">
-            <div class="doctor__body--newPatients">
+        <div class="shadow p-3 bg-white body">
+            <div class="body__newPatients">
                 <h2>Die letzten 5 neu verknüpften Patienten</h2>
-                <table class="table table-hover doctor__table--full">
+                <table class="table table-hover body__table--full">
                     <thead>
                     <tr>
                         <th scope="col">Registriert am:</th>
@@ -29,7 +29,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <table class="table table-hover doctor__table--mobile">
+                <table class="table table-hover body__table--mobile">
                     <thead>
                     <tr>
                         <th scope="col">Registriert am:</th>
@@ -45,12 +45,12 @@
                     </tbody>
                 </table>
             </div>
-            <div class="doctor__body--chartSection">
+            <div class="body__chartSection">
                 <h2>Patientenzuwachs der letzten Woche:</h2>
                 <highcharts-chart
                         [Highcharts]="patientChart"
                         [options]="patientChartOptions"
-                        class="doctor__body--chart"
+                        class="body__chart"
                 ></highcharts-chart>
             </div>
         </div>

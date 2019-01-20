@@ -3,14 +3,14 @@
     <app-navbar-parameter></app-navbar-parameter>
     <div class="container-fluid">
         <div class="shadow p-3 bg-white ParameterChart">
-            <div class="ParameterChart__body">
+            <div class="body">
                 <app-send-value></app-send-value>
-                <div class="ParameterChart__body--valueView">
+                <div class="body__valueView">
                     <h2>Blutdruckwerte</h2>
                     <highcharts-chart
                             [Highcharts]="Highcharts"
                             [options]="chartOptions"
-                            class="ParameterChart__body--valueChart"
+                            class="body__Chart"
                     ></highcharts-chart>
                 </div>
             </div>

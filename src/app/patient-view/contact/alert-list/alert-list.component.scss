@@ -1,18 +1,13 @@
+@import "../../../global-files/scss/variables";
+
 .messagePatient {
-  padding-top: 5.5rem;
-  font-size: 1rem;
-  &__body {
-    @media only screen and (min-width: 1001px) {
-      width: 80%;
-    }
-    @media only screen and (max-width: 1000px) {
-      width: 100%;
-      &--table {
-        font-size: 1rem;
-      }
-    }
-    &--alerts {
-      padding-top: 4rem;
-    }
+  padding-top: $padding-header-for-nav;
+  font-size: $font-normal-size;
+  @extend %responsive-body;
+}
+
+.body {
+  &__alerts {
+    padding-top: $padding-header-after-nav;
   }
 }

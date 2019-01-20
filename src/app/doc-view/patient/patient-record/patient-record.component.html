@@ -2,46 +2,46 @@
     <app-navbar-doctor></app-navbar-doctor>
     <app-navbar-patient></app-navbar-patient>
     <div class="container-fluid">
-        <div class="shadow p-3 bg-white record__body">
-            <div class="record__noSelectedPatient" id="noSelectedPatient">
+        <div class="shadow p-3 bg-white ">
+            <div class="noSelectedPatient" id="noSelectedPatient">
                 <h2>Leider ist kein Patient ausgewählt</h2>
                 <p>Um einen Patienten auszuwählen bitte <a routerLink="/doctor/patients/list">hier</a> klicken</p>
             </div>
-            <div class="record__selectedPatient" id="selectedPatient">
-                <div class="record__selectedPatient--record" id="information">
+            <div class="selectedPatient" id="selectedPatient">
+                <div class="selectedPatient__record" id="information">
                     <h2>Akt von {{selectedPatient.last_name | uppercase}} {{selectedPatient.first_name}}:</h2>
                     <hr class="m-4">
                     <div class="row">
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-                            <span class="record__selectedPatient--label">SV-Nummer:</span><br>
+                            <span class="selectedPatient__label">SV-Nummer:</span><br>
                             <span>{{selectedPatient.sv}}</span>
                         </div>
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-                            <span class="record__selectedPatient--label">Alter:</span><br>
+                            <span class="selectedPatient__label">Alter:</span><br>
                             <span>{{age}}</span>
                         </div>
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-                            <span class="record__selectedPatient--label">Geschlecht:</span><br>
+                            <span class="selectedPatient__label">Geschlecht:</span><br>
                             <span>{{selectedPatient.gender}}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-                            <span class="record__selectedPatient--label">Registriert seit:</span><br>
+                            <span class="selectedPatient__label">Registriert seit:</span><br>
                             <span>{{selectedPatient.registered | date:'dd.MM.yyyy'}}</span>
                         </div>
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-                            <span class="record__selectedPatient--label">Letzter Besuch:</span><br>
+                            <span class="selectedPatient__label">Letzter Besuch:</span><br>
                             <span>{{selectedPatient.last_visit | date:'dd.MM.yyyy'}}</span>
                         </div>
                         <div class="co-12 col-sm-4 col-md-4 col-lg-3 col-xl-2">
                             <input type="button" value="Patient war hier"
-                                   class="btn btn-danger record__selectedPatient--btn"
+                                   class="btn btn-danger selectedPatient__btn"
                                    (click)="onHere(selectedPatient)">
                         </div>
                     </div>
                 </div>
-                <div class="record__selectedPatient--meds">
+                <div class="selectedPatient--meds">
                     <h3>Medikation:</h3>
                     <h4>Neues Medikation hinzufügen:</h4>
                     <form class="form-inline" (ngSubmit)="onNewMed(newMedForm.value)" #newMedForm="ngForm"
@@ -50,23 +50,23 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="medikament">Medikament:</label>
                                 <input type="text" id="medikament" name="medikament"
-                                       class="record__selectedPatient--newMed"
+                                       class="selectedPatient__newMed"
                                        [(ngModel)]="newMedForm.medikament" required>
                             </div>
                             <div class="input-group-prepend">
-                                <label class="input-group-text record__selectedPatient--newMedLabel" for="intervall">
+                                <label class="input-group-text selectedPatient__newMedLabel" for="intervall">
                                     Intervall:</label>
                                 <input type="text" id="intervall" name="intervall"
-                                       class="record__selectedPatient--newMed" placeholder="0-0-0-0"
+                                       class="selectedPatient__newMed" placeholder="0-0-0-0"
                                        [(ngModel)]="newMedForm.intervall" pattern='[0-99][-][0-99][-][0-99][-][0-99]'
                                        required>
                             </div>
-                            <button type="submit" class="btn btn-danger record__selectedPatient--newMedBtn">
+                            <button type="submit" class="btn btn-danger selectedPatient__newMedBtn">
                                 Speichern
                             </button>
                         </div>
                     </form>
-                    <div class="record__selectedPatient--medList">
+                    <div class="selectedPatient__medList">
                         <h4>Derzeitige Medikation:</h4>
                         <div>
                             <ul>
@@ -79,7 +79,7 @@
                                                    class="form" pattern='[0-9][-][0-9][-][0-9][-][0-9]'
                                                    placeholder="0-0-0-0"
                                                    required>
-                                            <button class="record__selectedPatient--edit" type="submit">
+                                            <button class="selectedPatient__edit" type="submit">
                                                 <fa name="check"></fa>
                                             </button>
                                         </form>
@@ -87,9 +87,9 @@
                                     <div id="{{currentMed.timestampFrom}}">
                                         <span>{{currentMed.medication}}</span>
                                         <span> {{currentMed.intervall}} seit {{currentMed.timestampFrom | date:'dd.MM.yyyy'}}</span>
-                                        <fa class="record__selectedPatient--edit" name="pencil"
+                                        <fa class="selectedPatient__edit" name="pencil"
                                             (click)="onEdit(currentMed)"></fa>
-                                        <fa class="record__selectedPatient--delete" name="trash"
+                                        <fa class="selectedPatient__delete" name="trash"
                                             (click)="onDelete(currentMed)"></fa>
                                     </div>
                                 </li>
@@ -97,7 +97,7 @@
                         </div>
                         <div id="currentMed" style="Display: none;"><span>Keine verschriebene Medikation</span></div>
                     </div>
-                    <div class="record__selectedPatient--medList">
+                    <div class="selectedPatient__medList">
                         <h4>Bereits probierte Medikamente:</h4>
                         <div>
                             <ul>
@@ -110,38 +110,38 @@
                     </div>
                 </div>
                 <div id="usedMed" style="Display: none;"><span>Noch keine probierten Medikammente</span></div>
-                <div class="record__selectedPatient--chart">
+                <div class="selectedPatient--chart">
                     <h3>Blutdruckwerte des Patienten:</h3>
                     <highcharts-chart
                             [Highcharts]="Highcharts"
                             [options]="chartOptions"
-                            class="record__selectedPatient--valueChart"
+                            class="selectedPatient__valueChart"
                     ></highcharts-chart>
                 </div>
             </div>
-            <div class="record__newPatient" id="newPatient">
+            <div class="newPatient" id="newPatient">
                 <h2>Neuer Patient:</h2>
                 <form (ngSubmit)="onSavePatient(newPatientForm.value)" #newPatientForm="ngForm" ngNativeValidate>
                     <div class="form-row">
                         <div class="col-12 col-md-6 col-lg-3">
-                            <label for="firstName" class="record__newPatient--label">Vorname:</label>
+                            <label for="firstName" class="newPatient__label">Vorname:</label>
                             <input id="firstName" type="text" name="firstName" class="form-control"
                                    [(ngModel)]="newPatientForm.firstName" required>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3">
-                            <label for="lastName" class="record__newPatient--label">Nachname: </label>
+                            <label for="lastName" class="newPatient__label">Nachname: </label>
                             <input id="lastName" type="text" name="lastName" class="form-control"
                                    [(ngModel)]="newPatientForm.lastName" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-12 col-md-9 col-lg-4">
-                            <label for="sv" class="record__newPatient--label">SV-Nummer:</label>
+                            <label for="sv" class="newPatient__label">SV-Nummer:</label>
                             <input id="sv" type="text" name="sv" class="form-control"
                                    [(ngModel)]="newPatientForm.sv" pattern='[0-9]{10}' required>
                         </div>
                         <div class="col-12 col-md-3 col-lg-2">
-                            <label for="gender" class="record__newPatient--label">Geschlecht:</label>
+                            <label for="gender" class="newPatient__label">Geschlecht:</label>
                             <select id="gender" name="gender" class="form-control"
                                     [(ngModel)]="newPatientForm.gender" required>
                                 <option value="m">männlich</option>
@@ -151,14 +151,14 @@
                     </div>
                     <div class="form-row">
                         <div class="col-12 col-md-9 col-lg-4">
-                            <label for="email" class="record__newPatient--label">E-Mail Adresse:</label>
+                            <label for="email" class="newPatient__label">E-Mail Adresse:</label>
                             <input id="email" type="email" name="email" class="form-control"
                                    [(ngModel)]="newPatientForm.email" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-12 col-lg-6">
-                            <button type="submit" class="btn btn-danger record__newPatient--btn">
+                            <button type="submit" class="btn btn-danger newPatient__btn">
                                 Akt anlegen
                             </button>
                         </div>
