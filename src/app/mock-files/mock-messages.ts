@@ -8,12 +8,12 @@ export const MESSAGES: Message[] = [
     },
     {
         svFrom: 2870180796, svTo: 2167050980, first_name: 'Benjamin', last_name: 'Titlbach',
-        type: 'Termin', text: 'Terminvereinbarung 17.01.2019 - 12Uhr', timestamp: 1547506826540,
+        type: 'Termin', text: 'Terminvereinbarung 2019-01-17 - 12:00', timestamp: 1547506826540,
         seen: 'bell', check: 'check', times: 'times', info: ' '
     },
     {
         svFrom: 3198060896, svTo: 2167050980, first_name: 'Tobias', last_name: 'Schwab',
-        type: 'Termin', text: 'Terminvereinbarung 10.01.2019 - 12Uhr', timestamp: 1547074826540,
+        type: 'Termin', text: 'Terminvereinbarung 2019-01-10 - 12:30', timestamp: 1547074826540,
         seen: ' ', check: ' ', times: ' ', info: 'accept'
     },
     {
@@ -23,7 +23,7 @@ export const MESSAGES: Message[] = [
     },
     {
         svFrom: 3198060896, svTo: 2167050980, first_name: 'Tobias', last_name: 'Schwab',
-        type: 'Termin', text: 'Terminvereinbarung 11.01.2019 - 14Uhr', timestamp: 1546758026540,
+        type: 'Termin', text: 'Terminvereinbarung 2019-01-11 - 14:45', timestamp: 1546758026540,
         seen: ' ', check: ' ', times: ' ', info: 'denied'
     },
     {

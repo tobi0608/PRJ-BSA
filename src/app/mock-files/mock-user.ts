@@ -52,7 +52,7 @@ export const USERS: User[] = [
         registered: 1546268426540, last_visit: 1546268426540
     },
     {
-        sv: 9827240378, first_name: 'Burger', last_name: 'Andrea', password: 'root', type: 'patient',
+        sv: 9827240378, first_name: 'Burger', last_name: 'Andreas', password: 'root', type: 'patient',
         email: 'test@mock.at', assignedDoc: 2167050980, gender: 'm',
         registered: 1546268426540, last_visit: 1546268426540
     },

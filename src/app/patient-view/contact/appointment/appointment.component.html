@@ -18,13 +18,13 @@
                           #appointmentForm="ngForm" ngNativeValidate>
                         <div class="form-group">
                             <label for="date">Datum: </label>
-                            <input type="date" id="date" name="date" class="form-control"
+                            <input type="date" id="date" name="date" class="form-control" min="2019-01-22"
                                    [(ngModel)]="appointmentForm.date" required>
                         </div>
                         <div class="form-group">
                             <label for="time">Uhrzeit: </label>
                             <input type="time" id="time" class="form-control" name="time"
-                                   min="8:00" max="16:00" step="00:30" [(ngModel)]="appointmentForm.time" required>
+                                   min="8:00" max="18:00" [(ngModel)]="appointmentForm.time" required>
                         </div>
                         <div class="form-group">
                             <label for="type">Grund des Termins: </label>
