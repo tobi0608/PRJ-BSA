@@ -12,8 +12,8 @@ Durch die Hilfe von RivaRocciPass wird die Therapie von Hypertonie vereinfacht. 
 `Arzt` oder `Patient` anzumelden
 
 ## Libaries
-[Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
-[Bootstrap](https://getbootstrap.com/) version 4.2
-[Highcharts Basics](https://www.highcharts.com/) version 7.0.2
-[Font Awesome](https://fontawesome.com/) version 3.1.2
-[TypeDoc](https://typedoc.org/)version 3.1.6
+- [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+- [Bootstrap](https://getbootstrap.com/) version 4.2
+- [Highcharts Basics](https://www.highcharts.com/) version 7.0.2
+- [Font Awesome](https://fontawesome.com/) version 3.1.2
+- [TypeDoc](https://typedoc.org/)version 3.1.6
