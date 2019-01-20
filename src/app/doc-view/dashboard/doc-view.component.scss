@@ -3,29 +3,29 @@
 .doctor {
   padding-top: $padding-header-for-nav;
   font-size: $font-normal-size;
-  @extend %responsive-body;
+
   &__welcome-section {
     font-size: 1.35rem;
     z-index: 7;
     margin-top: 3rem;
-    @media only screen and (min-width: 1001px) {
+    @media only screen and (min-width: 1053px) {
       background-color: $rrp-primary-color;
       float: right;
       width: 40%;
       position: relative;
       color: $rrp-inverse-color;
     }
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1052px) {
       background-color: $rrp-inverse-color;
       width: 90%;
       position: absolute;
       box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
     }
     &--Count {
-      @media only screen and (min-width: 1001px) {
+      @media only screen and (min-width: 1053px) {
         color: $rrp-secondary-color;
       }
-      @media only screen and (max-width: 1000px) {
+      @media only screen and (max-width: 1052px) {
         color: $rrp-primary-color;
       }
     }
@@ -35,14 +35,14 @@
 .body {
   @extend %responsive-body;
   &__newPatients {
-    @media only screen and (min-width: 1001px) {
+    @media only screen and (min-width: 1053px) {
       padding-top: $padding-header-after-nav;
         width: 65%;
       }
-      @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1052px) {
         padding-top: 15rem;
       }
-      @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 462px) {
         padding-top: 18rem;
       }
     }
